@@ -1,0 +1,84 @@
+# Auto-label PRs based on files changed
+# Used by .github/workflows/labeler.yml
+
+# Area labels
+frontend:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'app/**/*.tsx'
+          - 'app/**/*.ts'
+          - 'components/**/*'
+          - 'styles/**/*'
+          - 'public/**/*'
+
+backend:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'app/api/**/*'
+          - 'lib/**/*'
+          - 'mcp/**/*'
+
+database:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'supabase/**/*'
+          - 'lib/supabase/**/*'
+          - 'scripts/*db*.js'
+          - 'types/database.ts'
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.md'
+          - 'docs/**/*'
+
+testing:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'tests/**/*'
+          - '**/*.test.ts'
+          - '**/*.test.tsx'
+          - '**/*.spec.ts'
+          - 'playwright.config.ts'
+          - 'jest.config.js'
+
+ci/cd:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**/*'
+          - '.husky/**/*'
+          - 'scripts/**/*'
+
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '*.config.js'
+          - '*.config.ts'
+          - 'tsconfig.json'
+          - 'package.json'
+          - 'tailwind.config.ts'
+
+types:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'types/**/*'
+          - '**/*.d.ts'
+
+security:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'SECURITY.md'
+          - 'scripts/check-secrets.js'
+          - 'tests/security/**/*'
+          - 'lib/api/auth.ts'
+
+matching:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'lib/matching/**/*'
+          - 'app/api/matching/**/*'
+
+hooks:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'hooks/**/*'

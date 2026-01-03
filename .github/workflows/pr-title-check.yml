@@ -1,0 +1,120 @@
+name: PR Title Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  check-title:
+    name: Validate PR Title (Conventional Commits)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR title format
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Require conventional commit format
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            build
+            ci
+            chore
+            revert
+
+          # Require scope for certain types (optional)
+          requireScope: false
+
+          # Enforce subject case
+          subjectPattern: ^[A-Z]?.+$
+          subjectPatternError: |
+            The subject "{subject}" should start with a capital letter (optional) and be descriptive.
+
+          # Header length
+          headerPattern: ^.{1,72}$
+          headerPatternError: |
+            The PR title should be 72 characters or less.
+            Current length: {length}
+
+          # Scopes (optional - uncomment to enforce)
+          # scopes: |
+          #   frontend
+          #   backend
+          #   database
+          #   auth
+          #   matching
+          #   ui
+          #   api
+          #   docs
+          #   ci
+
+          # Warn on deprecated types
+          wip: true
+
+      - name: Comment on invalid PR title
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const message = `## ⚠️ PR Title Format Issue
+
+            Your PR title doesn't follow our [Conventional Commits](https://www.conventionalcommits.org/) format.
+
+            ### Required Format
+            \`\`\`
+            <type>: <description>
+            \`\`\`
+
+            ### Valid Types
+            | Type | Description |
+            |------|-------------|
+            | \`feat\` | New feature |
+            | \`fix\` | Bug fix |
+            | \`docs\` | Documentation changes |
+            | \`style\` | Code style (formatting, no logic change) |
+            | \`refactor\` | Code refactoring |
+            | \`perf\` | Performance improvement |
+            | \`test\` | Adding or fixing tests |
+            | \`build\` | Build system changes |
+            | \`ci\` | CI/CD changes |
+            | \`chore\` | Maintenance tasks |
+            | \`revert\` | Revert a commit |
+
+            ### Examples
+            - ✅ \`feat: add user profile photo upload\`
+            - ✅ \`fix: resolve login redirect issue\`
+            - ✅ \`docs: update API documentation\`
+            - ❌ \`Update stuff\`
+            - ❌ \`Fixed bug\`
+
+            Please update your PR title and the check will re-run automatically.`;
+
+            // Check if we already commented
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+
+            const existingComment = comments.find(c =>
+              c.body.includes('⚠️ PR Title Format Issue')
+            );
+
+            if (!existingComment) {
+              github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: message
+              });
+            }

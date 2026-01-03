@@ -1,0 +1,85 @@
+{
+  "projectName": "helloeveryone",
+  "projectOwner": "allan5050",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "allan5050",
+      "name": "Allan Nevala",
+      "avatar_url": "https://github.com/allan5050.png",
+      "profile": "https://github.com/allan5050",
+      "contributions": [
+        "code",
+        "doc",
+        "infra",
+        "test",
+        "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "contributorsSortAlphabetically": false,
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg)](#contributors)",
+  "contributorTemplate": "<%= contributorImage %> **<%= name %>**<br /><sub><%= contributions %></sub>",
+  "types": {
+    "code": {
+      "symbol": "💻",
+      "description": "Code",
+      "link": "[<%= symbol %>](<%= repoUrl %>/commits?author=<%= contributor.login %> \"Code\")"
+    },
+    "doc": {
+      "symbol": "📖",
+      "description": "Documentation",
+      "link": "[<%= symbol %>](<%= repoUrl %>/commits?author=<%= contributor.login %> \"Documentation\")"
+    },
+    "test": {
+      "symbol": "⚠️",
+      "description": "Tests",
+      "link": "[<%= symbol %>](<%= repoUrl %>/commits?author=<%= contributor.login %> \"Tests\")"
+    },
+    "bug": {
+      "symbol": "🐛",
+      "description": "Bug reports",
+      "link": "[<%= symbol %>](<%= repoUrl %>/issues?q=author%3A<%= contributor.login %> \"Bug reports\")"
+    },
+    "design": {
+      "symbol": "🎨",
+      "description": "Design",
+      "link": "[<%= symbol %>](#design \"Design\")"
+    },
+    "ideas": {
+      "symbol": "🤔",
+      "description": "Ideas & Planning",
+      "link": "[<%= symbol %>](#ideas \"Ideas & Planning\")"
+    },
+    "review": {
+      "symbol": "👀",
+      "description": "Reviewed Pull Requests",
+      "link": "[<%= symbol %>](<%= repoUrl %>/pulls?q=reviewed-by%3A<%= contributor.login %> \"Reviewed Pull Requests\")"
+    },
+    "question": {
+      "symbol": "💬",
+      "description": "Answering Questions",
+      "link": "[<%= symbol %>](<%= repoUrl %>/issues?q=author%3A<%= contributor.login %> \"Answering Questions\")"
+    },
+    "infra": {
+      "symbol": "🚇",
+      "description": "Infrastructure",
+      "link": "[<%= symbol %>](<%= repoUrl %>/commits?author=<%= contributor.login %> \"Infrastructure\")"
+    },
+    "security": {
+      "symbol": "🛡️",
+      "description": "Security",
+      "link": "[<%= symbol %>](<%= repoUrl %>/commits?author=<%= contributor.login %> \"Security\")"
+    }
+  },
+  "skipCi": false,
+  "linkToUsage": true
+}

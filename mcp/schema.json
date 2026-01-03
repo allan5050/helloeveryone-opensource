@@ -1,0 +1,1800 @@
+{
+  "project_ref": "amarmxbvuzxakjzvntzv",
+  "url": "https://amarmxbvuzxakjzvntzv.supabase.co",
+  "tables": {
+    "blocks": {
+      "size": "104 kB",
+      "comment": null,
+      "row_count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": "uuid_generate_v4()",
+          "comment": null
+        },
+        {
+          "column_name": "blocker_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "blocked_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "table_name": "blocks",
+          "column_name": "blocked_id",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        },
+        {
+          "table_name": "blocks",
+          "column_name": "blocker_id",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        }
+      ],
+      "rls_policies": [
+        {
+          "name": "allow_delete_own_blocks",
+          "command": "DELETE",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_insert_own_blocks",
+          "command": "INSERT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_select_own_blocks",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE"
+        }
+      ]
+    },
+    "events": {
+      "size": "160 kB",
+      "comment": null,
+      "row_count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": "uuid_generate_v4()",
+          "comment": null
+        },
+        {
+          "column_name": "title",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "description",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "location",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "start_time",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "end_time",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "max_attendees",
+          "data_type": "integer",
+          "udt_name": "int4",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "created_by",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "is_active",
+          "data_type": "boolean",
+          "udt_name": "bool",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "true",
+          "comment": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "table_name": "events",
+          "column_name": "created_by",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        }
+      ],
+      "rls_policies": [
+        {
+          "name": "allow_delete_own_events",
+          "command": "DELETE",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_insert_events",
+          "command": "INSERT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_select_active_events",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_update_own_events",
+          "command": "UPDATE",
+          "permissive": "PERMISSIVE"
+        }
+      ]
+    },
+    "favorites": {
+      "size": "104 kB",
+      "comment": null,
+      "row_count": 1,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": "uuid_generate_v4()",
+          "comment": null
+        },
+        {
+          "column_name": "user_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "favorited_user_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "table_name": "favorites",
+          "column_name": "favorited_user_id",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        },
+        {
+          "table_name": "favorites",
+          "column_name": "user_id",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        }
+      ],
+      "rls_policies": [
+        {
+          "name": "allow_delete_own_favorites",
+          "command": "DELETE",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_insert_own_favorites",
+          "command": "INSERT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_select_own_favorites",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE"
+        }
+      ]
+    },
+    "match_scores": {
+      "size": "176 kB",
+      "comment": null,
+      "row_count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": "uuid_generate_v4()",
+          "comment": null
+        },
+        {
+          "column_name": "user_id_1",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "user_id_2",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "event_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "semantic_score",
+          "data_type": "double precision",
+          "udt_name": "float8",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "interest_score",
+          "data_type": "double precision",
+          "udt_name": "float8",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "combined_score",
+          "data_type": "double precision",
+          "udt_name": "float8",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "calculated_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "table_name": "match_scores",
+          "column_name": "event_id",
+          "foreign_table_name": "events",
+          "foreign_column_name": "id"
+        },
+        {
+          "table_name": "match_scores",
+          "column_name": "user_id_1",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        },
+        {
+          "table_name": "match_scores",
+          "column_name": "user_id_2",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        }
+      ],
+      "rls_policies": [
+        {
+          "name": "allow_select_own_matches",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_system_insert_matches",
+          "command": "INSERT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_system_update_matches",
+          "command": "UPDATE",
+          "permissive": "PERMISSIVE"
+        }
+      ]
+    },
+    "meeting_slots": {
+      "size": "80 kB",
+      "comment": null,
+      "row_count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": "uuid_generate_v4()",
+          "comment": null
+        },
+        {
+          "column_name": "event_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "user_id_1",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "user_id_2",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "proposed_time",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED",
+          "udt_name": "meeting_status",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "'proposed'::meeting_status",
+          "comment": null
+        },
+        {
+          "column_name": "location",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "notes",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "table_name": "meeting_slots",
+          "column_name": "event_id",
+          "foreign_table_name": "events",
+          "foreign_column_name": "id"
+        },
+        {
+          "table_name": "meeting_slots",
+          "column_name": "user_id_1",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        },
+        {
+          "table_name": "meeting_slots",
+          "column_name": "user_id_2",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        }
+      ],
+      "rls_policies": [
+        {
+          "name": "allow_delete_meeting_slots",
+          "command": "DELETE",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_insert_meeting_slots",
+          "command": "INSERT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_select_meeting_slots",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_update_meeting_slots",
+          "command": "UPDATE",
+          "permissive": "PERMISSIVE"
+        }
+      ]
+    },
+    "messages": {
+      "size": "192 kB",
+      "comment": null,
+      "row_count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": "uuid_generate_v4()",
+          "comment": null
+        },
+        {
+          "column_name": "sender_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "recipient_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "event_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "content",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "is_read",
+          "data_type": "boolean",
+          "udt_name": "bool",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "false",
+          "comment": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "table_name": "messages",
+          "column_name": "event_id",
+          "foreign_table_name": "events",
+          "foreign_column_name": "id"
+        },
+        {
+          "table_name": "messages",
+          "column_name": "recipient_id",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        },
+        {
+          "table_name": "messages",
+          "column_name": "sender_id",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        }
+      ],
+      "rls_policies": [
+        {
+          "name": "allow_insert_messages",
+          "command": "INSERT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_select_own_messages",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_update_recent_messages",
+          "command": "UPDATE",
+          "permissive": "PERMISSIVE"
+        }
+      ]
+    },
+    "profiles": {
+      "size": "4040 kB",
+      "comment": null,
+      "row_count": 26,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": "uuid_generate_v4()",
+          "comment": null
+        },
+        {
+          "column_name": "user_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "display_name",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "bio",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "age",
+          "data_type": "integer",
+          "udt_name": "int4",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "location",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "interests",
+          "data_type": "ARRAY",
+          "udt_name": "_text",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "embedding",
+          "data_type": "USER-DEFINED",
+          "udt_name": "vector",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "role",
+          "data_type": "USER-DEFINED",
+          "udt_name": "user_role",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "'user'::user_role",
+          "comment": "User role: \"user\" (default) or \"admin\" for administrative access"
+        },
+        {
+          "column_name": "is_active",
+          "data_type": "boolean",
+          "udt_name": "bool",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "true",
+          "comment": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        },
+        {
+          "column_name": "bio_embedding",
+          "data_type": "USER-DEFINED",
+          "udt_name": "vector",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": "Vector embedding of user bio for semantic matching"
+        },
+        {
+          "column_name": "is_profile_complete",
+          "data_type": "boolean",
+          "udt_name": "bool",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "false",
+          "comment": "Indicates whether the user has completed their profile setup"
+        },
+        {
+          "column_name": "photo_url",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": "URL to the user profile photo stored in storage bucket"
+        },
+        {
+          "column_name": "preferred_age_min",
+          "data_type": "integer",
+          "udt_name": "int4",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "18",
+          "comment": "Minimum age preference for matching"
+        },
+        {
+          "column_name": "preferred_age_max",
+          "data_type": "integer",
+          "udt_name": "int4",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "99",
+          "comment": "Maximum age preference for matching"
+        },
+        {
+          "column_name": "looking_for",
+          "data_type": "ARRAY",
+          "udt_name": "_text",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "'{}'::text[]",
+          "comment": "Array of relationship types user is looking for"
+        },
+        {
+          "column_name": "availability",
+          "data_type": "ARRAY",
+          "udt_name": "_text",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "'{}'::text[]",
+          "comment": "Array of time slots when user is available"
+        },
+        {
+          "column_name": "privacy_settings",
+          "data_type": "jsonb",
+          "udt_name": "jsonb",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "'{\"show_age\": true, \"show_location\": true, \"show_interests\": true}'::jsonb",
+          "comment": "JSON object containing privacy preferences"
+        },
+        {
+          "column_name": "full_name",
+          "data_type": "text",
+          "udt_name": "text",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": null,
+          "comment": null
+        }
+      ],
+      "foreign_keys": [],
+      "rls_policies": [
+        {
+          "name": "Public profiles are viewable by everyone",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "Users can delete own profile",
+          "command": "DELETE",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "Users can insert own profile",
+          "command": "INSERT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "Users can update own profile",
+          "command": "UPDATE",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "Users can view all profiles",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_delete_own_profile",
+          "command": "DELETE",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_insert_own_profile",
+          "command": "INSERT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_select_profiles",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_update_own_profile",
+          "command": "UPDATE",
+          "permissive": "PERMISSIVE"
+        }
+      ]
+    },
+    "rsvps": {
+      "size": "184 kB",
+      "comment": null,
+      "row_count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": "uuid_generate_v4()",
+          "comment": null
+        },
+        {
+          "column_name": "event_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "user_id",
+          "data_type": "uuid",
+          "udt_name": "uuid",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": null,
+          "comment": null
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED",
+          "udt_name": "rsvp_status",
+          "character_maximum_length": null,
+          "is_nullable": "NO",
+          "column_default": "'going'::rsvp_status",
+          "comment": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone",
+          "udt_name": "timestamptz",
+          "character_maximum_length": null,
+          "is_nullable": "YES",
+          "column_default": "now()",
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "table_name": "rsvps",
+          "column_name": "event_id",
+          "foreign_table_name": "events",
+          "foreign_column_name": "id"
+        },
+        {
+          "table_name": "rsvps",
+          "column_name": "user_id",
+          "foreign_table_name": "profiles",
+          "foreign_column_name": "user_id"
+        }
+      ],
+      "rls_policies": [
+        {
+          "name": "allow_delete_own_rsvp",
+          "command": "DELETE",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_insert_own_rsvp",
+          "command": "INSERT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_select_rsvps",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE"
+        },
+        {
+          "name": "allow_update_own_rsvp",
+          "command": "UPDATE",
+          "permissive": "PERMISSIVE"
+        }
+      ]
+    }
+  },
+  "enums": [
+    {
+      "enum_name": "meeting_status",
+      "values": [
+        "proposed",
+        "confirmed",
+        "completed",
+        "cancelled"
+      ]
+    },
+    {
+      "enum_name": "rsvp_status",
+      "values": [
+        "going",
+        "maybe",
+        "not_going"
+      ]
+    },
+    {
+      "enum_name": "user_role",
+      "values": [
+        "user",
+        "admin"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "array_to_halfvec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_halfvec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_halfvec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_halfvec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_sparsevec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_sparsevec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_sparsevec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_sparsevec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_vector",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_vector",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_vector",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "array_to_vector",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "avg",
+      "type": null,
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "avg",
+      "type": null,
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "binary_quantize",
+      "type": "FUNCTION",
+      "returns": "bit"
+    },
+    {
+      "name": "binary_quantize",
+      "type": "FUNCTION",
+      "returns": "bit"
+    },
+    {
+      "name": "calculate_match_score",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "cosine_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "cosine_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "cosine_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "get_event_matches",
+      "type": "FUNCTION",
+      "returns": "record"
+    },
+    {
+      "name": "gin_extract_query_trgm",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "gin_extract_value_trgm",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "gin_trgm_consistent",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "gin_trgm_triconsistent",
+      "type": "FUNCTION",
+      "returns": "\"char\""
+    },
+    {
+      "name": "gtrgm_compress",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "gtrgm_consistent",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "gtrgm_decompress",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "gtrgm_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "gtrgm_in",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "gtrgm_options",
+      "type": "FUNCTION",
+      "returns": "void"
+    },
+    {
+      "name": "gtrgm_out",
+      "type": "FUNCTION",
+      "returns": "cstring"
+    },
+    {
+      "name": "gtrgm_penalty",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "gtrgm_picksplit",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "gtrgm_same",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "gtrgm_union",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec_accum",
+      "type": "FUNCTION",
+      "returns": "ARRAY"
+    },
+    {
+      "name": "halfvec_add",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec_avg",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec_cmp",
+      "type": "FUNCTION",
+      "returns": "integer"
+    },
+    {
+      "name": "halfvec_combine",
+      "type": "FUNCTION",
+      "returns": "ARRAY"
+    },
+    {
+      "name": "halfvec_concat",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec_eq",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "halfvec_ge",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "halfvec_gt",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "halfvec_in",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec_l2_squared_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "halfvec_le",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "halfvec_lt",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "halfvec_mul",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec_ne",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "halfvec_negative_inner_product",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "halfvec_out",
+      "type": "FUNCTION",
+      "returns": "cstring"
+    },
+    {
+      "name": "halfvec_recv",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec_send",
+      "type": "FUNCTION",
+      "returns": "bytea"
+    },
+    {
+      "name": "halfvec_spherical_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "halfvec_sub",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec_to_float4",
+      "type": "FUNCTION",
+      "returns": "ARRAY"
+    },
+    {
+      "name": "halfvec_to_sparsevec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec_to_vector",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "halfvec_typmod_in",
+      "type": "FUNCTION",
+      "returns": "integer"
+    },
+    {
+      "name": "hamming_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "handle_new_user",
+      "type": "FUNCTION",
+      "returns": "trigger"
+    },
+    {
+      "name": "hnsw_bit_support",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "hnsw_halfvec_support",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "hnsw_sparsevec_support",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "hnswhandler",
+      "type": "FUNCTION",
+      "returns": "index_am_handler"
+    },
+    {
+      "name": "inner_product",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "inner_product",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "inner_product",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "is_admin",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "ivfflat_bit_support",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "ivfflat_halfvec_support",
+      "type": "FUNCTION",
+      "returns": "internal"
+    },
+    {
+      "name": "ivfflathandler",
+      "type": "FUNCTION",
+      "returns": "index_am_handler"
+    },
+    {
+      "name": "jaccard_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "l1_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "l1_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "l1_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "l2_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "l2_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "l2_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "l2_norm",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "l2_norm",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "l2_normalize",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "l2_normalize",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "l2_normalize",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "set_limit",
+      "type": "FUNCTION",
+      "returns": "real"
+    },
+    {
+      "name": "set_profile_id",
+      "type": "FUNCTION",
+      "returns": "trigger"
+    },
+    {
+      "name": "show_limit",
+      "type": "FUNCTION",
+      "returns": "real"
+    },
+    {
+      "name": "show_trgm",
+      "type": "FUNCTION",
+      "returns": "ARRAY"
+    },
+    {
+      "name": "similarity",
+      "type": "FUNCTION",
+      "returns": "real"
+    },
+    {
+      "name": "similarity_dist",
+      "type": "FUNCTION",
+      "returns": "real"
+    },
+    {
+      "name": "similarity_op",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "sparsevec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "sparsevec_cmp",
+      "type": "FUNCTION",
+      "returns": "integer"
+    },
+    {
+      "name": "sparsevec_eq",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "sparsevec_ge",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "sparsevec_gt",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "sparsevec_in",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "sparsevec_l2_squared_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "sparsevec_le",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "sparsevec_lt",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "sparsevec_ne",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "sparsevec_negative_inner_product",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "sparsevec_out",
+      "type": "FUNCTION",
+      "returns": "cstring"
+    },
+    {
+      "name": "sparsevec_recv",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "sparsevec_send",
+      "type": "FUNCTION",
+      "returns": "bytea"
+    },
+    {
+      "name": "sparsevec_to_halfvec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "sparsevec_to_vector",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "sparsevec_typmod_in",
+      "type": "FUNCTION",
+      "returns": "integer"
+    },
+    {
+      "name": "strict_word_similarity",
+      "type": "FUNCTION",
+      "returns": "real"
+    },
+    {
+      "name": "strict_word_similarity_commutator_op",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "strict_word_similarity_dist_commutator_op",
+      "type": "FUNCTION",
+      "returns": "real"
+    },
+    {
+      "name": "strict_word_similarity_dist_op",
+      "type": "FUNCTION",
+      "returns": "real"
+    },
+    {
+      "name": "strict_word_similarity_op",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "subvector",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "subvector",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "sum",
+      "type": null,
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "sum",
+      "type": null,
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "update_updated_at_column",
+      "type": "FUNCTION",
+      "returns": "trigger"
+    },
+    {
+      "name": "vector",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "vector_accum",
+      "type": "FUNCTION",
+      "returns": "ARRAY"
+    },
+    {
+      "name": "vector_add",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "vector_avg",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "vector_cmp",
+      "type": "FUNCTION",
+      "returns": "integer"
+    },
+    {
+      "name": "vector_combine",
+      "type": "FUNCTION",
+      "returns": "ARRAY"
+    },
+    {
+      "name": "vector_concat",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "vector_dims",
+      "type": "FUNCTION",
+      "returns": "integer"
+    },
+    {
+      "name": "vector_dims",
+      "type": "FUNCTION",
+      "returns": "integer"
+    },
+    {
+      "name": "vector_eq",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "vector_ge",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "vector_gt",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "vector_in",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "vector_l2_squared_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "vector_le",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "vector_lt",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "vector_mul",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "vector_ne",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "vector_negative_inner_product",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "vector_norm",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "vector_out",
+      "type": "FUNCTION",
+      "returns": "cstring"
+    },
+    {
+      "name": "vector_recv",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "vector_send",
+      "type": "FUNCTION",
+      "returns": "bytea"
+    },
+    {
+      "name": "vector_spherical_distance",
+      "type": "FUNCTION",
+      "returns": "double precision"
+    },
+    {
+      "name": "vector_sub",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "vector_to_float4",
+      "type": "FUNCTION",
+      "returns": "ARRAY"
+    },
+    {
+      "name": "vector_to_halfvec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "vector_to_sparsevec",
+      "type": "FUNCTION",
+      "returns": "USER-DEFINED"
+    },
+    {
+      "name": "vector_typmod_in",
+      "type": "FUNCTION",
+      "returns": "integer"
+    },
+    {
+      "name": "word_similarity",
+      "type": "FUNCTION",
+      "returns": "real"
+    },
+    {
+      "name": "word_similarity_commutator_op",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    },
+    {
+      "name": "word_similarity_dist_commutator_op",
+      "type": "FUNCTION",
+      "returns": "real"
+    },
+    {
+      "name": "word_similarity_dist_op",
+      "type": "FUNCTION",
+      "returns": "real"
+    },
+    {
+      "name": "word_similarity_op",
+      "type": "FUNCTION",
+      "returns": "boolean"
+    }
+  ],
+  "pgvector": {
+    "extname": "vector",
+    "extversion": "0.8.0"
+  }
+}

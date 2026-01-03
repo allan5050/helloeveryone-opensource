@@ -1,0 +1,79 @@
+name: Stale Issue Management
+
+on:
+  schedule:
+    # Run every day at 1 AM UTC
+    - cron: '0 1 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: Mark and Close Stale Items
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Manage stale issues and PRs
+        uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Issue configuration
+          stale-issue-message: |
+            This issue has been automatically marked as stale because it has not had recent activity.
+
+            **What happens next?**
+            - If no further activity occurs, this issue will be closed in 14 days
+            - Add a comment or update the issue to keep it open
+            - If this is still relevant, please add a comment explaining why
+
+            Thank you for your contribution!
+          stale-issue-label: 'stale'
+          days-before-issue-stale: 60
+          days-before-issue-close: 14
+
+          # PR configuration
+          stale-pr-message: |
+            This pull request has been automatically marked as stale because it has not had recent activity.
+
+            **What happens next?**
+            - If no further activity occurs, this PR will be closed in 14 days
+            - Push new commits or add a comment to keep it open
+            - If you need more time, please comment with an update
+
+            Thank you for your contribution!
+          stale-pr-label: 'stale'
+          days-before-pr-stale: 30
+          days-before-pr-close: 14
+
+          # Close messages
+          close-issue-message: |
+            This issue has been automatically closed due to inactivity.
+
+            If you believe this issue is still relevant, please feel free to reopen it or create a new issue with updated information.
+          close-pr-message: |
+            This pull request has been automatically closed due to inactivity.
+
+            If you'd like to continue working on this, feel free to reopen the PR or create a new one.
+
+          # Exemptions - these labels prevent stale marking
+          exempt-issue-labels: 'pinned,security,help wanted,good first issue,in-progress'
+          exempt-pr-labels: 'pinned,security,work-in-progress,do-not-close'
+
+          # Don't close issues/PRs with these labels
+          exempt-all-milestones: true
+
+          # Operation limits
+          operations-per-run: 100
+
+          # Only issues/PRs with these labels will be processed (empty = all)
+          # only-labels: ''
+
+          # Remove stale label when updated
+          remove-stale-when-updated: true
+
+          # Ascending order (oldest first)
+          ascending: true

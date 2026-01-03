@@ -1,0 +1,50 @@
+# CODEOWNERS - Automatic Review Assignment
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Order matters: later rules override earlier rules
+# Each line is a pattern followed by one or more owners
+
+# Default owner for everything
+* @allan5050
+
+# Core application code
+/app/ @allan5050
+/components/ @allan5050
+/lib/ @allan5050
+/hooks/ @allan5050
+
+# Database and backend
+/supabase/ @allan5050
+/lib/supabase/ @allan5050
+/app/api/ @allan5050
+/mcp/ @allan5050
+
+# Types
+/types/ @allan5050
+
+# Security-sensitive files (require explicit review)
+/SECURITY.md @allan5050
+/scripts/check-secrets.js @allan5050
+/tests/security/ @allan5050
+/lib/api/auth.ts @allan5050
+
+# CI/CD and automation
+/.github/ @allan5050
+/.husky/ @allan5050
+/scripts/ @allan5050
+
+# Configuration files
+*.config.js @allan5050
+*.config.ts @allan5050
+tsconfig.json @allan5050
+package.json @allan5050
+package-lock.json @allan5050
+
+# Documentation
+/*.md @allan5050
+/docs/ @allan5050
+
+# Testing
+/tests/ @allan5050
+jest.config.js @allan5050
+playwright.config.ts @allan5050

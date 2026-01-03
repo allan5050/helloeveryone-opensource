@@ -1,0 +1,79 @@
+name: Question
+description: Ask a question about the project
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question? We're here to help! Please check the documentation first:
+        - [README.md](https://github.com/allan5050/helloeveryone/blob/main/README.md)
+        - [CONTRIBUTING.md](https://github.com/allan5050/helloeveryone/blob/main/CONTRIBUTING.md)
+        - [docs/](https://github.com/allan5050/helloeveryone/tree/main/docs)
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Question Category
+      description: What is your question about?
+      options:
+        - Getting Started / Setup
+        - Development Environment
+        - Database / Supabase
+        - API Keys / Configuration
+        - Matching Algorithm
+        - Authentication
+        - Testing
+        - Deployment
+        - Contributing
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: Ask your question here. Be as specific as possible.
+      placeholder: What would you like to know?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: What Have You Tried?
+      description: What have you already tried or researched?
+      placeholder: |
+        - Checked documentation
+        - Tried X, Y, Z
+        - Searched Google for...
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment (if relevant)
+      description: What's your development environment?
+      placeholder: |
+        - OS: Windows 11 / macOS 14 / Ubuntu 22.04
+        - Node version: 20.10.0
+        - npm version: 10.2.3
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Relevant Code (if applicable)
+      description: Share any relevant code snippets
+      placeholder: Paste code here
+      render: typescript
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm before submitting
+      options:
+        - label: I have searched existing issues for similar questions
+          required: true
+        - label: I have checked the documentation
+          required: true

@@ -1,0 +1,31 @@
+schemaname,tablename,policyname,permissive,roles,cmd,using_expression,with_check_expression
+public,blocks,allow_delete_own_blocks,PERMISSIVE,{authenticated},DELETE,(auth.uid() = blocker_id),null
+public,blocks,allow_insert_own_blocks,PERMISSIVE,{authenticated},INSERT,null,(auth.uid() = blocker_id)
+public,blocks,allow_select_own_blocks,PERMISSIVE,{authenticated},SELECT,(auth.uid() = blocker_id),null
+public,events,allow_delete_own_events,PERMISSIVE,{authenticated},DELETE,(auth.uid() = created_by),null
+public,events,allow_insert_events,PERMISSIVE,{authenticated},INSERT,null,(auth.uid() = created_by)
+public,events,allow_select_active_events,PERMISSIVE,{authenticated},SELECT,(is_active = true),null
+public,events,allow_update_own_events,PERMISSIVE,{authenticated},UPDATE,(auth.uid() = created_by),(auth.uid() = created_by)
+public,favorites,allow_delete_own_favorites,PERMISSIVE,{authenticated},DELETE,(auth.uid() = user_id),null
+public,favorites,allow_insert_own_favorites,PERMISSIVE,{authenticated},INSERT,null,(auth.uid() = user_id)
+public,favorites,allow_select_own_favorites,PERMISSIVE,{authenticated},SELECT,(auth.uid() = user_id),null
+public,match_scores,allow_system_insert_matches,PERMISSIVE,{authenticated},INSERT,null,false
+public,match_scores,allow_select_own_matches,PERMISSIVE,{authenticated},SELECT,((auth.uid() = user_id_1) OR (auth.uid() = user_id_2)),null
+public,match_scores,allow_system_update_matches,PERMISSIVE,{authenticated},UPDATE,false,null
+public,meeting_slots,allow_delete_meeting_slots,PERMISSIVE,{authenticated},DELETE,((auth.uid() = user_id_1) OR (auth.uid() = user_id_2)),null
+public,meeting_slots,allow_insert_meeting_slots,PERMISSIVE,{authenticated},INSERT,null,((auth.uid() = user_id_1) OR (auth.uid() = user_id_2))
+public,meeting_slots,allow_select_meeting_slots,PERMISSIVE,{authenticated},SELECT,((auth.uid() = user_id_1) OR (auth.uid() = user_id_2)),null
+public,meeting_slots,allow_update_meeting_slots,PERMISSIVE,{authenticated},UPDATE,((auth.uid() = user_id_1) OR (auth.uid() = user_id_2)),((auth.uid() = user_id_1) OR (auth.uid() = user_id_2))
+public,messages,allow_insert_messages,PERMISSIVE,{authenticated},INSERT,null,(auth.uid() = sender_id)
+public,messages,allow_select_own_messages,PERMISSIVE,{authenticated},SELECT,((auth.uid() = sender_id) OR (auth.uid() = recipient_id)),null
+public,messages,allow_update_recent_messages,PERMISSIVE,{authenticated},UPDATE,((auth.uid() = sender_id) AND (created_at > (now() - '00:05:00'::interval))),(auth.uid() = sender_id)
+public,profiles,allow_delete_own_profile,PERMISSIVE,{authenticated},DELETE,(auth.uid() = user_id),null
+public,profiles,allow_insert_own_profile,PERMISSIVE,{authenticated},INSERT,null,(auth.uid() = user_id)
+public,profiles,allow_select_profiles,PERMISSIVE,{authenticated},SELECT,true,null
+public,profiles,allow_update_own_profile,PERMISSIVE,{authenticated},UPDATE,(auth.uid() = user_id),(auth.uid() = user_id)
+public,rsvps,allow_delete_own_rsvp,PERMISSIVE,{authenticated},DELETE,(auth.uid() = user_id),null
+public,rsvps,allow_insert_own_rsvp,PERMISSIVE,{authenticated},INSERT,null,(auth.uid() = user_id)
+public,rsvps,allow_select_rsvps,PERMISSIVE,{authenticated},SELECT,"((auth.uid() = user_id) OR (event_id IN ( SELECT events.id
+   FROM events
+  WHERE (events.created_by = auth.uid()))))",null
+public,rsvps,allow_update_own_rsvp,PERMISSIVE,{authenticated},UPDATE,(auth.uid() = user_id),(auth.uid() = user_id)

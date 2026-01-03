@@ -1,0 +1,133 @@
+name: Security Review
+
+on:
+  pull_request:
+    paths:
+      # Auth and security files
+      - 'lib/api/auth.ts'
+      - 'app/auth/**'
+      - 'app/contexts/AuthContext.tsx'
+      - 'SECURITY.md'
+      - 'scripts/check-secrets.js'
+      - 'tests/security/**'
+      # Database access
+      - 'lib/supabase/**'
+      - 'supabase/**'
+      # API routes (potential injection points)
+      - 'app/api/**'
+      # Environment and config
+      - '.env*'
+      - 'env.example'
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+
+jobs:
+  security-check:
+    name: Enhanced Security Review
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run secret scanner
+        run: node scripts/check-secrets.js
+        continue-on-error: false
+
+      - name: Run security tests
+        run: npm run test:security
+        continue-on-error: false
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+      - name: Check for hardcoded credentials
+        run: |
+          echo "Checking for potential hardcoded credentials..."
+
+          # Check for common credential patterns in changed files
+          PATTERNS=(
+            "password\s*=\s*['\"][^'\"]{8,}"
+            "api[_-]?key\s*=\s*['\"][^'\"]{20,}"
+            "secret\s*=\s*['\"][^'\"]{10,}"
+            "token\s*=\s*['\"][^'\"]{20,}"
+          )
+
+          FOUND=0
+          for pattern in "${PATTERNS[@]}"; do
+            if git diff origin/main...HEAD --name-only | xargs grep -l -i -E "$pattern" 2>/dev/null; then
+              echo "⚠️ Potential credential pattern found: $pattern"
+              FOUND=1
+            fi
+          done
+
+          if [ $FOUND -eq 1 ]; then
+            echo "::warning::Potential credentials detected. Please review carefully."
+          else
+            echo "✅ No obvious credential patterns found"
+          fi
+
+      - name: Comment on PR for security review
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const message = `## 🔐 Security Review Required
+
+            This PR modifies security-sensitive files. Please ensure:
+
+            ### Checklist for Reviewer
+            - [ ] No hardcoded secrets, API keys, or credentials
+            - [ ] Authentication/authorization logic is correct
+            - [ ] Input validation is proper (no SQL injection, XSS, etc.)
+            - [ ] RLS policies are maintained (if database changes)
+            - [ ] Error messages don't leak sensitive information
+            - [ ] Logging doesn't include sensitive data
+
+            ### Files Changed (Security-Sensitive)
+            ${context.payload.pull_request.changed_files} files modified
+
+            ---
+            *This message was triggered because security-sensitive files were modified.*`;
+
+            // Check if comment already exists
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+
+            const existingComment = comments.find(c =>
+              c.body.includes('🔐 Security Review Required')
+            );
+
+            if (!existingComment) {
+              github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: message
+              });
+
+              // Add security label
+              github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['security-review']
+              });
+            }

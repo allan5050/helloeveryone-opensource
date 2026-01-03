@@ -1,0 +1,161 @@
+name: Welcome New Contributors
+
+on:
+  pull_request_target:
+    types: [opened]
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  welcome-pr:
+    name: Welcome First-Time PR Contributors
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request_target'
+
+    steps:
+      - name: Check if first contribution
+        id: check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const creator = context.payload.pull_request.user.login;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Check for previous PRs
+            const { data: prs } = await github.rest.pulls.list({
+              owner,
+              repo,
+              state: 'all',
+              per_page: 100
+            });
+
+            const previousPRs = prs.filter(pr =>
+              pr.user.login === creator &&
+              pr.number !== context.payload.pull_request.number
+            );
+
+            return previousPRs.length === 0;
+
+      - name: Welcome first-time PR contributor
+        if: steps.check.outputs.result == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prAuthor = context.payload.pull_request.user.login;
+
+            const message = `## Welcome to HelloEveryone.fun! 🎉
+
+            Hey @${prAuthor}, thanks for opening your first pull request!
+
+            We're excited to have you contributing to our project. Here are a few things to help you get started:
+
+            ### What happens next?
+
+            1. **Automated checks** will run on your PR (linting, type checking, tests, security scans)
+            2. **Allan** (project owner) will review your changes within 48 hours
+            3. If changes are needed, we'll provide clear feedback
+            4. Once approved, your PR will be merged! 🚀
+
+            ### Helpful resources
+
+            - 📖 [Contributing Guide](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/CONTRIBUTING.md)
+            - 📋 [Project Status](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/PROJECT_STATUS.md)
+            - 🔐 [Security Policy](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/SECURITY.md)
+
+            ### Tips for a smooth review
+
+            - Make sure all CI checks pass (green checkmarks)
+            - Respond to any feedback from automated tools
+            - Feel free to ask questions in the PR comments
+
+            Thanks again for contributing! Every contribution makes HelloEveryone.fun better. ✨
+
+            ---
+            *This is an automated message for first-time contributors.*`;
+
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: message
+            });
+
+            // Add 'first-contribution' label
+            github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              labels: ['first-contribution']
+            });
+
+  welcome-issue:
+    name: Welcome First-Time Issue Authors
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues'
+
+    steps:
+      - name: Check if first issue
+        id: check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const creator = context.payload.issue.user.login;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Check for previous issues
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              creator: creator,
+              state: 'all',
+              per_page: 100
+            });
+
+            // Filter out PRs (they appear in issues API)
+            const previousIssues = issues.filter(issue =>
+              !issue.pull_request &&
+              issue.number !== context.payload.issue.number
+            );
+
+            return previousIssues.length === 0;
+
+      - name: Welcome first-time issue author
+        if: steps.check.outputs.result == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueAuthor = context.payload.issue.user.login;
+
+            const message = `## Thanks for opening an issue! 👋
+
+            Hey @${issueAuthor}, thanks for your first issue on HelloEveryone.fun!
+
+            ### What happens next?
+
+            - **Allan** (project owner) will review and respond within 48 hours
+            - If this is a bug report, we may ask for additional details
+            - If this is a feature request, we'll discuss it and prioritize
+
+            ### While you wait
+
+            - Check our [documentation](https://github.com/${context.repo.owner}/${context.repo.repo}/tree/main/docs) for existing solutions
+            - Browse [open issues](https://github.com/${context.repo.owner}/${context.repo.repo}/issues) to see if others reported similar items
+            - Consider [contributing](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/CONTRIBUTING.md) if you'd like to help fix it!
+
+            Thanks for helping make HelloEveryone.fun better! ✨
+
+            ---
+            *This is an automated message for first-time contributors.*`;
+
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: message
+            });

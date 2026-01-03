@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/allan5050/helloeveryone/tree/main/docs
+    about: Check out our comprehensive documentation
+  - name: Security Vulnerability
+    url: https://github.com/allan5050/helloeveryone/security/advisories/new
+    about: Report a security vulnerability privately
+  - name: LinkedIn
+    url: https://www.linkedin.com/in/allannev
+    about: Connect with the project owner

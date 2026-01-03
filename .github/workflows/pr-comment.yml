@@ -1,0 +1,90 @@
+name: PR Comment & Review
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  comment:
+    name: Add Helpful PR Comments
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        run: npm run test -- --coverage --watchAll=false --json --outputFile=test-results.json
+        continue-on-error: true
+
+      - name: Comment test results
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            let testResults = { success: true, numPassedTests: 0, numFailedTests: 0 };
+            try {
+              testResults = JSON.parse(fs.readFileSync('test-results.json', 'utf8'));
+            } catch (e) {
+              console.log('No test results found');
+            }
+
+            const passedTests = testResults.numPassedTests || 0;
+            const failedTests = testResults.numFailedTests || 0;
+            const totalTests = passedTests + failedTests;
+            const passRate = totalTests > 0 ? Math.round((passedTests / totalTests) * 100) : 0;
+
+            const emoji = failedTests === 0 ? '✅' : '⚠️';
+            
+            const body = `## ${emoji} Test Results
+
+            **Tests**: ${passedTests}/${totalTests} passing (${passRate}%)
+            ${failedTests > 0 ? `**Failed**: ${failedTests} tests need attention` : ''}
+
+            ---
+
+            ### 📋 Checklist for Reviewers
+
+            - [ ] Code follows project conventions
+            - [ ] Tests added/updated for changes
+            - [ ] No security vulnerabilities introduced
+            - [ ] Documentation updated (if needed)
+            - [ ] No hardcoded secrets or API keys
+
+            ### 🚀 Quick Commands
+
+            **Pull latest changes:**
+            \`\`\`bash
+            git pull origin ${context.payload.pull_request.head.ref}
+            \`\`\`
+
+            **Run locally:**
+            \`\`\`bash
+            npm install
+            npm run dev
+            \`\`\`
+
+            ---
+            _Automated comment by [GitHub Actions](https://github.com/features/actions)_
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });

@@ -1,0 +1,3994 @@
+{
+  "metadata": {
+    "exported_at": "2025-09-21T20:04:05.703Z",
+    "profile_count": 25,
+    "event_count": 0,
+    "favorites_count": 0,
+    "rsvps_count": 0,
+    "ai_insights_count": 0,
+    "match_scores_count": 301
+  },
+  "profiles": [
+    {
+      "id": "3cca88e6-a5fc-4b44-a46b-0bd284072b51",
+      "user_id": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "display_name": "Demo: David Kim",
+      "bio": "Software engineer who loves basketball, BBQ, and building robots with my kids on weekends.",
+      "age": 36,
+      "location": "94107",
+      "interests": [
+        "basketball",
+        "sports",
+        "coaching",
+        "fitness",
+        "sports-analytics",
+        "warriors"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:02.9123+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=david",
+      "preferred_age_min": 30,
+      "preferred_age_max": 42,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "David Kim"
+    },
+    {
+      "id": "26d17c34-3ebd-462d-b419-25a1a5f60977",
+      "user_id": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "display_name": "Demo: Sarah Johnson",
+      "bio": "Senior data analyst in fintech. Dog mom to two rescues. Love trail running and true crime podcasts.",
+      "age": 35,
+      "location": "94110",
+      "interests": [
+        "running",
+        "hiking",
+        "trail-running",
+        "outdoor-fitness",
+        "marathons",
+        "strava"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:03.168756+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
+      "preferred_age_min": 30,
+      "preferred_age_max": 42,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "mornings",
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Sarah Johnson"
+    },
+    {
+      "id": "3ad73f19-4b46-4d55-832b-e74150ae7315",
+      "user_id": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "display_name": "Demo: Jennifer Davis",
+      "bio": "Product manager in fintech. Yoga instructor, foodie, and dog walker volunteer.",
+      "age": 33,
+      "location": "94103",
+      "interests": [
+        "product-management",
+        "fintech",
+        "venture-capital",
+        "startups",
+        "networking",
+        "ted-talks"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:03.934919+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=jennifer",
+      "preferred_age_min": 28,
+      "preferred_age_max": 40,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "mornings",
+        "evenings"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Jennifer Davis"
+    },
+    {
+      "id": "9953f542-7411-4bcc-835f-82cc8c499b9f",
+      "user_id": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "display_name": "Demo: Marcus Williams",
+      "bio": "AI researcher focused on NLP. Jazz enthusiast, amateur chef, and proud dad of twin toddlers.",
+      "age": 38,
+      "location": "94102",
+      "interests": [
+        "farmers-markets",
+        "organic-cooking",
+        "wine-tasting",
+        "cheese-making",
+        "slow-food",
+        "gardening"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:04.420654+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=marcus",
+      "preferred_age_min": 32,
+      "preferred_age_max": 45,
+      "looking_for": [
+        "friendship",
+        "professional-networking"
+      ],
+      "availability": [
+        "evenings"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Marcus Williams"
+    },
+    {
+      "id": "3d31d6f8-1c25-49ec-a779-73942d1578a8",
+      "user_id": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "display_name": "Demo: Dr. Rachel Green",
+      "bio": "Medical researcher in biotech. Marathon runner, science podcast host, and mother of two teenagers.",
+      "age": 42,
+      "location": "94107",
+      "interests": [
+        "medical-research",
+        "biotech",
+        "scientific-journals",
+        "conferences",
+        "grant-writing",
+        "peer-review"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:05.148566+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=rachel",
+      "preferred_age_min": 35,
+      "preferred_age_max": 48,
+      "looking_for": [
+        "friendship",
+        "professional-networking"
+      ],
+      "availability": [
+        "mornings"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Dr. Rachel Green"
+    },
+    {
+      "id": "b4f3b3fc-96f7-4ffd-84f7-70886d46c12c",
+      "user_id": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "display_name": "Demo: Alex Chen",
+      "bio": "ML engineer who loves coffee and cooking. Big on travel and volunteering for local tech meetups.",
+      "age": 29,
+      "location": "94107",
+      "interests": [
+        "machine-learning",
+        "ai-research",
+        "kaggle",
+        "deep-learning",
+        "pytorch",
+        "arxiv"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:06.624863+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=alex",
+      "preferred_age_min": 25,
+      "preferred_age_max": 35,
+      "looking_for": [
+        "friendship",
+        "professional-networking"
+      ],
+      "availability": [
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Alex Chen"
+    },
+    {
+      "id": "9da291ac-906b-427c-8d53-b1758fea5b96",
+      "user_id": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "display_name": "Demo: Emily Zhang",
+      "bio": "Data engineer building ETL pipelines. Sci-fi book club organizer, coffee snob, and urban gardener.",
+      "age": 30,
+      "location": "94103",
+      "interests": [
+        "indie-music",
+        "folk-music",
+        "writing",
+        "concerts",
+        "poetry",
+        "zines"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T20:01:04.803665+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "/images/emily_zhang.jpg",
+      "preferred_age_min": 26,
+      "preferred_age_max": 36,
+      "looking_for": [
+        "friendship",
+        "book-club"
+      ],
+      "availability": [
+        "evenings",
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Emily Zhang"
+    },
+    {
+      "id": "8febc401-aeba-4de7-bb87-cfe4be1d6f37",
+      "user_id": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "display_name": "Demo: Michael Brown",
+      "bio": "Marketing director in ad-tech. Golf player, wine enthusiast, and father of a 5-year-old.",
+      "age": 39,
+      "location": "94102",
+      "interests": [
+        "marketing",
+        "ad-tech",
+        "golf",
+        "wine-tasting",
+        "business-strategy",
+        "investing"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T20:01:04.991003+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "/images/michael_brown.jpg",
+      "preferred_age_min": 33,
+      "preferred_age_max": 45,
+      "looking_for": [
+        "friendship",
+        "professional-networking"
+      ],
+      "availability": [
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Michael Brown"
+    },
+    {
+      "id": "42e06067-ae51-4339-9cb8-0627def1921e",
+      "user_id": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "display_name": "Demo: Lisa Park",
+      "bio": "Graphic designer and illustrator. Love yoga, farmers markets, and hosting dinner parties. Cat mom to three!",
+      "age": 31,
+      "location": "94110",
+      "interests": [
+        "photography",
+        "indie-music",
+        "concerts",
+        "film-photography",
+        "art-shows",
+        "creative-writing"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T20:01:05.08573+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "/images/lisa_park.jpg",
+      "preferred_age_min": 27,
+      "preferred_age_max": 38,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "mornings",
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Lisa Park"
+    },
+    {
+      "id": "00580090-9bca-4c9c-bceb-6346cf54bcc2",
+      "user_id": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "display_name": "Demo: Tom Anderson",
+      "bio": "UX designer in ad-tech. Weekend photographer, craft beer enthusiast, and dog park regular with my beagle.",
+      "age": 34,
+      "location": "94107",
+      "interests": [
+        "sci-fi",
+        "star-wars",
+        "board-games",
+        "dungeons-dragons",
+        "comic-books",
+        "video-games"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T20:01:05.174037+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "/images/tom_anderson.jpg",
+      "preferred_age_min": 28,
+      "preferred_age_max": 40,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "weekends",
+        "evenings"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Tom Anderson"
+    },
+    {
+      "id": "36879b78-f0ab-41b4-8ed8-dee645ae0214",
+      "user_id": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "display_name": "Demo: James Miller",
+      "bio": "Clinical data analyst in healthcare. Rock climbing enthusiast, home brewer, and Star Wars fan.",
+      "age": 28,
+      "location": "94108",
+      "interests": [
+        "healthcare-tech",
+        "data-analysis",
+        "medical-devices",
+        "clinical-trials",
+        "research",
+        "pubmed"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T20:01:05.250869+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "/images/james_miller.jpg",
+      "preferred_age_min": 24,
+      "preferred_age_max": 34,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "evenings",
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "James Miller"
+    },
+    {
+      "id": "65c54f51-45b3-45f2-a603-728f50003567",
+      "user_id": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "display_name": "Demo: Robert Taylor",
+      "bio": "Financial analyst who enjoys cycling, craft cocktails, and hosting board game nights.",
+      "age": 41,
+      "location": "94108",
+      "interests": [
+        "golf",
+        "tennis",
+        "country-club",
+        "yacht-club",
+        "networking",
+        "finance"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:03.420773+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=robert",
+      "preferred_age_min": 35,
+      "preferred_age_max": 47,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "evenings",
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Robert Taylor"
+    },
+    {
+      "id": "2b20d275-7d41-458d-b7a6-e167438114f7",
+      "user_id": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "display_name": "Demo: Chris Thompson",
+      "bio": "DevOps engineer and home automation enthusiast. Enjoy brewing coffee, hiking, and retro gaming.",
+      "age": 27,
+      "location": "94107",
+      "interests": [
+        "devops",
+        "home-automation",
+        "gaming",
+        "technology",
+        "robotics",
+        "hackathons"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:01.662272+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=chris",
+      "preferred_age_min": 23,
+      "preferred_age_max": 33,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "weekends",
+        "evenings"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Chris Thompson"
+    },
+    {
+      "id": "9fd3d4d4-168c-4f4a-9af4-8482830d917d",
+      "user_id": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "display_name": "Demo: Jane Doe",
+      "bio": "Data scientist who loves coffee, yoga, and indie music. I enjoy cooking, travel, and volunteering in my spare time.",
+      "age": 32,
+      "location": "94110",
+      "interests": [
+        "coffee-roasting",
+        "specialty-coffee",
+        "latte-art",
+        "cafe-culture",
+        "barista",
+        "coffee-cupping"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:04.904601+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=jane",
+      "preferred_age_min": 28,
+      "preferred_age_max": 40,
+      "looking_for": [
+        "friendship",
+        "professional-networking"
+      ],
+      "availability": [
+        "weekends",
+        "evenings"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Jane Doe"
+    },
+    {
+      "id": "80d2f472-66f4-4b76-b99b-488eb45665a1",
+      "user_id": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "display_name": "Demo: Kevin Martinez",
+      "bio": "Security engineer and privacy advocate. Into competitive chess, sci-fi novels, and BBQ competitions.",
+      "age": 40,
+      "location": "94103",
+      "interests": [
+        "cybersecurity",
+        "privacy",
+        "chess",
+        "cryptography",
+        "infosec",
+        "defcon"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:06.114415+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=kevin",
+      "preferred_age_min": 34,
+      "preferred_age_max": 46,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Kevin Martinez"
+    },
+    {
+      "id": "ca4bcef5-beae-4c9c-9e11-e92ac4031e8e",
+      "user_id": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "display_name": "Demo: Laura Rodriguez",
+      "bio": "Social media manager and digital nomad. Yoga teacher, vegan cook, and sustainability advocate.",
+      "age": 29,
+      "location": "94110",
+      "interests": [
+        "zero-waste",
+        "veganism",
+        "climate-action",
+        "composting",
+        "sustainable-fashion",
+        "activism"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:05.880714+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=laura",
+      "preferred_age_min": 25,
+      "preferred_age_max": 35,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "flexible"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Laura Rodriguez"
+    },
+    {
+      "id": "145d8c11-dfd5-4155-9456-954c4d933160",
+      "user_id": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "display_name": "Demo: Maria Garcia",
+      "bio": "Startup founder in healthtech. Salsa dancer, travel blogger, and coffee addict.",
+      "age": 34,
+      "location": "94110",
+      "interests": [
+        "entrepreneurship",
+        "healthtech",
+        "angel-investing",
+        "pitch-competitions",
+        "business-networking",
+        "forbes"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:04.172962+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=maria",
+      "preferred_age_min": 29,
+      "preferred_age_max": 40,
+      "looking_for": [
+        "friendship",
+        "professional-networking"
+      ],
+      "availability": [
+        "evenings"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Maria Garcia"
+    },
+    {
+      "id": "337ebd66-dd6a-45bf-8f71-32f972e541b3",
+      "user_id": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "display_name": "Demo: Patricia Lee",
+      "bio": "Content strategist in tech. Meditation practitioner, indie music fan, and urban sketcher.",
+      "age": 35,
+      "location": "94102",
+      "interests": [
+        "painting",
+        "art-galleries",
+        "sketching",
+        "art-history",
+        "museums",
+        "poetry"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:00.916346+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=patricia",
+      "preferred_age_min": 30,
+      "preferred_age_max": 42,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "mornings",
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Patricia Lee"
+    },
+    {
+      "id": "b53aec42-cf81-4f74-b75e-84ddbbab37b3",
+      "user_id": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "display_name": "Demo: Steven Clark",
+      "bio": "Blockchain developer and crypto enthusiast. Mountain biker, podcast host, and amateur astronomer.",
+      "age": 31,
+      "location": "94103",
+      "interests": [
+        "blockchain",
+        "cryptocurrency",
+        "podcasts",
+        "astronomy",
+        "technology",
+        "futurism"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:01.922384+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=steven",
+      "preferred_age_min": 27,
+      "preferred_age_max": 37,
+      "looking_for": [
+        "friendship",
+        "professional-networking"
+      ],
+      "availability": [
+        "evenings",
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Steven Clark"
+    },
+    {
+      "id": "5df2edb5-4c68-4ee2-b903-12828e5b4f87",
+      "user_id": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "display_name": "Demo: Daniel Harris",
+      "bio": "QA engineer and testing automation expert. Board game designer, craft beer brewer, and corgi dad.",
+      "age": 33,
+      "location": "94102",
+      "interests": [
+        "qa-testing",
+        "automation",
+        "board-games",
+        "game-design",
+        "tabletop-rpg",
+        "puzzles"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:02.166961+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=daniel",
+      "preferred_age_min": 28,
+      "preferred_age_max": 39,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "evenings",
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Daniel Harris"
+    },
+    {
+      "id": "0b8002c5-8da7-41ad-aa9b-ea599f1889f5",
+      "user_id": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "display_name": "Demo: Michelle Lewis",
+      "bio": "Business analyst in healthcare. Triathlete, nutrition coach, and mother of three.",
+      "age": 43,
+      "location": "94108",
+      "interests": [
+        "triathlon",
+        "cycling",
+        "swimming",
+        "ironman",
+        "sports-medicine",
+        "fitness-tracking"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:02.420654+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=michelle",
+      "preferred_age_min": 37,
+      "preferred_age_max": 49,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "mornings"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Michelle Lewis"
+    },
+    {
+      "id": "52c90e09-be0a-4abc-b5d8-49f8b102b0d3",
+      "user_id": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "display_name": "Demo: Amanda White",
+      "bio": "Teacher turned EdTech consultant. Book club regular, amateur baker, and proud plant parent.",
+      "age": 37,
+      "location": "94102",
+      "interests": [
+        "baking",
+        "cookbook-collecting",
+        "food-photography",
+        "restaurant-reviews",
+        "sourdough",
+        "pastry"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:04.67319+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=amanda",
+      "preferred_age_min": 32,
+      "preferred_age_max": 44,
+      "looking_for": [
+        "friendship",
+        "book-club"
+      ],
+      "availability": [
+        "evenings",
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Amanda White"
+    },
+    {
+      "id": "07123506-5f6a-46d1-a3e8-44b7decfa671",
+      "user_id": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "display_name": "Demo: Sandra Young",
+      "bio": "Legal tech consultant. Classical music lover, museum volunteer, and Siamese cat owner.",
+      "age": 44,
+      "location": "94103",
+      "interests": [
+        "philosophy",
+        "classical-music",
+        "museums",
+        "lectures",
+        "npr",
+        "documentaries"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:05.382371+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=sandra",
+      "preferred_age_min": 38,
+      "preferred_age_max": 50,
+      "looking_for": [
+        "friendship",
+        "cultural-activities"
+      ],
+      "availability": [
+        "weekends",
+        "evenings"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Sandra Young"
+    },
+    {
+      "id": "97781c17-b407-4d07-83df-417bd04d0c43",
+      "user_id": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "display_name": "Demo: Paul Walker",
+      "bio": "Cloud architect and infrastructure guru. Car enthusiast, DIY home improver, and weekend chef.",
+      "age": 45,
+      "location": "94102",
+      "interests": [
+        "cars",
+        "diy",
+        "woodworking",
+        "mechanics",
+        "restoration",
+        "tools"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:06.362605+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=paul",
+      "preferred_age_min": 38,
+      "preferred_age_max": 52,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "weekends"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Paul Walker"
+    },
+    {
+      "id": "459acfb7-9d63-4cd3-b1b9-32fbdd3667b6",
+      "user_id": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "display_name": "Demo: Nancy Wilson",
+      "bio": "HR tech specialist. Pilates instructor, wine club member, and golden retriever mom.",
+      "age": 38,
+      "location": "94108",
+      "interests": [
+        "crossfit",
+        "nutrition",
+        "meal-prep",
+        "marathons",
+        "wellness-blogs",
+        "fitbit"
+      ],
+      "embedding": null,
+      "role": "user",
+      "is_active": true,
+      "created_at": "2025-09-14T17:33:19.140288+00:00",
+      "updated_at": "2025-09-21T15:13:02.667108+00:00",
+      "bio_embedding": null,
+      "is_profile_complete": true,
+      "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=nancy",
+      "preferred_age_min": 33,
+      "preferred_age_max": 44,
+      "looking_for": [
+        "friendship",
+        "activity-partner"
+      ],
+      "availability": [
+        "mornings",
+        "evenings"
+      ],
+      "privacy_settings": {
+        "show_age": true,
+        "show_location": true
+      },
+      "full_name": "Nancy Wilson"
+    }
+  ],
+  "favorites": [],
+  "events": [],
+  "rsvps": [],
+  "ai_insights": [],
+  "match_scores": [
+    {
+      "id": "3730601d-2ed3-41fe-8eca-8f2aba50b36d",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.483175456190348,
+      "interest_score": 0,
+      "combined_score": 0.472030131838667,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "6e665101-192e-49bb-bed4-709b03297aa6",
+      "user_id_1": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.559491059073312,
+      "interest_score": 0,
+      "combined_score": 0.498039101970909,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "7ff69e0c-4782-43f6-ae55-42d33a7c5a83",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.381557372911854,
+      "interest_score": 0,
+      "combined_score": 0.589868134650047,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "86f2b179-0bc8-4e6f-970e-fbb94db288f6",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.340856170650902,
+      "interest_score": 0,
+      "combined_score": 0.358641654362686,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "f8e09fe8-354f-4213-b131-f0d5e646ea57",
+      "user_id_1": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.475046231813094,
+      "interest_score": 0,
+      "combined_score": 0.545371118426626,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "46da9327-834f-48dc-8804-af8619844049",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.34264412491659,
+      "interest_score": 0,
+      "combined_score": 0.479610295240726,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "af242f7e-9f99-4842-b316-926643fed8bb",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.524209263446696,
+      "interest_score": 0,
+      "combined_score": 0.595848271435656,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "22d6e9de-1bf8-4ce1-be29-85307080da2b",
+      "user_id_1": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.325897149689187,
+      "interest_score": 0,
+      "combined_score": 0.416020099839758,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "de129e17-1e8b-412a-be08-9437b7e966b3",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.52091279949293,
+      "interest_score": 0,
+      "combined_score": 0.372345982209843,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "20827100-96ff-4d9e-9301-f5bb4abee77d",
+      "user_id_1": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.356781554168185,
+      "interest_score": 0,
+      "combined_score": 0.553150368281141,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "b096496a-2820-4bf0-b61d-6daba41d554e",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.537809496949782,
+      "interest_score": 0,
+      "combined_score": 0.45506166538127,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "c5f942f8-478c-4fac-a4d2-6e3fe0daa495",
+      "user_id_1": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.558320247690449,
+      "interest_score": 0,
+      "combined_score": 0.507468330819741,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "332a7f23-4218-4ba1-9d68-b2ee90c6ff50",
+      "user_id_1": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.383139946765097,
+      "interest_score": 0,
+      "combined_score": 0.583634470322493,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "8e6032ee-df6d-47a3-aa15-dae82d634b96",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.486239529874108,
+      "interest_score": 0,
+      "combined_score": 0.425959928267628,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "2b434dbd-9032-461c-9c4a-07da118c0537",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.480108763672876,
+      "interest_score": 0,
+      "combined_score": 0.311877107577721,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "2495489d-1a4b-4031-b3fd-4a46313a3a1e",
+      "user_id_1": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.526581209001655,
+      "interest_score": 0,
+      "combined_score": 0.321205967278305,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "8be6eeb3-b08e-4d89-823a-bae88bc8d153",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.599390458684832,
+      "interest_score": 0,
+      "combined_score": 0.529014446611186,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "8f766b23-f1c6-480b-8442-71c9a3a83a50",
+      "user_id_1": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.536686319984398,
+      "interest_score": 0,
+      "combined_score": 0.307496675073862,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "b577ea19-3c90-422a-9a6d-a311b77fab0e",
+      "user_id_1": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.540263874408299,
+      "interest_score": 0,
+      "combined_score": 0.553143135032684,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "04c30141-30fd-49b6-b45c-b125d7a47451",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.360800419971739,
+      "interest_score": 0,
+      "combined_score": 0.309428648239304,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "67f924a3-7f43-48e3-b3cb-df7a2ab47b26",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.496425332209277,
+      "interest_score": 0,
+      "combined_score": 0.587020998311218,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "ae521caa-f494-4ff9-80ab-c56a5a9023df",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.347215547718218,
+      "interest_score": 0,
+      "combined_score": 0.572254183209336,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "ed620dc4-ae32-47a1-94d4-1273838f664a",
+      "user_id_1": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.303588046902089,
+      "interest_score": 0,
+      "combined_score": 0.369647204242103,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "2f2f280d-f340-4a17-9536-042d8678accf",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "8384cab3-e7e5-435d-a396-b8059638a1c3",
+      "event_id": null,
+      "semantic_score": 0.590796614033284,
+      "interest_score": 0,
+      "combined_score": 0.401016048107436,
+      "calculated_at": "2025-09-21T19:33:16.705+00:00"
+    },
+    {
+      "id": "a62f9149-1ec7-4c46-8437-ea5216a24c64",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "1916d3c4-5cf1-494c-8caf-92a1c77d4177",
+      "event_id": null,
+      "semantic_score": 0.525522123038574,
+      "interest_score": 0,
+      "combined_score": 0.56573406781482,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d4bde204-2dea-4ff4-bc8f-778e60d82e64",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.521670790074262,
+      "interest_score": 0.333333333333333,
+      "combined_score": 0.612267324744596,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "46bc1ba5-9537-44a8-ab40-3d789aa41a1f",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "event_id": null,
+      "semantic_score": 0.40776245423519,
+      "interest_score": 0,
+      "combined_score": 0.441411579754515,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "956f2233-cb67-45be-b94d-f70367a9d52e",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "event_id": null,
+      "semantic_score": 0.336904406843232,
+      "interest_score": 0,
+      "combined_score": 0.38271394005931,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "3af6fb7b-221c-4385-8ec4-cb548b061d3e",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.518592236419554,
+      "interest_score": 0,
+      "combined_score": 0.398836721910553,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "83e6441c-b5a4-4e99-9684-ca3ba74b23fb",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.460417081748372,
+      "interest_score": 0,
+      "combined_score": 0.456868794609148,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "e9b2791b-1603-44ca-88f0-a3d61cd6efb2",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "event_id": null,
+      "semantic_score": 0.450080952210154,
+      "interest_score": 0,
+      "combined_score": 0.485815128454563,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "8bb5d27c-eb1d-456a-bdb4-8797b0a935a0",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.357360016933515,
+      "interest_score": 0,
+      "combined_score": 0.565235209017446,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "218de7c6-b25f-417a-a887-a166ef126ba5",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.412129315976969,
+      "interest_score": 0,
+      "combined_score": 0.45375918097414,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "848a5feb-4d53-4551-900c-1be367882b4d",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.331990534490216,
+      "interest_score": 0,
+      "combined_score": 0.423424555424318,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "077505ab-3dc2-42a7-af01-1ce78a3406e4",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "event_id": null,
+      "semantic_score": 0.471376925593558,
+      "interest_score": 0,
+      "combined_score": 0.488282662262751,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "808008db-1dc0-4aa1-b2d1-ca83d2788eea",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.497699235742478,
+      "interest_score": 0,
+      "combined_score": 0.440381679688594,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "476e49b3-8e8e-41ae-974d-fc2050da1513",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.50967296765909,
+      "interest_score": 0,
+      "combined_score": 0.307857615378217,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "ff59443a-f03e-43ed-88d9-ee9c30c14304",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.463308346630967,
+      "interest_score": 0,
+      "combined_score": 0.42931318944755,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "11778d0b-f8d6-4af4-a4de-db1b8ff006a3",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "event_id": null,
+      "semantic_score": 0.540116135236699,
+      "interest_score": 0,
+      "combined_score": 0.45169888945873,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "22803732-88af-4f49-9f65-a1b35e87124e",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.487310428898039,
+      "interest_score": 0,
+      "combined_score": 0.419536942370948,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "429b88bc-68df-4284-818a-b1dab73e21a4",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "event_id": null,
+      "semantic_score": 0.416711699813421,
+      "interest_score": 0,
+      "combined_score": 0.400596988387635,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "091b5312-f3f6-4b0d-ab3a-11679161e3e0",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.435142516632321,
+      "interest_score": 0,
+      "combined_score": 0.515249902272794,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "828326df-d8f1-4b6d-b124-704ba47fe061",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.410635073089916,
+      "interest_score": 0,
+      "combined_score": 0.58134674572999,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d597ddb5-9f44-4bff-adb3-753845399000",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "event_id": null,
+      "semantic_score": 0.398530938745229,
+      "interest_score": 0,
+      "combined_score": 0.514361361123572,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7bb57d80-b5cc-4d4b-930b-2ce9be26b6f1",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "event_id": null,
+      "semantic_score": 0.368083566279138,
+      "interest_score": 0,
+      "combined_score": 0.319911609125581,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6e88c490-e002-4968-a38e-c8e5519b7de9",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "event_id": null,
+      "semantic_score": 0.494417971829384,
+      "interest_score": 0,
+      "combined_score": 0.333669813122577,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "f849a6fe-c697-4bec-9c7f-6cbfd222a2e5",
+      "user_id_1": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.338918176055042,
+      "interest_score": 0,
+      "combined_score": 0.477474982037348,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "a75c6b69-dab2-4ab3-9b26-e63e400eb5ed",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "3de4e2c9-af58-42bd-9f72-fe2675313ec1",
+      "event_id": null,
+      "semantic_score": 0.368533199315491,
+      "interest_score": 0,
+      "combined_score": 0.373663241874109,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "73b5e7a1-c256-4bf9-a924-c31afee98d96",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.359261247095195,
+      "interest_score": 0,
+      "combined_score": 0.481311128767645,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "04aad6c1-dbe8-402e-9821-5420701b5acb",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.585864703078893,
+      "interest_score": 0,
+      "combined_score": 0.508844415022354,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "755a5b98-9cde-426a-a1fa-8252c405c611",
+      "user_id_1": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.516646528072772,
+      "interest_score": 0,
+      "combined_score": 0.513176892537625,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5cfb8b48-97e1-4720-933b-61c5d4f9f4bd",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.302574835469477,
+      "interest_score": 0,
+      "combined_score": 0.34315896619346,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "65e6bbc3-a420-4cff-ad58-c7e18755f4c1",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.3794003402311,
+      "interest_score": 0,
+      "combined_score": 0.355944873209427,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5294b597-7901-4325-be0c-d32bc0799046",
+      "user_id_1": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.328458436005175,
+      "interest_score": 0,
+      "combined_score": 0.54424673561916,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "2a21d144-a98b-4382-b84c-41aafa0a67df",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.357874585657895,
+      "interest_score": 0,
+      "combined_score": 0.483066642108882,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "4f3f6ba4-f59e-41b8-8ba7-f63790072980",
+      "user_id_1": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.334767899930348,
+      "interest_score": 0,
+      "combined_score": 0.559144357657226,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d72ab740-efb1-47a5-bd96-b198fae94445",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.505524996102342,
+      "interest_score": 0,
+      "combined_score": 0.436837329005936,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "1718c3cd-86bd-4c1a-8f3f-0ec90b6fff51",
+      "user_id_1": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.445989359924036,
+      "interest_score": 0,
+      "combined_score": 0.510801794791351,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "debf8f0e-cf6a-4468-a816-1352152ba8bd",
+      "user_id_1": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.545067545045485,
+      "interest_score": 0,
+      "combined_score": 0.477251148623134,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "ff9cbd91-faa8-48e2-a1c2-589bac699970",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.348391155555603,
+      "interest_score": 0,
+      "combined_score": 0.35670198661774,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5c32f317-82d0-4f54-92b2-ecf7e1fb4498",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.481358316725802,
+      "interest_score": 0,
+      "combined_score": 0.493513431590764,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "1cacdcc0-c042-439d-9a87-21fe4c7f89dc",
+      "user_id_1": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.370495640655731,
+      "interest_score": 0,
+      "combined_score": 0.409034242142497,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "b03ff154-0f76-454f-9664-7fb655b073eb",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.501812156074928,
+      "interest_score": 0.166666666666667,
+      "combined_score": 0.502407974667797,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6ca9107e-2091-4582-ae55-2e1dad12936d",
+      "user_id_1": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.386592349732183,
+      "interest_score": 0,
+      "combined_score": 0.434111726690151,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "92043dab-81dc-4894-bf58-4500d414e2fa",
+      "user_id_1": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.412161457181855,
+      "interest_score": 0,
+      "combined_score": 0.523017758949369,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d620570c-a8e1-40b0-9d90-c0f8734897ed",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.550141760933598,
+      "interest_score": 0,
+      "combined_score": 0.333062660387524,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "585b7d38-402f-4542-8ed8-99e9198d124b",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.386864892011231,
+      "interest_score": 0,
+      "combined_score": 0.583778866485401,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "425c50c5-8409-4970-9cb3-94ed45546cfd",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.594003300724944,
+      "interest_score": 0,
+      "combined_score": 0.471611779873775,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "22a6cfff-b82a-4c51-baeb-b4a738d33fbd",
+      "user_id_1": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.552037120988192,
+      "interest_score": 0,
+      "combined_score": 0.486640690617432,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "1d71239e-f502-4792-a297-b166319b0088",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "a7984207-d812-47a1-8f13-ad39d7541649",
+      "event_id": null,
+      "semantic_score": 0.460836645333743,
+      "interest_score": 0,
+      "combined_score": 0.542528362009275,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "a4e756c6-65fb-40e4-a864-21caf88c2046",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "event_id": null,
+      "semantic_score": 0.411103885098177,
+      "interest_score": 0,
+      "combined_score": 0.332456565900307,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5a15fa8f-7298-404b-a07b-8fd0efa8af03",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.309695749541685,
+      "interest_score": 0,
+      "combined_score": 0.478337104244905,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "ff68dc88-b034-4cd9-b93e-697d873cbcd6",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.423708189623005,
+      "interest_score": 0,
+      "combined_score": 0.548000988892813,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6fe825d9-bdae-415a-b3d1-9bbf153f4690",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "event_id": null,
+      "semantic_score": 0.577568311281869,
+      "interest_score": 0,
+      "combined_score": 0.300960149645758,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "11b2f46b-c334-4623-a9fc-c3b14bc4bf34",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.539784495434648,
+      "interest_score": 0,
+      "combined_score": 0.399497856702051,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "a16420c9-1ff0-4e81-8b19-c54b120fccdb",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.43169983873024,
+      "interest_score": 0,
+      "combined_score": 0.557744560140871,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "83a0a687-86db-4dcb-92a3-688f5b69a9ba",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.357764370916153,
+      "interest_score": 0,
+      "combined_score": 0.4879907743962,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "ac5b0c11-79f3-421b-88c7-0838ebbfb91c",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "event_id": null,
+      "semantic_score": 0.320060792432017,
+      "interest_score": 0,
+      "combined_score": 0.38658549237478,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "91400fa5-6bd2-46ab-bbad-8314eccc8adb",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.485778085212661,
+      "interest_score": 0,
+      "combined_score": 0.387082674731441,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "1e91491c-955a-4005-b68b-79a78fc4d353",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.488666840163179,
+      "interest_score": 0,
+      "combined_score": 0.310851461841978,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5f01004d-50cb-44ed-a545-acd31203ae9e",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.508146530162701,
+      "interest_score": 0,
+      "combined_score": 0.528321805700531,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d811e078-6f2a-420b-99c7-f85832e5d90e",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "event_id": null,
+      "semantic_score": 0.357546068558291,
+      "interest_score": 0,
+      "combined_score": 0.361648366946931,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "94628179-abfc-47ed-b587-b42ec35b59b1",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.332446952608676,
+      "interest_score": 0,
+      "combined_score": 0.496227072590833,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "4ac51372-6a2f-42b7-9ae3-9290f3db1844",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "event_id": null,
+      "semantic_score": 0.484938146587393,
+      "interest_score": 0,
+      "combined_score": 0.567872476998131,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "00c98b2d-da57-4f59-ab48-d973be9247ec",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.455707151839507,
+      "interest_score": 0,
+      "combined_score": 0.470080908816893,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "0e5d3d22-4f4f-4971-9e7c-512d6171bd8e",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.446870268069664,
+      "interest_score": 0.166666666666667,
+      "combined_score": 0.558536010615486,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "ea18eaee-6bb7-44cb-bf13-ad4516aab342",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "event_id": null,
+      "semantic_score": 0.306237323917092,
+      "interest_score": 0,
+      "combined_score": 0.393447037971538,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d3bf413a-b51e-4ba1-ab8c-7aad5172b97c",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "event_id": null,
+      "semantic_score": 0.359128279333671,
+      "interest_score": 0,
+      "combined_score": 0.50759071052936,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "af3188a7-66e8-4171-a83e-b830ccfa8355",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "event_id": null,
+      "semantic_score": 0.401871929964663,
+      "interest_score": 0,
+      "combined_score": 0.523831565720981,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "b4def391-7862-48d9-892b-b5ca5259a4e1",
+      "user_id_1": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.491343781109144,
+      "interest_score": 0,
+      "combined_score": 0.334296904411183,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "0842a768-50a6-4987-9696-c071f599be39",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "3b22edec-c97d-4ac7-93b7-c49aa8e41001",
+      "event_id": null,
+      "semantic_score": 0.399213097843882,
+      "interest_score": 0,
+      "combined_score": 0.523175704541868,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "e5206dec-1c1b-4ee1-afac-b023a05c1c30",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.328882046966161,
+      "interest_score": 0,
+      "combined_score": 0.559316476001328,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "bcf291ef-3f58-4438-96b4-118a83c58882",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.335557111894064,
+      "interest_score": 0,
+      "combined_score": 0.580993193317998,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "68150883-8042-45ce-923e-f84c1f9a7cb6",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "event_id": null,
+      "semantic_score": 0.478262922569287,
+      "interest_score": 0,
+      "combined_score": 0.335726950307058,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "0938ea04-ae5a-4050-9628-76a45bb49e2c",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.524386794596553,
+      "interest_score": 0,
+      "combined_score": 0.506077414618915,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6bedd04a-deac-464c-a42c-4ade496880c6",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.325894694130218,
+      "interest_score": 0,
+      "combined_score": 0.461526367644753,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "45276e43-01a9-40ee-9ff1-61ea94f09a93",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.357332930544116,
+      "interest_score": 0,
+      "combined_score": 0.534653461344168,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "9e9bfe65-53e1-4fe2-8ba3-501dc1875acc",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "event_id": null,
+      "semantic_score": 0.481266478214337,
+      "interest_score": 0,
+      "combined_score": 0.509467624095236,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "93d60b1e-b966-4992-a356-812d9b439076",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.442196105105416,
+      "interest_score": 0,
+      "combined_score": 0.501051825774327,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "a4a29a5d-5904-41e9-a3c6-6343a80f6028",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.339605520102999,
+      "interest_score": 0,
+      "combined_score": 0.528975358089112,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c720657a-3c10-4333-a5d9-88619a7fb402",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.405825188187064,
+      "interest_score": 0,
+      "combined_score": 0.525490777581322,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "998a3422-12c3-4ede-a6a4-271bf72e614b",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "event_id": null,
+      "semantic_score": 0.344881356139742,
+      "interest_score": 0,
+      "combined_score": 0.545360802226752,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "f33be515-11bb-4726-b116-87fd883f6bc7",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.460692308513568,
+      "interest_score": 0,
+      "combined_score": 0.359727779853902,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "40dc5836-9df8-43ed-bb5c-98d6f6463725",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "event_id": null,
+      "semantic_score": 0.571572332973394,
+      "interest_score": 0,
+      "combined_score": 0.524606681464984,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "97cccca4-f4e6-4cbb-97d5-212961fb0d14",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.378076833042235,
+      "interest_score": 0,
+      "combined_score": 0.555231267473451,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "776773ec-7502-4dfe-82ca-d0c969ef7e6e",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.376964040784193,
+      "interest_score": 0,
+      "combined_score": 0.464658275609498,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "e5e6e3f5-b61b-4851-b8d7-aa4e8ad8705b",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "event_id": null,
+      "semantic_score": 0.472966063839922,
+      "interest_score": 0,
+      "combined_score": 0.415651584363808,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "0aa871db-bc49-460c-ac7e-0e9f455604ee",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "event_id": null,
+      "semantic_score": 0.368748621910553,
+      "interest_score": 0,
+      "combined_score": 0.41912189413246,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d3512e1e-1f8d-418b-8fb9-a28c21d766f4",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "event_id": null,
+      "semantic_score": 0.579506829497367,
+      "interest_score": 0,
+      "combined_score": 0.524225302089764,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "eb10be27-abd8-430f-b1e3-e65e08c24b9b",
+      "user_id_1": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.577225620105338,
+      "interest_score": 0,
+      "combined_score": 0.352219444143533,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7f79dce6-450a-4bde-9d53-0482878ca103",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "5bd9aa85-1ec0-4416-b248-2889f11e2efe",
+      "event_id": null,
+      "semantic_score": 0.323185227791431,
+      "interest_score": 0.166666666666667,
+      "combined_score": 0.378864201378804,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "52743fa0-e882-45f8-9b0f-3380a6069742",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.329173425831778,
+      "interest_score": 0,
+      "combined_score": 0.327260901623559,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "dfbc8351-3474-4442-84aa-25f5d03380e4",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.47739291348905,
+      "interest_score": 0.166666666666667,
+      "combined_score": 0.646911871007656,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "9ef46d6e-af9d-4c84-999a-152908fd60ea",
+      "user_id_1": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.390871330744546,
+      "interest_score": 0,
+      "combined_score": 0.384642798522773,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c25bc3d5-eb1c-4feb-bc4b-5072ab26c8dd",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.513699678061922,
+      "interest_score": 0,
+      "combined_score": 0.566511901682209,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "4d152b65-828d-46bb-b270-472fbb6da4ba",
+      "user_id_1": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.52967765494389,
+      "interest_score": 0,
+      "combined_score": 0.529620716177083,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c8ef09af-591a-4f81-b422-e92d8ca7da72",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.374757487063524,
+      "interest_score": 0.166666666666667,
+      "combined_score": 0.410020145968048,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "eba2a4ae-eadd-4a15-b083-f9628787f7a7",
+      "user_id_1": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.504416615855065,
+      "interest_score": 0,
+      "combined_score": 0.389924717257542,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7fa0e4ef-3329-46f4-9d1c-a83527a360f5",
+      "user_id_1": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.438846795970479,
+      "interest_score": 0,
+      "combined_score": 0.327732823808595,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "06098114-1437-4276-9ba1-f72003ba49b2",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.506645144195911,
+      "interest_score": 0,
+      "combined_score": 0.541961384516987,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5a25673e-6ec1-42da-81b5-0018597e0af6",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.555459676910193,
+      "interest_score": 0,
+      "combined_score": 0.548436916194806,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "33a18193-bc73-42d2-a923-65956ac6effa",
+      "user_id_1": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.301653879840591,
+      "interest_score": 0,
+      "combined_score": 0.315949917903467,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "01c0c4e2-1604-4d9e-9377-bf965ceecbef",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.460119467892757,
+      "interest_score": 0,
+      "combined_score": 0.409035741816195,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "17015b76-8aa4-46ee-9fdc-f5ee9a84ea99",
+      "user_id_1": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.473262486211597,
+      "interest_score": 0,
+      "combined_score": 0.405441303783272,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "37399e34-72c8-4276-a105-09e316ad7e6c",
+      "user_id_1": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.313856700158129,
+      "interest_score": 0,
+      "combined_score": 0.585148080266758,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5d6dea99-8e3e-430f-a416-a417e3c7b5a5",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.351690266364232,
+      "interest_score": 0,
+      "combined_score": 0.520945296256164,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "a5d0dbe7-8562-4b84-b102-66ee10d3edcf",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.466060735286015,
+      "interest_score": 0,
+      "combined_score": 0.324581283946602,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "25964098-cdc0-40db-b5c1-656ad4233565",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.315039544466268,
+      "interest_score": 0,
+      "combined_score": 0.494342717054552,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5c6b1ddf-a516-43d8-bc8e-33647cfeb9fb",
+      "user_id_1": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.520351766540266,
+      "interest_score": 0,
+      "combined_score": 0.384401388609449,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "f0928026-c028-4838-ad31-90d9501b743b",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "a2d67d17-8b7c-469b-91bc-2575ad58bc4a",
+      "event_id": null,
+      "semantic_score": 0.330446527702268,
+      "interest_score": 0,
+      "combined_score": 0.369631784325455,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "af754960-0f0b-443b-a270-4abd541a4693",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.50703013579044,
+      "interest_score": 0,
+      "combined_score": 0.455656802039313,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5d814956-73e5-4f10-b223-5a84b6c87f92",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.407011286083863,
+      "interest_score": 0,
+      "combined_score": 0.455392409238377,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "cb2d54e8-38c5-4ff2-b396-8d4e5399038a",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.334117564995367,
+      "interest_score": 0,
+      "combined_score": 0.306236488363564,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "0e1407d4-f46a-4d75-9902-68be70d9c6bc",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.578857795531115,
+      "interest_score": 0,
+      "combined_score": 0.578387688159507,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "586fe31a-e6a0-46fe-805a-907105e26c5a",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.455825121563912,
+      "interest_score": 0.166666666666667,
+      "combined_score": 0.476050346198471,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "57ef6ad1-225b-42fc-9328-05304e2d8664",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.425036931870465,
+      "interest_score": 0,
+      "combined_score": 0.576267821630124,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "957f8fea-8412-4e11-bce4-17195cdb52c5",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.517852288091388,
+      "interest_score": 0,
+      "combined_score": 0.5044700569654,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "ae718023-b7c6-4963-a36c-12517f3b02b7",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.331793023365673,
+      "interest_score": 0,
+      "combined_score": 0.599090835169481,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "a44d8230-2525-45b5-8a38-64451a65d582",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.4681572780771,
+      "interest_score": 0,
+      "combined_score": 0.561813970764236,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5aa0af18-d5d1-4e47-a0df-76f6b35727b7",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.503823416996481,
+      "interest_score": 0,
+      "combined_score": 0.582204924630833,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "ae87ea46-1450-470e-b85e-c9e21a10f56a",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.374309118600296,
+      "interest_score": 0,
+      "combined_score": 0.333740195907001,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "f8aea718-0cf3-46e9-8e16-25d3f477f8dc",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.337990387782305,
+      "interest_score": 0,
+      "combined_score": 0.341567909837094,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "139516aa-44ed-404e-9fda-a4712bd575bb",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.501433966667589,
+      "interest_score": 0,
+      "combined_score": 0.44191380059895,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "18b6b6a1-fa52-401f-914f-beb727cbda69",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.59048089994959,
+      "interest_score": 0,
+      "combined_score": 0.590232544389599,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "a53ed58e-9a9b-4c78-92d6-53cdcb06a745",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.30108965566005,
+      "interest_score": 0,
+      "combined_score": 0.314084674646855,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "cb64ecab-0dc6-4f4c-8488-9172707c02b9",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.314875996621124,
+      "interest_score": 0,
+      "combined_score": 0.318735123111815,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "1565a952-4350-4033-b510-b3f7fc3d5259",
+      "user_id_1": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.46463071231513,
+      "interest_score": 0,
+      "combined_score": 0.561194367383553,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d5c8a204-2953-40e9-ba59-2ce3cd298561",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "698302f8-03e0-481b-8429-29c6f585ff0f",
+      "event_id": null,
+      "semantic_score": 0.342649543359257,
+      "interest_score": 0,
+      "combined_score": 0.303710615127969,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c3b2303d-ba37-4847-9b70-f1c51547c7c0",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.562440364106763,
+      "interest_score": 0,
+      "combined_score": 0.466642737224429,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "fb4edb56-915c-4ce7-be16-874bfa8f0dca",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.443792702852891,
+      "interest_score": 0,
+      "combined_score": 0.526189526276703,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "81be5cd7-bf37-4e4c-9fa7-9468413b8b76",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.587228187874504,
+      "interest_score": 0,
+      "combined_score": 0.506275107111842,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "91f5f248-8b61-4f63-8d1d-b9b50ddd668c",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "event_id": null,
+      "semantic_score": 0.439026564321784,
+      "interest_score": 0,
+      "combined_score": 0.595320322147631,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d5359f45-c9e0-49c0-8e3c-0c54b36696d3",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.416404666507239,
+      "interest_score": 0,
+      "combined_score": 0.310938001507581,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "bcbdb684-3f2e-4ba9-9638-19420d8c6f4c",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.421620330381167,
+      "interest_score": 0,
+      "combined_score": 0.580375403899936,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "cc31bc63-8775-4420-a03a-48f4cfe150fe",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.519146599796351,
+      "interest_score": 0,
+      "combined_score": 0.540872321233312,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "280bcdc7-ab15-4059-b9bd-74d952e89d79",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "event_id": null,
+      "semantic_score": 0.594049945903001,
+      "interest_score": 0,
+      "combined_score": 0.351930404480554,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6b21a305-b8e8-40b6-a51c-b65e4ca99611",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.391120949209192,
+      "interest_score": 0,
+      "combined_score": 0.560514952002094,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "95a37024-2f24-4b14-af43-d3fd170064c4",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "event_id": null,
+      "semantic_score": 0.558120632963612,
+      "interest_score": 0,
+      "combined_score": 0.473628653164531,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c9ecd9e4-b398-44d7-8b47-8ea722bc2628",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.422383465577898,
+      "interest_score": 0,
+      "combined_score": 0.316760812069566,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "659a5e21-a6e5-444c-ad4f-60b908375ef0",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.490876746236332,
+      "interest_score": 0,
+      "combined_score": 0.414370359070069,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d848bfde-ff71-449c-8395-f776faa8b8f9",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "event_id": null,
+      "semantic_score": 0.548191950639549,
+      "interest_score": 0,
+      "combined_score": 0.45013594376774,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "195dbfac-776b-4af3-9f73-b4d5504a15aa",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "event_id": null,
+      "semantic_score": 0.593544369506795,
+      "interest_score": 0,
+      "combined_score": 0.400025225600855,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "06c38277-c930-42ad-9d31-612c73d4a6c3",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "event_id": null,
+      "semantic_score": 0.30305347406861,
+      "interest_score": 0,
+      "combined_score": 0.499381077990408,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "26bbc769-1f1b-4ea6-abfa-ead8df897a52",
+      "user_id_1": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.412033715906634,
+      "interest_score": 0,
+      "combined_score": 0.484511239890993,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "412de555-4a84-4713-a0fa-d5e82ccfa28c",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "549e139b-1e10-4dab-9763-47c1916c6449",
+      "event_id": null,
+      "semantic_score": 0.401339853925842,
+      "interest_score": 0,
+      "combined_score": 0.519469981503057,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "80192310-70f2-42ca-8bca-17602e4c9aec",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.515830931758756,
+      "interest_score": 0,
+      "combined_score": 0.499970779884713,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "328e5ccc-ec79-44b8-8ebe-f1fc2ed1e157",
+      "user_id_1": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.371331637026159,
+      "interest_score": 0,
+      "combined_score": 0.494589604323123,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "50018179-b6bc-4429-b26d-f9634082984c",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.330108965085069,
+      "interest_score": 0,
+      "combined_score": 0.46192692755676,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "01e8be3a-7db5-44f1-959b-2d7ee72a142a",
+      "user_id_1": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.547719869097169,
+      "interest_score": 0,
+      "combined_score": 0.411572377662229,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "0f4fffd3-a678-49f1-a0cf-368f9dba670e",
+      "user_id_1": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.514275971359498,
+      "interest_score": 0,
+      "combined_score": 0.310997790825416,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "0b2e1317-a11c-4f67-a671-c27b03e6b644",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.394515140306411,
+      "interest_score": 0,
+      "combined_score": 0.36779278009896,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d4221419-ef54-4ff7-b1ba-4c59b7f15661",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.36580163889824,
+      "interest_score": 0,
+      "combined_score": 0.383191687545578,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "41a6b83d-5406-4e40-a0cc-9210a8659f16",
+      "user_id_1": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.434891530079498,
+      "interest_score": 0,
+      "combined_score": 0.530379965104888,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "9da01787-d5f1-4e52-9d63-73b14b0a4d4c",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.452363723855819,
+      "interest_score": 0,
+      "combined_score": 0.435287538868548,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6181d429-0a9b-42ad-9636-53db46438d75",
+      "user_id_1": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.3469654294975,
+      "interest_score": 0,
+      "combined_score": 0.37218667747473,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "dd259db4-dea8-4d06-8ddf-538229678f58",
+      "user_id_1": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.429188872293765,
+      "interest_score": 0,
+      "combined_score": 0.589454909024115,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "f197383b-1472-450a-90ed-c5475d03ad18",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.328827047132872,
+      "interest_score": 0,
+      "combined_score": 0.561936352596221,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c9830b20-7231-4ab1-a1a9-554d8db6cb7a",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.362258741108559,
+      "interest_score": 0,
+      "combined_score": 0.517937654102296,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d2681701-d5be-4816-b2bd-9f85c5da675d",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.403699240548761,
+      "interest_score": 0,
+      "combined_score": 0.450785745929057,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "f65a3709-25a5-447b-8626-fba29e69e1a3",
+      "user_id_1": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.431715530074626,
+      "interest_score": 0,
+      "combined_score": 0.30239588695577,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "2193c8c5-50a2-4159-9ddd-bd8eb52e9bf9",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "b0e7d7a0-55e6-4438-8b25-51b8e4b5f091",
+      "event_id": null,
+      "semantic_score": 0.349152005600631,
+      "interest_score": 0,
+      "combined_score": 0.573551438050792,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "76fe4961-1770-4861-a249-d244df1fe226",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.510947155954253,
+      "interest_score": 0,
+      "combined_score": 0.485084844767333,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c66ec33f-71a9-4e9a-9c1f-09e66f573e97",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.498449946782583,
+      "interest_score": 0,
+      "combined_score": 0.49855458148915,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5622ade3-829c-453c-9f31-4b5242b64cb9",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.382372456926927,
+      "interest_score": 0,
+      "combined_score": 0.367093320767607,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "55c49765-67f0-44e8-acf6-09590e5cf1a3",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.356233147452656,
+      "interest_score": 0,
+      "combined_score": 0.350243112366039,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "e2c673a9-e501-477a-af37-f5b52a9d1c18",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.475500905406132,
+      "interest_score": 0,
+      "combined_score": 0.380879518411504,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "4712e1e9-fe45-417e-b68b-7d63beaa4165",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.320613774444441,
+      "interest_score": 0,
+      "combined_score": 0.428252389708304,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "a1b3bbfc-3a80-4619-b783-847d78c59504",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.481367813853014,
+      "interest_score": 0,
+      "combined_score": 0.354993271368185,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7a84e198-87b0-4e28-a0d7-6019b52f4928",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.336481725746136,
+      "interest_score": 0,
+      "combined_score": 0.441932480392004,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6cb62b73-d3d3-4c79-a266-57f1116ea3ef",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.568427466261215,
+      "interest_score": 0,
+      "combined_score": 0.302438141986612,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "30333091-23cf-4580-9766-59bd8665dd83",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.354134271082028,
+      "interest_score": 0,
+      "combined_score": 0.343673935863546,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c69ad834-aa3a-4d88-9709-281fdae3dfa1",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.591390135572259,
+      "interest_score": 0,
+      "combined_score": 0.425770510754685,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6408603a-73b4-4570-b5da-88720a296d0d",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.516399896566033,
+      "interest_score": 0,
+      "combined_score": 0.578467350965488,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "cf57d9bc-2fdf-4ef1-ac79-20ed80ba9d65",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.367921649339967,
+      "interest_score": 0,
+      "combined_score": 0.441847807356494,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7d6ed21b-4b6d-4686-b411-415f81c966a5",
+      "user_id_1": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.493045446340517,
+      "interest_score": 0,
+      "combined_score": 0.438653548250958,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "82fc55b5-7075-4952-8c28-e827bd22d6c2",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "6d43b482-db41-43b7-99ef-c02700e520b1",
+      "event_id": null,
+      "semantic_score": 0.530186660249519,
+      "interest_score": 0,
+      "combined_score": 0.572939558980677,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "644bb104-fe3b-4f0a-a384-b59ce1d3a3bd",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.447246131824444,
+      "interest_score": 0,
+      "combined_score": 0.593500465379678,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c038a37b-621f-4c29-9787-a465ee0c41a6",
+      "user_id_1": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.510191055789092,
+      "interest_score": 0,
+      "combined_score": 0.345479272461535,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "0571087b-22be-4d0d-948b-bcbd01884d6c",
+      "user_id_1": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.325986028589481,
+      "interest_score": 0,
+      "combined_score": 0.491370864426871,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "09fd55eb-ba2c-44ae-90ad-ec3246a96df8",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.321237346555989,
+      "interest_score": 0,
+      "combined_score": 0.379817853330871,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "b1f13672-2e6b-4b30-bab8-cae2872abc0c",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.335553784371386,
+      "interest_score": 0,
+      "combined_score": 0.545609826908878,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "b58d0675-6854-4a60-af95-f414a7da147a",
+      "user_id_1": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.570344240538636,
+      "interest_score": 0,
+      "combined_score": 0.342273685497366,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "089dd0a1-81aa-4c85-a9f0-1524b311f7ed",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.51164683642622,
+      "interest_score": 0,
+      "combined_score": 0.348928997021501,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "2b6c434e-2e6d-4175-9004-33cb6f3394e9",
+      "user_id_1": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.321523886841895,
+      "interest_score": 0,
+      "combined_score": 0.55512826213649,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "3b8a0810-782e-48a2-93c1-54f209a21180",
+      "user_id_1": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.346211605258746,
+      "interest_score": 0,
+      "combined_score": 0.326123137441737,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7c4eda66-edf5-4851-9d32-af7d8c2083cf",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.309597825421737,
+      "interest_score": 0,
+      "combined_score": 0.460695459324326,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d802190a-c1cf-46b1-b3a8-f13dffe76e15",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.548370291582327,
+      "interest_score": 0,
+      "combined_score": 0.427340373824041,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "43531223-1031-4f01-8b72-b0f7cbe7c718",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.312812202004158,
+      "interest_score": 0,
+      "combined_score": 0.594487748119291,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "45b50a90-491c-4e9e-8427-debe3452889d",
+      "user_id_1": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.314835324604207,
+      "interest_score": 0,
+      "combined_score": 0.515945838283038,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "de11b5ef-fef3-4ff8-8ab1-3f5af4134138",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "8ae3fb06-c9df-4cc9-b736-6bd004c0bc3d",
+      "event_id": null,
+      "semantic_score": 0.470332844221247,
+      "interest_score": 0,
+      "combined_score": 0.325448320994758,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7dedf214-e1d0-4ee6-8655-82f97754eef5",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.390885390485408,
+      "interest_score": 0,
+      "combined_score": 0.424855039044041,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "e67b02c0-3098-4b8d-980a-2fce03fe1e04",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.469048546095337,
+      "interest_score": 0,
+      "combined_score": 0.349211170381666,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "92014753-dea5-4d4e-a42d-c657f58dd833",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.543776072230186,
+      "interest_score": 0,
+      "combined_score": 0.384448240188504,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "8c8bfd69-fa85-4083-a4c5-94f1f3dd9c43",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "event_id": null,
+      "semantic_score": 0.528923980739275,
+      "interest_score": 0,
+      "combined_score": 0.421155702985303,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "9d2ed440-5caa-432b-9d5c-10808ad3dcae",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.317783994596097,
+      "interest_score": 0,
+      "combined_score": 0.388536355604468,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "f9b20eb6-ae9c-4583-bfdd-57a7ced6ac78",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "event_id": null,
+      "semantic_score": 0.311228718079227,
+      "interest_score": 0,
+      "combined_score": 0.506656728634545,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "cdea4610-0061-474a-970a-2026b0f25ea9",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.416879308248672,
+      "interest_score": 0,
+      "combined_score": 0.35641670908845,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "80d2c113-ce64-45d6-b07c-9d5915f979f1",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.336683037499449,
+      "interest_score": 0,
+      "combined_score": 0.429274508047425,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "e2e7e5f7-7f32-47c6-b5f0-824a2ee90d2f",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "event_id": null,
+      "semantic_score": 0.518770937438708,
+      "interest_score": 0,
+      "combined_score": 0.427409545748079,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "75d0c6a3-8454-41e1-8634-4832ec3afb26",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "event_id": null,
+      "semantic_score": 0.41059471547555,
+      "interest_score": 0,
+      "combined_score": 0.457991813977172,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "aaae4e89-b305-4276-b9dd-b4cf8472ac31",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "event_id": null,
+      "semantic_score": 0.51705718887463,
+      "interest_score": 0,
+      "combined_score": 0.300197726950826,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d416cb7a-326c-43a9-9868-468874fd36a6",
+      "user_id_1": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.370131200734217,
+      "interest_score": 0,
+      "combined_score": 0.304307939868148,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "8adcb296-aec0-4450-aa85-9c35100eb9db",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "4c0055af-e73a-4697-b7d2-16752ac77bcd",
+      "event_id": null,
+      "semantic_score": 0.437831849814726,
+      "interest_score": 0,
+      "combined_score": 0.471600246351473,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "90561654-5a4b-42f4-971c-0e2c2cf3b656",
+      "user_id_1": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.463265587373783,
+      "interest_score": 0,
+      "combined_score": 0.389010775279737,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "394e4fa0-0e80-4979-916e-6f6fb07d9f73",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.312020366443743,
+      "interest_score": 0,
+      "combined_score": 0.393210824464978,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6691c781-322f-4f86-a2b4-30061ea95da6",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.512445405014853,
+      "interest_score": 0,
+      "combined_score": 0.500988039880104,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "0347d3e6-344c-480d-a745-6ab810d3a133",
+      "user_id_1": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.33780907967814,
+      "interest_score": 0,
+      "combined_score": 0.576044259956608,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7e6ce9b7-4327-47a9-ab45-d5b218b8a155",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.500581054454423,
+      "interest_score": 0,
+      "combined_score": 0.375345666826618,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "9889fb84-25cb-4768-b874-2e331a0b01b6",
+      "user_id_1": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.383179182907163,
+      "interest_score": 0.166666666666667,
+      "combined_score": 0.490893982048219,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7a990a8d-764d-4dc8-8044-581c0944ace6",
+      "user_id_1": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.323286999600943,
+      "interest_score": 0,
+      "combined_score": 0.56372508303352,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "1ca6d311-aba7-42fe-8f85-ed23d028623a",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.347247387382244,
+      "interest_score": 0,
+      "combined_score": 0.467837780423864,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "cca58d3b-9446-4a5e-9260-4749f7bff3cb",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.521337420439071,
+      "interest_score": 0,
+      "combined_score": 0.392329284403279,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5e782010-a5bf-4ee2-ab08-ba214e52e9af",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.458590528848652,
+      "interest_score": 0,
+      "combined_score": 0.491378092209054,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "197fa73b-5177-4353-9788-1125d4017e46",
+      "user_id_1": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.53133785840731,
+      "interest_score": 0,
+      "combined_score": 0.337027689187732,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "971d98e5-07dd-49c9-ad6a-70ad7b139fcc",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "e1982177-eab4-4970-8639-72a1ad8b2751",
+      "event_id": null,
+      "semantic_score": 0.452240600682436,
+      "interest_score": 0,
+      "combined_score": 0.591712157723639,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "98742bd7-67ee-4f42-9bf3-6bd1b261a4fb",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.31787090631927,
+      "interest_score": 0,
+      "combined_score": 0.38968238386044,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "189e276e-fe3c-4d67-90d2-70223a9794bb",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.519690632418849,
+      "interest_score": 0,
+      "combined_score": 0.569761800050158,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c8e63006-dac9-4a11-82c8-ffbbd9b08a58",
+      "user_id_1": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.326125305740517,
+      "interest_score": 0,
+      "combined_score": 0.548286744009202,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "90f4d1bb-ef1f-468f-b2b4-57b49c8f74cb",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.584925752328841,
+      "interest_score": 0,
+      "combined_score": 0.47985010253133,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "68008d0c-3b76-49c0-b1a7-f1e3dd62cace",
+      "user_id_1": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.373788997958229,
+      "interest_score": 0,
+      "combined_score": 0.337995825644397,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "8088ac0d-669e-4c20-a90b-5e6bc774122b",
+      "user_id_1": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.310890639552897,
+      "interest_score": 0,
+      "combined_score": 0.427997390688514,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6c8a8ef1-0386-473d-a09f-e047e1c1822a",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.565264082504355,
+      "interest_score": 0,
+      "combined_score": 0.508980733270533,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "95dfed55-c55a-457a-9f26-161f374154e7",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.522297600590901,
+      "interest_score": 0,
+      "combined_score": 0.356750263327322,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "e4907238-9c0c-404d-bea3-59f3416e2471",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.561989383212158,
+      "interest_score": 0,
+      "combined_score": 0.445939741470107,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "da883921-2c69-4adf-9ee1-a216fa4952d6",
+      "user_id_1": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.41768566322494,
+      "interest_score": 0,
+      "combined_score": 0.333687642167598,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "ef47765e-f4c5-4a5e-8689-5d4852ee17e7",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "c5ce6557-2cb4-4b73-a220-3dd463e849df",
+      "event_id": null,
+      "semantic_score": 0.43034580977152,
+      "interest_score": 0,
+      "combined_score": 0.311050109063676,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "9eaf6582-1c68-4e55-89ee-c0aec4b6cd81",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.569855314851846,
+      "interest_score": 0,
+      "combined_score": 0.313978973458726,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "42196418-bd9e-423c-b361-d8e124381c60",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.527231739270028,
+      "interest_score": 0,
+      "combined_score": 0.548839410299493,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "8fc363fb-57b8-4cb4-bd2d-2cacc7ff16bc",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.591425585422467,
+      "interest_score": 0,
+      "combined_score": 0.597239990473633,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "64b2d3bc-b6e3-4129-bc5d-e14ffdb63546",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.307164881068862,
+      "interest_score": 0,
+      "combined_score": 0.420414533250924,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7308cc47-5dbd-4d3e-9a6d-aea69641f106",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.337999078755888,
+      "interest_score": 0,
+      "combined_score": 0.42020917026635,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "2c8d8d18-7171-49ad-8b83-ab17b23af9a4",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.351419979746353,
+      "interest_score": 0,
+      "combined_score": 0.548165437566245,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "85c24191-ea8a-4af8-81ee-f0ce3ddf6926",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.579374150574874,
+      "interest_score": 0,
+      "combined_score": 0.514753328924584,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "2c570801-6fdf-4cca-8a5c-29f3b963ce95",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.460309859087,
+      "interest_score": 0,
+      "combined_score": 0.572644783029494,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c2e72495-9ee1-4308-a80c-7ae0ce06b12c",
+      "user_id_1": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.540492667127437,
+      "interest_score": 0,
+      "combined_score": 0.33151815456865,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "687b3094-e3e6-43e1-81ba-6a01a559563f",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "6772045f-980e-4bcd-bcf8-34beb68762ac",
+      "event_id": null,
+      "semantic_score": 0.369686707229333,
+      "interest_score": 0,
+      "combined_score": 0.420206118557507,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "79678a78-2489-4164-9e4e-c25b42f9b16b",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.325113076395228,
+      "interest_score": 0,
+      "combined_score": 0.502813444420445,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "19ce39e7-5bbc-4940-9360-7114c6779912",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "event_id": null,
+      "semantic_score": 0.397497024472736,
+      "interest_score": 0,
+      "combined_score": 0.341815123868065,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "94c0c1b6-c7ed-42ca-b624-eaae31e17643",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.541538218904406,
+      "interest_score": 0,
+      "combined_score": 0.453629599258217,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "7323f0eb-4b75-45a6-9044-aaaf18c224f5",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.376846391793082,
+      "interest_score": 0,
+      "combined_score": 0.399357394008014,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "e7632d77-d293-461a-abe2-7a419964d920",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "event_id": null,
+      "semantic_score": 0.58861783120818,
+      "interest_score": 0,
+      "combined_score": 0.536683661766409,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "3ab5ce1b-30ef-4d82-9f67-ae79217f5651",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "event_id": null,
+      "semantic_score": 0.34854576300979,
+      "interest_score": 0,
+      "combined_score": 0.361373092411064,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6855dee1-4013-4aff-9659-7a73a7d4e726",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "event_id": null,
+      "semantic_score": 0.319854217021041,
+      "interest_score": 0,
+      "combined_score": 0.33376246718491,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "867ad674-777b-4a84-b2e6-1240d1ab7e83",
+      "user_id_1": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.456153470216779,
+      "interest_score": 0,
+      "combined_score": 0.57437123890848,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "4e1cf292-606b-45c4-a1a9-c43926275310",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "337c442b-8e32-405b-84a0-3bd93766c05e",
+      "event_id": null,
+      "semantic_score": 0.550265873340599,
+      "interest_score": 0,
+      "combined_score": 0.401829143453692,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "e8bae608-3c94-44e5-a0c7-3cceb0113ece",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.306423970559962,
+      "interest_score": 0,
+      "combined_score": 0.577173200985268,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "9d09e0d5-9410-4a65-bf69-89e898b04712",
+      "user_id_1": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.310373608395918,
+      "interest_score": 0,
+      "combined_score": 0.319882248859239,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d58b3450-2201-4738-a8ac-d7c5516a40a6",
+      "user_id_1": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.518157355842813,
+      "interest_score": 0,
+      "combined_score": 0.449731042595665,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "bf7bc6f6-86d0-4ad2-80d7-d660ca304550",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.367720947312311,
+      "interest_score": 0,
+      "combined_score": 0.427317690656085,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d2bcf511-5fd2-446e-a4b0-aefd9304def2",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.420207098804849,
+      "interest_score": 0,
+      "combined_score": 0.381348361824271,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "004bcd81-4fe0-42c7-bef8-aac7ca5492f0",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.438172152708959,
+      "interest_score": 0,
+      "combined_score": 0.440993047644409,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "c33fd7a2-2d7f-48e6-85e5-2a72b4441624",
+      "user_id_1": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.569002689085436,
+      "interest_score": 0,
+      "combined_score": 0.541389110721526,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "5319b6cf-d621-4bfe-846a-8fa116bebbd9",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "b61d655d-d607-4e86-894d-97bc479f32b8",
+      "event_id": null,
+      "semantic_score": 0.314238488048635,
+      "interest_score": 0,
+      "combined_score": 0.321309872675876,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "01a0a168-1ce0-45c8-b294-2b9c4acfe132",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.4437978531084,
+      "interest_score": 0,
+      "combined_score": 0.320703365603516,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "b794e15d-c573-47a6-b4fe-85f740c8c83a",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.320809935549157,
+      "interest_score": 0,
+      "combined_score": 0.471615778481794,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "b4532cea-02c1-44f3-8677-a0e07b660c62",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "event_id": null,
+      "semantic_score": 0.5378903382176,
+      "interest_score": 0,
+      "combined_score": 0.337645219779401,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "90d6aebd-b857-4e2d-adee-8958eb9cfdfe",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "event_id": null,
+      "semantic_score": 0.322868222999775,
+      "interest_score": 0,
+      "combined_score": 0.3070157623541,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "b6d8bf8a-fc52-4fcb-bae9-303a6a92a4cc",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "event_id": null,
+      "semantic_score": 0.316849101763275,
+      "interest_score": 0.166666666666667,
+      "combined_score": 0.391887693166307,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "e39b07cf-9ad2-4464-b6d5-14b62648a585",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.429074275674063,
+      "interest_score": 0,
+      "combined_score": 0.364287907245365,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "d0f7e3e5-7cc6-494f-a76d-5517c5e1b619",
+      "user_id_1": "09ffe22e-92bd-4c2f-849d-453c721fa2b5",
+      "user_id_2": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "event_id": null,
+      "semantic_score": 0.307158595715575,
+      "interest_score": 0,
+      "combined_score": 0.506381496538844,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "ce94437a-6a97-4def-bcb9-a552fdc03c94",
+      "user_id_1": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.353142587574139,
+      "interest_score": 0,
+      "combined_score": 0.490484970099355,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "2e9ca01d-f310-494a-92a5-1fc026781fee",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.408573234529598,
+      "interest_score": 0,
+      "combined_score": 0.557955670141151,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "b985460b-a98d-4521-85a6-d497c88bea5d",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.391928083593054,
+      "interest_score": 0,
+      "combined_score": 0.474076118906671,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "203b7b3e-a457-4737-9823-5cc4189922e9",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.454861214073862,
+      "interest_score": 0,
+      "combined_score": 0.505749337385727,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "ee0c06b1-38c6-4347-8fc0-2bb7da1f3c77",
+      "user_id_1": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.446563223920405,
+      "interest_score": 0,
+      "combined_score": 0.374680176198343,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "2f0a814d-be79-4b9b-9d61-fb264df969f4",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "9b7279e9-1880-450b-a79d-5a10b7b8daff",
+      "event_id": null,
+      "semantic_score": 0.465702654130928,
+      "interest_score": 0,
+      "combined_score": 0.591658248699907,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6204d2d7-3666-4280-bf7b-47f110ec1eff",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.377552345909803,
+      "interest_score": 0,
+      "combined_score": 0.315109150678143,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "46be83b9-409b-4046-b21b-7e179d92d327",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.4983117306644,
+      "interest_score": 0,
+      "combined_score": 0.315993056179658,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "a0294428-0270-461f-977a-645774d9f088",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.321171750761812,
+      "interest_score": 0,
+      "combined_score": 0.511063280030417,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "eb0e0dab-5045-4a78-8692-beec4d4262c9",
+      "user_id_1": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.374802742881456,
+      "interest_score": 0,
+      "combined_score": 0.421063175974551,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "3d722b93-21d8-4e8f-817a-c41c8820cfaa",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "e90296f2-b8f9-496f-bc7a-72255ea321de",
+      "event_id": null,
+      "semantic_score": 0.56409514759883,
+      "interest_score": 0,
+      "combined_score": 0.395803357477571,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "4a8f788a-a7d1-430e-aa19-1c69b0b825f1",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "event_id": null,
+      "semantic_score": 0.517852395944339,
+      "interest_score": 0,
+      "combined_score": 0.554886904141508,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "4f55ca8b-0971-4f5a-9f7f-ebdd72c7b5ed",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "event_id": null,
+      "semantic_score": 0.343847553739429,
+      "interest_score": 0,
+      "combined_score": 0.575411816041857,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "fda417ff-3e45-4f93-80f9-beac49cdca35",
+      "user_id_1": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.359450687649339,
+      "interest_score": 0,
+      "combined_score": 0.489186266686503,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "f14f3ce3-e252-462a-9872-c99a9edf7aea",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "33c5fb46-327e-417d-a0ac-c6c15e26b88b",
+      "event_id": null,
+      "semantic_score": 0.311067377210031,
+      "interest_score": 0,
+      "combined_score": 0.431513853922586,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "0ce91cf0-c2d3-4db4-8cab-d99092659ecb",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "event_id": null,
+      "semantic_score": 0.528188635685631,
+      "interest_score": 0,
+      "combined_score": 0.446014631607225,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "29774237-7f8d-4c50-96e5-3b63ec0a87a2",
+      "user_id_1": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.498859378152515,
+      "interest_score": 0,
+      "combined_score": 0.402050897275131,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "6f3a0c89-d870-48c1-8d7a-1e3891c46415",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "5a567cee-614a-47c9-b5f3-5af3a7be2739",
+      "event_id": null,
+      "semantic_score": 0.321915444938052,
+      "interest_score": 0,
+      "combined_score": 0.593521643364096,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "3b7f7e21-691e-4bb0-9c10-9f10c4040aa9",
+      "user_id_1": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.302230889380862,
+      "interest_score": 0,
+      "combined_score": 0.341514508564312,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "847835bb-b8d6-4dec-803f-ce63c8e1dc9e",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "4fe1bd3b-63c5-4705-9b7b-31d91476f2db",
+      "event_id": null,
+      "semantic_score": 0.526955727347334,
+      "interest_score": 0,
+      "combined_score": 0.555346476393778,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    },
+    {
+      "id": "618c17cc-0c7a-4d4f-bfd0-5410aa4fb522",
+      "user_id_1": "22aa8994-8e3c-4b9b-bdb4-7fd22641ef6c",
+      "user_id_2": "c7fc2aa6-d9d8-4174-a9fb-e1a6d9dbaf15",
+      "event_id": null,
+      "semantic_score": 0.3805357049204,
+      "interest_score": 0,
+      "combined_score": 0.302639297310951,
+      "calculated_at": "2025-09-21T19:33:16.706+00:00"
+    }
+  ]
+}

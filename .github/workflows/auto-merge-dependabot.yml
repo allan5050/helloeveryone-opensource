@@ -1,0 +1,91 @@
+name: Auto-merge Dependabot PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    name: Auto-merge Safe Dependabot Updates
+    runs-on: ubuntu-latest
+
+    # Only run for Dependabot PRs
+    if: github.actor == 'dependabot[bot]'
+
+    steps:
+      - name: Dependabot metadata
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auto-approve patch updates
+        if: steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch'
+        run: |
+          echo "Auto-approving patch update"
+          gh pr review "$PR_URL" --approve -b "Auto-approved: Patch version update"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auto-approve minor dev dependency updates
+        if: |
+          steps.dependabot-metadata.outputs.update-type == 'version-update:semver-minor' &&
+          steps.dependabot-metadata.outputs.dependency-type == 'direct:development'
+        run: |
+          echo "Auto-approving minor dev dependency update"
+          gh pr review "$PR_URL" --approve -b "Auto-approved: Minor dev dependency update"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable auto-merge for safe updates
+        if: |
+          steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch' ||
+          (steps.dependabot-metadata.outputs.update-type == 'version-update:semver-minor' &&
+           steps.dependabot-metadata.outputs.dependency-type == 'direct:development')
+        run: |
+          echo "Enabling auto-merge"
+          gh pr merge "$PR_URL" --auto --squash
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on major updates
+        if: steps.dependabot-metadata.outputs.update-type == 'version-update:semver-major'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const message = `## ⚠️ Major Version Update
+
+            This is a **major version update** that may contain breaking changes.
+
+            **Dependency**: ${context.payload.pull_request.title}
+
+            ### Before Merging
+
+            Please review:
+            - [ ] Changelog for breaking changes
+            - [ ] Migration guide (if any)
+            - [ ] Test the application locally
+            - [ ] Update any affected code
+
+            Major updates are not auto-merged and require manual review.`;
+
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: message
+            });
+
+            github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['major-update', 'needs-review']
+            });

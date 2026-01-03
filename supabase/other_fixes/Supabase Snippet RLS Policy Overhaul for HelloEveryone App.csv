@@ -1,0 +1,63 @@
+schemaname,tablename,policyname,permissive,roles,cmd
+public,blocks,Users can delete their own blocks,PERMISSIVE,{public},DELETE
+public,blocks,Users can manage their own blocks,PERMISSIVE,{public},INSERT
+public,blocks,Users can view their own blocks,PERMISSIVE,{public},SELECT
+public,blocks,admin_full_access_blocks,PERMISSIVE,{public},ALL
+public,blocks,blocks_delete,PERMISSIVE,{authenticated},DELETE
+public,blocks,blocks_insert,PERMISSIVE,{authenticated},INSERT
+public,blocks,blocks_select,PERMISSIVE,{authenticated},SELECT
+public,events,Authenticated users can create events,PERMISSIVE,{public},INSERT
+public,events,Event creators can delete their events,PERMISSIVE,{public},DELETE
+public,events,Event creators can update their events,PERMISSIVE,{public},UPDATE
+public,events,Events are viewable by everyone,PERMISSIVE,{public},SELECT
+public,events,admin_full_access_events,PERMISSIVE,{public},ALL
+public,events,events_delete,PERMISSIVE,{authenticated},DELETE
+public,events,events_insert,PERMISSIVE,{authenticated},INSERT
+public,events,events_select,PERMISSIVE,{authenticated},SELECT
+public,events,events_update,PERMISSIVE,{authenticated},UPDATE
+public,favorites,Users can delete their own favorites,PERMISSIVE,{public},DELETE
+public,favorites,Users can manage their own favorites,PERMISSIVE,{public},INSERT
+public,favorites,Users can update their own favorites,PERMISSIVE,{public},UPDATE
+public,favorites,Users can view their own favorites,PERMISSIVE,{public},SELECT
+public,favorites,admin_full_access_favorites,PERMISSIVE,{public},ALL
+public,favorites,favorites_delete,PERMISSIVE,{authenticated},DELETE
+public,favorites,favorites_insert,PERMISSIVE,{authenticated},INSERT
+public,favorites,favorites_select,PERMISSIVE,{authenticated},SELECT
+public,match_scores,Users can view their own match scores,PERMISSIVE,{public},SELECT
+public,match_scores,admin_view_all_match_scores,PERMISSIVE,{public},SELECT
+public,match_scores,match_scores_insert,PERMISSIVE,{authenticated},INSERT
+public,match_scores,match_scores_select,PERMISSIVE,{authenticated},SELECT
+public,match_scores,match_scores_update,PERMISSIVE,{authenticated},UPDATE
+public,meeting_slots,Users can create meeting slots they're part of,PERMISSIVE,{public},INSERT
+public,meeting_slots,Users can delete their meeting slots,PERMISSIVE,{public},DELETE
+public,meeting_slots,Users can update their meeting slots,PERMISSIVE,{public},UPDATE
+public,meeting_slots,Users can view their own meeting slots,PERMISSIVE,{public},SELECT
+public,meeting_slots,admin_full_access_meeting_slots,PERMISSIVE,{public},ALL
+public,meeting_slots,meeting_slots_delete,PERMISSIVE,{authenticated},DELETE
+public,meeting_slots,meeting_slots_insert,PERMISSIVE,{authenticated},INSERT
+public,meeting_slots,meeting_slots_select,PERMISSIVE,{authenticated},SELECT
+public,meeting_slots,meeting_slots_update,PERMISSIVE,{authenticated},UPDATE
+public,messages,Users can send messages,PERMISSIVE,{public},INSERT
+public,messages,Users can update their sent messages,PERMISSIVE,{public},UPDATE
+public,messages,Users can view their own messages,PERMISSIVE,{public},SELECT
+public,messages,admin_view_all_messages,PERMISSIVE,{public},SELECT
+public,messages,messages_insert,PERMISSIVE,{authenticated},INSERT
+public,messages,messages_select,PERMISSIVE,{authenticated},SELECT
+public,messages,messages_update,PERMISSIVE,{authenticated},UPDATE
+public,profiles,Profiles are viewable by everyone,PERMISSIVE,{public},SELECT
+public,profiles,Users can delete their own profile,PERMISSIVE,{public},DELETE
+public,profiles,Users can insert their own profile,PERMISSIVE,{public},INSERT
+public,profiles,Users can update their own profile,PERMISSIVE,{public},UPDATE
+public,profiles,admin_full_access_profiles,PERMISSIVE,{public},ALL
+public,profiles,profiles_insert,PERMISSIVE,{authenticated},INSERT
+public,profiles,profiles_select,PERMISSIVE,{authenticated},SELECT
+public,profiles,profiles_update,PERMISSIVE,{authenticated},UPDATE
+public,rsvps,Users can delete their own RSVPs,PERMISSIVE,{public},DELETE
+public,rsvps,Users can manage their own RSVPs,PERMISSIVE,{public},INSERT
+public,rsvps,Users can update their own RSVPs,PERMISSIVE,{public},UPDATE
+public,rsvps,Users can view RSVPs for events they're attending,PERMISSIVE,{public},SELECT
+public,rsvps,admin_full_access_rsvps,PERMISSIVE,{public},ALL
+public,rsvps,rsvps_delete,PERMISSIVE,{authenticated},DELETE
+public,rsvps,rsvps_insert,PERMISSIVE,{authenticated},INSERT
+public,rsvps,rsvps_select,PERMISSIVE,{authenticated},SELECT
+public,rsvps,rsvps_update,PERMISSIVE,{authenticated},UPDATE

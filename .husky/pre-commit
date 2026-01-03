@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Running pre-commit checks..."
+
+# 1. SECRET SCANNING (Critical - blocks commits with secrets)
+echo "🔒 Scanning for secrets and API keys..."
+npm run security:secrets
+if [ $? -ne 0 ]; then
+  echo "❌ Secret scan failed! Commit blocked."
+  exit 1
+fi
+
+# 2. Run lint-staged for staged files
+npm run lint-staged
+
+# 3. Run quick security scan (edge cases, patterns)
+echo "🛡️  Running quick security scan..."
+npm run security:scan:quick
+if [ $? -ne 0 ]; then
+  echo "⚠️  Security scan found issues! Review findings before committing."
+  exit 1
+fi
+
+# 4. Run security tests (authentication, edge cases, business logic)
+echo "🧪 Running security tests..."
+npm run test:security
+if [ $? -ne 0 ]; then
+  echo "⚠️  Security tests failed! Review findings before committing."
+  exit 1
+fi
+
+# 5. Type check (commented out by default - enable when TS errors are fixed)
+# echo "Running TypeScript type check..."
+# npm run type-check
+
+echo "✅ All pre-commit checks passed!"

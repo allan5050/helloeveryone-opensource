@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/mikepenz/release-changelog-builder-action/main/configuration.schema.json",
+  "categories": [
+    {
+      "title": "## New Features",
+      "labels": ["enhancement", "feature"]
+    },
+    {
+      "title": "## Bug Fixes",
+      "labels": ["bug", "fix"]
+    },
+    {
+      "title": "## Security Updates",
+      "labels": ["security"]
+    },
+    {
+      "title": "## Performance Improvements",
+      "labels": ["performance"]
+    },
+    {
+      "title": "## Documentation",
+      "labels": ["documentation", "docs"]
+    },
+    {
+      "title": "## CI/CD & Maintenance",
+      "labels": ["ci/cd", "dependencies", "automated", "chore"]
+    },
+    {
+      "title": "## Other Changes",
+      "labels": []
+    }
+  ],
+  "ignore_labels": ["skip-changelog", "stale"],
+  "sort": {
+    "order": "ASC",
+    "on_property": "mergedAt"
+  },
+  "template": "#{{CHANGELOG}}\n\n## Contributors\n\n#{{CONTRIBUTORS}}",
+  "pr_template": "- #{{TITLE}} (#{{NUMBER}}) by @#{{AUTHOR}}",
+  "empty_template": "No changes in this release.",
+  "transformers": [
+    {
+      "pattern": "\\[.*?\\]\\s*:?\\s*",
+      "target": ""
+    }
+  ],
+  "max_tags_to_fetch": 200,
+  "max_pull_requests": 500,
+  "max_back_track_time_days": 365,
+  "exclude_merge_branches": ["main", "master"],
+  "tag_resolver": {
+    "method": "semver"
+  },
+  "base_branches": ["main"]
+}
