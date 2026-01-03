@@ -6,7 +6,7 @@
 🌐 **Live at**: [https://helloeveryone.vercel.app](https://helloeveryone.vercel.app)
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Contributors](https://img.shields.io/github/contributors/allan5050/helloeveryone)
+![Contributors](https://img.shields.io/github/contributors/allan5050/helloeveryone-opensource)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black)
@@ -33,7 +33,7 @@ node >= 18.0.0
 npm >= 9.0.0
 
 # Clone and install
-git clone https://github.com/allan5050/helloeveryone.git
+git clone https://github.com/allan5050/helloeveryone-opensource.git
 cd helloeveryone
 npm install
 
@@ -204,7 +204,7 @@ We welcome contributions from developers of all skill levels! Here's how to get 
 
 ### Good First Issues
 
-Looking for a place to start? Check out issues labeled [`good first issue`](https://github.com/allan5050/helloeveryone/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
+Looking for a place to start? Check out issues labeled [`good first issue`](https://github.com/allan5050/helloeveryone-opensource/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
 
 ### Development Guidelines
 
@@ -238,8 +238,8 @@ See [PROJECT_STATUS.md](./PROJECT_STATUS.md) for detailed status and roadmap.
 Thanks to everyone who contributes to making HelloEveryone.fun better!
 
 <!-- Contributors list will be automatically updated by GitHub -->
-<a href="https://github.com/allan5050/helloeveryone/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=allan5050/helloeveryone" />
+<a href="https://github.com/allan5050/helloeveryone-opensource/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=allan5050/helloeveryone-opensource" />
 </a>
 
 ## 🔐 Security

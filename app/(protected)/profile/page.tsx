@@ -112,6 +112,7 @@ export default function ProfilePage() {
                     fill
                     sizes="80px"
                     className="rounded-full object-cover"
+                    unoptimized={profile.photo_url.includes('.svg') || profile.photo_url.includes('dicebear.com')}
                   />
                 </div>
               ) : (

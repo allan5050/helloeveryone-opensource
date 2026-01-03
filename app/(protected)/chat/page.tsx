@@ -128,6 +128,7 @@ export default function ChatPage() {
                         width={48}
                         height={48}
                         className="rounded-full object-cover"
+                        unoptimized={conversation.other_user.avatar_url.includes('.svg') || conversation.other_user.avatar_url.includes('dicebear.com')}
                       />
                     ) : (
                       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200">

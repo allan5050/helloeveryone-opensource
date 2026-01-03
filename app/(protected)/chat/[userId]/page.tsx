@@ -122,6 +122,7 @@ export default function IndividualChatPage() {
                 width={40}
                 height={40}
                 className="mr-3 rounded-full object-cover"
+                unoptimized={otherUser.avatar_url.includes('.svg') || otherUser.avatar_url.includes('dicebear.com')}
               />
             ) : (
               <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200">

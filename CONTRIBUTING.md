@@ -35,7 +35,7 @@ Before you begin, ensure you have the following installed:
    ```
 3. **Add upstream remote**:
    ```bash
-   git remote add upstream https://github.com/allan5050/helloeveryone.git
+   git remote add upstream https://github.com/allan5050/helloeveryone-opensource.git
    ```
 4. **Install dependencies**:
    ```bash
@@ -129,7 +129,7 @@ Don't worry if some tests fail - we're actively improving the test suite.
 
 ### Finding Something to Work On
 
-1. **Check Issues**: Browse [GitHub Issues](https://github.com/allan5050/helloeveryone/issues)
+1. **Check Issues**: Browse [GitHub Issues](https://github.com/allan5050/helloeveryone-opensource/issues)
 2. **Look for Labels**:
    - `good first issue` - Great for newcomers
    - `help wanted` - We'd love your help on these

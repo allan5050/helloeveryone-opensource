@@ -35,6 +35,9 @@ export default function Avatar({
     }
   }
 
+  // Check if URL is an SVG (like dicebear avatars) - use unoptimized for these
+  const isSvgUrl = src && (src.includes('.svg') || src.includes('dicebear.com'))
+
   return (
     <div className={`relative overflow-hidden rounded-full bg-gray-100 ${sizeClasses[size]} ${className}`}>
       {src && !imageError ? (
@@ -44,6 +47,7 @@ export default function Avatar({
           fill
           className="object-cover"
           sizes={getSizes()}
+          unoptimized={isSvgUrl}
           onError={() => setImageError(true)}
         />
       ) : (

@@ -54,7 +54,12 @@
       "Bash(timeout 400 npm run build)",
       "Bash(npm run security:scan:*)",
       "Bash(echo:*)",
-      "Bash(npm run security:scan:quick:*)"
+      "Bash(npm run security:scan:quick:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(start chrome:*)",
+      "Bash(gh api:*)",
+      "Bash(gh repo view:*)"
     ],
     "deny": [],
     "ask": []

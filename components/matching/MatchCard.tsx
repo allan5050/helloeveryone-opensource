@@ -48,15 +48,19 @@ export default function MatchCard({
         const { data: { user } } = await supabase.auth.getUser()
         if (!user) return
 
-        // Check if we have cached insights
-        const { data: cachedInsight } = await supabase
+        // Check if we have cached insights (table may not exist or be empty)
+        // Use maybeSingle() to avoid 406 error when no rows match
+        const { data: cachedInsight, error } = await supabase
           .from('ai_insights')
           .select('compatibility_reason, meeting_suggestions')
           .eq('user_id', user.id)
           .eq('target_user_id', profile.user_id)
-          .single()
+          .maybeSingle()
 
-        if (cachedInsight && (cachedInsight as any).compatibility_reason) {
+        // Silently handle errors (table might not exist, or no data)
+        if (error || !cachedInsight) return
+
+        if ((cachedInsight as any).compatibility_reason) {
           setAiInsight({
             compatibilityReason: (cachedInsight as any).compatibility_reason,
             conversationStarters: [],

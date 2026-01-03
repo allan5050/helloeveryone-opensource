@@ -169,7 +169,7 @@ For security-related questions or concerns:
 - **Subject Line**: "[SECURITY] Your Issue Title"
 - **Response Time**: Within 48 hours
 
-For non-security issues, please use [GitHub Issues](https://github.com/allan5050/helloeveryone/issues).
+For non-security issues, please use [GitHub Issues](https://github.com/allan5050/helloeveryone-opensource/issues).
 
 ## License
 
