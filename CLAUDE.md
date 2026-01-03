@@ -9,8 +9,7 @@ HelloEveryone.fun is a smart social matching platform that helps busy adults (25
 connections through intelligent matching at local events. Built with Next.js 15, Supabase, and
 TypeScript.
 
-**Production URL**: https://helloeveryone.vercel.app
-**GitHub**: allan5050/helloeveryone
+**Production URL**: https://helloeveryone.vercel.app **GitHub**: allan5050/helloeveryone
 
 ## Key Development Commands
 

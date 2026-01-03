@@ -36,8 +36,7 @@ export async function addToFavorites(
       return { success: false, error: 'User not found' }
     }
 
-    const { data, error } = await (supabase
-      .from('favorites') as any)
+    const { data, error } = await (supabase.from('favorites') as any)
       .insert({
         user_id: user.id,
         target_user_id: targetUserId,
@@ -131,9 +130,12 @@ export async function getMutualFavorites(): Promise<FavoriteResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await (supabase.rpc as any)('get_mutual_favorites', {
-      user_id: user.id,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'get_mutual_favorites',
+      {
+        user_id: user.id,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }
@@ -158,10 +160,13 @@ export async function checkMutualFavorite(
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await (supabase.rpc as any)('check_mutual_favorite', {
-      user1_id: user.id,
-      user2_id: targetUserId,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'check_mutual_favorite',
+      {
+        user1_id: user.id,
+        user2_id: targetUserId,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }
@@ -207,9 +212,12 @@ export async function getPublicFavorites(
   try {
     const supabase = await createClient()
 
-    const { data, error } = await (supabase.rpc as any)('get_public_favorites', {
-      target_user_id: targetUserId,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'get_public_favorites',
+      {
+        target_user_id: targetUserId,
+      }
+    )
 
     if (error) {
       if (error.code === 'BLOCKED_USER') {
@@ -261,9 +269,12 @@ export async function getMutualFavoritesCount(): Promise<FavoriteResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await (supabase.rpc as any)('get_mutual_favorites_count', {
-      user_id: user.id,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'get_mutual_favorites_count',
+      {
+        user_id: user.id,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }

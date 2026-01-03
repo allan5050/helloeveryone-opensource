@@ -60,14 +60,13 @@ async function testDatabaseFunctions() {
 
     // Test handle_rsvp function (not in typed schema, use type assertion)
     try {
-      const { data: rsvpResult, error: rsvpError } = await (supabase.rpc as any)(
-        'handle_rsvp',
-        {
-          p_event_id: 'test-event-id',
-          p_user_id: 'test-user-id',
-          p_status: 'going',
-        }
-      )
+      const { data: rsvpResult, error: rsvpError } = await (
+        supabase.rpc as any
+      )('handle_rsvp', {
+        p_event_id: 'test-event-id',
+        p_user_id: 'test-user-id',
+        p_status: 'going',
+      })
 
       if (rsvpError) {
         console.log(
@@ -133,15 +132,18 @@ async function testDatabaseFunctions() {
     // Test 4: Check indexes exist
     console.log('\n4️⃣ Checking performance indexes...')
 
-    const { data: indexes, error: indexError } = await (supabase.rpc as any)('sql', {
-      query: `
+    const { data: indexes, error: indexError } = await (supabase.rpc as any)(
+      'sql',
+      {
+        query: `
           SELECT schemaname, tablename, indexname
           FROM pg_indexes
           WHERE schemaname = 'public'
           AND indexname LIKE 'idx_%'
           ORDER BY tablename, indexname
         `,
-    })
+      }
+    )
 
     if (indexError) {
       console.log(

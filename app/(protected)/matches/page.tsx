@@ -82,7 +82,10 @@ export default function MatchesPage() {
         .single()
 
       const userInterests = userProfile?.interests || []
-      setCurrentUserData({ bio: userProfile?.bio ?? undefined, interests: userInterests })
+      setCurrentUserData({
+        bio: userProfile?.bio ?? undefined,
+        interests: userInterests,
+      })
 
       let query = supabase
         .from('profiles')
@@ -238,7 +241,10 @@ export default function MatchesPage() {
           .single()
 
         const userInterests = userProfile?.interests || []
-        setCurrentUserData({ bio: userProfile?.bio ?? undefined, interests: userInterests })
+        setCurrentUserData({
+          bio: userProfile?.bio ?? undefined,
+          interests: userInterests,
+        })
 
         // Get favorites
         const { data: favorites } = await supabase

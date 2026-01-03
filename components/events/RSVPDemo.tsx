@@ -198,17 +198,16 @@ export function RSVPDemo() {
                               attendee_count: newCount,
                               spots_remaining: e.capacity - newCount,
                               is_full: newCount >= e.capacity,
-                              user_rsvp:
-                                hasRsvp
-                                  ? {
-                                      id: 'demo-rsvp',
-                                      event_id: event.id,
-                                      user_id: 'demo-user',
-                                      status: 'attending' as const,
-                                      created_at: new Date().toISOString(),
-                                      updated_at: new Date().toISOString(),
-                                    }
-                                  : undefined,
+                              user_rsvp: hasRsvp
+                                ? {
+                                    id: 'demo-rsvp',
+                                    event_id: event.id,
+                                    user_id: 'demo-user',
+                                    status: 'attending' as const,
+                                    created_at: new Date().toISOString(),
+                                    updated_at: new Date().toISOString(),
+                                  }
+                                : undefined,
                             }
                           : e
                       )

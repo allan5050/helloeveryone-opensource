@@ -66,10 +66,7 @@ export function EventList({
               <p className="text-sm text-gray-500">
                 Location: {selectedEvent.location}
               </p>
-              <Button
-                variant="outline"
-                onClick={() => setSelectedEvent(null)}
-              >
+              <Button variant="outline" onClick={() => setSelectedEvent(null)}>
                 Close
               </Button>
             </div>

@@ -68,7 +68,8 @@ export default function AIInsightSection({
         if (cachedInsight.compatibility_reason) {
           setAiInsight({
             compatibilityReason: cachedInsight.compatibility_reason,
-            meetingSuggestions: (cachedInsight.meeting_suggestions as string[]) || [],
+            meetingSuggestions:
+              (cachedInsight.meeting_suggestions as string[]) || [],
           })
           setIsFromCache(true)
           setShowInsight(true) // Auto-expand if we have cached insights

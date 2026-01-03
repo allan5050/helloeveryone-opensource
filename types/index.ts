@@ -77,4 +77,10 @@ export type {
 } from './event'
 
 // Re-export database types
-export type { Database, Json, Tables, TablesInsert, TablesUpdate } from './database'
+export type {
+  Database,
+  Json,
+  Tables,
+  TablesInsert,
+  TablesUpdate,
+} from './database'

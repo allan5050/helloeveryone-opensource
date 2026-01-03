@@ -96,9 +96,12 @@ export async function requestDataPortability(): Promise<PrivacyResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await (supabase.rpc as any)('request_data_portability', {
-      user_id: user.id,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'request_data_portability',
+      {
+        user_id: user.id,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }

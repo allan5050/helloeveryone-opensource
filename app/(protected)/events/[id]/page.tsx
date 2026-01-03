@@ -427,7 +427,9 @@ export default function EventDetailsPage() {
                       <div key={attendee.id} className="flex items-center">
                         <div className="mr-3 flex h-8 w-8 items-center justify-center rounded-full bg-gray-300">
                           <span className="text-xs font-medium text-gray-600">
-                            {attendee.user?.display_name?.charAt(0).toUpperCase() || '?'}
+                            {attendee.user?.display_name
+                              ?.charAt(0)
+                              .toUpperCase() || '?'}
                           </span>
                         </div>
                         <span className="text-sm text-gray-900">

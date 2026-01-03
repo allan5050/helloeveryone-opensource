@@ -97,8 +97,12 @@ export async function EventsList() {
                     <div className="flex items-center">
                       <Calendar className="mr-2 h-4 w-4 text-gray-400" />
                       <div>
-                        <p>{format(new Date(event.start_time), 'MMM dd, yyyy')}</p>
-                        <p className="text-gray-500">{format(new Date(event.start_time), 'h:mm a')}</p>
+                        <p>
+                          {format(new Date(event.start_time), 'MMM dd, yyyy')}
+                        </p>
+                        <p className="text-gray-500">
+                          {format(new Date(event.start_time), 'h:mm a')}
+                        </p>
                       </div>
                     </div>
                   </td>

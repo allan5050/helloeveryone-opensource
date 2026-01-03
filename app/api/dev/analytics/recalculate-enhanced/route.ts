@@ -35,7 +35,10 @@ function parseEmbedding(embedding: string | null | undefined): number[] | null {
   try {
     // Handle PostgreSQL vector format: [1,2,3] or (1,2,3)
     const cleaned = embedding.replace(/[[\]()]/g, '')
-    return cleaned.split(',').map(Number).filter(n => !isNaN(n))
+    return cleaned
+      .split(',')
+      .map(Number)
+      .filter(n => !isNaN(n))
   } catch {
     return null
   }
@@ -246,9 +249,7 @@ function calculateEnhancedMatchScore(
   const embedding1 = parseEmbedding(user1.bio_embedding)
   const embedding2 = parseEmbedding(user2.bio_embedding)
   const semanticScore =
-    embedding1 && embedding2
-      ? cosineSimilarity(embedding1, embedding2)
-      : 0.5
+    embedding1 && embedding2 ? cosineSimilarity(embedding1, embedding2) : 0.5
 
   // 3. Age compatibility
   const ageScore = calculateAgeCompatibility(user1.age, user2.age)
@@ -391,7 +392,10 @@ function calculateJaccardSimilarity(set1: string[], set2: string[]): number {
   return union === 0 ? 0 : intersection / union
 }
 
-function calculateLocationMatch(loc1: string | null, loc2: string | null): number {
+function calculateLocationMatch(
+  loc1: string | null,
+  loc2: string | null
+): number {
   if (!loc1 || !loc2) return 0.5
   if (loc1 === loc2) return 1.0
   const zip1 = parseInt(loc1)

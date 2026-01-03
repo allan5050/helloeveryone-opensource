@@ -33,7 +33,10 @@ export async function searchProfiles(
       .eq('user_id', user.id)
       .single()
 
-    const userPrivacy = (userProfile?.privacy_settings || {}) as Record<string, boolean>
+    const userPrivacy = (userProfile?.privacy_settings || {}) as Record<
+      string,
+      boolean
+    >
 
     // Check mutual visibility rules
     if (filters.age_min !== undefined || filters.age_max !== undefined) {

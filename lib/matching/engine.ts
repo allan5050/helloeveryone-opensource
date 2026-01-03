@@ -23,9 +23,12 @@ export async function calculateMatches(
     }
 
     const supabase = await createClient()
-    const { data, error } = await (supabase.rpc as any)('calculate_user_matches', {
-      target_user_id: userId,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'calculate_user_matches',
+      {
+        target_user_id: userId,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message, matches: [] }

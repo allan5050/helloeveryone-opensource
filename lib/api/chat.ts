@@ -22,8 +22,7 @@ export async function sendMessage(
     }
 
     // Check if user is blocked
-    const { data: blockCheck } = await (supabase
-      .from('blocks') as any)
+    const { data: blockCheck } = await (supabase.from('blocks') as any)
       .select('*')
       .eq('blocker_id', user.id)
       .eq('blocked_id', recipientId)
@@ -96,8 +95,7 @@ export async function blockUser(blockedUserId: string): Promise<ChatResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await (supabase
-      .from('blocks') as any)
+    const { data, error } = await (supabase.from('blocks') as any)
       .insert({
         blocker_id: user.id,
         blocked_id: blockedUserId,
@@ -125,8 +123,7 @@ export async function unblockUser(blockedUserId: string): Promise<ChatResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { error } = await (supabase
-      .from('blocks') as any)
+    const { error } = await (supabase.from('blocks') as any)
       .delete()
       .eq('blocker_id', user.id)
       .eq('blocked_id', blockedUserId)
@@ -209,9 +206,12 @@ export async function getTotalUnreadCount(): Promise<ChatResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await (supabase.rpc as any)('get_total_unread_messages', {
-      user_id: user.id,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'get_total_unread_messages',
+      {
+        user_id: user.id,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }

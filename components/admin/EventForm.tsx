@@ -6,9 +6,9 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
+import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase/client'
 
 const eventSchema = z.object({
@@ -47,8 +47,12 @@ export function EventForm({ event, isEdit = false }: EventFormProps) {
           title: event.title,
           description: event.description,
           start_date: event.start_time ? event.start_time.split('T')[0] : '',
-          start_time: event.start_time ? event.start_time.split('T')[1]?.substring(0, 5) : '',
-          end_time: event.end_time ? event.end_time.split('T')[1]?.substring(0, 5) : '',
+          start_time: event.start_time
+            ? event.start_time.split('T')[1]?.substring(0, 5)
+            : '',
+          end_time: event.end_time
+            ? event.end_time.split('T')[1]?.substring(0, 5)
+            : '',
           location: event.location,
           max_attendees: event.max_attendees,
           is_active: event.is_active ?? true,
@@ -82,13 +86,17 @@ export function EventForm({ event, isEdit = false }: EventFormProps) {
         if (error) throw error
       } else {
         // Get current user for created_by field
-        const { data: { user } } = await supabase.auth.getUser()
+        const {
+          data: { user },
+        } = await supabase.auth.getUser()
         if (!user) throw new Error('User not authenticated')
 
-        const { error } = await supabase.from('events').insert([{
-          ...eventData,
-          created_by: user.id,
-        }])
+        const { error } = await supabase.from('events').insert([
+          {
+            ...eventData,
+            created_by: user.id,
+          },
+        ])
 
         if (error) throw error
       }

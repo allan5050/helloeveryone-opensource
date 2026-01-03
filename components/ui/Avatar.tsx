@@ -40,7 +40,9 @@ export default function Avatar({
   }
 
   // Check if URL is an SVG (like dicebear avatars) - use unoptimized for these
-  const isSvgUrl = Boolean(src && (src.includes('.svg') || src.includes('dicebear.com')))
+  const isSvgUrl = Boolean(
+    src && (src.includes('.svg') || src.includes('dicebear.com'))
+  )
 
   return (
     <div

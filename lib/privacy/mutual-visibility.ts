@@ -24,8 +24,10 @@ export function checkMutualVisibility(
   targetProfile: Partial<Profile>,
   fields: (keyof VisibilityRules)[]
 ): boolean {
-  const userVisibility = (userProfile.privacy_settings as Partial<VisibilityRules>) ?? {}
-  const targetVisibility = (targetProfile.privacy_settings as Partial<VisibilityRules>) ?? {}
+  const userVisibility =
+    (userProfile.privacy_settings as Partial<VisibilityRules>) ?? {}
+  const targetVisibility =
+    (targetProfile.privacy_settings as Partial<VisibilityRules>) ?? {}
 
   return fields.every(
     field => userVisibility[field] === true && targetVisibility[field] === true

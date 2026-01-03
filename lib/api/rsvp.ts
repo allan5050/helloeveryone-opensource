@@ -135,9 +135,12 @@ export async function cancelRsvp(eventId: string): Promise<RsvpResult> {
 export async function checkEventCapacity(eventId: string): Promise<any> {
   try {
     const supabase = await createClient()
-    const { data, error } = await (supabase.rpc as any)('check_event_capacity', {
-      event_id: eventId,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'check_event_capacity',
+      {
+        event_id: eventId,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }

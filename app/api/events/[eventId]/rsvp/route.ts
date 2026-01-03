@@ -23,17 +23,23 @@ export async function POST(
 
     // Try to use handle_rsvp RPC if available, otherwise handle manually
     // Note: The RPC function may not be defined in all environments
-    let data: { success: boolean; error?: string; message?: string; attendee_count?: number; capacity?: number } | null = null
+    let data: {
+      success: boolean
+      error?: string
+      message?: string
+      attendee_count?: number
+      capacity?: number
+    } | null = null
     let error: Error | null = null
 
     try {
       // Note: handle_rsvp is a custom RPC function that may not be in the generated types
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const rpcResult = await (supabase.rpc as any)('handle_rsvp', {
+      const rpcResult = (await (supabase.rpc as any)('handle_rsvp', {
         p_event_id: eventId,
         p_user_id: user.id,
         p_action: action,
-      }) as { data: unknown; error: Error | null }
+      })) as { data: unknown; error: Error | null }
       if (rpcResult.error) {
         throw rpcResult.error
       }
@@ -67,7 +73,11 @@ export async function POST(
               .from('rsvps')
               .select('*', { count: 'exact', head: true })
               .eq('event_id', eventId)
-            data = { success: true, message: 'RSVP created successfully', attendee_count: count || 0 }
+            data = {
+              success: true,
+              message: 'RSVP created successfully',
+              attendee_count: count || 0,
+            }
           }
         }
       } else if (action === 'cancel') {
@@ -84,7 +94,11 @@ export async function POST(
             .from('rsvps')
             .select('*', { count: 'exact', head: true })
             .eq('event_id', eventId)
-          data = { success: true, message: 'RSVP cancelled successfully', attendee_count: count || 0 }
+          data = {
+            success: true,
+            message: 'RSVP cancelled successfully',
+            attendee_count: count || 0,
+          }
         }
       }
     }
@@ -98,7 +112,10 @@ export async function POST(
     }
 
     if (!data || !data.success) {
-      return NextResponse.json({ error: data?.error || 'Failed to process RSVP' }, { status: 400 })
+      return NextResponse.json(
+        { error: data?.error || 'Failed to process RSVP' },
+        { status: 400 }
+      )
     }
 
     // Get event capacity for calculating spots remaining

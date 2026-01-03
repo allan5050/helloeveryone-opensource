@@ -90,12 +90,11 @@ export async function POST(request: NextRequest) {
     } else {
       // Refresh all matches for the profile using the database function
       // Cast to any since the function may not be in the generated types
-      const { data: refreshResult, error: refreshError } = await (supabase.rpc as any)(
-        'refresh_match_scores_for_profile',
-        {
-          target_profile_id: targetProfileId,
-        }
-      )
+      const { data: refreshResult, error: refreshError } = await (
+        supabase.rpc as any
+      )('refresh_match_scores_for_profile', {
+        target_profile_id: targetProfileId,
+      })
 
       if (refreshError) {
         return NextResponse.json(

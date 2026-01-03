@@ -87,7 +87,10 @@ export async function AnalyticsDashboard() {
     avgMatchScore:
       data.matches.length > 0
         ? Math.round(
-            (data.matches.reduce((sum, match) => sum + match.combined_score, 0) /
+            (data.matches.reduce(
+              (sum, match) => sum + match.combined_score,
+              0
+            ) /
               data.matches.length) *
               100
           ) / 100

@@ -81,9 +81,9 @@ export default function ProfileEdit() {
 
           // Cast interests to the expected type since we know they're valid values from the database
           const typedInterests = categorizedInterests as {
-            music_genres: typeof import('@/lib/validations/profile').MUSIC_GENRES[number][]
-            food_preferences: typeof import('@/lib/validations/profile').FOOD_PREFERENCES[number][]
-            activities: typeof import('@/lib/validations/profile').ACTIVITIES[number][]
+            music_genres: (typeof import('@/lib/validations/profile').MUSIC_GENRES)[number][]
+            food_preferences: (typeof import('@/lib/validations/profile').FOOD_PREFERENCES)[number][]
+            activities: (typeof import('@/lib/validations/profile').ACTIVITIES)[number][]
           }
 
           // Cast privacy_settings to the expected type

@@ -45,7 +45,10 @@ export async function POST(request: NextRequest) {
       .single()
 
     if (recipientError || !recipientProfile) {
-      return NextResponse.json({ error: 'Recipient not found' }, { status: 404 })
+      return NextResponse.json(
+        { error: 'Recipient not found' },
+        { status: 404 }
+      )
     }
 
     // Check if either user has blocked the other
