@@ -87,17 +87,13 @@ export function InterestSelector({
               type="button"
               onClick={() => toggleInterest(option)}
               disabled={isDisabled}
-              className={`
-                flex min-h-[44px] items-center justify-center rounded-lg border px-3
-                py-2 text-left text-sm transition-colors
-                ${
-                  isSelected
-                    ? 'border-blue-500 bg-blue-500 text-white'
-                    : isDisabled
-                      ? 'cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400'
-                      : 'border-gray-300 bg-white text-gray-700 hover:border-blue-300 hover:bg-blue-50'
-                }
-              `}
+              className={`flex min-h-[44px] items-center justify-center rounded-lg border px-3 py-2 text-left text-sm transition-colors ${
+                isSelected
+                  ? 'border-blue-500 bg-blue-500 text-white'
+                  : isDisabled
+                    ? 'cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400'
+                    : 'border-gray-300 bg-white text-gray-700 hover:border-blue-300 hover:bg-blue-50'
+              } `}
             >
               {formatLabel(option)}
             </button>

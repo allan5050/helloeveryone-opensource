@@ -114,17 +114,13 @@ export default function RSVPButton({
       <button
         onClick={handleRsvp}
         disabled={loading || (isFull && !hasRsvp)}
-        className={`
-          w-full rounded-lg px-4 py-2 font-medium transition-all duration-200
-          ${loading ? 'cursor-not-allowed opacity-50' : ''}
-          ${
-            hasRsvp
-              ? 'bg-red-600 text-white hover:bg-red-700'
-              : isFull
-                ? 'cursor-not-allowed bg-gray-300 text-gray-500'
-                : 'bg-blue-600 text-white hover:bg-blue-700'
-          }
-        `}
+        className={`w-full rounded-lg px-4 py-2 font-medium transition-all duration-200 ${loading ? 'cursor-not-allowed opacity-50' : ''} ${
+          hasRsvp
+            ? 'bg-red-600 text-white hover:bg-red-700'
+            : isFull
+              ? 'cursor-not-allowed bg-gray-300 text-gray-500'
+              : 'bg-blue-600 text-white hover:bg-blue-700'
+        } `}
       >
         {loading ? (
           <span className="flex items-center justify-center">

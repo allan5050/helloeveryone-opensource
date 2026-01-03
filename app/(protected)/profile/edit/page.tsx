@@ -56,9 +56,8 @@ export default function ProfileEdit() {
 
         if (profile) {
           // Import the interest constants to properly categorize
-          const { MUSIC_GENRES, FOOD_PREFERENCES, ACTIVITIES } = await import(
-            '@/lib/validations/profile'
-          )
+          const { MUSIC_GENRES, FOOD_PREFERENCES, ACTIVITIES } =
+            await import('@/lib/validations/profile')
 
           // Convert flat interests array back to categorized object
           const categorizedInterests = {
