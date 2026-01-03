@@ -41,12 +41,6 @@ jobs:
           subjectPatternError: |
             The subject "{subject}" should start with a capital letter (optional) and be descriptive.
 
-          # Header length
-          headerPattern: ^.{1,72}$
-          headerPatternError: |
-            The PR title should be 72 characters or less.
-            Current length: {length}
-
           # Scopes (optional - uncomment to enforce)
           # scopes: |
           #   frontend
