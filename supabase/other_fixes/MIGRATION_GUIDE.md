@@ -15,6 +15,7 @@
 ## Migration Order
 
 The combined file includes these migrations in order:
+
 1. Initial schema setup (tables, basic functions)
 2. Match score function fixes
 3. Constraint and function fixes
@@ -28,6 +29,7 @@ The combined file includes these migrations in order:
 ## Verification
 
 After running migrations, verify:
+
 - All tables exist (profiles, events, rsvps, etc.)
 - pgvector extension is enabled
 - Functions are created (calculate_match_score, etc.)
@@ -37,6 +39,7 @@ After running migrations, verify:
 ## Troubleshooting
 
 If you get errors about:
+
 - "already exists" - That's OK, the item was already created
 - "permission denied" - Contact Supabase support to enable extensions
 - "syntax error" - Check if you copied the entire file
@@ -44,6 +47,7 @@ If you get errors about:
 ## Alternative Method
 
 Use the Supabase CLI:
+
 ```bash
 # First, get an access token from: https://supabase.com/dashboard/account/tokens
 export SUPABASE_ACCESS_TOKEN=your-token-here

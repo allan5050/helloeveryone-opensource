@@ -20,7 +20,8 @@ export async function POST(request: Request) {
     // Use service role key for admin operations
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      process.env.SUPABASE_SERVICE_ROLE_KEY ||
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
     )
 
     // Check if profile already exists
@@ -31,7 +32,10 @@ export async function POST(request: Request) {
       .single()
 
     if (existingProfile) {
-      return NextResponse.json({ message: 'Profile already exists', profile: existingProfile })
+      return NextResponse.json({
+        message: 'Profile already exists',
+        profile: existingProfile,
+      })
     }
 
     // Create a test profile
@@ -50,7 +54,7 @@ export async function POST(request: Request) {
         preferred_age_max: 45,
         availability: ['weekends', 'evenings'],
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
+        updated_at: new Date().toISOString(),
       })
       .select()
       .single()
@@ -60,9 +64,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 500 })
     }
 
-    return NextResponse.json({ message: 'Profile created successfully', profile: data })
+    return NextResponse.json({
+      message: 'Profile created successfully',
+      profile: data,
+    })
   } catch (error) {
     console.error('Error in create-profile:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
 }

@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import { Calendar, Download, Loader2 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { useState } from 'react'
 import { toast } from 'sonner'
+
+import { Button } from '@/components/ui/button'
 
 interface CalendarButtonProps {
   eventId: string
@@ -140,7 +141,7 @@ export function CalendarIconButton({
       window.URL.revokeObjectURL(url)
 
       toast.success('Added to calendar!')
-    } catch (error) {
+    } catch {
       toast.error('Failed to download calendar file')
     } finally {
       setIsDownloading(false)

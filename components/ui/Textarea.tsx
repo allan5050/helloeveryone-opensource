@@ -1,8 +1,8 @@
 import { forwardRef } from 'react'
+
 import { cn } from '@/lib/utils'
 
-interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   error?: string
 }
 

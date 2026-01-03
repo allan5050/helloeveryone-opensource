@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase/client'
 import { MoreHorizontal, Shield, Ban, Eye, ShieldCheck } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+
+import { createClient } from '@/lib/supabase/client'
 import { Profile } from '@/types/profile'
-import { Database } from '@/types/database'
 
 interface UserActionsProps {
   user: Profile

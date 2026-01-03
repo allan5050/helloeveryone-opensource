@@ -3,6 +3,7 @@
 ## Quick Start
 
 For immediate development setup, see:
+
 1. **[CLAUDE.md](../CLAUDE.md)** - Main project overview and development commands
 2. **[DATABASE_SETUP.md](database/DATABASE_SETUP.md)** - Database initialization
 3. **[.env.example](../.env.example)** - Environment configuration
@@ -46,48 +47,50 @@ docs/
 
 ### Architecture & Design
 
-| Document | Purpose |
-|----------|---------|
+| Document                                            | Purpose                                              |
+| --------------------------------------------------- | ---------------------------------------------------- |
 | **[ARCHITECTURE.md](architecture/ARCHITECTURE.md)** | System architecture, tech stack, directory structure |
-| **[API_ROUTES.md](architecture/API_ROUTES.md)** | Complete API documentation with examples |
+| **[API_ROUTES.md](architecture/API_ROUTES.md)**     | Complete API documentation with examples             |
 
 ### Database
 
-| Document | Purpose |
-|----------|---------|
-| **[DATABASE_SCHEMA.md](database/DATABASE_SCHEMA.md)** | Tables, relationships, RLS policies |
-| **[DATABASE_SETUP.md](database/DATABASE_SETUP.md)** | Database initialization and configuration |
-| **[rls-policies.md](database/rls-policies.md)** | Row Level Security documentation |
+| Document                                              | Purpose                                   |
+| ----------------------------------------------------- | ----------------------------------------- |
+| **[DATABASE_SCHEMA.md](database/DATABASE_SCHEMA.md)** | Tables, relationships, RLS policies       |
+| **[DATABASE_SETUP.md](database/DATABASE_SETUP.md)**   | Database initialization and configuration |
+| **[rls-policies.md](database/rls-policies.md)**       | Row Level Security documentation          |
 
 ### Development Guides
 
-| Document | Purpose |
-|----------|---------|
-| **[AUTHENTICATION.md](development/AUTHENTICATION.md)** | Auth system, server/client auth, OAuth |
-| **[COMPONENTS.md](development/COMPONENTS.md)** | Component structure, guidelines, patterns |
-| **[HOOKS.md](development/HOOKS.md)** | Custom React hooks documentation |
-| **[TESTING.md](development/TESTING.md)** | Testing strategy and examples |
-| **[PWA.md](development/PWA.md)** | Progressive Web App features |
-| **[DEPLOYMENT.md](development/DEPLOYMENT.md)** | Deployment configuration |
-| **[CI_CD_SUMMARY.md](development/CI_CD_SUMMARY.md)** | CI/CD pipeline documentation |
-| **[CYBERSECURITY_SETUP.md](development/CYBERSECURITY_SETUP.md)** | Security setup guide |
-| **[MCP_DATABASE_TOOLS.md](development/MCP_DATABASE_TOOLS.md)** | MCP tools for database access |
+| Document                                                         | Purpose                                   |
+| ---------------------------------------------------------------- | ----------------------------------------- |
+| **[AUTHENTICATION.md](development/AUTHENTICATION.md)**           | Auth system, server/client auth, OAuth    |
+| **[COMPONENTS.md](development/COMPONENTS.md)**                   | Component structure, guidelines, patterns |
+| **[HOOKS.md](development/HOOKS.md)**                             | Custom React hooks documentation          |
+| **[TESTING.md](development/TESTING.md)**                         | Testing strategy and examples             |
+| **[PWA.md](development/PWA.md)**                                 | Progressive Web App features              |
+| **[DEPLOYMENT.md](development/DEPLOYMENT.md)**                   | Deployment configuration                  |
+| **[CI_CD_SUMMARY.md](development/CI_CD_SUMMARY.md)**             | CI/CD pipeline documentation              |
+| **[CYBERSECURITY_SETUP.md](development/CYBERSECURITY_SETUP.md)** | Security setup guide                      |
+| **[MCP_DATABASE_TOOLS.md](development/MCP_DATABASE_TOOLS.md)**   | MCP tools for database access             |
 
 ### Features
 
-| Document | Purpose |
-|----------|---------|
+| Document                                              | Purpose                               |
+| ----------------------------------------------------- | ------------------------------------- |
 | **[MATCHING_SYSTEM.md](features/MATCHING_SYSTEM.md)** | Matching algorithms and scoring logic |
-| **[RSVP_SYSTEM.md](features/RSVP_SYSTEM.md)** | Event RSVP functionality |
+| **[RSVP_SYSTEM.md](features/RSVP_SYSTEM.md)**         | Event RSVP functionality              |
 
 ## Documentation by Use Case
 
 ### New Developer Onboarding
 
 1. **Start Here**: [CLAUDE.md](../CLAUDE.md)
-2. **Environment Setup**: [.env.example](../.env.example) → [DATABASE_SETUP.md](database/DATABASE_SETUP.md)
+2. **Environment Setup**: [.env.example](../.env.example) →
+   [DATABASE_SETUP.md](database/DATABASE_SETUP.md)
 3. **Architecture Understanding**: [ARCHITECTURE.md](architecture/ARCHITECTURE.md)
-4. **Development Flow**: [COMPONENTS.md](development/COMPONENTS.md) + [HOOKS.md](development/HOOKS.md)
+4. **Development Flow**: [COMPONENTS.md](development/COMPONENTS.md) +
+   [HOOKS.md](development/HOOKS.md)
 
 ### API Development
 
@@ -148,21 +151,25 @@ npm run test:security # Security tests
 ### Environment Variables
 
 **Required for Basic Functionality:**
+
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_API_KEY`
 
 **Required for Full Features:**
+
 - `OPENAI_API_KEY` (matching system)
 - `DB_PASSWORD` (database setup)
 
 **Optional Enhancements:**
+
 - `GOOGLE_CLIENT_ID` (OAuth)
 - `NEXT_PUBLIC_SENTRY_DSN` (monitoring)
 
 ## Working Documents
 
-The `working_docs/` folder contains internal working documents that are not part of the public documentation:
+The `working_docs/` folder contains internal working documents that are not part of the public
+documentation:
 
 - **planning/** - Implementation plans and roadmaps
 - **issues/** - Known issues and fix documentation
@@ -174,5 +181,4 @@ These documents are for internal use and may be gitignored.
 
 ---
 
-**Last Updated**: January 2026
-**Documentation Version**: 2.0
+**Last Updated**: January 2026 **Documentation Version**: 2.0

@@ -1,11 +1,12 @@
 'use client'
 
-import { useAuth } from '@/app/contexts/AuthContext'
+import { Settings } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Settings } from 'lucide-react'
+
+import { useAuth } from '@/app/contexts/AuthContext'
 import { createClient } from '@/lib/supabase/client'
 
 interface Profile {
@@ -112,6 +113,10 @@ export default function ProfilePage() {
                     fill
                     sizes="80px"
                     className="rounded-full object-cover"
+                    unoptimized={
+                      profile.photo_url.includes('.svg') ||
+                      profile.photo_url.includes('dicebear.com')
+                    }
                   />
                 </div>
               ) : (

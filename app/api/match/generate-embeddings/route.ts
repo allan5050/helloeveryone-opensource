@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+
 import { requireAuth } from '@/lib/api/auth'
 import { checkRateLimit } from '@/lib/api/rate-limit'
+import { createClient } from '@/lib/supabase/server'
 
 const OPENAI_API_URL = 'https://api.openai.com/v1/embeddings'
 const EMBEDDING_MODEL = 'text-embedding-3-small'
@@ -165,7 +166,7 @@ export async function POST(request: NextRequest) {
 }
 
 // GET endpoint to check embedding status
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const { user } = await requireAuth()
     const supabase = createClient()

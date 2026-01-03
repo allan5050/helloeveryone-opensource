@@ -1,15 +1,15 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { createClient } from '@/lib/supabase/client'
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Database } from '@/types/database'
+import { createClient } from '@/lib/supabase/client'
 
 const eventSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -38,8 +38,8 @@ export function EventForm({ event, isEdit = false }: EventFormProps) {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
-    watch,
+    setValue: _setValue,
+    watch: _watch,
   } = useForm<EventFormData>({
     resolver: zodResolver(eventSchema),
     defaultValues: event

@@ -10,7 +10,8 @@
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as
+      expected)
 - [ ] Documentation update
 - [ ] Code refactoring
 - [ ] Performance improvement
@@ -20,15 +21,16 @@
 ## Related Issue
 
 <!-- Link to the issue this PR addresses -->
+
 Closes #(issue number)
 
 ## Changes Made
 
 <!-- List the main changes in this PR -->
 
-- 
-- 
-- 
+-
+-
+-
 
 ## Screenshots (if applicable)
 
@@ -90,6 +92,7 @@ Closes #(issue number)
 **Does this PR introduce breaking changes?** No / Yes
 
 If yes, please describe:
+
 - What breaks:
 - Migration path:
 - Impact on existing users:

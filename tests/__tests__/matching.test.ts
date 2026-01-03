@@ -60,9 +60,8 @@ describe('Matching Algorithm', () => {
 
   describe('Interest Matching', () => {
     it('should calculate exact interest matches correctly', async () => {
-      const { calculateInterestScore } = await import(
-        '@/lib/matching/interests'
-      )
+      const { calculateInterestScore } =
+        await import('@/lib/matching/interests')
 
       // Test exact matches
       const score1 = calculateInterestScore(
@@ -90,9 +89,8 @@ describe('Matching Algorithm', () => {
     })
 
     it('should handle fuzzy interest matching', async () => {
-      const { calculateInterestScore } = await import(
-        '@/lib/matching/interests'
-      )
+      const { calculateInterestScore } =
+        await import('@/lib/matching/interests')
 
       // Test similar interests
       const score = calculateInterestScore(
@@ -105,9 +103,8 @@ describe('Matching Algorithm', () => {
     })
 
     it('should weight exact matches higher than fuzzy matches', async () => {
-      const { calculateInterestScore } = await import(
-        '@/lib/matching/interests'
-      )
+      const { calculateInterestScore } =
+        await import('@/lib/matching/interests')
 
       const exactScore = calculateInterestScore(
         ['hiking', 'reading'],
@@ -123,9 +120,8 @@ describe('Matching Algorithm', () => {
     })
 
     it('should handle empty interest arrays', async () => {
-      const { calculateInterestScore } = await import(
-        '@/lib/matching/interests'
-      )
+      const { calculateInterestScore } =
+        await import('@/lib/matching/interests')
 
       const score1 = calculateInterestScore([], ['hiking', 'reading'])
       expect(score1.total_score).toBe(0)
@@ -140,9 +136,8 @@ describe('Matching Algorithm', () => {
 
   describe('Bio Semantic Similarity', () => {
     it('should calculate cosine similarity correctly', async () => {
-      const { calculateCosineSimilarity } = await import(
-        '@/lib/matching/semantic'
-      )
+      const { calculateCosineSimilarity } =
+        await import('@/lib/matching/semantic')
 
       // Test identical vectors
       const vec1 = [1, 0, 0]
@@ -164,9 +159,8 @@ describe('Matching Algorithm', () => {
     })
 
     it('should handle zero vectors', async () => {
-      const { calculateCosineSimilarity } = await import(
-        '@/lib/matching/semantic'
-      )
+      const { calculateCosineSimilarity } =
+        await import('@/lib/matching/semantic')
 
       const zeroVec = [0, 0, 0]
       const nonZeroVec = [1, 2, 3]
@@ -176,9 +170,8 @@ describe('Matching Algorithm', () => {
     })
 
     it('should normalize similarity scores to 0-1 range', async () => {
-      const { normalizeSimilarityScore } = await import(
-        '@/lib/matching/semantic'
-      )
+      const { normalizeSimilarityScore } =
+        await import('@/lib/matching/semantic')
 
       // Cosine similarity ranges from -1 to 1, should normalize to 0-1
       expect(normalizeSimilarityScore(-1)).toBeCloseTo(0, 2)
@@ -242,9 +235,8 @@ describe('Matching Algorithm', () => {
     })
 
     it('should calculate availability overlap', async () => {
-      const { calculateAvailabilityScore } = await import(
-        '@/lib/matching/availability'
-      )
+      const { calculateAvailabilityScore } =
+        await import('@/lib/matching/availability')
 
       const availability1 = {
         weekdays: ['monday', 'tuesday', 'wednesday'],
@@ -481,9 +473,8 @@ describe('Matching Algorithm', () => {
     })
 
     it('should handle empty embedding vectors', async () => {
-      const { calculateCosineSimilarity } = await import(
-        '@/lib/matching/semantic'
-      )
+      const { calculateCosineSimilarity } =
+        await import('@/lib/matching/semantic')
 
       const emptyVec = []
       const normalVec = [1, 2, 3]

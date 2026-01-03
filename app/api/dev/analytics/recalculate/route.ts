@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+
 import { createClient } from '@/lib/supabase/server'
 
 // SECURITY: Only allow in development environment
@@ -51,7 +52,10 @@ function calculateJaccardSimilarity(set1: string[], set2: string[]): number {
 }
 
 // Fuzzy match interests (for partial matches)
-function fuzzyInterestMatch(interests1: string[], interests2: string[]): number {
+function fuzzyInterestMatch(
+  interests1: string[],
+  interests2: string[]
+): number {
   if (!interests1?.length || !interests2?.length) return 0
 
   let matches = 0
@@ -70,7 +74,15 @@ function fuzzyInterestMatch(interests1: string[], interests2: string[]): number 
         break
       }
       // Category match (e.g., both contain "tech")
-      const commonWords = ['tech', 'science', 'data', 'fitness', 'music', 'food', 'travel']
+      const commonWords = [
+        'tech',
+        'science',
+        'data',
+        'fitness',
+        'music',
+        'food',
+        'travel',
+      ]
       for (const word of commonWords) {
         if (i1.includes(word) && i2.includes(word)) {
           matches += 0.3
@@ -114,14 +126,21 @@ function calculateLocationMatch(loc1: string, loc2: string): number {
 // Advanced match calculation with multiple dimensions
 function calculateAdvancedMatchScore(user1: User, user2: User) {
   // 1. Interest similarity (exact + fuzzy)
-  const exactInterestScore = calculateJaccardSimilarity(user1.interests || [], user2.interests || [])
-  const fuzzyInterestScore = fuzzyInterestMatch(user1.interests || [], user2.interests || [])
-  const interestScore = (exactInterestScore * 0.7) + (fuzzyInterestScore * 0.3)
+  const exactInterestScore = calculateJaccardSimilarity(
+    user1.interests || [],
+    user2.interests || []
+  )
+  const fuzzyInterestScore = fuzzyInterestMatch(
+    user1.interests || [],
+    user2.interests || []
+  )
+  const interestScore = exactInterestScore * 0.7 + fuzzyInterestScore * 0.3
 
   // 2. Bio semantic similarity (if embeddings available)
-  const semanticScore = user1.bio_embedding && user2.bio_embedding
-    ? cosineSimilarity(user1.bio_embedding, user2.bio_embedding)
-    : 0.5
+  const semanticScore =
+    user1.bio_embedding && user2.bio_embedding
+      ? cosineSimilarity(user1.bio_embedding, user2.bio_embedding)
+      : 0.5
 
   // 3. Age compatibility
   const ageScore = calculateAgeCompatibility(user1.age, user2.age)
@@ -130,25 +149,31 @@ function calculateAdvancedMatchScore(user1: User, user2: User) {
   const locationScore = calculateLocationMatch(user1.location, user2.location)
 
   // 5. Profile completeness bonus
-  const completeness1 = [user1.bio, user1.interests?.length, user1.age, user1.location].filter(x => x).length / 4
-  const completeness2 = [user2.bio, user2.interests?.length, user2.age, user2.location].filter(x => x).length / 4
+  const completeness1 =
+    [user1.bio, user1.interests?.length, user1.age, user1.location].filter(
+      x => x
+    ).length / 4
+  const completeness2 =
+    [user2.bio, user2.interests?.length, user2.age, user2.location].filter(
+      x => x
+    ).length / 4
   const completenessBonus = (completeness1 + completeness2) / 2
 
   // Weighted combination
   const weights = {
-    interests: 0.35,    // 35% - Common interests are key
-    semantic: 0.25,     // 25% - Bio compatibility
-    age: 0.15,          // 15% - Age proximity
-    location: 0.15,     // 15% - Geographic proximity
-    completeness: 0.10  // 10% - Profile quality bonus
+    interests: 0.35, // 35% - Common interests are key
+    semantic: 0.25, // 25% - Bio compatibility
+    age: 0.15, // 15% - Age proximity
+    location: 0.15, // 15% - Geographic proximity
+    completeness: 0.1, // 10% - Profile quality bonus
   }
 
   const overallScore =
-    (interestScore * weights.interests) +
-    (semanticScore * weights.semantic) +
-    (ageScore * weights.age) +
-    (locationScore * weights.location) +
-    (completenessBonus * weights.completeness)
+    interestScore * weights.interests +
+    semanticScore * weights.semantic +
+    ageScore * weights.age +
+    locationScore * weights.location +
+    completenessBonus * weights.completeness
 
   return {
     score: overallScore,
@@ -163,30 +188,30 @@ function calculateAdvancedMatchScore(user1: User, user2: User) {
         fuzzy: fuzzyInterestScore,
         combined: interestScore,
         weight: weights.interests,
-        contribution: interestScore * weights.interests
+        contribution: interestScore * weights.interests,
       },
       semantic: {
         score: semanticScore,
         weight: weights.semantic,
-        contribution: semanticScore * weights.semantic
+        contribution: semanticScore * weights.semantic,
       },
       age: {
         score: ageScore,
         diff: Math.abs((user1.age || 0) - (user2.age || 0)),
         weight: weights.age,
-        contribution: ageScore * weights.age
+        contribution: ageScore * weights.age,
       },
       location: {
         score: locationScore,
         weight: weights.location,
-        contribution: locationScore * weights.location
+        contribution: locationScore * weights.location,
       },
       quality: {
         score: completenessBonus,
         weight: weights.completeness,
-        contribution: completenessBonus * weights.completeness
-      }
-    }
+        contribution: completenessBonus * weights.completeness,
+      },
+    },
   }
 }
 
@@ -200,7 +225,9 @@ export async function POST() {
     // Fetch all demo users with embeddings if available
     const { data: users, error } = await supabase
       .from('profiles')
-      .select('user_id, display_name, age, location, interests, bio, bio_embedding')
+      .select(
+        'user_id, display_name, age, location, interests, bio, bio_embedding'
+      )
       .like('display_name', 'Demo:%')
 
     if (error) {
@@ -222,7 +249,7 @@ export async function POST() {
           user2_id: users[j].user_id,
           user1_name: users[i].display_name,
           user2_name: users[j].display_name,
-          ...matchData
+          ...matchData,
         })
       }
     }
@@ -240,12 +267,16 @@ export async function POST() {
         total_pairs: scores.length,
         avg_score: scores.reduce((a, b) => a + b.score, 0) / scores.length,
         strong_matches: scores.filter(s => s.score > 0.7).length,
-        medium_matches: scores.filter(s => s.score >= 0.5 && s.score <= 0.7).length,
-        weak_matches: scores.filter(s => s.score < 0.5).length
-      }
+        medium_matches: scores.filter(s => s.score >= 0.5 && s.score <= 0.7)
+          .length,
+        weak_matches: scores.filter(s => s.score < 0.5).length,
+      },
     })
   } catch (error) {
     console.error('Unexpected error:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
 }

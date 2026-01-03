@@ -69,7 +69,7 @@ export async function searchProfiles(
     }
 
     return { success: true, data: data || [] }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }

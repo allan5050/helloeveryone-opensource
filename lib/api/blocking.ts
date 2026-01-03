@@ -32,7 +32,7 @@ export async function blockUser(
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -61,7 +61,7 @@ export async function unblockUser(
     }
 
     return { success: true }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -87,7 +87,7 @@ export async function getBlockedUsers(): Promise<BlockingResult> {
     }
 
     return { success: true, data: data || [] }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }

@@ -1,10 +1,12 @@
 'use client'
 
 import { useState } from 'react'
+
+import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { EventWithRSVP } from '@/types/events'
+
 import { EventCard } from './EventCard'
 import { EventDetails } from './EventDetails'
-import { Dialog, DialogContent } from '@/components/ui/dialog'
 
 interface EventListProps {
   events: EventWithRSVP[]

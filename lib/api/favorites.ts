@@ -52,7 +52,7 @@ export async function addToFavorites(
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -84,7 +84,7 @@ export async function removeFromFavorites(
     }
 
     return { success: true }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -115,7 +115,7 @@ export async function getUserFavorites(
     }
 
     return { success: true, data: data || [] }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -140,7 +140,7 @@ export async function getMutualFavorites(): Promise<FavoriteResult> {
     }
 
     return { success: true, data: data || [] }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -168,7 +168,7 @@ export async function checkMutualFavorite(
     }
 
     return { success: true, is_mutual: data?.is_mutual || false }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -196,7 +196,7 @@ export async function getFavoriteNotifications(): Promise<FavoriteResult> {
     }
 
     return { success: true, data: data || [] }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -219,7 +219,7 @@ export async function getPublicFavorites(
     }
 
     return { success: true, data: data || [] }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -245,7 +245,7 @@ export async function getFavoritesCount(): Promise<FavoriteResult> {
     }
 
     return { success: true, count: count || 0 }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -270,7 +270,7 @@ export async function getMutualFavoritesCount(): Promise<FavoriteResult> {
     }
 
     return { success: true, count: data?.count || 0 }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -296,7 +296,7 @@ export async function getFavoritedByCount(): Promise<FavoriteResult> {
     }
 
     return { success: true, count: count || 0 }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }

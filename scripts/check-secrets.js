@@ -4,9 +4,9 @@
  * Prevents committing sensitive data like API keys, passwords, and tokens
  */
 
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+const { execSync } = require('child_process')
+const fs = require('fs')
+const path = require('path')
 
 // ANSI colors for terminal output
 const colors = {
@@ -16,13 +16,14 @@ const colors = {
   blue: '\x1b[34m',
   reset: '\x1b[0m',
   bold: '\x1b[1m',
-};
+}
 
 // Secret patterns to detect
 const SECRET_PATTERNS = [
   // API Keys
   {
-    pattern: /SUPABASE_SERVICE_ROLE_KEY\s*=\s*["']?eyJ[A-Za-z0-9_-]{100,}["']?/gi,
+    pattern:
+      /SUPABASE_SERVICE_ROLE_KEY\s*=\s*["']?eyJ[A-Za-z0-9_-]{100,}["']?/gi,
     name: 'Supabase Service Role Key',
     severity: 'CRITICAL',
   },
@@ -46,7 +47,7 @@ const SECRET_PATTERNS = [
     name: 'Google OAuth Secret',
     severity: 'HIGH',
   },
-  
+
   // Generic patterns
   {
     pattern: /-----BEGIN (RSA |DSA )?PRIVATE KEY-----/gi,
@@ -63,14 +64,14 @@ const SECRET_PATTERNS = [
     name: 'Potential Secret Pair',
     severity: 'MEDIUM',
   },
-  
+
   // Supabase URLs with project IDs
   {
     pattern: /https:\/\/[a-z]{20}\.supabase\.co/gi,
     name: 'Supabase Project URL (may expose project ID)',
     severity: 'LOW',
   },
-];
+]
 
 // Files/patterns to ignore
 const IGNORE_PATTERNS = [
@@ -85,7 +86,7 @@ const IGNORE_PATTERNS = [
   '.claude/agents/',
   'node_modules/',
   '.git/',
-];
+]
 
 // Safe placeholder patterns that are OK
 const SAFE_PLACEHOLDERS = [
@@ -96,50 +97,53 @@ const SAFE_PLACEHOLDERS = [
   'your-project-ref',
   'YOUR_',
   'sk-ant-your-',
-];
+]
 
 function shouldIgnoreFile(filePath) {
-  return IGNORE_PATTERNS.some(pattern => filePath.includes(pattern));
+  return IGNORE_PATTERNS.some(pattern => filePath.includes(pattern))
 }
 
 function isSafePlaceholder(match) {
-  return SAFE_PLACEHOLDERS.some(placeholder => 
+  return SAFE_PLACEHOLDERS.some(placeholder =>
     match.toLowerCase().includes(placeholder.toLowerCase())
-  );
+  )
 }
 
 function getStagedFiles() {
   try {
     const output = execSync('git diff --cached --name-only --diff-filter=ACM', {
       encoding: 'utf8',
-    });
-    return output.trim().split('\n').filter(Boolean);
+    })
+    return output.trim().split('\n').filter(Boolean)
   } catch (error) {
-    console.error(`${colors.red}Error getting staged files:${colors.reset}`, error.message);
-    return [];
+    console.error(
+      `${colors.red}Error getting staged files:${colors.reset}`,
+      error.message
+    )
+    return []
   }
 }
 
 function scanFile(filePath) {
   if (!fs.existsSync(filePath)) {
-    return [];
+    return []
   }
 
-  const content = fs.readFileSync(filePath, 'utf8');
-  const findings = [];
+  const content = fs.readFileSync(filePath, 'utf8')
+  const findings = []
 
   SECRET_PATTERNS.forEach(({ pattern, name, severity }) => {
-    const matches = content.matchAll(pattern);
-    
+    const matches = content.matchAll(pattern)
+
     for (const match of matches) {
       // Skip safe placeholders
       if (isSafePlaceholder(match[0])) {
-        continue;
+        continue
       }
 
       // Find line number
-      const beforeMatch = content.substring(0, match.index);
-      const lineNumber = beforeMatch.split('\n').length;
+      const beforeMatch = content.substring(0, match.index)
+      const lineNumber = beforeMatch.split('\n').length
 
       findings.push({
         file: filePath,
@@ -147,89 +151,97 @@ function scanFile(filePath) {
         name,
         severity,
         match: match[0].substring(0, 50) + '...', // Truncate for safety
-      });
+      })
     }
-  });
+  })
 
-  return findings;
+  return findings
 }
 
 function main() {
-  console.log(`\n${colors.blue}${colors.bold}🔒 Running Secret Scanner...${colors.reset}\n`);
+  console.log(
+    `\n${colors.blue}${colors.bold}🔒 Running Secret Scanner...${colors.reset}\n`
+  )
 
-  const stagedFiles = getStagedFiles();
-  
+  const stagedFiles = getStagedFiles()
+
   if (stagedFiles.length === 0) {
-    console.log(`${colors.yellow}No staged files to scan.${colors.reset}\n`);
-    return 0;
+    console.log(`${colors.yellow}No staged files to scan.${colors.reset}\n`)
+    return 0
   }
 
-  console.log(`Scanning ${stagedFiles.length} staged files...\n`);
+  console.log(`Scanning ${stagedFiles.length} staged files...\n`)
 
-  let allFindings = [];
+  let allFindings = []
 
   for (const file of stagedFiles) {
     if (shouldIgnoreFile(file)) {
-      continue;
+      continue
     }
 
-    const findings = scanFile(file);
-    allFindings = allFindings.concat(findings);
+    const findings = scanFile(file)
+    allFindings = allFindings.concat(findings)
   }
 
   if (allFindings.length === 0) {
-    console.log(`${colors.green}${colors.bold}✓ No secrets detected!${colors.reset}\n`);
-    return 0;
+    console.log(
+      `${colors.green}${colors.bold}✓ No secrets detected!${colors.reset}\n`
+    )
+    return 0
   }
 
   // Report findings
-  console.log(`${colors.red}${colors.bold}✗ SECRETS DETECTED!${colors.reset}\n`);
-  console.log(`Found ${allFindings.length} potential secret(s):\n`);
+  console.log(`${colors.red}${colors.bold}✗ SECRETS DETECTED!${colors.reset}\n`)
+  console.log(`Found ${allFindings.length} potential secret(s):\n`)
 
-  const criticalFindings = allFindings.filter(f => f.severity === 'CRITICAL');
-  const highFindings = allFindings.filter(f => f.severity === 'HIGH');
-  const mediumFindings = allFindings.filter(f => f.severity === 'MEDIUM');
-  const lowFindings = allFindings.filter(f => f.severity === 'LOW');
+  const criticalFindings = allFindings.filter(f => f.severity === 'CRITICAL')
+  const highFindings = allFindings.filter(f => f.severity === 'HIGH')
+  const mediumFindings = allFindings.filter(f => f.severity === 'MEDIUM')
+  const lowFindings = allFindings.filter(f => f.severity === 'LOW')
 
   const printFindings = (findings, color) => {
     findings.forEach(({ file, line, name, severity, match }) => {
-      console.log(`  ${color}[${severity}]${colors.reset} ${name}`);
-      console.log(`    File: ${file}:${line}`);
-      console.log(`    Match: ${match}`);
-      console.log();
-    });
-  };
+      console.log(`  ${color}[${severity}]${colors.reset} ${name}`)
+      console.log(`    File: ${file}:${line}`)
+      console.log(`    Match: ${match}`)
+      console.log()
+    })
+  }
 
   if (criticalFindings.length > 0) {
-    console.log(`${colors.red}CRITICAL:${colors.reset}`);
-    printFindings(criticalFindings, colors.red);
+    console.log(`${colors.red}CRITICAL:${colors.reset}`)
+    printFindings(criticalFindings, colors.red)
   }
-  
+
   if (highFindings.length > 0) {
-    console.log(`${colors.red}HIGH:${colors.reset}`);
-    printFindings(highFindings, colors.red);
+    console.log(`${colors.red}HIGH:${colors.reset}`)
+    printFindings(highFindings, colors.red)
   }
 
   if (mediumFindings.length > 0) {
-    console.log(`${colors.yellow}MEDIUM:${colors.reset}`);
-    printFindings(mediumFindings, colors.yellow);
+    console.log(`${colors.yellow}MEDIUM:${colors.reset}`)
+    printFindings(mediumFindings, colors.yellow)
   }
 
   if (lowFindings.length > 0) {
-    console.log(`${colors.blue}LOW:${colors.reset}`);
-    printFindings(lowFindings, colors.blue);
+    console.log(`${colors.blue}LOW:${colors.reset}`)
+    printFindings(lowFindings, colors.blue)
   }
 
-  console.log(`${colors.red}${colors.bold}❌ COMMIT BLOCKED${colors.reset}`);
-  console.log(`\nTo fix:`);
-  console.log(`  1. Remove the secrets from the files above`);
-  console.log(`  2. Use environment variables instead (.env.local)`);
-  console.log(`  3. If this is a false positive, update scripts/check-secrets.js\n`);
-  console.log(`${colors.yellow}IMPORTANT:${colors.reset} If you already committed secrets:`);
-  console.log(`  1. Revoke/rotate all exposed credentials immediately`);
-  console.log(`  2. See SECURITY.md for incident response steps\n`);
+  console.log(`${colors.red}${colors.bold}❌ COMMIT BLOCKED${colors.reset}`)
+  console.log(`\nTo fix:`)
+  console.log(`  1. Remove the secrets from the files above`)
+  console.log(`  2. Use environment variables instead (.env.local)`)
+  console.log(
+    `  3. If this is a false positive, update scripts/check-secrets.js\n`
+  )
+  console.log(
+    `${colors.yellow}IMPORTANT:${colors.reset} If you already committed secrets:`
+  )
+  console.log(`  1. Revoke/rotate all exposed credentials immediately`)
+  console.log(`  2. See SECURITY.md for incident response steps\n`)
 
-  return 1; // Exit with error to block commit
+  return 1 // Exit with error to block commit
 }
 
-process.exit(main());
+process.exit(main())

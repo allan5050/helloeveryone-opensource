@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
-import { requireAuth } from '@/lib/api/auth'
 import { z } from 'zod'
+
+import { requireAuth } from '@/lib/api/auth'
+import { createClient } from '@/lib/supabase/server'
 
 // Validation schemas
 const rsvpRequestSchema = z.object({
@@ -14,12 +15,6 @@ const rsvpRequestSchema = z.object({
 const rsvpQuerySchema = z.object({
   eventId: z.string().uuid('Invalid event ID format'),
 })
-
-// Type definitions
-interface RSVPRequest {
-  eventId: string
-  action: 'create' | 'cancel'
-}
 
 interface RSVPResponse {
   success?: boolean

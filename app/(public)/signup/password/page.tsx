@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { useAuth } from '@/app/contexts/AuthContext'
-import { useRouter } from 'next/navigation'
 import { Heart, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+
+import { useAuth } from '@/app/contexts/AuthContext'
 
 export default function SignUpPasswordPage() {
   const [password, setPassword] = useState('')
@@ -13,11 +14,13 @@ export default function SignUpPasswordPage() {
   const [message, setMessage] = useState('')
   const router = useRouter()
   const { signUp } = useAuth()
-  
+
   const [email, setEmail] = useState('')
 
   // Development mode flag - set to true for local testing without Supabase
-  const DEV_MODE = process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_SKIP_AUTH === 'true'
+  const DEV_MODE =
+    process.env.NODE_ENV === 'development' &&
+    process.env.NEXT_PUBLIC_SKIP_AUTH === 'true'
 
   useEffect(() => {
     // Get email from session storage
@@ -44,7 +47,10 @@ export default function SignUpPasswordPage() {
 
     // Development mode - skip actual signup
     if (DEV_MODE) {
-      console.log('DEV MODE: Would create account with:', { email, password: '***' })
+      console.log('DEV MODE: Would create account with:', {
+        email,
+        password: '***',
+      })
       setMessage('DEV MODE: Account created! Redirecting...')
       sessionStorage.removeItem('signup-email')
       sessionStorage.setItem('dev-user-email', email)
@@ -59,10 +65,19 @@ export default function SignUpPasswordPage() {
 
     if (error) {
       // Check for CORS error
-      if (error.message.includes('NetworkError') || error.message.includes('CORS')) {
-        setError('Connection error. Please check LOCAL_AUTH_SETUP.md for Supabase configuration.')
-        console.error('CORS Error: Make sure to add localhost URLs to Supabase redirect URLs.')
-        console.log('Quick fix: Go to https://app.supabase.com/project/amarmxbvuzxakjzvntzv/auth/url-configuration')
+      if (
+        error.message.includes('NetworkError') ||
+        error.message.includes('CORS')
+      ) {
+        setError(
+          'Connection error. Please check LOCAL_AUTH_SETUP.md for Supabase configuration.'
+        )
+        console.error(
+          'CORS Error: Make sure to add localhost URLs to Supabase redirect URLs.'
+        )
+        console.log(
+          'Quick fix: Go to https://app.supabase.com/project/amarmxbvuzxakjzvntzv/auth/url-configuration'
+        )
       } else {
         setError(error.message)
       }
@@ -100,16 +115,16 @@ export default function SignUpPasswordPage() {
           onClick={handleBack}
           className="mb-6 flex items-center text-sm text-gray-600 hover:text-gray-900"
         >
-          <ArrowLeft className="h-4 w-4 mr-1" />
+          <ArrowLeft className="mr-1 h-4 w-4" />
           Back
         </button>
 
         {/* Main Form */}
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <h1 className="mb-2 text-2xl font-bold text-gray-900">
             Create a password
           </h1>
-          <p className="text-sm text-gray-600 mb-6">
+          <p className="mb-6 text-sm text-gray-600">
             Make it at least 6 characters
           </p>
         </div>
@@ -126,11 +141,9 @@ export default function SignUpPasswordPage() {
               className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
             />
-            {error && (
-              <p className="mt-2 text-sm text-red-600">{error}</p>
-            )}
+            {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
             {message && (
               <p className="mt-2 text-sm text-green-600">{message}</p>
             )}
@@ -139,7 +152,7 @@ export default function SignUpPasswordPage() {
           <button
             type="submit"
             disabled={loading || password.length < 6}
-            className="w-full rounded-lg bg-indigo-600 px-4 py-3 text-white font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full rounded-lg bg-indigo-600 px-4 py-3 font-medium text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? 'Creating account...' : 'Create account'}
           </button>
@@ -154,7 +167,7 @@ export default function SignUpPasswordPage() {
 
         {/* Dev mode indicator */}
         {DEV_MODE && (
-          <div className="mt-4 p-2 bg-yellow-50 border border-yellow-200 rounded text-xs text-yellow-800 text-center">
+          <div className="mt-4 rounded border border-yellow-200 bg-yellow-50 p-2 text-center text-xs text-yellow-800">
             DEV MODE: Auth bypass enabled
           </div>
         )}

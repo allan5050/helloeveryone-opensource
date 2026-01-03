@@ -76,7 +76,7 @@ describe('MobileNav', () => {
 
   it('applies active styles correctly', () => {
     mockUsePathname.mockReturnValue('/events')
-    const { container } = render(<MobileNav />)
+    render(<MobileNav />)
 
     const eventsLink = screen.getByRole('link', {
       name: /Events.*current page/,

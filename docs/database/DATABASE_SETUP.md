@@ -2,7 +2,8 @@
 
 ## Complete Supabase Database Setup Instructions
 
-NOTE: you can use MCP tools to directly query Supabase to get the latest info because this document might go out of date (see 'C:\Users\Allan\source\repos\helloeveryone\mcp')
+NOTE: you can use MCP tools to directly query Supabase to get the latest info because this document
+might go out of date (see 'C:\Users\Allan\source\repos\helloeveryone\mcp')
 
 ### Prerequisites
 

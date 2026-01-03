@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
 import { Search } from 'lucide-react'
-import { Input } from '@/components/ui/Input'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useState } from 'react'
 
 export function UsersSearch() {
   const router = useRouter()

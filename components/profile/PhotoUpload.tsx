@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useRef } from 'react'
 import Image from 'next/image'
-import { createClient } from '@/lib/supabase/client'
+import { useState, useRef } from 'react'
+
 import { useAuth } from '@/app/contexts/AuthContext'
+import { createClient } from '@/lib/supabase/client'
 
 interface PhotoUploadProps {
   currentPhotoUrl?: string

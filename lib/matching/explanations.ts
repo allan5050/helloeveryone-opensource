@@ -202,7 +202,7 @@ export class MatchExplainer {
 
   private static generateSummary(
     data: MatchExplanationData,
-    strengths: string[]
+    _strengths: string[]
   ): string {
     const parts: string[] = []
     const sharedCount = data.sharedInterests?.length || 0
@@ -226,7 +226,7 @@ export class MatchExplainer {
     }
 
     const summary = parts.join(', ')
-    return summary.charAt(0).toUpperCase() + summary.slice(1) + '.'
+    return `${summary.charAt(0).toUpperCase() + summary.slice(1)}.`
   }
 
   static getMatchStrength(overallScore: number): {

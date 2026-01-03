@@ -62,7 +62,7 @@ jobs:
             ### Installation
 
             ```bash
-            git clone https://github.com/allan5050/helloeveryone.git
+            git clone https://github.com/allan5050/helloeveryone-opensource.git
             cd helloeveryone
             npm install
             cp env.example .env.local

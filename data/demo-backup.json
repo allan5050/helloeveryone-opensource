@@ -16,14 +16,7 @@
       "bio": "Software engineer who loves basketball, BBQ, and building robots with my kids on weekends.",
       "age": 36,
       "location": "94107",
-      "interests": [
-        "basketball",
-        "sports",
-        "coaching",
-        "fitness",
-        "sports-analytics",
-        "warriors"
-      ],
+      "interests": ["basketball", "sports", "coaching", "fitness", "sports-analytics", "warriors"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -34,13 +27,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=david",
       "preferred_age_min": 30,
       "preferred_age_max": 42,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "weekends"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -54,14 +42,7 @@
       "bio": "Senior data analyst in fintech. Dog mom to two rescues. Love trail running and true crime podcasts.",
       "age": 35,
       "location": "94110",
-      "interests": [
-        "running",
-        "hiking",
-        "trail-running",
-        "outdoor-fitness",
-        "marathons",
-        "strava"
-      ],
+      "interests": ["running", "hiking", "trail-running", "outdoor-fitness", "marathons", "strava"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -72,14 +53,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
       "preferred_age_min": 30,
       "preferred_age_max": 42,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "mornings",
-        "weekends"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["mornings", "weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -93,14 +68,7 @@
       "bio": "Product manager in fintech. Yoga instructor, foodie, and dog walker volunteer.",
       "age": 33,
       "location": "94103",
-      "interests": [
-        "product-management",
-        "fintech",
-        "venture-capital",
-        "startups",
-        "networking",
-        "ted-talks"
-      ],
+      "interests": ["product-management", "fintech", "venture-capital", "startups", "networking", "ted-talks"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -111,14 +79,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=jennifer",
       "preferred_age_min": 28,
       "preferred_age_max": 40,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "mornings",
-        "evenings"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["mornings", "evenings"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -132,14 +94,7 @@
       "bio": "AI researcher focused on NLP. Jazz enthusiast, amateur chef, and proud dad of twin toddlers.",
       "age": 38,
       "location": "94102",
-      "interests": [
-        "farmers-markets",
-        "organic-cooking",
-        "wine-tasting",
-        "cheese-making",
-        "slow-food",
-        "gardening"
-      ],
+      "interests": ["farmers-markets", "organic-cooking", "wine-tasting", "cheese-making", "slow-food", "gardening"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -150,13 +105,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=marcus",
       "preferred_age_min": 32,
       "preferred_age_max": 45,
-      "looking_for": [
-        "friendship",
-        "professional-networking"
-      ],
-      "availability": [
-        "evenings"
-      ],
+      "looking_for": ["friendship", "professional-networking"],
+      "availability": ["evenings"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -188,13 +138,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=rachel",
       "preferred_age_min": 35,
       "preferred_age_max": 48,
-      "looking_for": [
-        "friendship",
-        "professional-networking"
-      ],
-      "availability": [
-        "mornings"
-      ],
+      "looking_for": ["friendship", "professional-networking"],
+      "availability": ["mornings"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -208,14 +153,7 @@
       "bio": "ML engineer who loves coffee and cooking. Big on travel and volunteering for local tech meetups.",
       "age": 29,
       "location": "94107",
-      "interests": [
-        "machine-learning",
-        "ai-research",
-        "kaggle",
-        "deep-learning",
-        "pytorch",
-        "arxiv"
-      ],
+      "interests": ["machine-learning", "ai-research", "kaggle", "deep-learning", "pytorch", "arxiv"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -226,13 +164,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=alex",
       "preferred_age_min": 25,
       "preferred_age_max": 35,
-      "looking_for": [
-        "friendship",
-        "professional-networking"
-      ],
-      "availability": [
-        "weekends"
-      ],
+      "looking_for": ["friendship", "professional-networking"],
+      "availability": ["weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -246,14 +179,7 @@
       "bio": "Data engineer building ETL pipelines. Sci-fi book club organizer, coffee snob, and urban gardener.",
       "age": 30,
       "location": "94103",
-      "interests": [
-        "indie-music",
-        "folk-music",
-        "writing",
-        "concerts",
-        "poetry",
-        "zines"
-      ],
+      "interests": ["indie-music", "folk-music", "writing", "concerts", "poetry", "zines"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -264,14 +190,8 @@
       "photo_url": "/images/emily_zhang.jpg",
       "preferred_age_min": 26,
       "preferred_age_max": 36,
-      "looking_for": [
-        "friendship",
-        "book-club"
-      ],
-      "availability": [
-        "evenings",
-        "weekends"
-      ],
+      "looking_for": ["friendship", "book-club"],
+      "availability": ["evenings", "weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -285,14 +205,7 @@
       "bio": "Marketing director in ad-tech. Golf player, wine enthusiast, and father of a 5-year-old.",
       "age": 39,
       "location": "94102",
-      "interests": [
-        "marketing",
-        "ad-tech",
-        "golf",
-        "wine-tasting",
-        "business-strategy",
-        "investing"
-      ],
+      "interests": ["marketing", "ad-tech", "golf", "wine-tasting", "business-strategy", "investing"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -303,13 +216,8 @@
       "photo_url": "/images/michael_brown.jpg",
       "preferred_age_min": 33,
       "preferred_age_max": 45,
-      "looking_for": [
-        "friendship",
-        "professional-networking"
-      ],
-      "availability": [
-        "weekends"
-      ],
+      "looking_for": ["friendship", "professional-networking"],
+      "availability": ["weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -323,14 +231,7 @@
       "bio": "Graphic designer and illustrator. Love yoga, farmers markets, and hosting dinner parties. Cat mom to three!",
       "age": 31,
       "location": "94110",
-      "interests": [
-        "photography",
-        "indie-music",
-        "concerts",
-        "film-photography",
-        "art-shows",
-        "creative-writing"
-      ],
+      "interests": ["photography", "indie-music", "concerts", "film-photography", "art-shows", "creative-writing"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -341,14 +242,8 @@
       "photo_url": "/images/lisa_park.jpg",
       "preferred_age_min": 27,
       "preferred_age_max": 38,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "mornings",
-        "weekends"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["mornings", "weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -362,14 +257,7 @@
       "bio": "UX designer in ad-tech. Weekend photographer, craft beer enthusiast, and dog park regular with my beagle.",
       "age": 34,
       "location": "94107",
-      "interests": [
-        "sci-fi",
-        "star-wars",
-        "board-games",
-        "dungeons-dragons",
-        "comic-books",
-        "video-games"
-      ],
+      "interests": ["sci-fi", "star-wars", "board-games", "dungeons-dragons", "comic-books", "video-games"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -380,14 +268,8 @@
       "photo_url": "/images/tom_anderson.jpg",
       "preferred_age_min": 28,
       "preferred_age_max": 40,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "weekends",
-        "evenings"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["weekends", "evenings"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -401,14 +283,7 @@
       "bio": "Clinical data analyst in healthcare. Rock climbing enthusiast, home brewer, and Star Wars fan.",
       "age": 28,
       "location": "94108",
-      "interests": [
-        "healthcare-tech",
-        "data-analysis",
-        "medical-devices",
-        "clinical-trials",
-        "research",
-        "pubmed"
-      ],
+      "interests": ["healthcare-tech", "data-analysis", "medical-devices", "clinical-trials", "research", "pubmed"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -419,14 +294,8 @@
       "photo_url": "/images/james_miller.jpg",
       "preferred_age_min": 24,
       "preferred_age_max": 34,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "evenings",
-        "weekends"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["evenings", "weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -440,14 +309,7 @@
       "bio": "Financial analyst who enjoys cycling, craft cocktails, and hosting board game nights.",
       "age": 41,
       "location": "94108",
-      "interests": [
-        "golf",
-        "tennis",
-        "country-club",
-        "yacht-club",
-        "networking",
-        "finance"
-      ],
+      "interests": ["golf", "tennis", "country-club", "yacht-club", "networking", "finance"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -458,14 +320,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=robert",
       "preferred_age_min": 35,
       "preferred_age_max": 47,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "evenings",
-        "weekends"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["evenings", "weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -479,14 +335,7 @@
       "bio": "DevOps engineer and home automation enthusiast. Enjoy brewing coffee, hiking, and retro gaming.",
       "age": 27,
       "location": "94107",
-      "interests": [
-        "devops",
-        "home-automation",
-        "gaming",
-        "technology",
-        "robotics",
-        "hackathons"
-      ],
+      "interests": ["devops", "home-automation", "gaming", "technology", "robotics", "hackathons"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -497,14 +346,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=chris",
       "preferred_age_min": 23,
       "preferred_age_max": 33,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "weekends",
-        "evenings"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["weekends", "evenings"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -518,14 +361,7 @@
       "bio": "Data scientist who loves coffee, yoga, and indie music. I enjoy cooking, travel, and volunteering in my spare time.",
       "age": 32,
       "location": "94110",
-      "interests": [
-        "coffee-roasting",
-        "specialty-coffee",
-        "latte-art",
-        "cafe-culture",
-        "barista",
-        "coffee-cupping"
-      ],
+      "interests": ["coffee-roasting", "specialty-coffee", "latte-art", "cafe-culture", "barista", "coffee-cupping"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -536,14 +372,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=jane",
       "preferred_age_min": 28,
       "preferred_age_max": 40,
-      "looking_for": [
-        "friendship",
-        "professional-networking"
-      ],
-      "availability": [
-        "weekends",
-        "evenings"
-      ],
+      "looking_for": ["friendship", "professional-networking"],
+      "availability": ["weekends", "evenings"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -557,14 +387,7 @@
       "bio": "Security engineer and privacy advocate. Into competitive chess, sci-fi novels, and BBQ competitions.",
       "age": 40,
       "location": "94103",
-      "interests": [
-        "cybersecurity",
-        "privacy",
-        "chess",
-        "cryptography",
-        "infosec",
-        "defcon"
-      ],
+      "interests": ["cybersecurity", "privacy", "chess", "cryptography", "infosec", "defcon"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -575,13 +398,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=kevin",
       "preferred_age_min": 34,
       "preferred_age_max": 46,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "weekends"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -595,14 +413,7 @@
       "bio": "Social media manager and digital nomad. Yoga teacher, vegan cook, and sustainability advocate.",
       "age": 29,
       "location": "94110",
-      "interests": [
-        "zero-waste",
-        "veganism",
-        "climate-action",
-        "composting",
-        "sustainable-fashion",
-        "activism"
-      ],
+      "interests": ["zero-waste", "veganism", "climate-action", "composting", "sustainable-fashion", "activism"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -613,13 +424,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=laura",
       "preferred_age_min": 25,
       "preferred_age_max": 35,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "flexible"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["flexible"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -651,13 +457,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=maria",
       "preferred_age_min": 29,
       "preferred_age_max": 40,
-      "looking_for": [
-        "friendship",
-        "professional-networking"
-      ],
-      "availability": [
-        "evenings"
-      ],
+      "looking_for": ["friendship", "professional-networking"],
+      "availability": ["evenings"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -671,14 +472,7 @@
       "bio": "Content strategist in tech. Meditation practitioner, indie music fan, and urban sketcher.",
       "age": 35,
       "location": "94102",
-      "interests": [
-        "painting",
-        "art-galleries",
-        "sketching",
-        "art-history",
-        "museums",
-        "poetry"
-      ],
+      "interests": ["painting", "art-galleries", "sketching", "art-history", "museums", "poetry"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -689,14 +483,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=patricia",
       "preferred_age_min": 30,
       "preferred_age_max": 42,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "mornings",
-        "weekends"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["mornings", "weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -710,14 +498,7 @@
       "bio": "Blockchain developer and crypto enthusiast. Mountain biker, podcast host, and amateur astronomer.",
       "age": 31,
       "location": "94103",
-      "interests": [
-        "blockchain",
-        "cryptocurrency",
-        "podcasts",
-        "astronomy",
-        "technology",
-        "futurism"
-      ],
+      "interests": ["blockchain", "cryptocurrency", "podcasts", "astronomy", "technology", "futurism"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -728,14 +509,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=steven",
       "preferred_age_min": 27,
       "preferred_age_max": 37,
-      "looking_for": [
-        "friendship",
-        "professional-networking"
-      ],
-      "availability": [
-        "evenings",
-        "weekends"
-      ],
+      "looking_for": ["friendship", "professional-networking"],
+      "availability": ["evenings", "weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -749,14 +524,7 @@
       "bio": "QA engineer and testing automation expert. Board game designer, craft beer brewer, and corgi dad.",
       "age": 33,
       "location": "94102",
-      "interests": [
-        "qa-testing",
-        "automation",
-        "board-games",
-        "game-design",
-        "tabletop-rpg",
-        "puzzles"
-      ],
+      "interests": ["qa-testing", "automation", "board-games", "game-design", "tabletop-rpg", "puzzles"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -767,14 +535,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=daniel",
       "preferred_age_min": 28,
       "preferred_age_max": 39,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "evenings",
-        "weekends"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["evenings", "weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -788,14 +550,7 @@
       "bio": "Business analyst in healthcare. Triathlete, nutrition coach, and mother of three.",
       "age": 43,
       "location": "94108",
-      "interests": [
-        "triathlon",
-        "cycling",
-        "swimming",
-        "ironman",
-        "sports-medicine",
-        "fitness-tracking"
-      ],
+      "interests": ["triathlon", "cycling", "swimming", "ironman", "sports-medicine", "fitness-tracking"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -806,13 +561,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=michelle",
       "preferred_age_min": 37,
       "preferred_age_max": 49,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "mornings"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["mornings"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -826,14 +576,7 @@
       "bio": "Teacher turned EdTech consultant. Book club regular, amateur baker, and proud plant parent.",
       "age": 37,
       "location": "94102",
-      "interests": [
-        "baking",
-        "cookbook-collecting",
-        "food-photography",
-        "restaurant-reviews",
-        "sourdough",
-        "pastry"
-      ],
+      "interests": ["baking", "cookbook-collecting", "food-photography", "restaurant-reviews", "sourdough", "pastry"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -844,14 +587,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=amanda",
       "preferred_age_min": 32,
       "preferred_age_max": 44,
-      "looking_for": [
-        "friendship",
-        "book-club"
-      ],
-      "availability": [
-        "evenings",
-        "weekends"
-      ],
+      "looking_for": ["friendship", "book-club"],
+      "availability": ["evenings", "weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -865,14 +602,7 @@
       "bio": "Legal tech consultant. Classical music lover, museum volunteer, and Siamese cat owner.",
       "age": 44,
       "location": "94103",
-      "interests": [
-        "philosophy",
-        "classical-music",
-        "museums",
-        "lectures",
-        "npr",
-        "documentaries"
-      ],
+      "interests": ["philosophy", "classical-music", "museums", "lectures", "npr", "documentaries"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -883,14 +613,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=sandra",
       "preferred_age_min": 38,
       "preferred_age_max": 50,
-      "looking_for": [
-        "friendship",
-        "cultural-activities"
-      ],
-      "availability": [
-        "weekends",
-        "evenings"
-      ],
+      "looking_for": ["friendship", "cultural-activities"],
+      "availability": ["weekends", "evenings"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -904,14 +628,7 @@
       "bio": "Cloud architect and infrastructure guru. Car enthusiast, DIY home improver, and weekend chef.",
       "age": 45,
       "location": "94102",
-      "interests": [
-        "cars",
-        "diy",
-        "woodworking",
-        "mechanics",
-        "restoration",
-        "tools"
-      ],
+      "interests": ["cars", "diy", "woodworking", "mechanics", "restoration", "tools"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -922,13 +639,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=paul",
       "preferred_age_min": 38,
       "preferred_age_max": 52,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "weekends"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["weekends"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true
@@ -942,14 +654,7 @@
       "bio": "HR tech specialist. Pilates instructor, wine club member, and golden retriever mom.",
       "age": 38,
       "location": "94108",
-      "interests": [
-        "crossfit",
-        "nutrition",
-        "meal-prep",
-        "marathons",
-        "wellness-blogs",
-        "fitbit"
-      ],
+      "interests": ["crossfit", "nutrition", "meal-prep", "marathons", "wellness-blogs", "fitbit"],
       "embedding": null,
       "role": "user",
       "is_active": true,
@@ -960,14 +665,8 @@
       "photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=nancy",
       "preferred_age_min": 33,
       "preferred_age_max": 44,
-      "looking_for": [
-        "friendship",
-        "activity-partner"
-      ],
-      "availability": [
-        "mornings",
-        "evenings"
-      ],
+      "looking_for": ["friendship", "activity-partner"],
+      "availability": ["mornings", "evenings"],
       "privacy_settings": {
         "show_age": true,
         "show_location": true

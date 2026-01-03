@@ -62,7 +62,7 @@ export async function rsvpToEvent(
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -93,7 +93,7 @@ export async function updateRsvpStatus(
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -123,7 +123,7 @@ export async function cancelRsvp(eventId: string): Promise<RsvpResult> {
     }
 
     return { success: true }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -140,7 +140,7 @@ export async function checkEventCapacity(eventId: string): Promise<any> {
     }
 
     return data
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }

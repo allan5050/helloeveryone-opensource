@@ -41,7 +41,10 @@ async function populateMatchScores() {
 
         // 40% weight for common interests
         if (interests1.length > 0 && interests2.length > 0) {
-          score += (commonInterests.length / Math.max(interests1.length, interests2.length)) * 0.4
+          score +=
+            (commonInterests.length /
+              Math.max(interests1.length, interests2.length)) *
+            0.4
         }
 
         // 30% base score for having a bio
@@ -53,15 +56,19 @@ async function populateMatchScores() {
         score += Math.random() * 0.3
 
         // Create bidirectional match scores with all required fields
-        const interestScore = commonInterests.length > 0
-          ? commonInterests.length / Math.max(interests1.length, interests2.length)
-          : 0
-        const semanticScore = (profile1.bio && profile2.bio) ? 0.3 + Math.random() * 0.3 : 0
+        const interestScore =
+          commonInterests.length > 0
+            ? commonInterests.length /
+              Math.max(interests1.length, interests2.length)
+            : 0
+        const semanticScore =
+          profile1.bio && profile2.bio ? 0.3 + Math.random() * 0.3 : 0
 
         // Only create one match per pair (user_id_1 < user_id_2)
-        const [userId1, userId2] = profile1.user_id < profile2.user_id
-          ? [profile1.user_id, profile2.user_id]
-          : [profile2.user_id, profile1.user_id]
+        const [userId1, userId2] =
+          profile1.user_id < profile2.user_id
+            ? [profile1.user_id, profile2.user_id]
+            : [profile2.user_id, profile1.user_id]
 
         matchScores.push({
           user_id_1: userId1,
@@ -69,7 +76,7 @@ async function populateMatchScores() {
           interest_score: interestScore,
           semantic_score: semanticScore,
           combined_score: Math.min(score, 0.95), // Cap at 0.95
-          calculated_at: new Date().toISOString()
+          calculated_at: new Date().toISOString(),
         })
       }
     }
@@ -87,12 +94,13 @@ async function populateMatchScores() {
       if (insertError) {
         console.error('Error inserting batch:', insertError)
       } else {
-        console.log(`Inserted batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(matchScores.length / batchSize)}`)
+        console.log(
+          `Inserted batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(matchScores.length / batchSize)}`
+        )
       }
     }
 
     console.log('Match scores populated successfully!')
-
   } catch (error) {
     console.error('Error:', error)
   }

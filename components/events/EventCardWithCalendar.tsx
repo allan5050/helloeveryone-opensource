@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { formatDistanceToNow, format } from 'date-fns'
 import {
   Calendar,
   MapPin,
@@ -9,12 +9,13 @@ import {
   Heart,
   MessageCircle,
 } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useState } from 'react'
+
+import CalendarButton from '@/components/calendar/CalendarButton'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import CalendarButton from '@/components/calendar/CalendarButton'
-import { Event, Profile } from '@/types'
-import { formatDistanceToNow, format } from 'date-fns'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Event } from '@/types'
 
 interface EventCardWithCalendarProps {
   event: Event

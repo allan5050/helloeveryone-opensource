@@ -2,7 +2,8 @@
 
 ## Overview
 
-HelloEveryone uses Supabase Auth for authentication with both server-side and client-side components. The system supports email/password authentication and Google OAuth.
+HelloEveryone uses Supabase Auth for authentication with both server-side and client-side
+components. The system supports email/password authentication and Google OAuth.
 
 ## Authentication Architecture
 
@@ -39,7 +40,7 @@ graph TD
 // For page components - redirects to login if not authenticated
 export async function requireAuth(): Promise<User>
 
-// For API routes - throws error if not authenticated  
+// For API routes - throws error if not authenticated
 export async function requireAuthAPI(): Promise<User>
 
 // For optional auth - returns user or null
@@ -55,7 +56,7 @@ export async function createSupabaseServerClient()
 // app/api/match/calculate/route.ts
 export async function POST(request: Request) {
   const user = await requireAuthAPI() // Throws if not authenticated
-  
+
   // Protected API logic here
   return Response.json({ data: 'protected' })
 }
@@ -67,7 +68,7 @@ export async function POST(request: Request) {
 // app/(protected)/dashboard/page.tsx
 export default async function DashboardPage() {
   const user = await requireAuth() // Redirects if not authenticated
-  
+
   // Server component logic here
   return <div>Welcome {user.email}</div>
 }
@@ -86,7 +87,11 @@ interface AuthContextType {
   user: User | null
   loading: boolean
   signIn: (email: string, password: string) => Promise<{ user: User } | { error: AuthError }>
-  signUp: (email: string, password: string, userData: SignUpData) => Promise<{ user: User } | { error: AuthError }>
+  signUp: (
+    email: string,
+    password: string,
+    userData: SignUpData
+  ) => Promise<{ user: User } | { error: AuthError }>
   signOut: () => Promise<{ error: AuthError | null }>
   resetPassword: (email: string) => Promise<{ error: AuthError | null }>
 }
@@ -100,10 +105,10 @@ import { useAuth } from '@/app/contexts/AuthContext'
 
 export function ClientComponent() {
   const { user, signIn, signOut, loading } = useAuth()
-  
+
   if (loading) return <div>Loading...</div>
   if (!user) return <div>Please login</div>
-  
+
   return <div>Welcome {user.email}</div>
 }
 ```
@@ -113,7 +118,7 @@ export function ClientComponent() {
 ### Public Routes
 
 - `/login` - User login page
-- `/signup` - User registration page  
+- `/signup` - User registration page
 - `/auth/reset-password` - Password reset page
 - `/` - Landing page (accessible to all)
 
@@ -143,8 +148,10 @@ export async function middleware(request: NextRequest) {
   // Check authentication for protected routes
   if (request.nextUrl.pathname.startsWith('/(protected)')) {
     const supabase = createServerClient()
-    const { data: { session } } = await supabase.auth.getSession()
-    
+    const {
+      data: { session },
+    } = await supabase.auth.getSession()
+
     if (!session) {
       return NextResponse.redirect(new URL('/login', request.url))
     }
@@ -171,22 +178,25 @@ export default function ProtectedPage() {
 ## User Registration Flow
 
 ### 1. Sign Up Form
+
 - User provides email, password, and profile data
 - Form validation using Zod schemas
 - Password requirements enforced
 
 ### 2. Account Creation
+
 ```typescript
 const { user, error } = await signUp(email, password, {
   first_name,
   last_name,
   age,
   interests: [],
-  bio: ''
+  bio: '',
 })
 ```
 
 ### 3. Profile Creation
+
 - Automatic profile record creation via database triggers
 - Default privacy settings applied
 - Welcome email sent (optional)
@@ -194,15 +204,18 @@ const { user, error } = await signUp(email, password, {
 ## Password Reset Flow
 
 ### 1. Request Reset
+
 ```typescript
 const { error } = await resetPassword(email)
 ```
 
 ### 2. Email Verification
+
 - User receives reset email from Supabase
 - Email contains secure reset link
 
 ### 3. Password Update
+
 - User clicks link and updates password
 - Automatic redirect to dashboard
 
@@ -211,12 +224,14 @@ const { error } = await resetPassword(email)
 ### Setup Requirements
 
 Environment variables needed:
+
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
 
 Supabase configuration:
+
 - Google OAuth provider enabled
 - Redirect URLs configured
 - Client ID and secret set
@@ -233,16 +248,19 @@ Supabase configuration:
 ## Session Management
 
 ### Session Storage
+
 - Server-side: HTTP-only cookies
 - Client-side: Memory + localStorage backup
 - Automatic refresh handling
 
 ### Session Security
+
 - CSRF protection via SameSite cookies
 - Secure flag in production
 - Automatic expiration handling
 
 ### Session Persistence
+
 - Sessions persist across browser restarts
 - Automatic refresh before expiration
 - Graceful handling of expired sessions
@@ -252,25 +270,28 @@ Supabase configuration:
 ### User Roles
 
 Currently supported roles:
+
 - `user` - Standard user (default)
 - `admin` - Administrative access
 
 ### Role Checking
 
 Server-side:
+
 ```typescript
 export async function requireAdmin(): Promise<User> {
   const user = await requireAuthAPI()
-  
+
   if (user.user_metadata?.role !== 'admin') {
     throw new Error('Admin access required')
   }
-  
+
   return user
 }
 ```
 
 Client-side:
+
 ```typescript
 const { user } = useAuth()
 const isAdmin = user?.user_metadata?.role === 'admin'
@@ -279,22 +300,26 @@ const isAdmin = user?.user_metadata?.role === 'admin'
 ## Security Best Practices
 
 ### Password Requirements
+
 - Minimum 8 characters
 - At least one uppercase letter
 - At least one number
 - No common passwords
 
 ### Rate Limiting
+
 - Login attempts: 5 per minute per IP
 - Password reset: 3 per hour per email
 - Sign up: 10 per hour per IP
 
 ### Session Security
+
 - Automatic logout after 24 hours of inactivity
 - Concurrent session limits
 - Device tracking and management
 
 ### Data Protection
+
 - All authentication data encrypted at rest
 - Secure transmission via HTTPS
 - No sensitive data in client storage
@@ -328,18 +353,21 @@ const isAdmin = user?.user_metadata?.role === 'admin'
 ## Environment Configuration
 
 ### Development
+
 ```env
 NEXT_PUBLIC_SUPABASE_URL=http://localhost:54321
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-local-key
 ```
 
 ### Production
+
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-production-key
 ```
 
 ### Testing
+
 - Use Supabase local development setup
 - Mock authentication for unit tests
 - E2E tests with test user accounts

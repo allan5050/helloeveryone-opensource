@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+
 import { EventForm } from '@/components/admin/EventForm'
 
 export const metadata: Metadata = {

@@ -1,14 +1,15 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { profileEditSchema, ProfileEditData } from '@/lib/validations/profile'
+import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+
+import { useAuth } from '@/app/contexts/AuthContext'
 import { InterestSelector } from '@/components/profile/InterestSelector'
 import { PhotoUpload } from '@/components/profile/PhotoUpload'
 import { createClient } from '@/lib/supabase/client'
-import { useAuth } from '@/app/contexts/AuthContext'
+import { profileEditSchema, ProfileEditData } from '@/lib/validations/profile'
 
 export default function ProfileEdit() {
   const [isLoading, setIsLoading] = useState(true)
@@ -55,15 +56,16 @@ export default function ProfileEdit() {
 
         if (profile) {
           // Import the interest constants to properly categorize
-          const { MUSIC_GENRES, FOOD_PREFERENCES, ACTIVITIES } = await import('@/lib/validations/profile')
-          
+          const { MUSIC_GENRES, FOOD_PREFERENCES, ACTIVITIES } =
+            await import('@/lib/validations/profile')
+
           // Convert flat interests array back to categorized object
           const categorizedInterests = {
             music_genres: [] as string[],
             food_preferences: [] as string[],
             activities: [] as string[],
           }
-          
+
           // Properly categorize the interests based on the defined constants
           if (Array.isArray(profile.interests)) {
             profile.interests.forEach((interest: string) => {
@@ -76,7 +78,7 @@ export default function ProfileEdit() {
               }
             })
           }
-          
+
           form.reset({
             display_name: profile.display_name || '',
             age: profile.age || 25,
@@ -110,9 +112,9 @@ export default function ProfileEdit() {
       const flattenedInterests = [
         ...(data.interests.music_genres || []),
         ...(data.interests.food_preferences || []),
-        ...(data.interests.activities || [])
+        ...(data.interests.activities || []),
       ]
-      
+
       const profileData = {
         display_name: data.display_name,
         age: data.age,
@@ -134,12 +136,12 @@ export default function ProfileEdit() {
 
       // Show success message and keep user on the page
       setShowSuccess(true)
-      
+
       // Scroll to the bottom to show the success message
       setTimeout(() => {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
       }, 100)
-      
+
       // Auto-hide success message after 5 seconds
       setTimeout(() => {
         setShowSuccess(false)
@@ -342,7 +344,9 @@ export default function ProfileEdit() {
                     {...form.register('privacy_settings.show_location')}
                     className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                   />
-                  <span className="text-sm text-gray-700">Show my location</span>
+                  <span className="text-sm text-gray-700">
+                    Show my location
+                  </span>
                 </label>
 
                 <label className="flex items-center space-x-3">
@@ -351,7 +355,9 @@ export default function ProfileEdit() {
                     {...form.register('privacy_settings.show_interests')}
                     className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                   />
-                  <span className="text-sm text-gray-700">Show my interests</span>
+                  <span className="text-sm text-gray-700">
+                    Show my interests
+                  </span>
                 </label>
               </div>
             </div>
@@ -360,17 +366,26 @@ export default function ProfileEdit() {
             <div className="border-t border-gray-200 pt-6">
               {/* Success Message */}
               {showSuccess && (
-                <div className="mb-4 animate-in slide-in-from-bottom-2 rounded-lg bg-green-50 p-4 transition-all duration-300">
+                <div className="animate-in slide-in-from-bottom-2 mb-4 rounded-lg bg-green-50 p-4 transition-all duration-300">
                   <div className="flex items-start">
-                    <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    <svg
+                      className="h-5 w-5 text-green-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     <div className="ml-3 flex-1">
                       <p className="text-sm font-medium text-green-800">
                         Profile saved successfully!
                       </p>
                       <p className="mt-1 text-sm text-green-700">
-                        Your changes have been saved. You can continue editing or{' '}
+                        Your changes have been saved. You can continue editing
+                        or{' '}
                         <button
                           type="button"
                           onClick={() => router.push('/dashboard')}
@@ -384,7 +399,7 @@ export default function ProfileEdit() {
                   </div>
                 </div>
               )}
-              
+
               <div className="flex justify-end">
                 <button
                   type="submit"

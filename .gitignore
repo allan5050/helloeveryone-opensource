@@ -139,3 +139,7 @@ out/
 .turbo
 
 docs/working_docs
+
+# Generated/backup files
+current-schema.json
+demo_profiles_backup.json

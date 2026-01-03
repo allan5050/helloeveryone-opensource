@@ -1,6 +1,5 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import {
   Heart,
   MessageCircle,
@@ -9,6 +8,7 @@ import {
   Calendar,
   Sparkles,
 } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 interface MatchExplanation {
   interestOverlap: string[]

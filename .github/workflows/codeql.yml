@@ -41,7 +41,7 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
-          category: "/language:${{ matrix.language }}"
+          category: '/language:${{ matrix.language }}'
 
       # Note: SARIF upload is handled automatically by the analyze step above
       # The analyze action already uploads results to GitHub Security tab

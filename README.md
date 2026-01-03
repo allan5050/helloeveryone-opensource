@@ -6,7 +6,7 @@
 🌐 **Live at**: [https://helloeveryone.vercel.app](https://helloeveryone.vercel.app)
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Contributors](https://img.shields.io/github/contributors/allan5050/helloeveryone)
+![Contributors](https://img.shields.io/github/contributors/allan5050/helloeveryone-opensource)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black)
@@ -33,7 +33,7 @@ node >= 18.0.0
 npm >= 9.0.0
 
 # Clone and install
-git clone https://github.com/allan5050/helloeveryone.git
+git clone https://github.com/allan5050/helloeveryone-opensource.git
 cd helloeveryone
 npm install
 
@@ -142,16 +142,19 @@ node mcp/query.js :count users   # Get row count
 node mcp/query.js :sample events 5  # Sample data
 ```
 
-These tools enable LLMs and developers to autonomously explore the database without manual schema sharing.
+These tools enable LLMs and developers to autonomously explore the database without manual schema
+sharing.
 
 ## 📝 Documentation
 
 **Core Documentation:**
+
 - [Implementation Plan](./IMPLEMENTATION_PLAN.md) - Technical architecture
 - [Deployment Guide](./DEPLOYMENT.md) - Vercel & Supabase setup
 - [CLAUDE.md](./CLAUDE.md) - AI/LLM development guide
 
 **In `docs/` folder:**
+
 - [Architecture](./docs/ARCHITECTURE.md) - System design patterns
 - [API Routes](./docs/API_ROUTES.md) - Endpoint reference
 - [Database Schema](./docs/DATABASE_SCHEMA.md) - Table structures
@@ -169,6 +172,7 @@ We welcome contributions from developers of all skill levels! Here's how to get 
 ### Quick Start for Contributors
 
 1. **Fork and Clone**
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/helloeveryone.git
    cd helloeveryone
@@ -180,6 +184,7 @@ We welcome contributions from developers of all skill levels! Here's how to get 
    - Option B: Use demo mode (no API keys required)
 
 3. **Make Your Changes**
+
    ```bash
    git checkout -b feature/your-feature-name
    # Make changes
@@ -204,7 +209,8 @@ We welcome contributions from developers of all skill levels! Here's how to get 
 
 ### Good First Issues
 
-Looking for a place to start? Check out issues labeled [`good first issue`](https://github.com/allan5050/helloeveryone/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
+Looking for a place to start? Check out issues labeled
+[`good first issue`](https://github.com/allan5050/helloeveryone-opensource/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
 
 ### Development Guidelines
 
@@ -218,7 +224,8 @@ Looking for a place to start? Check out issues labeled [`good first issue`](http
 
 This project is licensed under the [MIT License](./LICENSE) - see the LICENSE file for details.
 
-You're free to use, modify, and distribute this software as long as you include the original copyright and license notice.
+You're free to use, modify, and distribute this software as long as you include the original
+copyright and license notice.
 
 ## 🚦 Project Status
 
@@ -228,8 +235,8 @@ You're free to use, modify, and distribute this software as long as you include 
 - ✅ Authentication and user profiles
 - ✅ Events and RSVP system
 - ✅ Chat functionality
-- ⚠️  68 TypeScript errors to fix
-- ⚠️  Test suite improvements needed (currently 33% passing)
+- ⚠️ 68 TypeScript errors to fix
+- ⚠️ Test suite improvements needed (currently 33% passing)
 
 See [PROJECT_STATUS.md](./PROJECT_STATUS.md) for detailed status and roadmap.
 
@@ -238,13 +245,14 @@ See [PROJECT_STATUS.md](./PROJECT_STATUS.md) for detailed status and roadmap.
 Thanks to everyone who contributes to making HelloEveryone.fun better!
 
 <!-- Contributors list will be automatically updated by GitHub -->
-<a href="https://github.com/allan5050/helloeveryone/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=allan5050/helloeveryone" />
+<a href="https://github.com/allan5050/helloeveryone-opensource/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=allan5050/helloeveryone-opensource" />
 </a>
 
 ## 🔐 Security
 
-Found a security vulnerability? Please report it privately to allan.nevala@gmail.com. See [SECURITY.md](./SECURITY.md) for details.
+Found a security vulnerability? Please report it privately to allan.nevala@gmail.com. See
+[SECURITY.md](./SECURITY.md) for details.
 
 ---
 

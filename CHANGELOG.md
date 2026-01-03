@@ -124,7 +124,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
-- [GitHub Releases](https://github.com/allan5050/helloeveryone/releases)
+- [GitHub Releases](https://github.com/allan5050/helloeveryone-opensource/releases)
 
-[Unreleased]: https://github.com/allan5050/helloeveryone/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/allan5050/helloeveryone/releases/tag/v0.1.0
+[Unreleased]: https://github.com/allan5050/helloeveryone-opensource/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/allan5050/helloeveryone-opensource/releases/tag/v0.1.0

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+
 import { createClient } from '@/lib/supabase/server'
 
 // SECURITY: Only allow in development environment
@@ -51,18 +52,22 @@ function calculateLocationMatch(loc1: string, loc2: string): number {
 
 // Calculate overall match score
 function calculateMatchScore(user1: User, user2: User) {
-  const interestScore = calculateJaccardSimilarity(user1.interests || [], user2.interests || [])
+  const interestScore = calculateJaccardSimilarity(
+    user1.interests || [],
+    user2.interests || []
+  )
   const ageScore = calculateAgeCompatibility(user1.age, user2.age)
   const locationScore = calculateLocationMatch(user1.location, user2.location)
 
   // Weighted average: 50% interests, 30% age, 20% location
-  const overallScore = (interestScore * 0.5) + (ageScore * 0.3) + (locationScore * 0.2)
+  const overallScore =
+    interestScore * 0.5 + ageScore * 0.3 + locationScore * 0.2
 
   return {
     score: overallScore,
     interest_overlap: interestScore,
     age_compatibility: ageScore,
-    location_match: locationScore
+    location_match: locationScore,
   }
 }
 
@@ -98,7 +103,7 @@ export async function GET() {
           user2_id: users[j].user_id,
           user1_name: users[i].display_name,
           user2_name: users[j].display_name,
-          ...matchData
+          ...matchData,
         })
       }
     }
@@ -109,6 +114,9 @@ export async function GET() {
     return NextResponse.json({ scores })
   } catch (error) {
     console.error('Unexpected error:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
 }

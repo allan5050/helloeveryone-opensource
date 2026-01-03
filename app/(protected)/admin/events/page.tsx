@@ -1,6 +1,7 @@
-import { Suspense } from 'react'
-import Link from 'next/link'
 import { Plus } from 'lucide-react'
+import Link from 'next/link'
+import { Suspense } from 'react'
+
 import { EventsList } from '@/components/admin/EventsList'
 
 export default function AdminEventsPage() {

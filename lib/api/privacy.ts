@@ -30,7 +30,7 @@ export async function updatePrivacySettings(
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -55,7 +55,7 @@ export async function exportUserData(): Promise<PrivacyResult> {
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -80,7 +80,7 @@ export async function deleteUserAccount(): Promise<PrivacyResult> {
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -105,7 +105,7 @@ export async function requestDataPortability(): Promise<PrivacyResult> {
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -125,7 +125,7 @@ export async function anonymizeUserData(
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }

@@ -2,7 +2,8 @@
 
 ## Overview
 
-The components directory contains reusable React components organized by feature area. All components follow React best practices and use TypeScript for type safety.
+The components directory contains reusable React components organized by feature area. All
+components follow React best practices and use TypeScript for type safety.
 
 ## Component Structure
 
@@ -39,6 +40,7 @@ components/
 - `UsersSearch.tsx` - User search interface
 
 ### Chart Components
+
 - `charts/EventCategoriesChart.tsx` - Event category distribution
 - `charts/UserGrowthChart.tsx` - User growth over time
 
@@ -94,7 +96,8 @@ User profile related components for viewing and editing profiles.
 
 **Location:** `components/ui/`
 
-Base UI components following the shadcn/ui pattern. These are low-level, reusable components that other components build upon.
+Base UI components following the shadcn/ui pattern. These are low-level, reusable components that
+other components build upon.
 
 ## PWA Components
 
@@ -108,7 +111,8 @@ Base UI components following the shadcn/ui pattern. These are low-level, reusabl
 ### Client vs Server Components
 
 - **Server Components**: Default for all components, used for data fetching and static rendering
-- **Client Components**: Must use `'use client'` directive, used for interactivity, state management, and browser APIs
+- **Client Components**: Must use `'use client'` directive, used for interactivity, state
+  management, and browser APIs
 
 ### Naming Conventions
 
@@ -154,6 +158,7 @@ Components should handle errors gracefully and provide fallback UI when appropri
 ### Accessibility
 
 All components should follow accessibility best practices:
+
 - Proper semantic HTML
 - ARIA labels and roles
 - Keyboard navigation support
@@ -171,6 +176,7 @@ All components should follow accessibility best practices:
 ## Integration with Backend
 
 Components integrate with the backend through:
+
 - **Custom hooks** (`hooks/` directory)
 - **API calls** via React Query
 - **Server components** for direct database access

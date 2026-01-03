@@ -14,7 +14,7 @@ export default function MessageButton({
   className = '',
   showText = true,
 }: MessageButtonProps) {
-  const router = useRouter()
+  const _router = useRouter()
 
   const handleClick = (e?: React.MouseEvent) => {
     if (e) {

@@ -296,7 +296,7 @@ vercel env pull     # Pull env vars
 
 - **Vercel Status**: https://www.vercel-status.com
 - **Supabase Status**: https://status.supabase.com
-- **GitHub Issues**: https://github.com/allan5050/helloeveryone/issues
+- **GitHub Issues**: https://github.com/allan5050/helloeveryone-opensource/issues
 
 ## 📅 Deployment Schedule
 

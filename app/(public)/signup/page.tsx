@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { useAuth } from '@/app/contexts/AuthContext'
-import { useRouter } from 'next/navigation'
 import { Heart } from 'lucide-react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+
+import { useAuth } from '@/app/contexts/AuthContext'
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('')
@@ -20,7 +21,7 @@ export default function SignUpPage() {
 
     // Store email in session storage for next step
     sessionStorage.setItem('signup-email', email)
-    
+
     // Move to password step
     router.push('/signup/password')
   }
@@ -52,10 +53,10 @@ export default function SignUpPage() {
 
         {/* Main Form */}
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <h1 className="mb-2 text-2xl font-bold text-gray-900">
             What's your email?
           </h1>
-          <p className="text-sm text-gray-600 mb-6">
+          <p className="mb-6 text-sm text-gray-600">
             We'll use this to create your account
           </p>
         </div>
@@ -72,17 +73,15 @@ export default function SignUpPage() {
               className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               placeholder="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
             />
-            {error && (
-              <p className="mt-2 text-sm text-red-600">{error}</p>
-            )}
+            {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
           </div>
 
           <button
             type="submit"
             disabled={loading || !email}
-            className="w-full rounded-lg bg-indigo-600 px-4 py-3 text-white font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full rounded-lg bg-indigo-600 px-4 py-3 font-medium text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? 'Continue...' : 'Continue'}
           </button>
@@ -102,9 +101,9 @@ export default function SignUpPage() {
         <button
           onClick={handleGoogleSignUp}
           disabled={loading}
-          className="w-full flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 transition-colors"
+          className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-3 font-medium text-gray-700 transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50"
         >
-          <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24">
+          <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
             <path
               fill="#4285F4"
               d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -129,7 +128,10 @@ export default function SignUpPage() {
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-600">
             Already have an account?{' '}
-            <Link href="/login" className="text-indigo-600 hover:text-indigo-500 font-medium">
+            <Link
+              href="/login"
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+            >
               Log in
             </Link>
           </p>
@@ -139,11 +141,17 @@ export default function SignUpPage() {
         <div className="mt-6 text-center">
           <p className="text-xs text-gray-500">
             By continuing, you agree to our{' '}
-            <Link href="/terms" className="text-gray-700 hover:text-gray-900 underline">
+            <Link
+              href="/terms"
+              className="text-gray-700 underline hover:text-gray-900"
+            >
               Terms
             </Link>{' '}
             and{' '}
-            <Link href="/privacy" className="text-gray-700 hover:text-gray-900 underline">
+            <Link
+              href="/privacy"
+              className="text-gray-700 underline hover:text-gray-900"
+            >
               Privacy Policy
             </Link>
           </p>

@@ -1,7 +1,15 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Lightbulb, Sparkles, MessageCircle, MapPin, Loader, AlertCircle } from 'lucide-react'
+import {
+  Lightbulb,
+  Sparkles,
+  MessageCircle,
+  MapPin,
+  Loader,
+  AlertCircle,
+} from 'lucide-react'
+import { useState } from 'react'
+
 import { MatchExplanationsResponse } from '@/lib/llm/match-explainer'
 
 interface MatchExplanationsProps {
@@ -9,8 +17,12 @@ interface MatchExplanationsProps {
   className?: string
 }
 
-export default function MatchExplanations({ matchIds, className = '' }: MatchExplanationsProps) {
-  const [explanations, setExplanations] = useState<MatchExplanationsResponse | null>(null)
+export default function MatchExplanations({
+  matchIds,
+  className = '',
+}: MatchExplanationsProps) {
+  const [explanations, setExplanations] =
+    useState<MatchExplanationsResponse | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [showExplanations, setShowExplanations] = useState(false)
@@ -54,11 +66,15 @@ export default function MatchExplanations({ matchIds, className = '' }: MatchExp
   }
 
   return (
-    <div className={`rounded-lg border border-gray-200 bg-white p-6 ${className}`}>
+    <div
+      className={`rounded-lg border border-gray-200 bg-white p-6 ${className}`}
+    >
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-purple-600" />
-          <h3 className="text-lg font-semibold text-gray-900">AI Match Insights</h3>
+          <h3 className="text-lg font-semibold text-gray-900">
+            AI Match Insights
+          </h3>
         </div>
 
         {!showExplanations && (
@@ -79,8 +95,9 @@ export default function MatchExplanations({ matchIds, className = '' }: MatchExp
 
       {!showExplanations && (
         <p className="text-gray-600">
-          Get personalized AI insights about why these matches could be great connections for you.
-          Our AI analyzes profiles, shared interests, and compatibility to give you compelling reasons to reach out.
+          Get personalized AI insights about why these matches could be great
+          connections for you. Our AI analyzes profiles, shared interests, and
+          compatibility to give you compelling reasons to reach out.
         </p>
       )}
 
@@ -112,29 +129,36 @@ export default function MatchExplanations({ matchIds, className = '' }: MatchExp
         <div className="mt-6 space-y-6">
           {/* Overall Insight */}
           <div className="rounded-lg bg-purple-50 p-4">
-            <h4 className="mb-2 font-medium text-purple-900">Overall Insight</h4>
+            <h4 className="mb-2 font-medium text-purple-900">
+              Overall Insight
+            </h4>
             <p className="text-purple-800">{explanations.overallInsight}</p>
           </div>
 
           {/* Top Recommendations */}
-          {explanations.topRecommendations && explanations.topRecommendations.length > 0 && (
-            <div className="rounded-lg bg-blue-50 p-4">
-              <h4 className="mb-2 font-medium text-blue-900">Top Recommendations</h4>
-              <ul className="space-y-1 text-blue-800">
-                {explanations.topRecommendations.map((rec, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-blue-600"></span>
-                    {rec}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          {explanations.topRecommendations &&
+            explanations.topRecommendations.length > 0 && (
+              <div className="rounded-lg bg-blue-50 p-4">
+                <h4 className="mb-2 font-medium text-blue-900">
+                  Top Recommendations
+                </h4>
+                <ul className="space-y-1 text-blue-800">
+                  {explanations.topRecommendations.map((rec, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-blue-600"></span>
+                      {rec}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
           {/* Individual Match Explanations */}
           <div className="space-y-4">
-            <h4 className="font-medium text-gray-900">Why These Matches Are Compelling</h4>
-            {explanations.explanations.map((explanation, index) => (
+            <h4 className="font-medium text-gray-900">
+              Why These Matches Are Compelling
+            </h4>
+            {explanations.explanations.map(explanation => (
               <div
                 key={explanation.user_id}
                 className={`rounded-lg border p-4 ${
@@ -154,7 +178,9 @@ export default function MatchExplanations({ matchIds, className = '' }: MatchExp
                   )}
                 </div>
 
-                <p className="mb-3 text-gray-700">{explanation.compatibilityReason}</p>
+                <p className="mb-3 text-gray-700">
+                  {explanation.compatibilityReason}
+                </p>
 
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
                   {/* Shared Interests */}
@@ -184,11 +210,13 @@ export default function MatchExplanations({ matchIds, className = '' }: MatchExp
                         Conversation Ideas
                       </h6>
                       <ul className="space-y-1">
-                        {explanation.conversationStarters.slice(0, 2).map((starter, idx) => (
-                          <li key={idx} className="text-xs text-gray-600">
-                            "{starter}"
-                          </li>
-                        ))}
+                        {explanation.conversationStarters
+                          .slice(0, 2)
+                          .map((starter, idx) => (
+                            <li key={idx} className="text-xs text-gray-600">
+                              "{starter}"
+                            </li>
+                          ))}
                       </ul>
                     </div>
                   )}
@@ -201,11 +229,13 @@ export default function MatchExplanations({ matchIds, className = '' }: MatchExp
                         Meet-up Ideas
                       </h6>
                       <ul className="space-y-1">
-                        {explanation.meetingSuggestions.map((suggestion, idx) => (
-                          <li key={idx} className="text-xs text-gray-600">
-                            {suggestion}
-                          </li>
-                        ))}
+                        {explanation.meetingSuggestions.map(
+                          (suggestion, idx) => (
+                            <li key={idx} className="text-xs text-gray-600">
+                              {suggestion}
+                            </li>
+                          )
+                        )}
                       </ul>
                     </div>
                   )}

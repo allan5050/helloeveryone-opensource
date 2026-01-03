@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+
 import { requireAuth } from '@/lib/api/auth'
 import { checkRateLimit } from '@/lib/api/rate-limit'
+import { createClient } from '@/lib/supabase/server'
 
 export async function POST(request: NextRequest) {
   // Rate limit: 60 requests per minute for matching operations
@@ -77,7 +78,8 @@ export async function POST(request: NextRequest) {
           updatedCount++
         } catch (error) {
           console.error(
-            `Error processing match for profile ${otherProfileId}:`,
+            'Error processing match for profile:',
+            otherProfileId,
             error
           )
           continue
@@ -136,7 +138,7 @@ export async function POST(request: NextRequest) {
 }
 
 // GET endpoint to check when matches were last updated
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const { user } = await requireAuth()
     const supabase = createClient()

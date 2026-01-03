@@ -1,8 +1,8 @@
 import { createServerClient } from '@supabase/ssr'
+import type { User } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { NextRequest } from 'next/server'
-import type { User } from '@supabase/supabase-js'
 
 async function createSupabaseServerClient() {
   const cookieStore = await cookies()

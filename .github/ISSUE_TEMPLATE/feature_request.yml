@@ -1,7 +1,7 @@
 name: Feature Request
 description: Suggest a new feature or enhancement
-title: "[Feature]: "
-labels: ["enhancement"]
+title: '[Feature]: '
+labels: ['enhancement']
 body:
   - type: markdown
     attributes:
@@ -72,7 +72,7 @@ body:
       description: Describe a specific scenario where this feature would be useful.
       placeholder: |
         As a [user type], I want to [action] so that [benefit].
-        
+
         Example: As a busy professional, I want to filter events by industry so that I can meet people in my field.
 
   - type: textarea

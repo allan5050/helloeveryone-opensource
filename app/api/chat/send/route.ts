@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { requireAuth } from '@/lib/api/auth'
-import { createClient } from '@/lib/supabase/server'
-import { checkRateLimit } from '@/lib/api/rate-limit'
 import { z } from 'zod'
+
+import { requireAuth } from '@/lib/api/auth'
+import { checkRateLimit } from '@/lib/api/rate-limit'
+import { createClient } from '@/lib/supabase/server'
 
 const sendMessageSchema = z.object({
   receiver_id: z.string().uuid('Invalid receiver ID'),

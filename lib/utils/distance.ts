@@ -4,11 +4,11 @@ const ZIP_COORDS: Record<string, { lat: number; lng: number }> = {
   // San Francisco Bay Area
   '94103': { lat: 37.7726, lng: -122.4099 }, // San Francisco - SOMA
   '94102': { lat: 37.7795, lng: -122.4187 }, // San Francisco - Tenderloin
-  '94104': { lat: 37.7916, lng: -122.4010 }, // San Francisco - Financial District
+  '94104': { lat: 37.7916, lng: -122.401 }, // San Francisco - Financial District
   '94105': { lat: 37.7864, lng: -122.3892 }, // San Francisco - Embarcadero
   '94107': { lat: 37.7599, lng: -122.3997 }, // San Francisco - Potrero Hill
   '94108': { lat: 37.7929, lng: -122.4093 }, // San Francisco - Chinatown
-  '94109': { lat: 37.7930, lng: -122.4213 }, // San Francisco - Polk Gulch
+  '94109': { lat: 37.793, lng: -122.4213 }, // San Francisco - Polk Gulch
   '94110': { lat: 37.7484, lng: -122.4156 }, // San Francisco - Mission
   '94111': { lat: 37.7986, lng: -122.3999 }, // San Francisco - Embarcadero
   '94112': { lat: 37.7205, lng: -122.4419 }, // San Francisco - Sunnyside
@@ -36,7 +36,7 @@ const ZIP_COORDS: Record<string, { lat: number; lng: number }> = {
   '94609': { lat: 37.8319, lng: -122.2577 }, // Oakland - Temescal
   '94610': { lat: 37.8114, lng: -122.2372 }, // Oakland - Lake Merritt
   '94611': { lat: 37.8331, lng: -122.1987 }, // Oakland - Piedmont
-  '94612': { lat: 37.8109, lng: -122.2710 }, // Oakland - Downtown
+  '94612': { lat: 37.8109, lng: -122.271 }, // Oakland - Downtown
 
   // San Jose
   '95110': { lat: 37.3382, lng: -121.8863 }, // San Jose - Downtown
@@ -60,11 +60,11 @@ const ZIP_COORDS: Record<string, { lat: number; lng: number }> = {
   '94702': { lat: 37.8652, lng: -122.2859 }, // Berkeley - South
   '94703': { lat: 37.8578, lng: -122.2769 }, // Berkeley - West
   '94704': { lat: 37.8673, lng: -122.2567 }, // Berkeley - Central
-  '94705': { lat: 37.8580, lng: -122.2404 }, // Berkeley - Claremont
+  '94705': { lat: 37.858, lng: -122.2404 }, // Berkeley - Claremont
   '94707': { lat: 37.8896, lng: -122.2994 }, // Berkeley - Hills
   '94708': { lat: 37.8895, lng: -122.2643 }, // Berkeley - North
   '94709': { lat: 37.8761, lng: -122.2677 }, // Berkeley - North
-  '94710': { lat: 37.8680, lng: -122.2990 }, // Berkeley - West
+  '94710': { lat: 37.868, lng: -122.299 }, // Berkeley - West
   '94720': { lat: 37.8719, lng: -122.2585 }, // Berkeley - UC Berkeley
 
   // Palo Alto
@@ -75,7 +75,7 @@ const ZIP_COORDS: Record<string, { lat: number; lng: number }> = {
   '94306': { lat: 37.4276, lng: -122.1472 }, // Palo Alto - South
 
   // Add more ZIP codes as needed...
-};
+}
 
 /**
  * Calculate distance between two points using Haversine formula
@@ -85,23 +85,30 @@ const ZIP_COORDS: Record<string, { lat: number; lng: number }> = {
  * @param lng2 Longitude of point 2
  * @returns Distance in miles
  */
-function haversineDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
-  const R = 3959; // Earth's radius in miles
-  const dLat = toRadians(lat2 - lat1);
-  const dLng = toRadians(lng2 - lng1);
+function haversineDistance(
+  lat1: number,
+  lng1: number,
+  lat2: number,
+  lng2: number
+): number {
+  const R = 3959 // Earth's radius in miles
+  const dLat = toRadians(lat2 - lat1)
+  const dLng = toRadians(lng2 - lng1)
 
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
-    Math.sin(dLng / 2) * Math.sin(dLng / 2);
+    Math.cos(toRadians(lat1)) *
+      Math.cos(toRadians(lat2)) *
+      Math.sin(dLng / 2) *
+      Math.sin(dLng / 2)
 
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 
-  return R * c;
+  return R * c
 }
 
 function toRadians(degrees: number): number {
-  return degrees * (Math.PI / 180);
+  return degrees * (Math.PI / 180)
 }
 
 /**
@@ -110,19 +117,24 @@ function toRadians(degrees: number): number {
  * @param zip2 Second ZIP code
  * @returns Distance in miles or null if ZIP codes not found
  */
-export function calculateDistanceBetweenZips(zip1: string | null | undefined, zip2: string | null | undefined): number | null {
-  if (!zip1 || !zip2) return null;
+export function calculateDistanceBetweenZips(
+  zip1: string | null | undefined,
+  zip2: string | null | undefined
+): number | null {
+  if (!zip1 || !zip2) return null
 
   // Clean ZIP codes (remove any non-numeric characters and trim to 5 digits)
-  const cleanZip1 = zip1.toString().replace(/\D/g, '').slice(0, 5);
-  const cleanZip2 = zip2.toString().replace(/\D/g, '').slice(0, 5);
+  const cleanZip1 = zip1.toString().replace(/\D/g, '').slice(0, 5)
+  const cleanZip2 = zip2.toString().replace(/\D/g, '').slice(0, 5)
 
-  const coords1 = ZIP_COORDS[cleanZip1];
-  const coords2 = ZIP_COORDS[cleanZip2];
+  const coords1 = ZIP_COORDS[cleanZip1]
+  const coords2 = ZIP_COORDS[cleanZip2]
 
-  if (!coords1 || !coords2) return null;
+  if (!coords1 || !coords2) return null
 
-  return Math.round(haversineDistance(coords1.lat, coords1.lng, coords2.lat, coords2.lng));
+  return Math.round(
+    haversineDistance(coords1.lat, coords1.lng, coords2.lat, coords2.lng)
+  )
 }
 
 /**
@@ -131,8 +143,8 @@ export function calculateDistanceBetweenZips(zip1: string | null | undefined, zi
  * @returns Formatted string
  */
 export function formatDistance(miles: number | null): string {
-  if (miles === null) return '';
-  if (miles === 0) return 'Same area';
-  if (miles === 1) return '1 mile away';
-  return `${miles} miles away`;
+  if (miles === null) return ''
+  if (miles === 0) return 'Same area'
+  if (miles === 1) return '1 mile away'
+  return `${miles} miles away`
 }

@@ -1,15 +1,15 @@
 name: Question
 description: Ask a question about the project
-title: "[Question]: "
-labels: ["question"]
+title: '[Question]: '
+labels: ['question']
 body:
   - type: markdown
     attributes:
       value: |
         Have a question? We're here to help! Please check the documentation first:
-        - [README.md](https://github.com/allan5050/helloeveryone/blob/main/README.md)
-        - [CONTRIBUTING.md](https://github.com/allan5050/helloeveryone/blob/main/CONTRIBUTING.md)
-        - [docs/](https://github.com/allan5050/helloeveryone/tree/main/docs)
+        - [README.md](https://github.com/allan5050/helloeveryone-opensource/blob/main/README.md)
+        - [CONTRIBUTING.md](https://github.com/allan5050/helloeveryone-opensource/blob/main/CONTRIBUTING.md)
+        - [docs/](https://github.com/allan5050/helloeveryone-opensource/tree/main/docs)
 
   - type: dropdown
     id: category

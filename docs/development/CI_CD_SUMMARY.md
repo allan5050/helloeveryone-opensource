@@ -7,6 +7,7 @@
 **File**: `.husky/pre-commit`
 
 **Checks Run**:
+
 1. 🔒 **Secret Scanning** (BLOCKS commit)
    - Detects API keys, passwords, private keys
    - Script: `scripts/check-secrets.js`
@@ -34,14 +35,14 @@
 
 **Enhanced Pipeline** (`ci.yml`):
 
-| Step | What It Does | Blocks PR? | Duration |
-|------|--------------|------------|----------|
-| **Lint & Type Check** | ESLint + Prettier + TypeScript | ✅ Yes | ~2 min |
-| **Run Tests** | Jest unit tests + coverage | ✅ Yes | ~3 min |
-| **Build** | Next.js production build | ✅ Yes | ~2 min |
-| **E2E Tests** | Playwright tests | ✅ Yes | ~4 min |
-| **Security Scan** | Secrets + npm audit + security tests | ✅ Yes | ~2 min |
-| **Deploy Preview** | Vercel preview deployment | ❌ No | ~1 min |
+| Step                  | What It Does                         | Blocks PR? | Duration |
+| --------------------- | ------------------------------------ | ---------- | -------- |
+| **Lint & Type Check** | ESLint + Prettier + TypeScript       | ✅ Yes     | ~2 min   |
+| **Run Tests**         | Jest unit tests + coverage           | ✅ Yes     | ~3 min   |
+| **Build**             | Next.js production build             | ✅ Yes     | ~2 min   |
+| **E2E Tests**         | Playwright tests                     | ✅ Yes     | ~4 min   |
+| **Security Scan**     | Secrets + npm audit + security tests | ✅ Yes     | ~2 min   |
+| **Deploy Preview**    | Vercel preview deployment            | ❌ No      | ~1 min   |
 
 **New Workflows**:
 
@@ -75,20 +76,24 @@
 ### TypeScript/JavaScript
 
 **Linting**:
+
 - ✅ ESLint (pre-commit + CI)
 - ✅ Prettier (pre-commit + CI + auto-fix)
 
 **Type Checking**:
+
 - ✅ TypeScript strict mode
-- ⚠️  Currently 300+ errors (being fixed)
+- ⚠️ Currently 300+ errors (being fixed)
 - 🔧 Will enable in pre-commit when clean
 
 **Testing**:
+
 - ✅ Jest unit tests (pre-commit + CI)
 - ✅ Playwright E2E tests (CI only)
 - ✅ Security tests (pre-commit + CI)
 
 **Security**:
+
 - ✅ Secret scanning (pre-commit + CI)
 - ✅ CodeQL analysis (CI)
 - ✅ npm audit (CI)
@@ -97,10 +102,12 @@
 ### React/Next.js
 
 **Build Validation**:
+
 - ✅ Production build (CI)
 - ✅ Bundle size checking (Next.js built-in)
 
 **Code Quality**:
+
 - ✅ ESLint React rules
 - ✅ React Hooks rules
 - ✅ JSX accessibility checks
@@ -108,6 +115,7 @@
 ### SQL/Database
 
 **Security**:
+
 - ✅ No string concatenation in queries
 - ✅ Supabase client usage (parameterized)
 - ✅ RLS policy validation (security tests)
@@ -117,6 +125,7 @@
 ## 🚀 What Happens When You Commit
 
 ### Local (Pre-Commit):
+
 ```bash
 git commit -m "my changes"
 
@@ -130,6 +139,7 @@ git commit -m "my changes"
 **Blocks**: Yes, if secrets or critical issues found
 
 ### GitHub (After Push):
+
 ```bash
 git push origin my-branch
 
@@ -158,6 +168,7 @@ Triggers on GitHub:
 ## 📊 What Each Tool Catches
 
 ### ESLint
+
 - Unused variables
 - Missing semicolons
 - Incorrect imports
@@ -165,30 +176,35 @@ Triggers on GitHub:
 - Accessibility issues
 
 ### Prettier
+
 - Inconsistent formatting
 - Mixed tabs/spaces
 - Line length
 - Bracket spacing
 
 ### TypeScript
+
 - Type errors
 - Undefined variables
 - Missing properties
 - Incorrect function calls
 
 ### Jest Tests
+
 - Broken functionality
 - Regression bugs
 - Edge cases
 - Business logic errors
 
 ### Playwright E2E
+
 - UI broken
 - Navigation issues
 - User flow problems
 - Integration failures
 
 ### Security Tests
+
 - Hardcoded API keys
 - Missing authentication
 - SQL injection risks
@@ -196,12 +212,14 @@ Triggers on GitHub:
 - Command injection
 
 ### CodeQL
+
 - Advanced security patterns
 - Data flow analysis
 - Taint tracking
 - Code smells
 
 ### npm audit
+
 - Vulnerable dependencies
 - Outdated packages
 - Known CVEs
@@ -211,6 +229,7 @@ Triggers on GitHub:
 ## 💡 Best Practices for Contributors
 
 ### Before Committing:
+
 ```bash
 # 1. Run locally (optional but recommended)
 npm run lint            # Check linting
@@ -226,12 +245,14 @@ git pull origin your-branch
 ```
 
 ### During PR:
+
 - ✅ Let auto-fix handle formatting (saves time!)
 - ✅ Review CodeQL findings
 - ✅ Check test coverage report
 - ✅ Read PR comment bot suggestions
 
 ### Don't:
+
 - ❌ Use `--no-verify` to skip hooks
 - ❌ Commit secrets/API keys
 - ❌ Ignore failing tests
@@ -241,37 +262,40 @@ git pull origin your-branch
 
 ## 🔧 Current Configuration Files
 
-| File | Purpose |
-|------|---------|
-| `.husky/pre-commit` | Pre-commit hook script |
-| `.github/workflows/ci.yml` | Main CI/CD pipeline |
-| `.github/workflows/auto-fix.yml` | Auto-formatting |
-| `.github/workflows/codeql.yml` | Security scanning |
-| `.github/workflows/pr-comment.yml` | PR automation |
-| `.github/workflows/dependency-review.yml` | Dependency checking |
-| `.github/dependabot.yml` | Automated updates |
-| `package.json` → `lint-staged` | Lint config |
-| `.eslintrc.json` | ESLint rules |
-| `.prettierrc` | Prettier config |
-| `tsconfig.json` | TypeScript config |
+| File                                      | Purpose                |
+| ----------------------------------------- | ---------------------- |
+| `.husky/pre-commit`                       | Pre-commit hook script |
+| `.github/workflows/ci.yml`                | Main CI/CD pipeline    |
+| `.github/workflows/auto-fix.yml`          | Auto-formatting        |
+| `.github/workflows/codeql.yml`            | Security scanning      |
+| `.github/workflows/pr-comment.yml`        | PR automation          |
+| `.github/workflows/dependency-review.yml` | Dependency checking    |
+| `.github/dependabot.yml`                  | Automated updates      |
+| `package.json` → `lint-staged`            | Lint config            |
+| `.eslintrc.json`                          | ESLint rules           |
+| `.prettierrc`                             | Prettier config        |
+| `tsconfig.json`                           | TypeScript config      |
 
 ---
 
 ## 📈 Automation Metrics
 
 **Pre-Commit**:
+
 - Checks run: 3-4
 - Time: 30-60s
 - Success rate: ~95%
 - Blocks: Secrets, critical security
 
 **CI/CD**:
+
 - Workflows: 6
 - Total checks: 15+
 - Average duration: 6-8 minutes
 - Auto-fixes applied: ~30% of PRs
 
 **Coverage**:
+
 - Linting: 100% of JS/TS files
 - Type checking: 100% of TS files
 - Security: 100% automated
@@ -282,6 +306,7 @@ git pull origin your-branch
 ## 🎯 What You Don't Need to Worry About
 
 Thanks to automation:
+
 - ✅ Formatting (Prettier does it)
 - ✅ Simple lint errors (ESLint --fix)
 - ✅ Secret detection (Blocked automatically)
@@ -295,21 +320,27 @@ Thanks to automation:
 ## 🚦 When Things Get Blocked
 
 ### "Secret detected"
+
 → Remove secret, use `.env.local`, revoke exposed key
 
 ### "Lint failed"
+
 → Run `npm run lint --fix` locally
 
 ### "Type check failed"
+
 → Fix TypeScript errors, or wait for team to enable strict mode
 
 ### "Tests failed"
+
 → Fix broken tests or add tests for new code
 
 ### "Build failed"
+
 → Check Next.js build errors, usually missing imports
 
 ### "Security scan failed"
+
 → Review findings, fix critical issues
 
 ---
@@ -323,10 +354,10 @@ Thanks to automation:
 ✅ **Auto-fix** eliminates manual formatting  
 ✅ **Security** is enforced at every step  
 ✅ **Contributors** get instant feedback  
-✅ **Maintainer** reviews only meaningful changes  
+✅ **Maintainer** reviews only meaningful changes
 
 **Total automation**: ~90% of quality checks  
-**Manual review needed**: Architecture, business logic, UX  
+**Manual review needed**: Architecture, business logic, UX
 
 ---
 

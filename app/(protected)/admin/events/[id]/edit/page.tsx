@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+
 import { EventForm } from '@/components/admin/EventForm'
-import { Database } from '@/types/database'
+import { createClient } from '@/lib/supabase/server'
 
 async function getEvent(id: string) {
   const supabase = await createClient()

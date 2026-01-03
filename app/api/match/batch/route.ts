@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+
 import { requireAuth } from '@/lib/api/auth'
+import { createClient } from '@/lib/supabase/server'
 
 export async function POST(request: NextRequest) {
   try {
@@ -26,7 +27,7 @@ export async function POST(request: NextRequest) {
     }
 
     const startTime = Date.now()
-    let matches = []
+    const matches = []
 
     if (eventId) {
       // Get all attendees of the event

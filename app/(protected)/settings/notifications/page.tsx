@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
+import Link from 'next/link'
+import { useState } from 'react'
 
 interface NotificationSettings {
   newMatches: boolean

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+
 import { requireAuth } from '@/lib/api/auth'
 import { createClient } from '@/lib/supabase/server'
 

@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
 import { ChevronDown, ChevronUp, User, MapPin, Calendar } from 'lucide-react'
+import React, { useState } from 'react'
 
 interface UserData {
   user_id: string
@@ -32,9 +32,11 @@ export default function UserTable({
   users,
   matchScores,
   selectedUser,
-  onUserSelect
+  onUserSelect,
 }: UserTableProps) {
-  const [sortField, setSortField] = useState<'name' | 'age' | 'location' | 'interests'>('name')
+  const [sortField, setSortField] = useState<
+    'name' | 'age' | 'location' | 'interests'
+  >('name')
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
   const [expandedUser, setExpandedUser] = useState<string | null>(null)
 
@@ -85,7 +87,7 @@ export default function UserTable({
         return {
           ...s,
           otherUser,
-          otherUserId
+          otherUserId,
         }
       })
       .filter(s => s.otherUser)
@@ -98,59 +100,71 @@ export default function UserTable({
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
               <button
                 onClick={() => handleSort('name')}
                 className="flex items-center gap-1 hover:text-gray-700"
               >
                 Name
-                {sortField === 'name' && (
-                  sortDirection === 'asc' ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />
-                )}
+                {sortField === 'name' &&
+                  (sortDirection === 'asc' ? (
+                    <ChevronUp className="h-3 w-3" />
+                  ) : (
+                    <ChevronDown className="h-3 w-3" />
+                  ))}
               </button>
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
               <button
                 onClick={() => handleSort('age')}
                 className="flex items-center gap-1 hover:text-gray-700"
               >
                 Age
-                {sortField === 'age' && (
-                  sortDirection === 'asc' ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />
-                )}
+                {sortField === 'age' &&
+                  (sortDirection === 'asc' ? (
+                    <ChevronUp className="h-3 w-3" />
+                  ) : (
+                    <ChevronDown className="h-3 w-3" />
+                  ))}
               </button>
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
               <button
                 onClick={() => handleSort('location')}
                 className="flex items-center gap-1 hover:text-gray-700"
               >
                 Location
-                {sortField === 'location' && (
-                  sortDirection === 'asc' ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />
-                )}
+                {sortField === 'location' &&
+                  (sortDirection === 'asc' ? (
+                    <ChevronUp className="h-3 w-3" />
+                  ) : (
+                    <ChevronDown className="h-3 w-3" />
+                  ))}
               </button>
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
               <button
                 onClick={() => handleSort('interests')}
                 className="flex items-center gap-1 hover:text-gray-700"
               >
                 Interests
-                {sortField === 'interests' && (
-                  sortDirection === 'asc' ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />
-                )}
+                {sortField === 'interests' &&
+                  (sortDirection === 'asc' ? (
+                    <ChevronUp className="h-3 w-3" />
+                  ) : (
+                    <ChevronDown className="h-3 w-3" />
+                  ))}
               </button>
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
               Top Matches
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
               Actions
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="divide-y divide-gray-200 bg-white">
           {sortedUsers.map(user => {
             const topMatches = getUserTopMatches(user.user_id)
             const isSelected = user.user_id === selectedUser
@@ -162,9 +176,9 @@ export default function UserTable({
                   className={`${isSelected ? 'bg-blue-50' : 'hover:bg-gray-50'} cursor-pointer`}
                   onClick={() => onUserSelect(isSelected ? null : user.user_id)}
                 >
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="whitespace-nowrap px-6 py-4">
                     <div className="flex items-center">
-                      <User className="h-5 w-5 text-gray-400 mr-2" />
+                      <User className="mr-2 h-5 w-5 text-gray-400" />
                       <div>
                         <div className="text-sm font-medium text-gray-900">
                           {user.display_name.replace('Demo: ', '')}
@@ -172,16 +186,18 @@ export default function UserTable({
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="whitespace-nowrap px-6 py-4">
                     <div className="flex items-center">
-                      <Calendar className="h-4 w-4 text-gray-400 mr-1" />
+                      <Calendar className="mr-1 h-4 w-4 text-gray-400" />
                       <span className="text-sm text-gray-900">{user.age}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="whitespace-nowrap px-6 py-4">
                     <div className="flex items-center">
-                      <MapPin className="h-4 w-4 text-gray-400 mr-1" />
-                      <span className="text-sm text-gray-900">{user.location}</span>
+                      <MapPin className="mr-1 h-4 w-4 text-gray-400" />
+                      <span className="text-sm text-gray-900">
+                        {user.location}
+                      </span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
@@ -189,7 +205,7 @@ export default function UserTable({
                       {user.interests?.slice(0, 3).map(interest => (
                         <span
                           key={interest}
-                          className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800"
+                          className="inline-flex items-center rounded bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-800"
                         >
                           {interest}
                         </span>
@@ -206,7 +222,10 @@ export default function UserTable({
                       {topMatches.slice(0, 2).map((match, i) => (
                         <div key={i} className="flex items-center gap-1">
                           <span className="font-medium">
-                            {match.otherUser?.display_name.replace('Demo: ', '')}
+                            {match.otherUser?.display_name.replace(
+                              'Demo: ',
+                              ''
+                            )}
                           </span>
                           <span className="text-xs text-gray-500">
                             ({(match.score * 100).toFixed(0)}%)
@@ -220,9 +239,9 @@ export default function UserTable({
                       )}
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  <td className="whitespace-nowrap px-6 py-4 text-sm">
                     <button
-                      onClick={(e) => {
+                      onClick={e => {
                         e.stopPropagation()
                         setExpandedUser(isExpanded ? null : user.user_id)
                       }}
@@ -234,19 +253,21 @@ export default function UserTable({
                 </tr>
                 {isExpanded && (
                   <tr>
-                    <td colSpan={6} className="px-6 py-4 bg-gray-50">
+                    <td colSpan={6} className="bg-gray-50 px-6 py-4">
                       <div className="space-y-3">
                         <div>
-                          <h4 className="font-semibold text-sm mb-1">Bio:</h4>
+                          <h4 className="mb-1 text-sm font-semibold">Bio:</h4>
                           <p className="text-sm text-gray-600">{user.bio}</p>
                         </div>
                         <div>
-                          <h4 className="font-semibold text-sm mb-1">All Interests:</h4>
+                          <h4 className="mb-1 text-sm font-semibold">
+                            All Interests:
+                          </h4>
                           <div className="flex flex-wrap gap-1">
                             {user.interests?.map(interest => (
                               <span
                                 key={interest}
-                                className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800"
+                                className="inline-flex items-center rounded bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-800"
                               >
                                 {interest}
                               </span>
@@ -254,21 +275,43 @@ export default function UserTable({
                           </div>
                         </div>
                         <div>
-                          <h4 className="font-semibold text-sm mb-1">Top 5 Matches:</h4>
+                          <h4 className="mb-1 text-sm font-semibold">
+                            Top 5 Matches:
+                          </h4>
                           <div className="space-y-1">
                             {topMatches.map((match, i) => (
-                              <div key={i} className="flex items-center justify-between text-sm">
+                              <div
+                                key={i}
+                                className="flex items-center justify-between text-sm"
+                              >
                                 <span>{match.otherUser?.display_name}</span>
                                 <div className="flex gap-4 text-xs text-gray-500">
-                                  <span>Overall: {(match.score * 100).toFixed(0)}%</span>
+                                  <span>
+                                    Overall: {(match.score * 100).toFixed(0)}%
+                                  </span>
                                   {match.interest_overlap !== undefined && (
-                                    <span>Interests: {(match.interest_overlap * 100).toFixed(0)}%</span>
+                                    <span>
+                                      Interests:{' '}
+                                      {(match.interest_overlap * 100).toFixed(
+                                        0
+                                      )}
+                                      %
+                                    </span>
                                   )}
                                   {match.age_compatibility !== undefined && (
-                                    <span>Age: {(match.age_compatibility * 100).toFixed(0)}%</span>
+                                    <span>
+                                      Age:{' '}
+                                      {(match.age_compatibility * 100).toFixed(
+                                        0
+                                      )}
+                                      %
+                                    </span>
                                   )}
                                   {match.location_match !== undefined && (
-                                    <span>Location: {(match.location_match * 100).toFixed(0)}%</span>
+                                    <span>
+                                      Location:{' '}
+                                      {(match.location_match * 100).toFixed(0)}%
+                                    </span>
                                   )}
                                 </div>
                               </div>

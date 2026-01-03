@@ -1,13 +1,15 @@
-import { Suspense } from 'react'
 import { Metadata } from 'next'
-import { getAdminStats } from '@/lib/api/admin'
+import { Suspense } from 'react'
+
 import { AdminStats } from '@/components/admin/AdminStats'
-import { RecentActivity } from '@/components/admin/RecentActivity'
 import { QuickActions } from '@/components/admin/QuickActions'
+import { RecentActivity } from '@/components/admin/RecentActivity'
+import { getAdminStats } from '@/lib/api/admin'
 
 export const metadata: Metadata = {
   title: 'Admin Dashboard - HelloEveryone.fun',
-  description: 'Administrative dashboard for managing the HelloEveryone platform, users, and events.',
+  description:
+    'Administrative dashboard for managing the HelloEveryone platform, users, and events.',
 }
 
 export default async function AdminDashboard() {

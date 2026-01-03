@@ -1,7 +1,7 @@
 'use client'
 
-import * as React from 'react'
 import { ChevronDown } from 'lucide-react'
+import * as React from 'react'
 
 interface SelectProps {
   value?: string
@@ -19,31 +19,43 @@ interface SelectContextValue {
   setSelectedLabel: (label: string) => void
 }
 
-const SelectContext = React.createContext<SelectContextValue | undefined>(undefined)
+const SelectContext = React.createContext<SelectContextValue | undefined>(
+  undefined
+)
 
-export function Select({ value = '', onValueChange = () => {}, children }: SelectProps) {
+export function Select({
+  value = '',
+  onValueChange = () => {},
+  children,
+}: SelectProps) {
   const [open, setOpen] = React.useState(false)
   const [selectedLabel, setSelectedLabel] = React.useState('')
   const triggerRef = React.useRef<HTMLButtonElement>(null)
 
   return (
-    <SelectContext.Provider value={{
-      value,
-      onValueChange,
-      open,
-      setOpen,
-      triggerRef,
-      selectedLabel,
-      setSelectedLabel
-    }}>
-      <div className="relative">
-        {children}
-      </div>
+    <SelectContext.Provider
+      value={{
+        value,
+        onValueChange,
+        open,
+        setOpen,
+        triggerRef,
+        selectedLabel,
+        setSelectedLabel,
+      }}
+    >
+      <div className="relative">{children}</div>
     </SelectContext.Provider>
   )
 }
 
-export function SelectTrigger({ className = '', children }: { className?: string; children: React.ReactNode }) {
+export function SelectTrigger({
+  className = '',
+  children,
+}: {
+  className?: string
+  children: React.ReactNode
+}) {
   const context = React.useContext(SelectContext)
   if (!context) throw new Error('SelectTrigger must be used within Select')
 
@@ -60,7 +72,11 @@ export function SelectTrigger({ className = '', children }: { className?: string
   )
 }
 
-export function SelectValue({ placeholder = 'Select...' }: { placeholder?: string }) {
+export function SelectValue({
+  placeholder = 'Select...',
+}: {
+  placeholder?: string
+}) {
   const context = React.useContext(SelectContext)
   if (!context) throw new Error('SelectValue must be used within Select')
 
@@ -71,13 +87,19 @@ export function SelectValue({ placeholder = 'Select...' }: { placeholder?: strin
   )
 }
 
-export function SelectContent({ className = '', children }: { className?: string; children: React.ReactNode }) {
+export function SelectContent({
+  className = '',
+  children,
+}: {
+  className?: string
+  children: React.ReactNode
+}) {
   const context = React.useContext(SelectContext)
   if (!context) throw new Error('SelectContent must be used within Select')
 
   // Store items for label lookup
   React.useEffect(() => {
-    React.Children.forEach(children, (child) => {
+    React.Children.forEach(children, child => {
       if (React.isValidElement(child) && child.props.value === context.value) {
         context.setSelectedLabel(child.props.children)
       }
@@ -107,8 +129,10 @@ export function SelectContent({ className = '', children }: { className?: string
   if (!context.open) return null
 
   return (
-    <div className={`select-dropdown absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border border-gray-200 bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm ${className}`}>
-      {React.Children.map(children, (child) => {
+    <div
+      className={`select-dropdown absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border border-gray-200 bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm ${className}`}
+    >
+      {React.Children.map(children, child => {
         if (React.isValidElement(child) && child.type === SelectItem) {
           return React.cloneElement(child as React.ReactElement<any>)
         }
@@ -121,11 +145,11 @@ export function SelectContent({ className = '', children }: { className?: string
 export function SelectItem({
   value,
   className = '',
-  children
+  children,
 }: {
-  value: string;
-  className?: string;
-  children: React.ReactNode;
+  value: string
+  className?: string
+  children: React.ReactNode
 }) {
   const context = React.useContext(SelectContext)
   if (!context) throw new Error('SelectItem must be used within Select')
@@ -140,7 +164,7 @@ export function SelectItem({
 
   return (
     <div
-      className={`relative cursor-pointer select-none py-2 px-3 ${
+      className={`relative cursor-pointer select-none px-3 py-2 ${
         isSelected ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
       } hover:bg-gray-50 ${className}`}
       onClick={handleClick}

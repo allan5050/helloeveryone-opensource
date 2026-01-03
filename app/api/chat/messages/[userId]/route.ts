@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
+
 import { requireAuth } from '@/lib/api/auth'
 import { createClient } from '@/lib/supabase/server'
-import { z } from 'zod'
 
 const paramsSchema = z.object({
   userId: z.string().uuid('Invalid user ID format'),

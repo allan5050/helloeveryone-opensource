@@ -4,20 +4,22 @@
 
 We release patches for security vulnerabilities in the following versions:
 
-| Version | Supported          |
-| ------- | ------------------ |
-| Latest  | :white_check_mark: |
-| < Latest| :x:                |
+| Version  | Supported          |
+| -------- | ------------------ |
+| Latest   | :white_check_mark: |
+| < Latest | :x:                |
 
 We recommend always using the latest version of HelloEveryone.fun.
 
 ## Reporting a Vulnerability
 
-We take the security of HelloEveryone.fun seriously. If you discover a security vulnerability, please follow these steps:
+We take the security of HelloEveryone.fun seriously. If you discover a security vulnerability,
+please follow these steps:
 
 ### 1. Do NOT Create a Public Issue
 
-Please do not report security vulnerabilities through public GitHub issues, discussions, or pull requests.
+Please do not report security vulnerabilities through public GitHub issues, discussions, or pull
+requests.
 
 ### 2. Report Privately
 
@@ -26,6 +28,7 @@ Instead, please report security vulnerabilities by emailing:
 **Security Contact**: allan.nevala@gmail.com
 
 Include the following information in your report:
+
 - Type of vulnerability (e.g., SQL injection, XSS, authentication bypass)
 - Full paths of source file(s) related to the manifestation of the vulnerability
 - Location of the affected source code (tag/branch/commit or direct URL)
@@ -128,7 +131,7 @@ When contributing to HelloEveryone.fun, watch out for:
 - ✅ Security headers: CSP, HSTS, X-Frame-Options, X-XSS-Protection
 - ✅ Dev endpoints disabled in production
 - ✅ Rate limiting applied to all sensitive endpoints
-- ⚠️  Email verification optional (can be enforced)
+- ⚠️ Email verification optional (can be enforced)
 
 ### Dependencies
 
@@ -169,13 +172,14 @@ For security-related questions or concerns:
 - **Subject Line**: "[SECURITY] Your Issue Title"
 - **Response Time**: Within 48 hours
 
-For non-security issues, please use [GitHub Issues](https://github.com/allan5050/helloeveryone/issues).
+For non-security issues, please use
+[GitHub Issues](https://github.com/allan5050/helloeveryone-opensource/issues).
 
 ## License
 
-This security policy is licensed under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
+This security policy is licensed under
+[CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
 
 ---
 
-**Last Updated**: 2026-01-03
-**Next Review**: 2026-04-03 (Quarterly)
+**Last Updated**: 2026-01-03 **Next Review**: 2026-04-03 (Quarterly)

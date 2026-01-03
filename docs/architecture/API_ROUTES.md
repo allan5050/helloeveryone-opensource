@@ -40,6 +40,7 @@ app/api/
 ```
 
 **Page Routes:**
+
 ```
 app/
 ├── (public)/

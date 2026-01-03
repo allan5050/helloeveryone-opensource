@@ -1,8 +1,8 @@
 'use client'
 
+import { Calendar, Heart, MessageSquare, User, Home } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Calendar, Heart, MessageSquare, User, Home } from 'lucide-react'
 
 const navigation = [
   {
@@ -49,25 +49,18 @@ export default function MobileNav() {
       <div className="flex h-16">
         {navigation.map(item => {
           const isActive =
-            pathname === item.href || pathname.startsWith(item.href + '/')
+            pathname === item.href || pathname.startsWith(`${item.href}/`)
           const Icon = isActive ? item.activeIcon : item.icon
 
           return (
             <Link
               key={item.name}
               href={item.href}
-              className={`
-                flex min-h-[44px] min-w-[44px] flex-1 flex-col 
-                items-center justify-center px-2 py-2 
-                text-xs font-medium transition-all
-                duration-200 ease-in-out
-                active:scale-95
-                ${
-                  isActive
-                    ? 'bg-blue-50 text-blue-600'
-                    : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700 active:bg-gray-100'
-                }
-              `}
+              className={`flex min-h-[44px] min-w-[44px] flex-1 flex-col items-center justify-center px-2 py-2 text-xs font-medium transition-all duration-200 ease-in-out active:scale-95 ${
+                isActive
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700 active:bg-gray-100'
+              } `}
               aria-label={`${item.name}${isActive ? ' (current page)' : ''}`}
               aria-current={isActive ? 'page' : undefined}
             >

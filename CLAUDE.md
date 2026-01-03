@@ -166,11 +166,14 @@ The `.claude/agents/` directory contains specialized agent configurations:
 ## Important Notes
 
 - **Never commit secrets or API keys** - use environment variables (`.env.local`, never `.env`)
-- **All database changes require proper migrations** - create migration files in `supabase/migrations/`
-- **Follow mutual visibility rules** for all matching features - users can only filter by fields they share
+- **All database changes require proper migrations** - create migration files in
+  `supabase/migrations/`
+- **Follow mutual visibility rules** for all matching features - users can only filter by fields
+  they share
 - **Prioritize mobile experience** - PWA-first approach, test on mobile viewports
 - **Use ICS files for calendar integration** - no OAuth complexity, universal compatibility
-- **Current Status**: ~80% complete with 68 TypeScript errors and test suite improvements needed (see `docs/working_docs/PROJECT_STATUS.md`)
+- **Current Status**: ~80% complete with 68 TypeScript errors and test suite improvements needed
+  (see `docs/working_docs/PROJECT_STATUS.md`)
 
 ## Authentication Implementation
 
@@ -206,6 +209,7 @@ node mcp/query.js :sample events 3 # Sample data
 ```
 
 **Key Files:**
+
 - `mcp/db-client.js` - Database connection and utility methods
 - `mcp/schema.json` - Auto-generated complete database schema
 - `mcp/README.md` - Full documentation for MCP tools
@@ -251,6 +255,7 @@ docs/
 ### Documentation Maintenance
 
 **Before committing changes**, update relevant documentation in `docs/` if you've:
+
 - Added or modified API endpoints → update `docs/architecture/API_ROUTES.md`
 - Changed database schema → update `docs/database/DATABASE_SCHEMA.md`
 - Added new components or hooks → update `docs/development/COMPONENTS.md` or `HOOKS.md`
@@ -285,27 +290,33 @@ NEXT_PUBLIC_ENABLE_DEMO_MODE=true  # Use mock data instead of real database
 
 ## Known Issues & Current Limitations
 
-Before making changes, be aware of these current issues (see `docs/working_docs/PROJECT_STATUS.md` for details):
+Before making changes, be aware of these current issues (see `docs/working_docs/PROJECT_STATUS.md`
+for details):
 
 ### TypeScript Errors (68 errors)
+
 - **Photo/Avatar URL mismatches**: Code references `photo_url` vs `avatar_url` inconsistently
 - **Event type missing properties**: `date`, `event_type`, `capacity`, `host` not in type definition
 - **Profile schema gaps**: `is_profile_complete`, `privacy_settings` missing from TypeScript types
 - **Impact**: Production builds succeed but type safety is compromised
 
 ### Test Suite (42/126 passing - 33%)
+
 - Test framework configuration mixing vitest and Jest
 - Database schema changes not reflected in test fixtures
 - Mock structure mismatches with actual implementation
 - **Note**: Don't worry if tests fail - we're actively fixing this
 
 ### Database Schema
+
 - Recent migrations added columns that TypeScript types haven't caught up with
 - Run migrations before testing: `npm run db:setup`
 - Check current schema with: `node mcp/inspect-db.js`
 
-When in doubt, consult `docs/working_docs/PROJECT_STATUS.md` for the latest information on blockers and workarounds.
+When in doubt, consult `docs/working_docs/PROJECT_STATUS.md` for the latest information on blockers
+and workarounds.
 
 ## Github Guidelines
-Do not mention Claude or co-authors in commit messages or pushes to github.
-Do not include hardcoded API keys, secrets, or sensitive information in code or code comments.
+
+Do not mention Claude or co-authors in commit messages or pushes to github. Do not include hardcoded
+API keys, secrets, or sensitive information in code or code comments.

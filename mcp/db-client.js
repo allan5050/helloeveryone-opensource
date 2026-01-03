@@ -3,56 +3,59 @@
  * Provides direct database access for LLMs to query and introspect the database
  */
 
-const { Client } = require('pg');
-const { createClient } = require('@supabase/supabase-js');
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+const { Client } = require('pg')
+const { createClient } = require('@supabase/supabase-js')
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') })
 
 class SupabaseDBClient {
   constructor() {
-    this.supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    this.supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_API_KEY;
-    this.supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    this.dbPassword = process.env.DB_PASSWORD;
-    
+    this.supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    this.supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_API_KEY
+    this.supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    this.dbPassword = process.env.DB_PASSWORD
+
     if (!this.supabaseUrl) {
-      throw new Error('NEXT_PUBLIC_SUPABASE_URL not found in environment');
+      throw new Error('NEXT_PUBLIC_SUPABASE_URL not found in environment')
     }
-    
-    this.projectRef = this.supabaseUrl.match(/https:\/\/([^.]+)/)?.[1];
-    
+
+    this.projectRef = this.supabaseUrl.match(/https:\/\/([^.]+)/)?.[1]
+
     // PostgreSQL direct connection
-    this.connectionString = `postgresql://postgres:${encodeURIComponent(this.dbPassword)}@db.${this.projectRef}.supabase.co:5432/postgres`;
-    
+    this.connectionString = `postgresql://postgres:${encodeURIComponent(this.dbPassword)}@db.${this.projectRef}.supabase.co:5432/postgres`
+
     // Supabase JS client for API access
-    this.supabase = createClient(this.supabaseUrl, this.supabaseServiceKey || this.supabaseAnonKey);
+    this.supabase = createClient(
+      this.supabaseUrl,
+      this.supabaseServiceKey || this.supabaseAnonKey
+    )
   }
-  
+
   /**
    * Get a direct PostgreSQL connection
    */
   async getDirectConnection() {
     const client = new Client({
       connectionString: this.connectionString,
-      ssl: { rejectUnauthorized: false }
-    });
-    await client.connect();
-    return client;
+      ssl: { rejectUnauthorized: false },
+    })
+    await client.connect()
+    return client
   }
-  
+
   /**
    * Execute a raw SQL query
    */
   async executeSQL(query, params = []) {
-    const client = await this.getDirectConnection();
+    const client = await this.getDirectConnection()
     try {
-      const result = await client.query(query, params);
-      return result.rows;
+      const result = await client.query(query, params)
+      return result.rows
     } finally {
-      await client.end();
+      await client.end()
     }
   }
-  
+
   /**
    * Get all table names in the public schema
    */
@@ -64,10 +67,10 @@ class SupabaseDBClient {
       FROM pg_tables 
       WHERE schemaname = 'public' 
       ORDER BY tablename
-    `;
-    return await this.executeSQL(query);
+    `
+    return await this.executeSQL(query)
   }
-  
+
   /**
    * Get columns for a specific table
    */
@@ -88,19 +91,19 @@ class SupabaseDBClient {
       WHERE c.table_name = $1 
       AND c.table_schema = 'public'
       ORDER BY c.ordinal_position
-    `;
-    return await this.executeSQL(query, [tableName]);
+    `
+    return await this.executeSQL(query, [tableName])
   }
-  
+
   /**
    * Get row count for a table
    */
   async getTableCount(tableName) {
-    const query = `SELECT COUNT(*) as count FROM ${tableName}`;
-    const result = await this.executeSQL(query);
-    return parseInt(result[0].count);
+    const query = `SELECT COUNT(*) as count FROM ${tableName}`
+    const result = await this.executeSQL(query)
+    return parseInt(result[0].count)
   }
-  
+
   /**
    * Get foreign key relationships
    */
@@ -120,17 +123,17 @@ class SupabaseDBClient {
         AND ccu.table_schema = tc.table_schema
       WHERE tc.constraint_type = 'FOREIGN KEY' 
       AND tc.table_schema = 'public'
-    `;
-    
+    `
+
     if (tableName) {
-      query += ` AND tc.table_name = $1`;
-      return await this.executeSQL(query, [tableName]);
+      query += ` AND tc.table_name = $1`
+      return await this.executeSQL(query, [tableName])
     }
-    
-    query += ' ORDER BY tc.table_name, kcu.column_name';
-    return await this.executeSQL(query);
+
+    query += ' ORDER BY tc.table_name, kcu.column_name'
+    return await this.executeSQL(query)
   }
-  
+
   /**
    * Get indexes for a table
    */
@@ -143,17 +146,17 @@ class SupabaseDBClient {
         indexdef
       FROM pg_indexes
       WHERE schemaname = 'public'
-    `;
-    
+    `
+
     if (tableName) {
-      query += ` AND tablename = $1`;
-      return await this.executeSQL(query, [tableName]);
+      query += ` AND tablename = $1`
+      return await this.executeSQL(query, [tableName])
     }
-    
-    query += ' ORDER BY tablename, indexname';
-    return await this.executeSQL(query);
+
+    query += ' ORDER BY tablename, indexname'
+    return await this.executeSQL(query)
   }
-  
+
   /**
    * Get database functions
    */
@@ -167,10 +170,10 @@ class SupabaseDBClient {
       FROM information_schema.routines
       WHERE routine_schema = 'public'
       ORDER BY routine_name
-    `;
-    return await this.executeSQL(query);
+    `
+    return await this.executeSQL(query)
   }
-  
+
   /**
    * Get RLS policies
    */
@@ -187,17 +190,17 @@ class SupabaseDBClient {
         with_check
       FROM pg_policies
       WHERE schemaname = 'public'
-    `;
-    
+    `
+
     if (tableName) {
-      query += ` AND tablename = $1`;
-      return await this.executeSQL(query, [tableName]);
+      query += ` AND tablename = $1`
+      return await this.executeSQL(query, [tableName])
     }
-    
-    query += ' ORDER BY tablename, policyname';
-    return await this.executeSQL(query);
+
+    query += ' ORDER BY tablename, policyname'
+    return await this.executeSQL(query)
   }
-  
+
   /**
    * Get enum types
    */
@@ -212,23 +215,23 @@ class SupabaseDBClient {
       WHERE n.nspname = 'public'
       GROUP BY t.typname
       ORDER BY t.typname
-    `;
-    const result = await this.executeSQL(query);
+    `
+    const result = await this.executeSQL(query)
     // Convert comma-separated values back to array
     return result.map(row => ({
       enum_name: row.enum_name,
-      values: row.values ? row.values.split(',') : []
-    }));
+      values: row.values ? row.values.split(',') : [],
+    }))
   }
-  
+
   /**
    * Get sample data from a table
    */
   async getSampleData(tableName, limit = 5) {
-    const query = `SELECT * FROM ${tableName} LIMIT $1`;
-    return await this.executeSQL(query, [limit]);
+    const query = `SELECT * FROM ${tableName} LIMIT $1`
+    return await this.executeSQL(query, [limit])
   }
-  
+
   /**
    * Check if pgvector extension is installed
    */
@@ -239,16 +242,16 @@ class SupabaseDBClient {
         extversion
       FROM pg_extension
       WHERE extname = 'vector'
-    `;
-    const result = await this.executeSQL(query);
-    return result.length > 0 ? result[0] : null;
+    `
+    const result = await this.executeSQL(query)
+    return result.length > 0 ? result[0] : null
   }
-  
+
   /**
    * Get complete database overview
    */
   async getDatabaseOverview() {
-    const tables = await this.getTables();
+    const tables = await this.getTables()
     const overview = {
       project_ref: this.projectRef,
       url: this.supabaseUrl,
@@ -257,17 +260,17 @@ class SupabaseDBClient {
       functions: (await this.getFunctions()).map(f => ({
         name: f.routine_name,
         type: f.routine_type,
-        returns: f.return_type
+        returns: f.return_type,
       })),
-      pgvector: await this.checkPgVector()
-    };
-    
+      pgvector: await this.checkPgVector(),
+    }
+
     for (const table of tables) {
-      const schema = await this.getTableSchema(table.tablename);
-      const count = await this.getTableCount(table.tablename);
-      const foreignKeys = await this.getForeignKeys(table.tablename);
-      const policies = await this.getRLSPolicies(table.tablename);
-      
+      const schema = await this.getTableSchema(table.tablename)
+      const count = await this.getTableCount(table.tablename)
+      const foreignKeys = await this.getForeignKeys(table.tablename)
+      const policies = await this.getRLSPolicies(table.tablename)
+
       overview.tables[table.tablename] = {
         size: table.size,
         comment: table.comment,
@@ -277,20 +280,20 @@ class SupabaseDBClient {
         rls_policies: policies.map(p => ({
           name: p.policyname,
           command: p.cmd,
-          permissive: p.permissive
-        }))
-      };
+          permissive: p.permissive,
+        })),
+      }
     }
-    
-    return overview;
+
+    return overview
   }
-  
+
   /**
    * Use Supabase JS client for API operations
    */
   getSupabaseClient() {
-    return this.supabase;
+    return this.supabase
   }
 }
 
-module.exports = SupabaseDBClient;
+module.exports = SupabaseDBClient

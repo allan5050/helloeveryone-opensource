@@ -1,8 +1,10 @@
 'use client'
 
+import { RefreshCw } from 'lucide-react'
 import { useState } from 'react'
-import { EventWithRSVP } from '@/types/events'
-import { RSVPButton } from './RSVPButton'
+
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
@@ -10,9 +12,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { RefreshCw } from 'lucide-react'
+import { EventWithRSVP } from '@/types/events'
+
+import { RSVPButton } from './RSVPButton'
 
 // Demo component showcasing RSVP functionality
 export function RSVPDemo() {

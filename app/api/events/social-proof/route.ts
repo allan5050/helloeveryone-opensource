@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
-import { requireAuth } from '@/lib/api/auth'
 import { z } from 'zod'
+
+import { requireAuth } from '@/lib/api/auth'
+import { createClient } from '@/lib/supabase/server'
 
 // Validation schemas
 const socialProofQuerySchema = z.object({

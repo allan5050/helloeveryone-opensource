@@ -36,7 +36,7 @@ export async function getProfileWithPrivacy(
     }
 
     return { success: true, data: profile }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -54,7 +54,7 @@ export async function getPublicProfile(userId: string): Promise<ProfileResult> {
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }

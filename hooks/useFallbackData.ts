@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
-import { fallbackData, type DemoProfile, type DemoMatchScore } from '@/lib/fallback/demo-data'
+import {
+  fallbackData,
+  type DemoProfile,
+  type DemoMatchScore,
+} from '@/lib/fallback/demo-data'
 
 export interface FallbackMatch {
   id: string
@@ -45,21 +49,34 @@ export function useFallbackData(currentUserId?: string) {
     // Get profiles based on search or pagination
     let profiles = searchTerm
       ? fallbackData.searchProfiles(searchTerm, currentUserId)
-      : fallbackData.getProfilesPaginated(page, itemsPerPage, currentUserId).data
+      : fallbackData.getProfilesPaginated(page, itemsPerPage, currentUserId)
+          .data
 
     // Transform to match format
     const matches: FallbackMatch[] = profiles.map(profile => {
       // Check for existing match score or generate one
-      let matchScore = fallbackData.getMatchScore(currentUserId, profile.user_id)
+      let matchScore = fallbackData.getMatchScore(
+        currentUserId,
+        profile.user_id
+      )
       if (!matchScore && currentUser) {
-        matchScore = fallbackData.generateFallbackMatchScore(currentUser, profile)
+        matchScore = fallbackData.generateFallbackMatchScore(
+          currentUser,
+          profile
+        )
       }
 
       // Calculate common interests
-      const commonInterests = fallbackData.calculateCommonInterests(currentUserId, profile.user_id)
+      const commonInterests = fallbackData.calculateCommonInterests(
+        currentUserId,
+        profile.user_id
+      )
 
       // Check if favorited
-      const isFavorite = fallbackData.isFavorited(currentUserId, profile.user_id)
+      const isFavorite = fallbackData.isFavorited(
+        currentUserId,
+        profile.user_id
+      )
 
       return {
         id: `fallback-${profile.user_id}`,
@@ -73,9 +90,9 @@ export function useFallbackData(currentUserId?: string) {
           age: profile.age,
           interests: profile.interests,
           location: profile.location,
-          is_favorite: isFavorite
+          is_favorite: isFavorite,
         },
-        common_interests: commonInterests
+        common_interests: commonInterests,
       }
     })
 
@@ -88,7 +105,7 @@ export function useFallbackData(currentUserId?: string) {
     return {
       profiles: matches,
       hasMore,
-      total: totalProfiles
+      total: totalProfiles,
     }
   }
 
@@ -98,7 +115,7 @@ export function useFallbackData(currentUserId?: string) {
 
     return {
       ...profile,
-      avatar_url: profile.photo_url
+      avatar_url: profile.photo_url,
     }
   }
 
@@ -133,6 +150,6 @@ export function useFallbackData(currentUserId?: string) {
     disableFallback: () => {
       fallbackData.disableFallback()
       setIsUsingFallback(false)
-    }
+    },
   }
 }
