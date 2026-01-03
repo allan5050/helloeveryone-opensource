@@ -1,17 +1,19 @@
+import { ArrowLeft, MapPin, Calendar, Clock } from 'lucide-react'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
-import { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowLeft, MapPin, Calendar, Clock } from 'lucide-react'
-import { createClient } from '@/lib/supabase/server'
-import { getCurrentUser } from '@/lib/api/auth'
-import { calculateDistanceBetweenZips, formatDistance } from '@/lib/utils/distance'
+
+import AIInsightSection from '@/components/matching/AIInsightSection'
 import MatchExplanation from '@/components/matching/MatchExplanation'
 import FavoriteButton from '@/components/profile/FavoriteButton'
 import MessageButton from '@/components/profile/MessageButton'
-import AIInsightSection from '@/components/matching/AIInsightSection'
 import Avatar from '@/components/ui/Avatar'
+import { getCurrentUser } from '@/lib/api/auth'
+import { createClient } from '@/lib/supabase/server'
+import {
+  calculateDistanceBetweenZips,
+  formatDistance,
+} from '@/lib/utils/distance'
 
 interface PageProps {
   params: Promise<{
@@ -24,16 +26,8 @@ async function getMatchDetails(currentUserId: string, matchUserId: string) {
 
   // Get both profiles to check locations
   const [profileResult, currentUserProfileResult] = await Promise.all([
-    supabase
-      .from('profiles')
-      .select('*')
-      .eq('user_id', matchUserId)
-      .single(),
-    supabase
-      .from('profiles')
-      .select('*')
-      .eq('user_id', currentUserId)
-      .single()
+    supabase.from('profiles').select('*').eq('user_id', matchUserId).single(),
+    supabase.from('profiles').select('*').eq('user_id', currentUserId).single(),
   ])
 
   if (profileResult.error) {
@@ -98,8 +92,8 @@ async function getMatchDetails(currentUserId: string, matchUserId: string) {
   const userInterests = currentUserProfileResult.data?.interests || []
   const matchInterests = profileResult.data.interests || []
   const commonInterests = userInterests.filter((interest: string) =>
-    matchInterests.some((mInterest: string) =>
-      mInterest.toLowerCase() === interest.toLowerCase()
+    matchInterests.some(
+      (mInterest: string) => mInterest.toLowerCase() === interest.toLowerCase()
     )
   )
 
@@ -114,7 +108,7 @@ async function getMatchDetails(currentUserId: string, matchUserId: string) {
     bio_similarity: dbMatch?.semantic_score || 0,
     location_score: 0,
     user_id_1: currentUserId,
-    user_id_2: matchUserId
+    user_id_2: matchUserId,
   }
 
   return {
@@ -191,10 +185,14 @@ async function MatchDetailContent({ params }: PageProps) {
     notFound()
   }
 
-  const { match, profile, currentUserProfile, commonEvents, isFavorite } = matchDetails
+  const { match, profile, currentUserProfile, commonEvents, isFavorite } =
+    matchDetails
 
   // Calculate distance if both users have locations
-  const distance = calculateDistanceBetweenZips(currentUserProfile?.location, profile.location)
+  const distance = calculateDistanceBetweenZips(
+    currentUserProfile?.location,
+    profile.location
+  )
 
   // Get current user's interests for comparison
   const currentUserInterests = currentUserProfile?.interests || []
@@ -202,26 +200,30 @@ async function MatchDetailContent({ params }: PageProps) {
   // Calculate common interests for display
   const profileInterests = profile.interests || []
   const commonInterests = currentUserInterests.filter((interest: string) =>
-    profileInterests.some((pInterest: string) =>
-      pInterest.toLowerCase() === interest.toLowerCase()
+    profileInterests.some(
+      (pInterest: string) => pInterest.toLowerCase() === interest.toLowerCase()
     )
   )
 
   // Sort interests: shared ones first, then others
-  const sortedInterests = profile.interests ? [...profile.interests].sort((a, b) => {
-    const aIsShared = currentUserInterests.some(interest =>
-      interest.toLowerCase() === a.toLowerCase() ||
-      match.common_interests?.includes(a)
-    )
-    const bIsShared = currentUserInterests.some(interest =>
-      interest.toLowerCase() === b.toLowerCase() ||
-      match.common_interests?.includes(b)
-    )
+  const sortedInterests = profile.interests
+    ? [...profile.interests].sort((a, b) => {
+        const aIsShared = currentUserInterests.some(
+          interest =>
+            interest.toLowerCase() === a.toLowerCase() ||
+            match.common_interests?.includes(a)
+        )
+        const bIsShared = currentUserInterests.some(
+          interest =>
+            interest.toLowerCase() === b.toLowerCase() ||
+            match.common_interests?.includes(b)
+        )
 
-    if (aIsShared && !bIsShared) return -1
-    if (!aIsShared && bIsShared) return 1
-    return 0
-  }) : []
+        if (aIsShared && !bIsShared) return -1
+        if (!aIsShared && bIsShared) return 1
+        return 0
+      })
+    : []
 
   const getAvatarSrc = () => {
     // Check for photo_url first (new field for local images)
@@ -269,9 +271,12 @@ async function MatchDetailContent({ params }: PageProps) {
 
   const getMatchQualityColor = (quality: 'high' | 'medium' | 'low') => {
     switch (quality) {
-      case 'high': return 'bg-green-100 text-green-800'
-      case 'medium': return 'bg-yellow-100 text-yellow-800'
-      case 'low': return 'bg-gray-100 text-gray-800'
+      case 'high':
+        return 'bg-green-100 text-green-800'
+      case 'medium':
+        return 'bg-yellow-100 text-yellow-800'
+      case 'low':
+        return 'bg-gray-100 text-gray-800'
     }
   }
 
@@ -296,7 +301,9 @@ async function MatchDetailContent({ params }: PageProps) {
             <Avatar
               src={getAvatarSrc()}
               alt={`${(profile as any).full_name || profile.display_name}'s avatar`}
-              fallbackText={(profile as any).full_name || profile.display_name || 'User'}
+              fallbackText={
+                (profile as any).full_name || profile.display_name || 'User'
+              }
               size="lg"
               className="mx-auto flex-shrink-0 md:mx-0"
             />
@@ -306,7 +313,9 @@ async function MatchDetailContent({ params }: PageProps) {
               <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
                   <h2 className="mb-1 text-2xl font-bold text-gray-900">
-                    {(profile as any).full_name || profile.display_name || 'User'}
+                    {(profile as any).full_name ||
+                      profile.display_name ||
+                      'User'}
                   </h2>
                   <div className="flex items-center justify-center space-x-4 text-gray-600 md:justify-start">
                     {profile.age && (
@@ -320,7 +329,7 @@ async function MatchDetailContent({ params }: PageProps) {
                         <MapPin className="h-4 w-4" />
                         <span>{profile.location}</span>
                         {distance !== null && (
-                          <span className="text-purple-600 font-medium">
+                          <span className="font-medium text-purple-600">
                             ({formatDistance(distance)})
                           </span>
                         )}
@@ -331,7 +340,9 @@ async function MatchDetailContent({ params }: PageProps) {
 
                 {/* Match Quality Badge - always show */}
                 <div className="mt-4 md:mt-0">
-                  <div className={`rounded-full px-4 py-2 text-lg font-bold capitalize ${getMatchQualityColor(matchQuality)}`}>
+                  <div
+                    className={`rounded-full px-4 py-2 text-lg font-bold capitalize ${getMatchQualityColor(matchQuality)}`}
+                  >
                     {matchQuality} Match
                   </div>
                 </div>
@@ -352,36 +363,43 @@ async function MatchDetailContent({ params }: PageProps) {
                   </h3>
                   <div className="flex flex-wrap justify-center gap-2 md:justify-start">
                     {sortedInterests.map((interest, index) => {
-                      const isShared = currentUserInterests.some(userInterest =>
-                        userInterest.toLowerCase() === interest.toLowerCase()
-                      ) || match.common_interests?.includes(interest)
+                      const isShared =
+                        currentUserInterests.some(
+                          userInterest =>
+                            userInterest.toLowerCase() ===
+                            interest.toLowerCase()
+                        ) || match.common_interests?.includes(interest)
 
                       return (
                         <span
                           key={index}
                           className={`rounded-full px-3 py-1 text-sm font-medium transition-all ${
                             isShared
-                              ? 'bg-purple-100 text-purple-700 ring-2 ring-purple-200 shadow-sm'
+                              ? 'bg-purple-100 text-purple-700 shadow-sm ring-2 ring-purple-200'
                               : 'bg-gray-100 text-gray-600'
                           }`}
                         >
                           {interest}
                           {isShared && (
-                            <span className="ml-1" aria-label="Shared interest">✨</span>
+                            <span className="ml-1" aria-label="Shared interest">
+                              ✨
+                            </span>
                           )}
                         </span>
                       )
                     })}
                   </div>
-                  {currentUserInterests.length > 0 && sortedInterests.some(interest =>
-                    currentUserInterests.some(userInterest =>
-                      userInterest.toLowerCase() === interest.toLowerCase()
-                    )
-                  ) && (
-                    <p className="mt-3 text-sm text-purple-600">
-                      ✨ Highlighted interests are ones you share
-                    </p>
-                  )}
+                  {currentUserInterests.length > 0 &&
+                    sortedInterests.some(interest =>
+                      currentUserInterests.some(
+                        userInterest =>
+                          userInterest.toLowerCase() === interest.toLowerCase()
+                      )
+                    ) && (
+                      <p className="mt-3 text-sm text-purple-600">
+                        ✨ Highlighted interests are ones you share
+                      </p>
+                    )}
                 </div>
               )}
 

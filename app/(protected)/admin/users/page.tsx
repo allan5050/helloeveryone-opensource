@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+
 import { UsersList } from '@/components/admin/UsersList'
 import { UsersSearch } from '@/components/admin/UsersSearch'
 

@@ -6,14 +6,7 @@
       "full_name": "David Kim",
       "bio": "Software engineer who loves basketball, BBQ, and building robots with my kids on weekends.",
       "age": 36,
-      "interests": [
-        "basketball",
-        "sports",
-        "coaching",
-        "fitness",
-        "sports-analytics",
-        "warriors"
-      ],
+      "interests": ["basketball", "sports", "coaching", "fitness", "sports-analytics", "warriors"],
       "location": "94107",
       "is_active": true
     },
@@ -23,14 +16,7 @@
       "full_name": "Sarah Johnson",
       "bio": "Senior data analyst in fintech. Dog mom to two rescues. Love trail running and true crime podcasts.",
       "age": 35,
-      "interests": [
-        "running",
-        "hiking",
-        "trail-running",
-        "outdoor-fitness",
-        "marathons",
-        "strava"
-      ],
+      "interests": ["running", "hiking", "trail-running", "outdoor-fitness", "marathons", "strava"],
       "location": "94110",
       "is_active": true
     },
@@ -40,14 +26,7 @@
       "full_name": "Jennifer Davis",
       "bio": "Product manager in fintech. Yoga instructor, foodie, and dog walker volunteer.",
       "age": 33,
-      "interests": [
-        "product-management",
-        "fintech",
-        "venture-capital",
-        "startups",
-        "networking",
-        "ted-talks"
-      ],
+      "interests": ["product-management", "fintech", "venture-capital", "startups", "networking", "ted-talks"],
       "location": "94103",
       "is_active": true
     },
@@ -57,14 +36,7 @@
       "full_name": "Marcus Williams",
       "bio": "AI researcher focused on NLP. Jazz enthusiast, amateur chef, and proud dad of twin toddlers.",
       "age": 38,
-      "interests": [
-        "farmers-markets",
-        "organic-cooking",
-        "wine-tasting",
-        "cheese-making",
-        "slow-food",
-        "gardening"
-      ],
+      "interests": ["farmers-markets", "organic-cooking", "wine-tasting", "cheese-making", "slow-food", "gardening"],
       "location": "94102",
       "is_active": true
     },
@@ -91,14 +63,7 @@
       "full_name": "Alex Chen",
       "bio": "ML engineer who loves coffee and cooking. Big on travel and volunteering for local tech meetups.",
       "age": 29,
-      "interests": [
-        "machine-learning",
-        "ai-research",
-        "kaggle",
-        "deep-learning",
-        "pytorch",
-        "arxiv"
-      ],
+      "interests": ["machine-learning", "ai-research", "kaggle", "deep-learning", "pytorch", "arxiv"],
       "location": "94107",
       "is_active": true
     },
@@ -108,14 +73,7 @@
       "full_name": "Emily Zhang",
       "bio": "Data engineer building ETL pipelines. Sci-fi book club organizer, coffee snob, and urban gardener.",
       "age": 30,
-      "interests": [
-        "indie-music",
-        "folk-music",
-        "writing",
-        "concerts",
-        "poetry",
-        "zines"
-      ],
+      "interests": ["indie-music", "folk-music", "writing", "concerts", "poetry", "zines"],
       "location": "94103",
       "is_active": true
     },
@@ -125,14 +83,7 @@
       "full_name": "Michael Brown",
       "bio": "Marketing director in ad-tech. Golf player, wine enthusiast, and father of a 5-year-old.",
       "age": 39,
-      "interests": [
-        "marketing",
-        "ad-tech",
-        "golf",
-        "wine-tasting",
-        "business-strategy",
-        "investing"
-      ],
+      "interests": ["marketing", "ad-tech", "golf", "wine-tasting", "business-strategy", "investing"],
       "location": "94102",
       "is_active": true
     },
@@ -142,14 +93,7 @@
       "full_name": "Lisa Park",
       "bio": "Graphic designer and illustrator. Love yoga, farmers markets, and hosting dinner parties. Cat mom to three!",
       "age": 31,
-      "interests": [
-        "photography",
-        "indie-music",
-        "concerts",
-        "film-photography",
-        "art-shows",
-        "creative-writing"
-      ],
+      "interests": ["photography", "indie-music", "concerts", "film-photography", "art-shows", "creative-writing"],
       "location": "94110",
       "is_active": true
     },
@@ -159,14 +103,7 @@
       "full_name": "Tom Anderson",
       "bio": "UX designer in ad-tech. Weekend photographer, craft beer enthusiast, and dog park regular with my beagle.",
       "age": 34,
-      "interests": [
-        "sci-fi",
-        "star-wars",
-        "board-games",
-        "dungeons-dragons",
-        "comic-books",
-        "video-games"
-      ],
+      "interests": ["sci-fi", "star-wars", "board-games", "dungeons-dragons", "comic-books", "video-games"],
       "location": "94107",
       "is_active": true
     },
@@ -176,14 +113,7 @@
       "full_name": "James Miller",
       "bio": "Clinical data analyst in healthcare. Rock climbing enthusiast, home brewer, and Star Wars fan.",
       "age": 28,
-      "interests": [
-        "healthcare-tech",
-        "data-analysis",
-        "medical-devices",
-        "clinical-trials",
-        "research",
-        "pubmed"
-      ],
+      "interests": ["healthcare-tech", "data-analysis", "medical-devices", "clinical-trials", "research", "pubmed"],
       "location": "94108",
       "is_active": true
     },
@@ -193,14 +123,7 @@
       "full_name": "Robert Taylor",
       "bio": "Financial analyst who enjoys cycling, craft cocktails, and hosting board game nights.",
       "age": 41,
-      "interests": [
-        "golf",
-        "tennis",
-        "country-club",
-        "yacht-club",
-        "networking",
-        "finance"
-      ],
+      "interests": ["golf", "tennis", "country-club", "yacht-club", "networking", "finance"],
       "location": "94108",
       "is_active": true
     },
@@ -210,14 +133,7 @@
       "full_name": "Chris Thompson",
       "bio": "DevOps engineer and home automation enthusiast. Enjoy brewing coffee, hiking, and retro gaming.",
       "age": 27,
-      "interests": [
-        "devops",
-        "home-automation",
-        "gaming",
-        "technology",
-        "robotics",
-        "hackathons"
-      ],
+      "interests": ["devops", "home-automation", "gaming", "technology", "robotics", "hackathons"],
       "location": "94107",
       "is_active": true
     },
@@ -227,14 +143,7 @@
       "full_name": "Jane Doe",
       "bio": "Data scientist who loves coffee, yoga, and indie music. I enjoy cooking, travel, and volunteering in my spare time.",
       "age": 32,
-      "interests": [
-        "coffee-roasting",
-        "specialty-coffee",
-        "latte-art",
-        "cafe-culture",
-        "barista",
-        "coffee-cupping"
-      ],
+      "interests": ["coffee-roasting", "specialty-coffee", "latte-art", "cafe-culture", "barista", "coffee-cupping"],
       "location": "94110",
       "is_active": true
     },
@@ -244,14 +153,7 @@
       "full_name": "Kevin Martinez",
       "bio": "Security engineer and privacy advocate. Into competitive chess, sci-fi novels, and BBQ competitions.",
       "age": 40,
-      "interests": [
-        "cybersecurity",
-        "privacy",
-        "chess",
-        "cryptography",
-        "infosec",
-        "defcon"
-      ],
+      "interests": ["cybersecurity", "privacy", "chess", "cryptography", "infosec", "defcon"],
       "location": "94103",
       "is_active": true
     },
@@ -261,14 +163,7 @@
       "full_name": "Laura Rodriguez",
       "bio": "Social media manager and digital nomad. Yoga teacher, vegan cook, and sustainability advocate.",
       "age": 29,
-      "interests": [
-        "zero-waste",
-        "veganism",
-        "climate-action",
-        "composting",
-        "sustainable-fashion",
-        "activism"
-      ],
+      "interests": ["zero-waste", "veganism", "climate-action", "composting", "sustainable-fashion", "activism"],
       "location": "94110",
       "is_active": true
     },
@@ -295,14 +190,7 @@
       "full_name": "Patricia Lee",
       "bio": "Content strategist in tech. Meditation practitioner, indie music fan, and urban sketcher.",
       "age": 35,
-      "interests": [
-        "painting",
-        "art-galleries",
-        "sketching",
-        "art-history",
-        "museums",
-        "poetry"
-      ],
+      "interests": ["painting", "art-galleries", "sketching", "art-history", "museums", "poetry"],
       "location": "94102",
       "is_active": true
     },
@@ -312,14 +200,7 @@
       "full_name": "Steven Clark",
       "bio": "Blockchain developer and crypto enthusiast. Mountain biker, podcast host, and amateur astronomer.",
       "age": 31,
-      "interests": [
-        "blockchain",
-        "cryptocurrency",
-        "podcasts",
-        "astronomy",
-        "technology",
-        "futurism"
-      ],
+      "interests": ["blockchain", "cryptocurrency", "podcasts", "astronomy", "technology", "futurism"],
       "location": "94103",
       "is_active": true
     },
@@ -329,14 +210,7 @@
       "full_name": "Daniel Harris",
       "bio": "QA engineer and testing automation expert. Board game designer, craft beer brewer, and corgi dad.",
       "age": 33,
-      "interests": [
-        "qa-testing",
-        "automation",
-        "board-games",
-        "game-design",
-        "tabletop-rpg",
-        "puzzles"
-      ],
+      "interests": ["qa-testing", "automation", "board-games", "game-design", "tabletop-rpg", "puzzles"],
       "location": "94102",
       "is_active": true
     },
@@ -346,14 +220,7 @@
       "full_name": "Michelle Lewis",
       "bio": "Business analyst in healthcare. Triathlete, nutrition coach, and mother of three.",
       "age": 43,
-      "interests": [
-        "triathlon",
-        "cycling",
-        "swimming",
-        "ironman",
-        "sports-medicine",
-        "fitness-tracking"
-      ],
+      "interests": ["triathlon", "cycling", "swimming", "ironman", "sports-medicine", "fitness-tracking"],
       "location": "94108",
       "is_active": true
     },
@@ -363,14 +230,7 @@
       "full_name": "Amanda White",
       "bio": "Teacher turned EdTech consultant. Book club regular, amateur baker, and proud plant parent.",
       "age": 37,
-      "interests": [
-        "baking",
-        "cookbook-collecting",
-        "food-photography",
-        "restaurant-reviews",
-        "sourdough",
-        "pastry"
-      ],
+      "interests": ["baking", "cookbook-collecting", "food-photography", "restaurant-reviews", "sourdough", "pastry"],
       "location": "94102",
       "is_active": true
     },
@@ -380,14 +240,7 @@
       "full_name": "Sandra Young",
       "bio": "Legal tech consultant. Classical music lover, museum volunteer, and Siamese cat owner.",
       "age": 44,
-      "interests": [
-        "philosophy",
-        "classical-music",
-        "museums",
-        "lectures",
-        "npr",
-        "documentaries"
-      ],
+      "interests": ["philosophy", "classical-music", "museums", "lectures", "npr", "documentaries"],
       "location": "94103",
       "is_active": true
     },
@@ -397,14 +250,7 @@
       "full_name": "Paul Walker",
       "bio": "Cloud architect and infrastructure guru. Car enthusiast, DIY home improver, and weekend chef.",
       "age": 45,
-      "interests": [
-        "cars",
-        "diy",
-        "woodworking",
-        "mechanics",
-        "restoration",
-        "tools"
-      ],
+      "interests": ["cars", "diy", "woodworking", "mechanics", "restoration", "tools"],
       "location": "94102",
       "is_active": true
     },
@@ -414,14 +260,7 @@
       "full_name": "Nancy Wilson",
       "bio": "HR tech specialist. Pilates instructor, wine club member, and golden retriever mom.",
       "age": 38,
-      "interests": [
-        "crossfit",
-        "nutrition",
-        "meal-prep",
-        "marathons",
-        "wellness-blogs",
-        "fitbit"
-      ],
+      "interests": ["crossfit", "nutrition", "meal-prep", "marathons", "wellness-blogs", "fitbit"],
       "location": "94108",
       "is_active": true
     }

@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
+import { useEffect, useRef } from 'react'
 
 interface User {
   user_id: string
@@ -17,7 +17,11 @@ interface FeatureOverlapProps {
   onUserSelect?: (userId: string | null) => void
 }
 
-export default function FeatureOverlap({ users, selectedUser, onUserSelect }: FeatureOverlapProps) {
+export default function FeatureOverlap({
+  users,
+  selectedUser,
+  onUserSelect,
+}: FeatureOverlapProps) {
   const svgRef = useRef<SVGSVGElement>(null)
 
   useEffect(() => {
@@ -28,7 +32,8 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
 
     const width = 800
     const height = 600
-    const svg = d3.select(svgRef.current)
+    const svg = d3
+      .select(svgRef.current)
       .attr('width', width)
       .attr('height', height)
 
@@ -51,16 +56,19 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
       const chartWidth = width - margin.left - margin.right
       const chartHeight = height - margin.top - margin.bottom
 
-      const g = svg.append('g')
+      const g = svg
+        .append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`)
 
       // Scales
-      const xScale = d3.scaleBand()
+      const xScale = d3
+        .scaleBand()
         .domain(data.map(d => d.interest))
         .range([0, chartWidth])
         .padding(0.1)
 
-      const yScale = d3.scaleLinear()
+      const yScale = d3
+        .scaleLinear()
         .domain([0, Math.max(...data.map(d => d.count))])
         .range([chartHeight, 0])
 
@@ -70,7 +78,8 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
       // Bars
       g.selectAll('.bar')
         .data(data)
-        .enter().append('rect')
+        .enter()
+        .append('rect')
         .attr('class', 'bar')
         .attr('x', d => xScale(d.interest)!)
         .attr('y', d => yScale(d.count))
@@ -88,11 +97,11 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
         .style('font-size', '10px')
 
       // Y axis
-      g.append('g')
-        .call(d3.axisLeft(yScale))
+      g.append('g').call(d3.axisLeft(yScale))
 
       // Title
-      svg.append('text')
+      svg
+        .append('text')
         .attr('x', width / 2)
         .attr('y', 20)
         .attr('text-anchor', 'middle')
@@ -104,12 +113,11 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
       g.append('text')
         .attr('transform', 'rotate(-90)')
         .attr('y', 0 - margin.left)
-        .attr('x', 0 - (chartHeight / 2))
+        .attr('x', 0 - chartHeight / 2)
         .attr('dy', '1em')
         .style('text-anchor', 'middle')
         .style('font-size', '12px')
         .text('Number of Users')
-
     } else {
       // Show Venn diagram of overlapping interests with selected user
       const selectedUserData = users.find(u => u.user_id === selectedUser)
@@ -118,21 +126,24 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
       const otherUsers = users.filter(u => u.user_id !== selectedUser)
 
       // Calculate overlaps with each other user
-      const overlaps = otherUsers.map(otherUser => {
-        const commonInterests = selectedUserData.interests?.filter(
-          interest => otherUser.interests?.includes(interest)
-        ) || []
+      const overlaps = otherUsers
+        .map(otherUser => {
+          const commonInterests =
+            selectedUserData.interests?.filter(interest =>
+              otherUser.interests?.includes(interest)
+            ) || []
 
-        return {
-          user: otherUser,
-          commonInterests,
-          commonCount: commonInterests.length,
-          totalInterests: new Set([
-            ...(selectedUserData.interests || []),
-            ...(otherUser.interests || [])
-          ]).size
-        }
-      }).sort((a, b) => b.commonCount - a.commonCount)
+          return {
+            user: otherUser,
+            commonInterests,
+            commonCount: commonInterests.length,
+            totalInterests: new Set([
+              ...(selectedUserData.interests || []),
+              ...(otherUser.interests || []),
+            ]).size,
+          }
+        })
+        .sort((a, b) => b.commonCount - a.commonCount)
         .slice(0, 10) // Top 10 overlapping users
 
       const centerX = width / 2
@@ -140,17 +151,20 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
       const radius = 150
 
       // Draw selected user in center
-      const centerGroup = svg.append('g')
+      const centerGroup = svg
+        .append('g')
         .attr('transform', `translate(${centerX},${centerY})`)
 
-      centerGroup.append('circle')
+      centerGroup
+        .append('circle')
         .attr('r', 60)
         .attr('fill', '#4285F4')
         .attr('fill-opacity', 0.3)
         .attr('stroke', '#4285F4')
         .attr('stroke-width', 2)
 
-      centerGroup.append('text')
+      centerGroup
+        .append('text')
         .attr('text-anchor', 'middle')
         .attr('dy', '0.3em')
         .style('font-weight', 'bold')
@@ -163,11 +177,10 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
         const x = centerX + Math.cos(angle) * radius
         const y = centerY + Math.sin(angle) * radius
 
-        const g = svg.append('g')
-          .attr('transform', `translate(${x},${y})`)
+        const g = svg.append('g').attr('transform', `translate(${x},${y})`)
 
         // Circle size based on overlap
-        const circleRadius = 20 + (overlap.commonCount * 5)
+        const circleRadius = 20 + overlap.commonCount * 5
 
         g.append('circle')
           .attr('r', circleRadius)
@@ -192,7 +205,8 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
           .text(overlap.commonCount)
 
         // Draw connection line
-        svg.append('line')
+        svg
+          .append('line')
           .attr('x1', centerX)
           .attr('y1', centerY)
           .attr('x2', x)
@@ -202,7 +216,9 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
           .attr('stroke-opacity', 0.3)
 
         // Tooltip on hover
-        const tooltip = d3.select('body').append('div')
+        const tooltip = d3
+          .select('body')
+          .append('div')
           .attr('class', 'tooltip')
           .style('position', 'absolute')
           .style('padding', '10px')
@@ -213,33 +229,38 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
           .style('opacity', 0)
           .style('font-size', '12px')
 
-        g.on('mouseover', (event) => {
+        g.on('mouseover', event => {
           tooltip
             .style('opacity', 1)
-            .html(`
+            .html(
+              `
               <strong>${overlap.user.display_name}</strong><br/>
               Common interests: ${overlap.commonInterests.join(', ')}<br/>
               Total overlap: ${overlap.commonCount}/${overlap.totalInterests}
-            `)
-            .style('left', (event.pageX + 10) + 'px')
-            .style('top', (event.pageY - 10) + 'px')
-        })
-        .on('mouseout', () => {
+            `
+            )
+            .style('left', `${event.pageX + 10}px`)
+            .style('top', `${event.pageY - 10}px`)
+        }).on('mouseout', () => {
           tooltip.style('opacity', 0)
         })
       })
 
       // Title
-      svg.append('text')
+      svg
+        .append('text')
         .attr('x', width / 2)
         .attr('y', 30)
         .attr('text-anchor', 'middle')
         .style('font-size', '16px')
         .style('font-weight', 'bold')
-        .text(`Interest Overlap with ${selectedUserData.display_name.replace('Demo: ', '')}`)
+        .text(
+          `Interest Overlap with ${selectedUserData.display_name.replace('Demo: ', '')}`
+        )
 
       // Legend
-      svg.append('text')
+      svg
+        .append('text')
         .attr('x', width - 150)
         .attr('y', height - 20)
         .style('font-size', '12px')
@@ -252,11 +273,13 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
     <div className="w-full">
       <div className="mb-4 flex items-center gap-4">
         <div className="flex-1">
-          <label className="text-sm font-medium mb-1 block">Select User for Overlap Analysis:</label>
+          <label className="mb-1 block text-sm font-medium">
+            Select User for Overlap Analysis:
+          </label>
           <select
             value={selectedUser || ''}
-            onChange={(e) => onUserSelect?.(e.target.value || null)}
-            className="w-full px-3 py-2 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={e => onUserSelect?.(e.target.value || null)}
+            className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">All Users (Interest Distribution)</option>
             {users.map(user => (
@@ -269,7 +292,7 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
         {selectedUser && (
           <button
             onClick={() => onUserSelect?.(null)}
-            className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md text-sm font-medium transition-colors"
+            className="rounded-md bg-gray-100 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-200"
           >
             Clear Selection
           </button>
@@ -277,8 +300,9 @@ export default function FeatureOverlap({ users, selectedUser, onUserSelect }: Fe
       </div>
       <svg ref={svgRef}></svg>
       {!selectedUser && (
-        <p className="text-sm text-gray-500 mt-2">
-          Showing overall interest distribution. Select a user above to see their specific overlaps with others.
+        <p className="mt-2 text-sm text-gray-500">
+          Showing overall interest distribution. Select a user above to see
+          their specific overlaps with others.
         </p>
       )}
     </div>

@@ -2,7 +2,8 @@
 
 ## Overview
 
-HelloEveryone uses a comprehensive testing strategy with multiple types of tests to ensure code quality and reliability.
+HelloEveryone uses a comprehensive testing strategy with multiple types of tests to ensure code
+quality and reliability.
 
 ## Testing Stack
 
@@ -72,7 +73,7 @@ const mockMatch = {
 describe('MatchCard', () => {
   it('displays match information correctly', () => {
     render(<MatchCard match={mockMatch} />)
-    
+
     expect(screen.getByText('John')).toBeInTheDocument()
     expect(screen.getByText('85% Match')).toBeInTheDocument()
     expect(screen.getByText('hiking, photography')).toBeInTheDocument()
@@ -81,10 +82,10 @@ describe('MatchCard', () => {
   it('handles favorite toggle', async () => {
     const mockToggleFavorite = jest.fn()
     render(<MatchCard match={mockMatch} onToggleFavorite={mockToggleFavorite} />)
-    
+
     const favoriteButton = screen.getByRole('button', { name: /favorite/i })
     await userEvent.click(favoriteButton)
-    
+
     expect(mockToggleFavorite).toHaveBeenCalledWith('123')
   })
 })
@@ -111,7 +112,7 @@ const createWrapper = () => {
       mutations: { retry: false },
     },
   })
-  
+
   return ({ children }: { children: React.ReactNode }) => (
     <QueryClientProvider client={queryClient}>
       {children}
@@ -150,19 +151,19 @@ describe('calculateCompatibilityScore', () => {
     age: 28,
     interests: ['hiking', 'photography', 'travel'],
     bio: 'Love outdoor adventures and capturing memories',
-    location: { lat: 40.7128, lng: -74.0060 }
+    location: { lat: 40.7128, lng: -74.006 },
   }
 
   const user2 = {
     age: 26,
     interests: ['photography', 'travel', 'cooking'],
     bio: 'Passionate about exploring new places and cuisines',
-    location: { lat: 40.7589, lng: -73.9851 }
+    location: { lat: 40.7589, lng: -73.9851 },
   }
 
   it('calculates score correctly', () => {
     const score = calculateCompatibilityScore(user1, user2)
-    
+
     expect(score).toBeGreaterThan(0)
     expect(score).toBeLessThanOrEqual(100)
   })
@@ -205,19 +206,19 @@ describe('/api/match/calculate', () => {
     const mockSupabase = {
       auth: {
         getSession: jest.fn().mockResolvedValue({
-          data: { session: { user: mockUser } }
-        })
+          data: { session: { user: mockUser } },
+        }),
       },
       rpc: jest.fn().mockResolvedValue({
-        data: [{ id: 'match1', match_score: 85 }]
-      })
+        data: [{ id: 'match1', match_score: 85 }],
+      }),
     }
-    
+
     ;(createServerClient as jest.Mock).mockReturnValue(mockSupabase)
 
     const { req, res } = createMocks({
       method: 'POST',
-      body: { limit: 10 }
+      body: { limit: 10 },
     })
 
     await handler(req, res)
@@ -232,16 +233,16 @@ describe('/api/match/calculate', () => {
     const mockSupabase = {
       auth: {
         getSession: jest.fn().mockResolvedValue({
-          data: { session: null }
-        })
-      }
+          data: { session: null },
+        }),
+      },
     }
-    
+
     ;(createServerClient as jest.Mock).mockReturnValue(mockSupabase)
 
     const { req, res } = createMocks({
       method: 'POST',
-      body: { limit: 10 }
+      body: { limit: 10 },
     })
 
     await handler(req, res)
@@ -259,10 +260,7 @@ import { createClient } from '@supabase/supabase-js'
 import { createProfile, updateProfile } from '@/lib/supabase/profiles'
 
 // Use test Supabase instance
-const supabase = createClient(
-  process.env.TEST_SUPABASE_URL!,
-  process.env.TEST_SUPABASE_ANON_KEY!
-)
+const supabase = createClient(process.env.TEST_SUPABASE_URL!, process.env.TEST_SUPABASE_ANON_KEY!)
 
 describe('Profile Operations', () => {
   let testUserId: string
@@ -271,9 +269,9 @@ describe('Profile Operations', () => {
     // Create test user
     const { data, error } = await supabase.auth.signUp({
       email: `test-${Date.now()}@example.com`,
-      password: 'testpass123'
+      password: 'testpass123',
     })
-    
+
     if (error) throw error
     testUserId = data.user!.id
   })
@@ -289,7 +287,7 @@ describe('Profile Operations', () => {
       last_name: 'User',
       age: 28,
       bio: 'Test bio',
-      interests: ['testing']
+      interests: ['testing'],
     }
 
     const profile = await createProfile(testUserId, profileData)
@@ -397,10 +395,10 @@ test.describe('Matching System', () => {
 
   test('user can view matches', async ({ page }) => {
     await page.goto('/matches')
-    
+
     // Wait for matches to load
     await expect(page.locator('[data-testid="match-card"]').first()).toBeVisible()
-    
+
     // Check match information is displayed
     const firstMatch = page.locator('[data-testid="match-card"]').first()
     await expect(firstMatch.locator('[data-testid="match-name"]')).toBeVisible()
@@ -409,15 +407,15 @@ test.describe('Matching System', () => {
 
   test('user can favorite a match', async ({ page }) => {
     await page.goto('/matches')
-    
+
     const firstMatch = page.locator('[data-testid="match-card"]').first()
     const favoriteButton = firstMatch.locator('[data-testid="favorite-button"]')
-    
+
     await favoriteButton.click()
-    
+
     // Should show favorited state
     await expect(favoriteButton).toHaveClass(/favorited/)
-    
+
     // Should appear in favorites page
     await page.goto('/favorites')
     await expect(page.locator('[data-testid="match-card"]').first()).toBeVisible()
@@ -439,7 +437,7 @@ export const mockUser = {
   age: 28,
   bio: 'Test bio',
   interests: ['testing', 'coding'],
-  photos: ['test.jpg']
+  photos: ['test.jpg'],
 }
 
 export const mockEvent = {
@@ -450,7 +448,7 @@ export const mockEvent = {
   venue_name: 'Test Venue',
   venue_address: '123 Test St',
   capacity: 50,
-  attendee_count: 25
+  attendee_count: 25,
 }
 
 export const mockMatch = {
@@ -460,7 +458,7 @@ export const mockMatch = {
   match_score: 85,
   shared_interests: ['hiking', 'photography'],
   bio: 'Love outdoor adventures',
-  photos: ['jane.jpg']
+  photos: ['jane.jpg'],
 }
 ```
 
@@ -480,7 +478,7 @@ export async function createTestUser(userData: Partial<User> = {}) {
     email: `test-${Date.now()}@example.com`,
     password: 'testpass123',
     email_confirm: true,
-    user_metadata: userData
+    user_metadata: userData,
   })
 
   if (error) throw error
@@ -502,45 +500,45 @@ name: Test Suite
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     env:
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.TEST_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.TEST_SUPABASE_ANON_KEY }}
       SUPABASE_SERVICE_ROLE_API_KEY: ${{ secrets.TEST_SUPABASE_SERVICE_ROLE_KEY }}
 
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        cache: 'npm'
-    
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: Type check
-      run: npm run type-check
-    
-    - name: Lint
-      run: npm run lint
-    
-    - name: Unit tests
-      run: npm run test:coverage
-    
-    - name: Build
-      run: npm run build
-    
-    - name: E2E tests
-      run: npm run test:e2e
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm run test:coverage
+
+      - name: Build
+        run: npm run build
+
+      - name: E2E tests
+        run: npm run test:e2e
 ```
 
 ## Testing Best Practices
@@ -552,10 +550,10 @@ test('should calculate match score', () => {
   // Arrange
   const user1 = { interests: ['hiking'] }
   const user2 = { interests: ['hiking', 'reading'] }
-  
+
   // Act
   const score = calculateMatch(user1, user2)
-  
+
   // Assert
   expect(score).toBeGreaterThan(0)
 })
@@ -578,7 +576,7 @@ test('matching works')
 ```typescript
 // Mock API calls
 jest.mock('@/lib/api/openai', () => ({
-  generateEmbedding: jest.fn().mockResolvedValue([0.1, 0.2, 0.3])
+  generateEmbedding: jest.fn().mockResolvedValue([0.1, 0.2, 0.3]),
 }))
 
 // Mock Next.js router
@@ -595,15 +593,15 @@ jest.mock('next/navigation', () => ({
 ```typescript
 describe('User Profile Tests', () => {
   let testUser: User
-  
+
   beforeEach(async () => {
     testUser = await createTestUser()
   })
-  
+
   afterEach(async () => {
     await cleanupTestUser(testUser.id)
   })
-  
+
   // Tests here use isolated test data
 })
 ```
@@ -614,13 +612,13 @@ describe('User Profile Tests', () => {
 test('should handle API failures gracefully', async () => {
   // Mock API failure
   jest.mocked(api.getMatches).mockRejectedValue(new Error('API Error'))
-  
+
   const { result } = renderHook(() => useMatching())
-  
+
   await act(async () => {
     await result.current.calculateMatches()
   })
-  
+
   expect(result.current.error).toBe('Failed to calculate matches')
   expect(result.current.matches).toEqual([])
 })

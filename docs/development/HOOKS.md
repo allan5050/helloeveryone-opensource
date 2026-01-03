@@ -2,7 +2,8 @@
 
 ## Overview
 
-The `hooks/` directory contains custom React hooks that encapsulate business logic, API calls, and common functionality used across the application.
+The `hooks/` directory contains custom React hooks that encapsulate business logic, API calls, and
+common functionality used across the application.
 
 ## Available Hooks
 
@@ -41,14 +42,14 @@ import { useCalendar } from '@/hooks/useCalendar'
 
 function EventCard({ eventId }: { eventId: string }) {
   const { downloadICS, isDownloading, error } = useCalendar()
-  
+
   const handleDownload = () => {
     downloadICS(eventId)
   }
-  
+
   return (
-    <button 
-      onClick={handleDownload} 
+    <button
+      onClick={handleDownload}
       disabled={isDownloading}
     >
       {isDownloading ? 'Downloading...' : 'Add to Calendar'}
@@ -100,10 +101,10 @@ import { useEventMatches } from '@/hooks/useEventMatches'
 
 function EventPage({ eventId }: { eventId: string }) {
   const { matches, isLoading, error, refreshMatches } = useEventMatches(eventId)
-  
+
   if (isLoading) return <div>Loading matches...</div>
   if (error) return <div>Error: {error}</div>
-  
+
   return (
     <div>
       <h2>People you might connect with:</h2>
@@ -154,14 +155,14 @@ import { useFavorites } from '@/hooks/useFavorites'
 
 function ProfileCard({ userId }: { userId: string }) {
   const { toggleFavorite, isFavorite, isLoading } = useFavorites()
-  
+
   const handleToggle = () => {
     toggleFavorite(userId)
   }
-  
+
   return (
-    <button 
-      onClick={handleToggle} 
+    <button
+      onClick={handleToggle}
       disabled={isLoading}
       className={isFavorite(userId) ? 'favorited' : ''}
     >
@@ -204,7 +205,7 @@ import { useIsMobile } from '@/hooks/useIsMobile'
 
 function ResponsiveComponent() {
   const { isMobile, isTablet, isDesktop } = useIsMobile()
-  
+
   return (
     <div>
       {isMobile && <MobileLayout />}
@@ -264,21 +265,21 @@ export function useMatching(): UseMatchingReturn
 import { useMatching } from '@/hooks/useMatching'
 
 function MatchesPage() {
-  const { 
-    matches, 
-    isLoading, 
-    isCalculating, 
-    calculateMatches, 
+  const {
+    matches,
+    isLoading,
+    isCalculating,
+    calculateMatches,
     loadMore,
-    hasMore 
+    hasMore
   } = useMatching()
-  
+
   useEffect(() => {
     calculateMatches()
   }, [])
-  
+
   if (isLoading) return <div>Finding your matches...</div>
-  
+
   return (
     <div>
       {matches.map(match => (
@@ -345,32 +346,32 @@ import { useRSVP } from '@/hooks/useRSVP'
 
 function EventRSVP({ eventId }: { eventId: string }) {
   const { rsvpStatus, updateRSVP, isLoading, attendeeCount, canRSVP } = useRSVP(eventId)
-  
+
   const handleRSVP = (status: RSVPStatus) => {
     updateRSVP(eventId, status)
   }
-  
+
   if (!canRSVP) return <div>Event is full</div>
-  
+
   return (
     <div>
       <p>{attendeeCount} people attending</p>
       <div>
-        <button 
+        <button
           onClick={() => handleRSVP('going')}
           disabled={isLoading}
           className={rsvpStatus === 'going' ? 'active' : ''}
         >
           Going
         </button>
-        <button 
+        <button
           onClick={() => handleRSVP('maybe')}
           disabled={isLoading}
           className={rsvpStatus === 'maybe' ? 'active' : ''}
         >
           Maybe
         </button>
-        <button 
+        <button
           onClick={() => handleRSVP('not_going')}
           disabled={isLoading}
           className={rsvpStatus === 'not_going' ? 'active' : ''}
@@ -444,11 +445,11 @@ import { useMatching } from '@/hooks/useMatching'
 
 test('should calculate matches', async () => {
   const { result } = renderHook(() => useMatching())
-  
+
   await act(async () => {
     await result.current.calculateMatches()
   })
-  
+
   expect(result.current.matches).toHaveLength(10)
 })
 ```
@@ -466,7 +467,7 @@ export function useMatching() {
     queryFn: fetchMatches,
     staleTime: 5 * 60 * 1000, // 5 minutes
   })
-  
+
   const calculateMutation = useMutation({
     mutationFn: calculateMatches,
     onSuccess: () => {
@@ -474,7 +475,7 @@ export function useMatching() {
       queryClient.invalidateQueries({ queryKey: ['matches'] })
     },
   })
-  
+
   return {
     matches,
     isLoading,
@@ -490,20 +491,16 @@ export function useMatching() {
 ```typescript
 const toggleFavorite = async (userId: string) => {
   // Optimistic update
-  setFavorites(prev => 
-    prev.includes(userId) 
-      ? prev.filter(id => id !== userId)
-      : [...prev, userId]
+  setFavorites(prev =>
+    prev.includes(userId) ? prev.filter(id => id !== userId) : [...prev, userId]
   )
-  
+
   try {
     await api.toggleFavorite(userId)
   } catch (error) {
     // Rollback on error
-    setFavorites(prev => 
-      prev.includes(userId)
-        ? prev.filter(id => id !== userId)
-        : [...prev, userId]
+    setFavorites(prev =>
+      prev.includes(userId) ? prev.filter(id => id !== userId) : [...prev, userId]
     )
     throw error
   }
@@ -518,12 +515,13 @@ import { debounce } from 'lodash'
 
 export function useSearch() {
   const debouncedSearch = useMemo(
-    () => debounce((query: string) => {
-      // Perform search
-    }, 300),
+    () =>
+      debounce((query: string) => {
+        // Perform search
+      }, 300),
     []
   )
-  
+
   return { search: debouncedSearch }
 }
 ```

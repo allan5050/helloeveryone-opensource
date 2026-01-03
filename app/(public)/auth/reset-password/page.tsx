@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+
 import { createClient } from '@/lib/supabase/client'
 
 export default function ResetPasswordPage() {
@@ -46,7 +47,7 @@ export default function ResetPasswordPage() {
     }
 
     const { error } = await createClient().auth.updateUser({
-      password: password,
+      password,
     })
 
     if (error) {

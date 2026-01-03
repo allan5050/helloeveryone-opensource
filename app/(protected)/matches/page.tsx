@@ -1,19 +1,18 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
-import Link from 'next/link'
 import {
   Search,
-  Filter,
   Grid,
   List,
   SlidersHorizontal,
   AlertCircle,
 } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
+import Link from 'next/link'
+import { useState, useEffect, useMemo } from 'react'
+
 import { useAuth } from '@/app/contexts/AuthContext'
 import MatchCard from '@/components/matching/MatchCard'
-import MatchExplanations from '@/components/matching/MatchExplanations'
+import { createClient } from '@/lib/supabase/client'
 
 interface Match {
   id: string
@@ -47,26 +46,14 @@ export default function MatchesPage() {
   const [showFilters, setShowFilters] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [hasNextPage, setHasNextPage] = useState(false)
-  const [currentUserData, setCurrentUserData] = useState<{bio?: string, interests?: string[]}>({})
+  const [currentUserData, setCurrentUserData] = useState<{
+    bio?: string
+    interests?: string[]
+  }>({})
   const { user } = useAuth()
   const supabase = createClient()
 
   const itemsPerPage = 50 // Show more profiles per page
-
-  // Helper function to determine match quality
-  const getMatchQuality = (score: number): 'high' | 'medium' | 'low' => {
-    if (score >= 0.8) return 'high'
-    if (score >= 0.6) return 'medium'
-    return 'low'
-  }
-
-  const getMatchQualityColor = (quality: 'high' | 'medium' | 'low') => {
-    switch (quality) {
-      case 'high': return 'bg-green-100 text-green-800'
-      case 'medium': return 'bg-yellow-100 text-yellow-800'
-      case 'low': return 'bg-gray-100 text-gray-800'
-    }
-  }
 
   useEffect(() => {
     if (user) {
@@ -147,7 +134,8 @@ export default function MatchesPage() {
           )
 
           // Calculate a simple compatibility score based on common interests
-          const compatibilityScore = commonInterests.length / Math.max(userInterests.length, 1)
+          const compatibilityScore =
+            commonInterests.length / Math.max(userInterests.length, 1)
 
           return {
             id: `profile-${profile.user_id}`,
@@ -320,9 +308,14 @@ export default function MatchesPage() {
 
       // Secondary sort based on selected option
       if (sortBy === 'interests') {
-        return (b.common_interests || []).length - (a.common_interests || []).length
+        return (
+          (b.common_interests || []).length - (a.common_interests || []).length
+        )
       } else if (sortBy === 'date') {
-        return new Date(b.calculated_at).getTime() - new Date(a.calculated_at).getTime()
+        return (
+          new Date(b.calculated_at).getTime() -
+          new Date(a.calculated_at).getTime()
+        )
       }
 
       return 0
@@ -532,7 +525,6 @@ export default function MatchesPage() {
           </div>
         )}
 
-
         {/* Matches Grid/List */}
         {loading && currentPage === 1 ? (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -574,7 +566,6 @@ export default function MatchesPage() {
             >
               {filteredMatches.map(match => {
                 const matchScore = match.combined_score * 100
-                const matchQuality = getMatchQuality(match.combined_score)
 
                 return (
                   <MatchCard
@@ -611,15 +602,21 @@ export default function MatchesPage() {
             </div>
             <h3 className="mb-2 text-lg font-semibold text-gray-900">
               {showMode === 'everyone'
-                ? (searchTerm ? 'No people found' : 'Loading people...')
-                : (searchTerm || minScore > 0 ? 'No matches found' : 'Building your matches...')}
+                ? searchTerm
+                  ? 'No people found'
+                  : 'Loading people...'
+                : searchTerm || minScore > 0
+                  ? 'No matches found'
+                  : 'Building your matches...'}
             </h3>
             <p className="mb-4 text-gray-600">
               {showMode === 'everyone'
-                ? (searchTerm ? 'Try adjusting your search to discover more people' : 'Great connections are just around the corner!')
-                : (searchTerm || minScore > 0
+                ? searchTerm
+                  ? 'Try adjusting your search to discover more people'
+                  : 'Great connections are just around the corner!'
+                : searchTerm || minScore > 0
                   ? 'Try adjusting your search or filters to see more potential connections'
-                  : 'Complete your profile and attend events to unlock amazing matches')}
+                  : 'Complete your profile and attend events to unlock amazing matches'}
             </p>
             {showMode === 'everyone' ? (
               <div className="flex flex-col justify-center gap-3 sm:flex-row">
@@ -637,7 +634,8 @@ export default function MatchesPage() {
                 </Link>
               </div>
             ) : (
-              !searchTerm && minScore <= 0 && (
+              !searchTerm &&
+              minScore <= 0 && (
                 <div className="flex flex-col justify-center gap-3 sm:flex-row">
                   <Link
                     href="/profile"

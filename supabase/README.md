@@ -1,6 +1,7 @@
 # Supabase Configuration
 
-This directory contains Supabase-related configuration and scripts for the HelloEveryone application.
+This directory contains Supabase-related configuration and scripts for the HelloEveryone
+application.
 
 ## Structure
 
@@ -13,17 +14,23 @@ This directory contains Supabase-related configuration and scripts for the Hello
 ## Migration Files
 
 ### Active Migrations
-- `migrations/20250106_fix_rls_infinite_recursion.sql` - Permanent fix for RLS infinite recursion issue
+
+- `migrations/20250106_fix_rls_infinite_recursion.sql` - Permanent fix for RLS infinite recursion
+  issue
 
 ### Backup/Historical
+
 - `migrations/20250106_initial_rls_fix_attempt.sql.bak` - Initial attempt (kept for reference)
 
 ## Recent Changes
 
 ### 2025-01-06: Fixed RLS Infinite Recursion
-**Problem**: Multiple duplicate RLS policies caused infinite recursion when tables referenced each other.
 
-**Solution**: 
+**Problem**: Multiple duplicate RLS policies caused infinite recursion when tables referenced each
+other.
+
+**Solution**:
+
 - Dropped all 63 existing duplicate policies
 - Created single, clean policies per operation
 - Made profiles table universally readable to break recursion chains

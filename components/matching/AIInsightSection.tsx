@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { Sparkles, Loader, RefreshCw } from 'lucide-react'
+import { useState, useEffect } from 'react'
+
 import { createClient } from '@/lib/supabase/client'
 
 interface AIInsightSectionProps {
@@ -44,7 +45,9 @@ export default function AIInsightSection({
     const checkCachedInsights = async () => {
       setCheckingCache(true)
       try {
-        const { data: { user } } = await supabase.auth.getUser()
+        const {
+          data: { user },
+        } = await supabase.auth.getUser()
         if (!user) {
           setCheckingCache(false)
           return
@@ -106,9 +109,9 @@ export default function AIInsightSection({
             bio: targetUserBio,
             interests: targetUserInterests,
           },
-          sharedInterests: sharedInterests,
-          matchQuality: matchQuality,
-          forceRefresh: forceRefresh, // Tell the API to skip cache
+          sharedInterests,
+          matchQuality,
+          forceRefresh, // Tell the API to skip cache
         }),
       })
 
@@ -119,14 +122,17 @@ export default function AIInsightSection({
             compatibilityReason: data.explanations[0].compatibilityReason,
             meetingSuggestions: data.explanations[0].meetingSuggestions,
           })
-          setIsFromCache(forceRefresh ? false : (data.explanations[0].fromCache || false))
+          setIsFromCache(
+            forceRefresh ? false : data.explanations[0].fromCache || false
+          )
         }
       }
     } catch (error) {
       console.error('Error loading AI insight:', error)
       setAiInsight({
-        compatibilityReason: "Unable to generate insights at this time. Please try again later.",
-        meetingSuggestions: []
+        compatibilityReason:
+          'Unable to generate insights at this time. Please try again later.',
+        meetingSuggestions: [],
       })
     } finally {
       setLoadingInsight(false)
@@ -135,9 +141,12 @@ export default function AIInsightSection({
 
   const getMatchQualityColor = () => {
     switch (matchQuality) {
-      case 'high': return 'from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700'
-      case 'medium': return 'from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700'
-      case 'low': return 'from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700'
+      case 'high':
+        return 'from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700'
+      case 'medium':
+        return 'from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700'
+      case 'low':
+        return 'from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700'
     }
   }
 
@@ -185,22 +194,24 @@ export default function AIInsightSection({
             </div>
             <div className="flex items-center gap-2">
               {isFromCache && (
-                <span className="text-xs text-purple-600 bg-purple-100 px-2 py-1 rounded-full">
+                <span className="rounded-full bg-purple-100 px-2 py-1 text-xs text-purple-600">
                   📋 Saved
                 </span>
               )}
               <button
                 onClick={() => handleAIInsightClick(true)}
                 disabled={loadingInsight}
-                className="flex items-center gap-1 text-purple-600 hover:text-purple-800 font-medium text-sm disabled:opacity-50"
+                className="flex items-center gap-1 text-sm font-medium text-purple-600 hover:text-purple-800 disabled:opacity-50"
                 title="Refresh AI insights"
               >
-                <RefreshCw className={`h-3 w-3 ${loadingInsight ? 'animate-spin' : ''}`} />
+                <RefreshCw
+                  className={`h-3 w-3 ${loadingInsight ? 'animate-spin' : ''}`}
+                />
                 <span>Refresh</span>
               </button>
               <button
                 onClick={() => setShowInsight(false)}
-                className="text-purple-600 hover:text-purple-800 font-medium text-sm"
+                className="text-sm font-medium text-purple-600 hover:text-purple-800"
               >
                 Hide
               </button>
@@ -211,7 +222,9 @@ export default function AIInsightSection({
             {/* Compatibility Reason */}
             <div className="rounded-lg bg-white/70 p-4">
               <h4 className="mb-2 font-semibold text-purple-800">
-                {matchQuality === 'low' ? 'Potential Connection Points' : 'Why you match well'}
+                {matchQuality === 'low'
+                  ? 'Potential Connection Points'
+                  : 'Why you match well'}
               </h4>
               <p className="text-gray-700">{aiInsight.compatibilityReason}</p>
             </div>
@@ -228,12 +241,15 @@ export default function AIInsightSection({
                       key={idx}
                       className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 p-3 text-center shadow-sm"
                     >
-                      <span className="text-sm font-medium text-white">{suggestion}</span>
+                      <span className="text-sm font-medium text-white">
+                        {suggestion}
+                      </span>
                     </div>
                   ))}
                 </div>
                 <p className="mt-3 text-xs text-purple-600">
-                  These are public venues perfect for a first meeting (under $30/person)
+                  These are public venues perfect for a first meeting (under
+                  $30/person)
                 </p>
               </div>
             )}

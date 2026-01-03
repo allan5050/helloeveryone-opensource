@@ -20,6 +20,6 @@ export function calculateAgeScore(age1: number, age2: number): number {
     return 0.5 - ((ageDifference - 7) / 8) * 0.35 // Score 0.15-0.5
   }
 
-  // Very large age gaps get very low scores  
+  // Very large age gaps get very low scores
   return Math.max(0.05, 0.15 - ((ageDifference - 15) / 20) * 0.1) // Score 0.05-0.15
 }

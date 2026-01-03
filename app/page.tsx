@@ -1,13 +1,14 @@
-import { Button } from '@/components/ui/button'
 import { Heart } from 'lucide-react'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
+
+import { Button } from '@/components/ui/button'
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Simple Navigation */}
-      <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
+      <nav className="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
@@ -18,7 +19,9 @@ export default function HomePage() {
             </div>
             <div className="flex items-center space-x-4">
               <Link href="/login">
-                <Button variant="ghost" size="sm">Login</Button>
+                <Button variant="ghost" size="sm">
+                  Login
+                </Button>
               </Link>
             </div>
           </div>
@@ -29,7 +32,7 @@ export default function HomePage() {
       <section className="flex min-h-screen items-center justify-center px-4">
         <div className="w-full max-w-md text-center">
           <div className="mb-8">
-            <div className="relative w-full h-48 mb-6 rounded-lg overflow-hidden">
+            <div className="relative mb-6 h-48 w-full overflow-hidden rounded-lg">
               <Image
                 src="/images/homepage_helloeveryone.jpg"
                 alt="Group of people"
@@ -60,13 +63,13 @@ export default function HomePage() {
                 Join HelloEveryone
               </Button>
             </Link>
-            
+
             <p className="text-xs text-gray-500">
               Free to join. Meet people tomorrow.
             </p>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-gray-200">
+          <div className="mt-8 border-t border-gray-200 pt-8">
             <p className="text-sm text-gray-600">
               23 people joined today in your area
             </p>

@@ -1,5 +1,3 @@
-import { Event, Profile } from '@/types'
-
 export interface CalendarEventData {
   id: string
   name: string
@@ -135,7 +133,7 @@ export function getRecommendedCalendarApps(): Array<{
   const isIOS =
     typeof navigator !== 'undefined' &&
     /iPad|iPhone|iPod/.test(navigator.userAgent)
-  const isAndroid =
+  const _isAndroid =
     typeof navigator !== 'undefined' && /Android/.test(navigator.userAgent)
   const isMac =
     typeof navigator !== 'undefined' && /Macintosh/.test(navigator.userAgent)

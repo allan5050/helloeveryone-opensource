@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+
 import { requireAuth } from '@/lib/api/auth'
 import { checkRateLimit } from '@/lib/api/rate-limit'
+import { createClient } from '@/lib/supabase/server'
 
 interface MatchCalculationRequest {
   targetProfileId?: string
@@ -130,9 +131,7 @@ export async function POST(request: NextRequest) {
         if (!profileError && profiles) {
           for (const score of cachedScores) {
             const matchedProfileId =
-              score.user_id_1 === user.id
-                ? score.user_id_2
-                : score.user_id_1
+              score.user_id_1 === user.id ? score.user_id_2 : score.user_id_1
             const profile = profiles.find(p => p.user_id === matchedProfileId)
 
             if (profile) {
@@ -271,7 +270,7 @@ export async function GET(request: NextRequest) {
     const supabase = createClient()
 
     // Build the query
-    let query = supabase
+    const query = supabase
       .from('match_scores')
       .select('combined_score, user_id_1, user_id_2')
       .or(`user_id_1.eq.${user.id},user_id_2.eq.${user.id}`)

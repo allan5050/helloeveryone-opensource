@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+
 import EventCard from '@/components/events/EventCard'
 import {
   getUpcomingEvents,

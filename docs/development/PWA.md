@@ -2,7 +2,9 @@
 
 ## Overview
 
-HelloEveryone is built as a Progressive Web App (PWA) to provide a native app-like experience on mobile and desktop devices. The PWA implementation focuses on performance, offline capabilities, and user engagement.
+HelloEveryone is built as a Progressive Web App (PWA) to provide a native app-like experience on
+mobile and desktop devices. The PWA implementation focuses on performance, offline capabilities, and
+user engagement.
 
 ## PWA Features
 
@@ -42,7 +44,7 @@ HelloEveryone is built as a Progressive Web App (PWA) to provide a native app-li
     },
     {
       "src": "/icon-512x512.png",
-      "sizes": "512x512", 
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
@@ -57,7 +59,7 @@ HelloEveryone is built as a Progressive Web App (PWA) to provide a native app-li
     },
     {
       "name": "Matches",
-      "short_name": "Matches", 
+      "short_name": "Matches",
       "description": "View your matches",
       "url": "/matches",
       "icons": [{ "src": "/shortcuts/matches.png", "sizes": "96x96" }]
@@ -93,9 +95,9 @@ const withPWA = require('next-pwa')({
         cacheName: 'google-fonts',
         expiration: {
           maxEntries: 4,
-          maxAgeSeconds: 365 * 24 * 60 * 60 // 365 days
-        }
-      }
+          maxAgeSeconds: 365 * 24 * 60 * 60, // 365 days
+        },
+      },
     },
     {
       urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
@@ -104,9 +106,9 @@ const withPWA = require('next-pwa')({
         cacheName: 'google-fonts-static',
         expiration: {
           maxEntries: 4,
-          maxAgeSeconds: 365 * 24 * 60 * 60 // 365 days
-        }
-      }
+          maxAgeSeconds: 365 * 24 * 60 * 60, // 365 days
+        },
+      },
     },
     {
       urlPattern: /\.(?:eot|otf|ttc|ttf|woff|woff2|font.css)$/i,
@@ -115,9 +117,9 @@ const withPWA = require('next-pwa')({
         cacheName: 'static-font-assets',
         expiration: {
           maxEntries: 4,
-          maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
-        }
-      }
+          maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+        },
+      },
     },
     {
       urlPattern: /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
@@ -126,9 +128,9 @@ const withPWA = require('next-pwa')({
         cacheName: 'static-image-assets',
         expiration: {
           maxEntries: 64,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        }
-      }
+          maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        },
+      },
     },
     {
       urlPattern: /\/_next\/image\?url=.+$/i,
@@ -137,9 +139,9 @@ const withPWA = require('next-pwa')({
         cacheName: 'next-image',
         expiration: {
           maxEntries: 64,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        }
-      }
+          maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        },
+      },
     },
     {
       urlPattern: /\.(?:mp3|wav|ogg)$/i,
@@ -149,9 +151,9 @@ const withPWA = require('next-pwa')({
         cacheName: 'static-audio-assets',
         expiration: {
           maxEntries: 32,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        }
-      }
+          maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        },
+      },
     },
     {
       urlPattern: /\.(?:mp4)$/i,
@@ -161,9 +163,9 @@ const withPWA = require('next-pwa')({
         cacheName: 'static-video-assets',
         expiration: {
           maxEntries: 32,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        }
-      }
+          maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        },
+      },
     },
     {
       urlPattern: /\/api\/.*$/i,
@@ -173,12 +175,12 @@ const withPWA = require('next-pwa')({
         cacheName: 'apis',
         expiration: {
           maxEntries: 16,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
+          maxAgeSeconds: 24 * 60 * 60, // 24 hours
         },
-        networkTimeoutSeconds: 10 // Fall back to cache if network is slow
-      }
-    }
-  ]
+        networkTimeoutSeconds: 10, // Fall back to cache if network is slow
+      },
+    },
+  ],
 })
 
 module.exports = withPWA({
@@ -231,11 +233,11 @@ export function PWAInstallPrompt() {
 
     deferredPrompt.prompt()
     const { outcome } = await deferredPrompt.userChoice
-    
+
     if (outcome === 'accepted') {
       console.log('PWA installed')
     }
-    
+
     setDeferredPrompt(null)
     setShowInstallPrompt(false)
   }
@@ -458,17 +460,17 @@ xl: 1280px  /* Extra large devices */
 // Mobile-optimized navigation with drawer
 export function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false)
-  
+
   return (
     <>
-      <button 
+      <button
         onClick={() => setIsOpen(true)}
         className="p-2 touch-manipulation" // Optimizes for touch
         style={{ minWidth: '44px', minHeight: '44px' }}
       >
         Menu
       </button>
-      
+
       {/* Navigation drawer */}
       <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <NavigationItems />
@@ -486,15 +488,16 @@ For iOS Safari, the PWA can be added to home screen with:
 
 1. **Proper manifest configuration**
 2. **Apple-specific meta tags**:
+
    ```html
-   <meta name="apple-mobile-web-app-capable" content="yes">
-   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-   <meta name="apple-mobile-web-app-title" content="HelloEveryone">
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+   <meta name="apple-mobile-web-app-title" content="HelloEveryone" />
    ```
 
 3. **Apple touch icons**:
    ```html
-   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
    ```
 
 ### Google Play Store
@@ -514,19 +517,19 @@ PWAs can be published to Google Play Store using:
 async function registerForPushNotifications() {
   if ('serviceWorker' in navigator && 'PushManager' in window) {
     const registration = await navigator.serviceWorker.register('/sw.js')
-    
+
     const permission = await Notification.requestPermission()
     if (permission === 'granted') {
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
+        applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
       })
-      
+
       // Send subscription to server
       await fetch('/api/push/subscribe', {
         method: 'POST',
         body: JSON.stringify(subscription),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       })
     }
   }
@@ -565,14 +568,14 @@ async function registerForPushNotifications() {
 // Playwright PWA testing
 test('PWA should be installable', async ({ page, context }) => {
   await page.goto('/')
-  
+
   // Check manifest
   const manifest = await page.evaluate(() => {
     const link = document.querySelector('link[rel="manifest"]')
     return link?.href
   })
   expect(manifest).toBeTruthy()
-  
+
   // Check service worker registration
   const swRegistered = await page.evaluate(() => {
     return 'serviceWorker' in navigator
@@ -586,6 +589,7 @@ test('PWA should be installable', async ({ page, context }) => {
 ### HTTPS Requirement
 
 PWAs require HTTPS in production:
+
 - Service workers only work over HTTPS
 - Push notifications require secure context
 - Some APIs (location, camera) require HTTPS
@@ -596,7 +600,7 @@ PWAs require HTTPS in production:
 // next.config.js
 module.exports = {
   assetPrefix: process.env.NODE_ENV === 'production' ? 'https://cdn.helloeveryone.fun' : '',
-  
+
   async headers() {
     return [
       {
@@ -604,12 +608,12 @@ module.exports = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate'
-          }
-        ]
-      }
+            value: 'public, max-age=0, must-revalidate',
+          },
+        ],
+      },
     ]
-  }
+  },
 }
 ```
 
@@ -630,6 +634,7 @@ NEXT_PUBLIC_WEB_VITALS_ENABLED=true
 ### PWA-Specific Metrics
 
 Track these PWA metrics:
+
 - **Installation rate** (install prompt acceptance)
 - **Retention rate** (return visits after install)
 - **Offline usage** (pages viewed offline)
@@ -644,7 +649,7 @@ export function trackPWAInstall() {
   if (typeof gtag !== 'undefined') {
     gtag('event', 'pwa_install', {
       event_category: 'PWA',
-      event_label: 'User installed PWA'
+      event_label: 'User installed PWA',
     })
   }
 }
@@ -652,8 +657,8 @@ export function trackPWAInstall() {
 export function trackOfflineUsage() {
   if (!navigator.onLine && typeof gtag !== 'undefined') {
     gtag('event', 'offline_usage', {
-      event_category: 'PWA', 
-      event_label: 'Page viewed offline'
+      event_category: 'PWA',
+      event_label: 'Page viewed offline',
     })
   }
 }

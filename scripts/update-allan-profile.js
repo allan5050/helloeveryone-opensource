@@ -1,8 +1,8 @@
-const SupabaseDBClient = require('../mcp/db-client');
-const client = new SupabaseDBClient();
+const SupabaseDBClient = require('../mcp/db-client')
+const client = new SupabaseDBClient()
 
 async function updateAllanProfile() {
-  console.log('Updating Allan\'s profile for better community integration...\n');
+  console.log("Updating Allan's profile for better community integration...\n")
 
   // Allan's profile: Creative Foodie with some tech interests
   // This creates a bridge between the Creative Artists and Foodies clusters
@@ -12,17 +12,27 @@ async function updateAllanProfile() {
     bio: 'Creative soul who loves exploring local coffee shops, indie concerts, and experimenting in the kitchen. Always up for yoga, dance, or a good conversation about music and food.',
     interests: [
       // Primary: Music/Creative (connects to Lisa Park, David Martinez)
-      'indie-music', 'concerts', 'live-music', 'vinyl-records',
+      'indie-music',
+      'concerts',
+      'live-music',
+      'vinyl-records',
       // Secondary: Food/Coffee (connects to Marcus Williams, Matthew Wilson)
-      'coffee', 'specialty-coffee', 'cooking', 'farmers-markets',
+      'coffee',
+      'specialty-coffee',
+      'cooking',
+      'farmers-markets',
       // Wellness (connects to various)
-      'yoga', 'dancing', 'mindfulness',
+      'yoga',
+      'dancing',
+      'mindfulness',
       // Social/Travel
-      'travel', 'volunteering', 'writing'
+      'travel',
+      'volunteering',
+      'writing',
     ],
     age: 32, // Updated to be closer to the creative cluster (31-42)
-    location: '94110' // Mission District, same as Lisa Park and Matthew Wilson
-  };
+    location: '94110', // Mission District, same as Lisa Park and Matthew Wilson
+  }
 
   // Update Allan's profile
   try {
@@ -34,25 +44,27 @@ async function updateAllanProfile() {
           location = $4
       WHERE user_id = $5
       RETURNING display_name
-    `;
+    `
 
     const result = await client.executeSQL(updateQuery, [
       allanUpdate.bio,
       allanUpdate.interests,
       allanUpdate.age,
       allanUpdate.location,
-      allanUpdate.user_id
-    ]);
+      allanUpdate.user_id,
+    ])
 
     if (result && result.length > 0) {
-      console.log('✓ Updated Allan\'s profile');
-      console.log(`  Bio: Creative soul who loves...`);
-      console.log(`  Primary interests: ${allanUpdate.interests.slice(0, 4).join(', ')}`);
-      console.log(`  Location: ${allanUpdate.location} (Mission District)`);
-      console.log(`  Age: ${allanUpdate.age}`);
+      console.log("✓ Updated Allan's profile")
+      console.log(`  Bio: Creative soul who loves...`)
+      console.log(
+        `  Primary interests: ${allanUpdate.interests.slice(0, 4).join(', ')}`
+      )
+      console.log(`  Location: ${allanUpdate.location} (Mission District)`)
+      console.log(`  Age: ${allanUpdate.age}`)
     }
   } catch (error) {
-    console.error('Error updating Allan:', error.message);
+    console.error('Error updating Allan:', error.message)
   }
 
   // Now update a few other users to have overlapping interests with Allan
@@ -62,41 +74,70 @@ async function updateAllanProfile() {
       display_name: 'Demo: Lisa Park',
       // Keep her existing interests but add some overlap with Allan
       interests: [
-        'photography', 'indie-music', 'concerts', 'film-photography',
-        'art-shows', 'creative-writing', 'zines',
-        'coffee', 'specialty-coffee', 'yoga', 'mindfulness' // Added overlap
-      ]
+        'photography',
+        'indie-music',
+        'concerts',
+        'film-photography',
+        'art-shows',
+        'creative-writing',
+        'zines',
+        'coffee',
+        'specialty-coffee',
+        'yoga',
+        'mindfulness', // Added overlap
+      ],
     },
     {
       display_name: 'Demo: Matthew Wilson',
       // Coffee expert with music interests
       interests: [
-        'coffee-roasting', 'specialty-coffee', 'craft-beer', 'whiskey',
-        'cocktail-making', 'sommelier', 'gastropubs',
-        'vinyl-records', 'indie-music', 'live-music' // Added music overlap
-      ]
+        'coffee-roasting',
+        'specialty-coffee',
+        'craft-beer',
+        'whiskey',
+        'cocktail-making',
+        'sommelier',
+        'gastropubs',
+        'vinyl-records',
+        'indie-music',
+        'live-music', // Added music overlap
+      ],
     },
     {
       display_name: 'Demo: David Martinez',
       // Jazz lover with coffee culture
       interests: [
-        'jazz', 'vinyl-records', 'live-music', 'poetry-slams',
-        'open-mic', 'beatnik-culture', 'small-venues',
-        'coffee', 'specialty-coffee', 'writing' // Added coffee/writing overlap
-      ]
+        'jazz',
+        'vinyl-records',
+        'live-music',
+        'poetry-slams',
+        'open-mic',
+        'beatnik-culture',
+        'small-venues',
+        'coffee',
+        'specialty-coffee',
+        'writing', // Added coffee/writing overlap
+      ],
     },
     {
       display_name: 'Demo: Marcus Williams',
       // Foodie with creative interests
       interests: [
-        'farmers-markets', 'organic-cooking', 'wine-tasting',
-        'cheese-making', 'food-blogs', 'slow-food', 'gardening',
-        'concerts', 'volunteering', 'mindfulness' // Added overlap
-      ]
-    }
-  ];
+        'farmers-markets',
+        'organic-cooking',
+        'wine-tasting',
+        'cheese-making',
+        'food-blogs',
+        'slow-food',
+        'gardening',
+        'concerts',
+        'volunteering',
+        'mindfulness', // Added overlap
+      ],
+    },
+  ]
 
-  console.log('\nCreating stronger connections with other users...');
+  console.log('\nCreating stronger connections with other users...')
 
   for (const update of updates) {
     try {
@@ -105,18 +146,20 @@ async function updateAllanProfile() {
         SET interests = $1::text[]
         WHERE display_name = $2
         RETURNING display_name
-      `;
+      `
 
       const result = await client.executeSQL(query, [
         update.interests,
-        update.display_name
-      ]);
+        update.display_name,
+      ])
 
       if (result && result.length > 0) {
-        console.log(`✓ Updated ${update.display_name} with overlapping interests`);
+        console.log(
+          `✓ Updated ${update.display_name} with overlapping interests`
+        )
       }
     } catch (error) {
-      console.error(`Error updating ${update.display_name}:`, error.message);
+      console.error(`Error updating ${update.display_name}:`, error.message)
     }
   }
 
@@ -125,18 +168,26 @@ async function updateAllanProfile() {
     display_name: 'Emily Zhang',
     bio: 'Tech professional with a creative side. Love discovering new coffee shops, attending indie concerts, and weekend yoga sessions.',
     interests: [
-      'tech', 'programming', 'tech-meetups',
-      'coffee', 'specialty-coffee', 'indie-music', 'concerts',
-      'yoga', 'mindfulness', 'travel', 'photography'
+      'tech',
+      'programming',
+      'tech-meetups',
+      'coffee',
+      'specialty-coffee',
+      'indie-music',
+      'concerts',
+      'yoga',
+      'mindfulness',
+      'travel',
+      'photography',
     ],
     age: 30,
-    location: '94103' // SOMA, nearby
-  };
+    location: '94103', // SOMA, nearby
+  }
 
   try {
     // First check if Emily exists
-    const checkQuery = `SELECT user_id FROM profiles WHERE display_name = 'Emily Zhang'`;
-    const existing = await client.executeSQL(checkQuery, []);
+    const checkQuery = `SELECT user_id FROM profiles WHERE display_name = 'Emily Zhang'`
+    const existing = await client.executeSQL(checkQuery, [])
 
     if (existing && existing.length > 0) {
       // Update existing Emily
@@ -148,32 +199,32 @@ async function updateAllanProfile() {
             location = $4
         WHERE display_name = 'Emily Zhang'
         RETURNING display_name
-      `;
+      `
 
       await client.executeSQL(updateQuery, [
         emilyProfile.bio,
         emilyProfile.interests,
         emilyProfile.age,
-        emilyProfile.location
-      ]);
+        emilyProfile.location,
+      ])
 
-      console.log('✓ Updated Emily Zhang with interests similar to Allan');
+      console.log('✓ Updated Emily Zhang with interests similar to Allan')
     }
   } catch (error) {
-    console.error('Note: Emily Zhang update skipped:', error.message);
+    console.error('Note: Emily Zhang update skipped:', error.message)
   }
 
-  console.log('\n✓ Profile updates complete!');
-  console.log('\nAllan is now connected to:');
-  console.log('- Creative Music Cluster (Lisa Park, David Martinez)');
-  console.log('- Coffee Enthusiasts (Matthew Wilson, David Martinez)');
-  console.log('- Mindful Foodies (Marcus Williams)');
-  console.log('- Tech Creatives (Emily Zhang)');
+  console.log('\n✓ Profile updates complete!')
+  console.log('\nAllan is now connected to:')
+  console.log('- Creative Music Cluster (Lisa Park, David Martinez)')
+  console.log('- Coffee Enthusiasts (Matthew Wilson, David Martinez)')
+  console.log('- Mindful Foodies (Marcus Williams)')
+  console.log('- Tech Creatives (Emily Zhang)')
 
-  process.exit(0);
+  process.exit(0)
 }
 
 updateAllanProfile().catch(error => {
-  console.error('Failed to update profiles:', error);
-  process.exit(1);
-});
+  console.error('Failed to update profiles:', error)
+  process.exit(1)
+})

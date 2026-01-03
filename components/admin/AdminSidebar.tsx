@@ -1,9 +1,5 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useState } from 'react'
-import { cn } from '@/lib/utils'
 import {
   LayoutDashboard,
   Calendar,
@@ -14,6 +10,11 @@ import {
   Menu,
   X,
 } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+
+import { cn } from '@/lib/utils'
 
 const navigation = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },

@@ -1,6 +1,7 @@
 # Contributing to HelloEveryone.fun
 
-Thank you for your interest in contributing to HelloEveryone.fun! This document provides guidelines and instructions for contributing to the project.
+Thank you for your interest in contributing to HelloEveryone.fun! This document provides guidelines
+and instructions for contributing to the project.
 
 ## Table of Contents
 
@@ -50,6 +51,7 @@ Before you begin, ensure you have the following installed:
 ### 1. Environment Configuration
 
 Copy the example environment file:
+
 ```bash
 cp env.example .env.local
 ```
@@ -61,6 +63,7 @@ You'll need to set up the following services to run the app locally:
 #### Required Services
 
 **A. Supabase (Database & Auth)**
+
 1. Create a free account at https://app.supabase.com
 2. Create a new project (choose a region close to you)
 3. Go to Settings > API
@@ -77,6 +80,7 @@ You'll need to set up the following services to run the app locally:
    ```
 
 **B. OpenAI API (Semantic Matching)**
+
 1. Create account at https://platform.openai.com
 2. Go to API Keys section
 3. Create a new API key
@@ -84,6 +88,7 @@ You'll need to set up the following services to run the app locally:
 5. **Cost**: ~$0.50-$1.00/month for development (free $5 credit available)
 
 **C. Anthropic API (Optional - AI Match Explanations)**
+
 1. Create account at https://console.anthropic.com
 2. Go to API Keys
 3. Create a new key
@@ -129,7 +134,8 @@ Don't worry if some tests fail - we're actively improving the test suite.
 
 ### Finding Something to Work On
 
-1. **Check Issues**: Browse [GitHub Issues](https://github.com/allan5050/helloeveryone-opensource/issues)
+1. **Check Issues**: Browse
+   [GitHub Issues](https://github.com/allan5050/helloeveryone-opensource/issues)
 2. **Look for Labels**:
    - `good first issue` - Great for newcomers
    - `help wanted` - We'd love your help on these
@@ -172,6 +178,7 @@ git checkout -b fix/bug-description
 ```
 
 **Branch naming conventions**:
+
 - `feature/description` - New features
 - `fix/description` - Bug fixes
 - `docs/description` - Documentation changes
@@ -257,9 +264,9 @@ git push origin feature/your-feature-name
 ```typescript
 // Good
 interface Profile {
-  id: string;
-  full_name: string;
-  age: number;
+  id: string
+  full_name: string
+  age: number
 }
 
 function getProfile(id: string): Promise<Profile> {
@@ -338,24 +345,24 @@ export default function InteractiveButton() {
 
 ```typescript
 // app/api/profile/route.ts
-import { NextRequest, NextResponse } from "next/server";
-import { requireAuth } from "@/lib/api/auth";
-import { z } from "zod";
+import { NextRequest, NextResponse } from 'next/server'
+import { requireAuth } from '@/lib/api/auth'
+import { z } from 'zod'
 
 const profileSchema = z.object({
   full_name: z.string().min(1),
   age: z.number().min(18),
-});
+})
 
 export async function PUT(req: NextRequest) {
-  const user = await requireAuth(req);
+  const user = await requireAuth(req)
 
-  const body = await req.json();
-  const data = profileSchema.parse(body);
+  const body = await req.json()
+  const data = profileSchema.parse(body)
 
   // Update profile...
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true })
 }
 ```
 
@@ -439,17 +446,20 @@ npm run test:e2e         # Run Playwright E2E tests
 ### What to Test
 
 **Unit Tests** (Jest):
+
 - Business logic in `lib/`
 - Utility functions
 - Custom hooks
 - API route handlers
 
 **Integration Tests**:
+
 - Database queries
 - API endpoints
 - Authentication flows
 
 **E2E Tests** (Playwright):
+
 - Critical user flows (signup, login, matching)
 - Multi-step processes
 
@@ -481,23 +491,22 @@ tests/
 
 ### Common Questions
 
-**Q: Tests are failing. Is that ok?**
-A: Yes! We're actively improving the test suite. As long as your changes don't break additional tests, you're good.
+**Q: Tests are failing. Is that ok?** A: Yes! We're actively improving the test suite. As long as
+your changes don't break additional tests, you're good.
 
-**Q: TypeScript shows errors. Should I fix them?**
-A: Check `PROJECT_STATUS.md` for known type errors. Don't need to fix existing errors, but don't add new ones.
+**Q: TypeScript shows errors. Should I fix them?** A: Check `PROJECT_STATUS.md` for known type
+errors. Don't need to fix existing errors, but don't add new ones.
 
-**Q: Do I need all the API keys?**
-A: No! Use `NEXT_PUBLIC_ENABLE_DEMO_MODE=true` to develop without keys. Only need real keys for matching algorithm work.
+**Q: Do I need all the API keys?** A: No! Use `NEXT_PUBLIC_ENABLE_DEMO_MODE=true` to develop without
+keys. Only need real keys for matching algorithm work.
 
-**Q: How long before my PR is reviewed?**
-A: Allan aims to acknowledge within 48 hours and provide full review within 1 week.
+**Q: How long before my PR is reviewed?** A: Allan aims to acknowledge within 48 hours and provide
+full review within 1 week.
 
-**Q: Can I work on multiple PRs at once?**
-A: Yes! Just use separate branches for each PR.
+**Q: Can I work on multiple PRs at once?** A: Yes! Just use separate branches for each PR.
 
-**Q: What if I disagree with a review decision?**
-A: Discuss respectfully in the PR. Allan makes final decisions as project owner.
+**Q: What if I disagree with a review decision?** A: Discuss respectfully in the PR. Allan makes
+final decisions as project owner.
 
 ---
 
@@ -505,7 +514,9 @@ A: Discuss respectfully in the PR. Allan makes final decisions as project owner.
 
 ### Vision
 
-HelloEveryone.fun helps busy adults (25-50) find meaningful friendships through intelligent matching at local events. We solve the problem of wasting time talking to incompatible people by showing you exactly who to meet.
+HelloEveryone.fun helps busy adults (25-50) find meaningful friendships through intelligent matching
+at local events. We solve the problem of wasting time talking to incompatible people by showing you
+exactly who to meet.
 
 ### Core Principles
 
@@ -530,17 +541,20 @@ For detailed architecture info, see `docs/ARCHITECTURE.md`.
 ## Recognition
 
 All contributors will be:
+
 - Listed in GitHub contributors
 - Mentioned in release notes (for significant contributions)
 - Part of an amazing community building something meaningful!
 
-Your GitHub contribution graph will reflect your work, which is great for your portfolio and job applications.
+Your GitHub contribution graph will reflect your work, which is great for your portfolio and job
+applications.
 
 ---
 
 ## License
 
-By contributing to HelloEveryone.fun, you agree that your contributions will be licensed under the [MIT License](./LICENSE).
+By contributing to HelloEveryone.fun, you agree that your contributions will be licensed under the
+[MIT License](./LICENSE).
 
 ---
 

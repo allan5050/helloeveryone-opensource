@@ -27,7 +27,7 @@ export async function getMatches(): Promise<MatchingResult> {
     }
 
     return { success: true, data: data || [] }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }

@@ -1,6 +1,7 @@
 # Security Tests
 
-This directory contains automated security tests that help prevent common vulnerabilities in the HelloEveryone.fun codebase.
+This directory contains automated security tests that help prevent common vulnerabilities in the
+HelloEveryone.fun codebase.
 
 ## 🔐 Test Categories
 
@@ -9,6 +10,7 @@ This directory contains automated security tests that help prevent common vulner
 **Purpose**: Prevent sensitive credentials from being committed to the repository.
 
 **What it checks**:
+
 - ✅ No real API keys in `.env.example`
 - ✅ `.env.local` and `.env` are in `.gitignore`
 - ✅ No committed environment files
@@ -19,6 +21,7 @@ This directory contains automated security tests that help prevent common vulner
 - ✅ No secrets in configuration files
 
 **Critical Files Scanned**:
+
 - `app/`, `components/`, `lib/`, `pages/`
 - `package.json`, `next.config.js`
 - `.env.example`, `env.example`
@@ -28,6 +31,7 @@ This directory contains automated security tests that help prevent common vulner
 **Purpose**: Ensure all protected routes and API endpoints require proper authentication.
 
 **What it checks**:
+
 - ✅ API routes have authentication checks
 - ✅ Service role key not exposed in client code
 - ✅ Protected pages have auth guards
@@ -37,6 +41,7 @@ This directory contains automated security tests that help prevent common vulner
 - ✅ No manual password hashing (use Supabase Auth)
 
 **Critical Files Scanned**:
+
 - `app/api/` - All API routes
 - `app/(protected)/` - Protected pages
 - `app/`, `components/`, `hooks/` - Client-side code
@@ -47,6 +52,7 @@ This directory contains automated security tests that help prevent common vulner
 **Purpose**: Protect against SQL injection, XSS, and command injection attacks.
 
 **What it checks**:
+
 - ✅ Uses Supabase client (safe by default)
 - ✅ No `dangerouslySetInnerHTML` without sanitization
 - ✅ No `eval()` or `Function()` constructor
@@ -56,6 +62,7 @@ This directory contains automated security tests that help prevent common vulner
 - ✅ File upload filename sanitization
 
 **Attack Types Prevented**:
+
 - **SQL Injection**: Parameterized queries via Supabase
 - **XSS**: React auto-escaping + DOMPurify for rich text
 - **Command Injection**: Avoiding shell execution with user input
@@ -91,6 +98,7 @@ Security tests run automatically on every `git commit` via the pre-commit hook:
 3. **Lint** - Code quality checks
 
 To bypass (not recommended):
+
 ```bash
 git commit --no-verify
 ```
@@ -135,6 +143,7 @@ If you get a false positive:
 ## 📊 Test Results
 
 Security tests are designed to:
+
 - **FAIL** on critical vulnerabilities (eval, exposed secrets)
 - **WARN** on potential issues (missing validation)
 - **PASS** when best practices are followed
@@ -160,52 +169,49 @@ Security tests are designed to:
 ### Missing Authentication
 
 1. **Add auth check to API route**:
+
    ```typescript
-   import { requireAuth } from '@/lib/api/auth';
-   
+   import { requireAuth } from '@/lib/api/auth'
+
    export async function GET(req: NextRequest) {
-     const user = await requireAuth(req); // Throws if not authenticated
+     const user = await requireAuth(req) // Throws if not authenticated
      // ... your code
    }
    ```
 
 2. **Protect client pages**:
+
    ```tsx
-   import { ProtectedRoute } from '@/components/ProtectedRoute';
-   
+   import { ProtectedRoute } from '@/components/ProtectedRoute'
+
    export default function Page() {
-     return (
-       <ProtectedRoute>
-         {/* Your protected content */}
-       </ProtectedRoute>
-     );
+     return <ProtectedRoute>{/* Your protected content */}</ProtectedRoute>
    }
    ```
 
 ### Potential Injection Vulnerability
 
 1. **Use Supabase client** (parameterized by default):
+
    ```typescript
    // ✅ Safe
-   const { data } = await supabase
-     .from('profiles')
-     .select('*')
-     .eq('user_id', userId);
-   
+   const { data } = await supabase.from('profiles').select('*').eq('user_id', userId)
+
    // ❌ Dangerous (don't do this)
-   const query = `SELECT * FROM profiles WHERE user_id='${userId}'`;
+   const query = `SELECT * FROM profiles WHERE user_id='${userId}'`
    ```
 
 2. **Validate input with Zod**:
+
    ```typescript
-   import { z } from 'zod';
-   
+   import { z } from 'zod'
+
    const schema = z.object({
      email: z.string().email(),
      age: z.number().min(18).max(120),
-   });
-   
-   const data = schema.parse(await req.json());
+   })
+
+   const data = schema.parse(await req.json())
    ```
 
 ## 📝 Adding New Security Tests
@@ -220,24 +226,25 @@ Security tests are designed to:
 ```typescript
 describe('My Security Category', () => {
   test('should prevent dangerous pattern', () => {
-    const files = getAllFiles('app', ['.ts', '.tsx']);
-    
+    const files = getAllFiles('app', ['.ts', '.tsx'])
+
     files.forEach(file => {
-      const content = fs.readFileSync(file, 'utf8');
-      
+      const content = fs.readFileSync(file, 'utf8')
+
       if (content.includes('dangerous-pattern')) {
-        fail(`Found dangerous pattern in ${file}`);
+        fail(`Found dangerous pattern in ${file}`)
       }
-    });
-  });
-});
+    })
+  })
+})
 ```
 
 ## 🔗 Related Documentation
 
 - [SECURITY.md](../../SECURITY.md) - Vulnerability reporting
 - [CONTRIBUTING.md](../../CONTRIBUTING.md) - Contribution guidelines
-- [.claude/agents/cybersecurity_engineer.md](../../.claude/agents/cybersecurity_engineer.md) - Cybersecurity agent guide
+- [.claude/agents/cybersecurity_engineer.md](../../.claude/agents/cybersecurity_engineer.md) -
+  Cybersecurity agent guide
 
 ## ⚠️ Important Notes
 

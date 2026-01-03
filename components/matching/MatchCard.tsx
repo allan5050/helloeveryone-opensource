@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
 import { MessageCircle, Sparkles, Loader, RefreshCw } from 'lucide-react'
-import { Profile } from '@/types'
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
+
 import FavoriteButton from '@/components/profile/FavoriteButton'
 import Avatar from '@/components/ui/Avatar'
 import { createClient } from '@/lib/supabase/client'
+import { Profile } from '@/types'
 
 interface MatchCardProps {
   profile: Profile
@@ -45,7 +45,9 @@ export default function MatchCard({
   useEffect(() => {
     const checkCachedInsight = async () => {
       try {
-        const { data: { user } } = await supabase.auth.getUser()
+        const {
+          data: { user },
+        } = await supabase.auth.getUser()
         if (!user) return
 
         // Check if we have cached insights (table may not exist or be empty)
@@ -64,12 +66,13 @@ export default function MatchCard({
           setAiInsight({
             compatibilityReason: (cachedInsight as any).compatibility_reason,
             conversationStarters: [],
-            meetingSuggestions: (cachedInsight as any).meeting_suggestions || [],
+            meetingSuggestions:
+              (cachedInsight as any).meeting_suggestions || [],
           })
           setIsFromCache(true)
           setHasCachedInsight(true)
         }
-      } catch (error) {
+      } catch {
         // No cached insights found - that's okay
       }
     }
@@ -105,9 +108,9 @@ export default function MatchCard({
             bio: currentUserBio,
             interests: currentUserInterests,
           },
-          sharedInterests: sharedInterests,
+          sharedInterests,
           matchQuality: getMatchQuality(matchScore),
-          forceRefresh: forceRefresh,
+          forceRefresh,
         }),
       })
 
@@ -120,7 +123,9 @@ export default function MatchCard({
           conversationStarters: data.explanations[0].conversationStarters || [],
           meetingSuggestions: data.explanations[0].meetingSuggestions,
         })
-        setIsFromCache(forceRefresh ? false : (data.explanations[0].fromCache || false))
+        setIsFromCache(
+          forceRefresh ? false : data.explanations[0].fromCache || false
+        )
         setHasCachedInsight(true)
         setShowInsight(true)
       }
@@ -139,32 +144,44 @@ export default function MatchCard({
 
   const getMatchQualityColor = (quality: 'high' | 'medium' | 'low') => {
     switch (quality) {
-      case 'high': return 'bg-green-100 text-green-800'
-      case 'medium': return 'bg-yellow-100 text-yellow-800'
-      case 'low': return 'bg-gray-100 text-gray-800'
+      case 'high':
+        return 'bg-green-100 text-green-800'
+      case 'medium':
+        return 'bg-yellow-100 text-yellow-800'
+      case 'low':
+        return 'bg-gray-100 text-gray-800'
     }
   }
 
   const matchQuality = getMatchQuality(matchScore)
 
   // Sort interests to show shared ones first
-  const profileInterests = Array.isArray(profile.interests) ? profile.interests : []
-  const sortedInterests = profileInterests.length > 0 ? [...profileInterests].sort((a, b) => {
-    const aIsShared = sharedInterests.some(shared =>
-      shared.toLowerCase() === a.toLowerCase()
-    ) || currentUserInterests.some(interest =>
-      interest.toLowerCase() === a.toLowerCase()
-    )
-    const bIsShared = sharedInterests.some(shared =>
-      shared.toLowerCase() === b.toLowerCase()
-    ) || currentUserInterests.some(interest =>
-      interest.toLowerCase() === b.toLowerCase()
-    )
+  const profileInterests = Array.isArray(profile.interests)
+    ? profile.interests
+    : []
+  const sortedInterests =
+    profileInterests.length > 0
+      ? [...profileInterests].sort((a, b) => {
+          const aIsShared =
+            sharedInterests.some(
+              shared => shared.toLowerCase() === a.toLowerCase()
+            ) ||
+            currentUserInterests.some(
+              interest => interest.toLowerCase() === a.toLowerCase()
+            )
+          const bIsShared =
+            sharedInterests.some(
+              shared => shared.toLowerCase() === b.toLowerCase()
+            ) ||
+            currentUserInterests.some(
+              interest => interest.toLowerCase() === b.toLowerCase()
+            )
 
-    if (aIsShared && !bIsShared) return -1
-    if (!aIsShared && bIsShared) return 1
-    return 0
-  }) : []
+          if (aIsShared && !bIsShared) return -1
+          if (!aIsShared && bIsShared) return 1
+          return 0
+        })
+      : []
 
   const getAvatarSrc = () => {
     // Check for photo_url first (new field for local images)
@@ -212,7 +229,9 @@ export default function MatchCard({
 
           {/* Match Score */}
           <div className="flex flex-col items-end space-y-2">
-            <div className={`rounded-full px-3 py-1 text-sm font-medium capitalize ${getMatchQualityColor(matchQuality)}`}>
+            <div
+              className={`rounded-full px-3 py-1 text-sm font-medium capitalize ${getMatchQualityColor(matchQuality)}`}
+            >
               {matchQuality} match
             </div>
           </div>
@@ -231,30 +250,34 @@ export default function MatchCard({
             <div className="mb-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-purple-600" />
-                <h4 className="text-base font-bold text-purple-900">AI Insights</h4>
+                <h4 className="text-base font-bold text-purple-900">
+                  AI Insights
+                </h4>
               </div>
               <div className="flex items-center gap-2">
                 {isFromCache && (
-                  <span className="text-xs text-purple-600 bg-purple-100 px-2 py-1 rounded-full">
+                  <span className="rounded-full bg-purple-100 px-2 py-1 text-xs text-purple-600">
                     📋 Saved
                   </span>
                 )}
                 <button
-                  onClick={(e) => handleAIInsight(e, true)}
+                  onClick={e => handleAIInsight(e, true)}
                   disabled={loadingInsight}
-                  className="flex items-center gap-1 text-purple-600 hover:text-purple-800 text-xs font-medium disabled:opacity-50"
+                  className="flex items-center gap-1 text-xs font-medium text-purple-600 hover:text-purple-800 disabled:opacity-50"
                   title="Refresh AI insights"
                 >
-                  <RefreshCw className={`h-3 w-3 ${loadingInsight ? 'animate-spin' : ''}`} />
+                  <RefreshCw
+                    className={`h-3 w-3 ${loadingInsight ? 'animate-spin' : ''}`}
+                  />
                   <span>Refresh</span>
                 </button>
                 <button
-                  onClick={(e) => {
+                  onClick={e => {
                     e.preventDefault()
                     e.stopPropagation()
                     setShowInsight(false)
                   }}
-                  className="text-purple-600 hover:text-purple-800 text-xs font-medium"
+                  className="text-xs font-medium text-purple-600 hover:text-purple-800"
                 >
                   Hide
                 </button>
@@ -262,7 +285,9 @@ export default function MatchCard({
             </div>
 
             <div className="mb-4 rounded-md bg-white/70 p-3">
-              <p className="text-sm font-medium text-purple-800">{aiInsight.compatibilityReason}</p>
+              <p className="text-sm font-medium text-purple-800">
+                {aiInsight.compatibilityReason}
+              </p>
             </div>
 
             {aiInsight.meetingSuggestions.length > 0 && (
@@ -272,7 +297,10 @@ export default function MatchCard({
                 </h5>
                 <div className="flex flex-wrap gap-2">
                   {aiInsight.meetingSuggestions.map((suggestion, idx) => (
-                    <span key={idx} className="rounded-full bg-purple-600 px-3 py-1 text-xs font-medium text-white">
+                    <span
+                      key={idx}
+                      className="rounded-full bg-purple-600 px-3 py-1 text-xs font-medium text-white"
+                    >
                       {suggestion}
                     </span>
                   ))}
@@ -286,15 +314,20 @@ export default function MatchCard({
         {sortedInterests.length > 0 && (
           <div className="mb-4">
             <p className="mb-2 text-xs font-medium text-gray-500">
-              Interests {sharedInterests.length > 0 && `(${sharedInterests.length} shared)`}
+              Interests{' '}
+              {sharedInterests.length > 0 &&
+                `(${sharedInterests.length} shared)`}
             </p>
             <div className="flex flex-wrap gap-1">
               {sortedInterests.slice(0, 6).map((interest, index) => {
-                const isShared = sharedInterests.some(shared =>
-                  shared.toLowerCase() === interest.toLowerCase()
-                ) || currentUserInterests.some(userInterest =>
-                  userInterest.toLowerCase() === interest.toLowerCase()
-                )
+                const isShared =
+                  sharedInterests.some(
+                    shared => shared.toLowerCase() === interest.toLowerCase()
+                  ) ||
+                  currentUserInterests.some(
+                    userInterest =>
+                      userInterest.toLowerCase() === interest.toLowerCase()
+                  )
 
                 return (
                   <span
@@ -307,7 +340,9 @@ export default function MatchCard({
                   >
                     {interest}
                     {isShared && (
-                      <span className="ml-1" aria-label="Shared interest">✨</span>
+                      <span className="ml-1" aria-label="Shared interest">
+                        ✨
+                      </span>
                     )}
                   </span>
                 )
@@ -347,10 +382,20 @@ export default function MatchCard({
                   <>
                     <Sparkles className="h-4 w-4" />
                     <span>
-                      {aiInsight ? (showInsight ? 'Hide' : 'Show') : (hasCachedInsight ? 'Show' : 'AI')}
+                      {aiInsight
+                        ? showInsight
+                          ? 'Hide'
+                          : 'Show'
+                        : hasCachedInsight
+                          ? 'Show'
+                          : 'AI'}
                     </span>
                     <span className="hidden sm:inline">
-                      {aiInsight ? ' Insights' : (hasCachedInsight ? ' Insights' : '')}
+                      {aiInsight
+                        ? ' Insights'
+                        : hasCachedInsight
+                          ? ' Insights'
+                          : ''}
                     </span>
                     {hasCachedInsight && (
                       <span className="ml-1 text-xs opacity-75">📋</span>

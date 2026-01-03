@@ -47,7 +47,7 @@ export async function sendMessage(
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Database error' }
   }
 }
@@ -80,7 +80,7 @@ export async function getChatMessages(
     }
 
     return { success: true, data: data || [] }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -109,7 +109,7 @@ export async function blockUser(blockedUserId: string): Promise<ChatResult> {
     }
 
     return { success: true, data }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -136,7 +136,7 @@ export async function unblockUser(blockedUserId: string): Promise<ChatResult> {
     }
 
     return { success: true }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -166,7 +166,7 @@ export async function getUnreadMessageCount(
     }
 
     return { success: true, count: count || 0 }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -193,7 +193,7 @@ export async function markMessagesAsRead(userId: string): Promise<ChatResult> {
     }
 
     return { success: true }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -218,7 +218,7 @@ export async function getTotalUnreadCount(): Promise<ChatResult> {
     }
 
     return { success: true, count: data?.total_unread || 0 }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }
@@ -250,7 +250,7 @@ export async function getChatList(): Promise<ChatResult> {
     )
 
     return { success: true, data: sortedData }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred' }
   }
 }

@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+
 import { AnalyticsDashboard } from '@/components/admin/AnalyticsDashboard'
 
 export default function AdminAnalyticsPage() {

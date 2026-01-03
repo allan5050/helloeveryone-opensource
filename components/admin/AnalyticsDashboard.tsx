@@ -1,9 +1,10 @@
-import { createClient } from '@/lib/supabase/server'
 import { subDays, format, eachDayOfInterval } from 'date-fns'
-import { UserGrowthChart } from './charts/UserGrowthChart'
-import { EventCategoriesChart } from './charts/EventCategoriesChart'
+
+import { createClient } from '@/lib/supabase/server'
+
 import { EngagementMetrics } from './EngagementMetrics'
-import { Database } from '@/types/database'
+import { EventCategoriesChart } from './charts/EventCategoriesChart'
+import { UserGrowthChart } from './charts/UserGrowthChart'
 
 async function getAnalyticsData() {
   const supabase = await createClient()

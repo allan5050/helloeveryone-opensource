@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
-import { requireAuth } from '@/lib/api/auth'
 import { createEvent, EventAttributes } from 'ics'
+import { NextRequest, NextResponse } from 'next/server'
+
+import { requireAuth } from '@/lib/api/auth'
+import { createClient } from '@/lib/supabase/server'
 
 export async function GET(
   request: NextRequest,
@@ -83,7 +84,7 @@ export async function GET(
       )
 
     // Parse date and time
-    const startDate = new Date(event.date + 'T' + event.time)
+    const startDate = new Date(`${event.date}T${event.time}`)
     const endDate = new Date(
       startDate.getTime() + (event.duration || 120) * 60000
     ) // Default 2 hours

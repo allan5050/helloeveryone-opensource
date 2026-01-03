@@ -993,27 +993,15 @@
   "enums": [
     {
       "enum_name": "meeting_status",
-      "values": [
-        "proposed",
-        "confirmed",
-        "completed",
-        "cancelled"
-      ]
+      "values": ["proposed", "confirmed", "completed", "cancelled"]
     },
     {
       "enum_name": "rsvp_status",
-      "values": [
-        "going",
-        "maybe",
-        "not_going"
-      ]
+      "values": ["going", "maybe", "not_going"]
     },
     {
       "enum_name": "user_role",
-      "values": [
-        "user",
-        "admin"
-      ]
+      "values": ["user", "admin"]
     }
   ],
   "functions": [

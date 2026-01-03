@@ -1,8 +1,9 @@
-import { createClient } from '@/lib/supabase/server'
 import { format } from 'date-fns'
 import { Users, MapPin, Calendar, Shield, Ban } from 'lucide-react'
+
+import { createClient } from '@/lib/supabase/server'
+
 import { UserActions } from './UserActions'
-import { Database } from '@/types/database'
 
 interface UsersListProps {
   searchParams: {
@@ -95,6 +96,7 @@ export async function UsersList({ searchParams }: UsersListProps) {
                   <div className="flex items-center">
                     <div className="h-10 w-10 flex-shrink-0">
                       {user.photo_url ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
                         <img
                           className="h-10 w-10 rounded-full object-cover"
                           src={user.photo_url}

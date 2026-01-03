@@ -1,12 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useAuth } from '@/app/contexts/AuthContext'
-import { useParams, useRouter } from 'next/navigation'
-import ChatWindow from '@/components/chat/ChatWindow'
-import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
+
+import { useAuth } from '@/app/contexts/AuthContext'
+import ChatWindow from '@/components/chat/ChatWindow'
 
 interface Message {
   id: string
@@ -31,14 +32,13 @@ interface OtherUser {
 export default function IndividualChatPage() {
   const { user, loading: authLoading } = useAuth()
   const params = useParams()
-  const router = useRouter()
   const userId = params.userId as string
 
   const [messages, setMessages] = useState<Message[]>([])
   const [otherUser, setOtherUser] = useState<OtherUser | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [hasMore, setHasMore] = useState(false)
+  const [, setHasMore] = useState(false)
 
   useEffect(() => {
     if (!authLoading && user && userId) {
@@ -122,7 +122,10 @@ export default function IndividualChatPage() {
                 width={40}
                 height={40}
                 className="mr-3 rounded-full object-cover"
-                unoptimized={otherUser.avatar_url.includes('.svg') || otherUser.avatar_url.includes('dicebear.com')}
+                unoptimized={
+                  otherUser.avatar_url.includes('.svg') ||
+                  otherUser.avatar_url.includes('dicebear.com')
+                }
               />
             ) : (
               <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200">

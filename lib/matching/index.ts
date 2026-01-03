@@ -228,7 +228,7 @@ export function explainMatchScore(
     explanations.push('This could be an interesting connection')
   }
 
-  return explanations.join('. ') + '.'
+  return `${explanations.join('. ')}.`
 }
 
 /**

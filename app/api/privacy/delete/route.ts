@@ -1,9 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { requireAuth } from '@/lib/api/auth'
-import { createClient } from '@/lib/supabase/server'
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+import { NextRequest, NextResponse } from 'next/server'
+
+import { requireAuth } from '@/lib/api/auth'
 import { checkRateLimit } from '@/lib/api/rate-limit'
+import { createClient } from '@/lib/supabase/server'
 
 export async function POST(request: NextRequest) {
   // Rate limit: 10 requests per minute for expensive operations
@@ -165,7 +166,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Get account deletion information
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const currentUser = await requireAuth()
 

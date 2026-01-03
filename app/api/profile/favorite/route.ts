@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { z } from 'zod'
+
 import { requireAuth } from '@/lib/api/auth'
 import { checkRateLimit } from '@/lib/api/rate-limit'
-import { z } from 'zod'
+import { createClient } from '@/lib/supabase/server'
 
 // Validation schemas
 const favoriteRequestSchema = z.object({
@@ -12,11 +13,6 @@ const favoriteRequestSchema = z.object({
 const favoriteQuerySchema = z.object({
   profileId: z.string().uuid('Invalid profile ID format'),
 })
-
-// Type definitions
-interface FavoriteRequest {
-  profileId: string
-}
 
 interface FavoriteResponse {
   success?: boolean
@@ -29,7 +25,8 @@ export async function POST(
 ): Promise<NextResponse<FavoriteResponse>> {
   // Rate limit: 30 requests per minute for profile operations
   const rateLimitResponse = checkRateLimit(request, 'profile')
-  if (rateLimitResponse) return rateLimitResponse as NextResponse<FavoriteResponse>
+  if (rateLimitResponse)
+    return rateLimitResponse as NextResponse<FavoriteResponse>
 
   try {
     const user = await requireAuth(request)

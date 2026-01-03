@@ -3,7 +3,7 @@ name: Auto-Fix Code Issues
 on:
   pull_request:
     types: [opened, synchronize]
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch: # Allow manual trigger
 
 permissions:
   contents: write
@@ -13,7 +13,7 @@ jobs:
   auto-fix:
     name: Auto-fix Formatting and Linting
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout PR
         uses: actions/checkout@v4

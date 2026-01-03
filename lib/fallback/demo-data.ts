@@ -56,7 +56,9 @@ class FallbackDataService {
 
   enableFallback() {
     this.isUsingFallback = true
-    console.warn('🔄 Using local demo data as fallback due to database connection issues')
+    console.warn(
+      '🔄 Using local demo data as fallback due to database connection issues'
+    )
   }
 
   disableFallback() {
@@ -78,7 +80,11 @@ class FallbackDataService {
   }
 
   // Get profiles with pagination
-  getProfilesPaginated(page: number = 1, limit: number = 12, excludeUserId?: string): {
+  getProfilesPaginated(
+    page: number = 1,
+    limit: number = 12,
+    excludeUserId?: string
+  ): {
     data: DemoProfile[]
     hasMore: boolean
     total: number
@@ -90,33 +96,35 @@ class FallbackDataService {
     return {
       data: filtered.slice(start, end),
       hasMore: end < filtered.length,
-      total: filtered.length
+      total: filtered.length,
     }
   }
 
   // Search profiles
   searchProfiles(searchTerm: string, excludeUserId?: string): DemoProfile[] {
     const term = searchTerm.toLowerCase()
-    return this.getProfiles(excludeUserId).filter(p =>
-      p.display_name?.toLowerCase().includes(term) ||
-      p.full_name?.toLowerCase().includes(term) ||
-      p.bio?.toLowerCase().includes(term) ||
-      p.interests?.some(i => i.toLowerCase().includes(term))
+    return this.getProfiles(excludeUserId).filter(
+      p =>
+        p.display_name?.toLowerCase().includes(term) ||
+        p.full_name?.toLowerCase().includes(term) ||
+        p.bio?.toLowerCase().includes(term) ||
+        p.interests?.some(i => i.toLowerCase().includes(term))
     )
   }
 
   // Get match scores for a user
   getMatchScoresForUser(userId: string): DemoMatchScore[] {
-    return this.matchScores.filter(m =>
-      m.user_id_1 === userId || m.user_id_2 === userId
+    return this.matchScores.filter(
+      m => m.user_id_1 === userId || m.user_id_2 === userId
     )
   }
 
   // Get match score between two users
   getMatchScore(userId1: string, userId2: string): DemoMatchScore | undefined {
-    return this.matchScores.find(m =>
-      (m.user_id_1 === userId1 && m.user_id_2 === userId2) ||
-      (m.user_id_1 === userId2 && m.user_id_2 === userId1)
+    return this.matchScores.find(
+      m =>
+        (m.user_id_1 === userId1 && m.user_id_2 === userId2) ||
+        (m.user_id_1 === userId2 && m.user_id_2 === userId1)
     )
   }
 
@@ -129,8 +137,8 @@ class FallbackDataService {
 
   // Check if a profile is favorited
   isFavorited(userId: string, targetUserId: string): boolean {
-    return this.favorites.some(f =>
-      f.user_id === userId && f.favorited_user_id === targetUserId
+    return this.favorites.some(
+      f => f.user_id === userId && f.favorited_user_id === targetUserId
     )
   }
 
@@ -164,9 +172,18 @@ class FallbackDataService {
   }
 
   // Generate match data for profiles without scores
-  generateFallbackMatchScore(profile1: DemoProfile, profile2: DemoProfile): DemoMatchScore {
-    const commonInterests = this.calculateCommonInterests(profile1.user_id, profile2.user_id)
-    const score = Math.min(0.95, (commonInterests.length * 0.15) + Math.random() * 0.3 + 0.3)
+  generateFallbackMatchScore(
+    profile1: DemoProfile,
+    profile2: DemoProfile
+  ): DemoMatchScore {
+    const commonInterests = this.calculateCommonInterests(
+      profile1.user_id,
+      profile2.user_id
+    )
+    const score = Math.min(
+      0.95,
+      commonInterests.length * 0.15 + Math.random() * 0.3 + 0.3
+    )
 
     return {
       id: `fallback-${profile1.user_id}-${profile2.user_id}`,
@@ -174,7 +191,7 @@ class FallbackDataService {
       user_id_2: profile2.user_id,
       combined_score: score,
       semantic_score: score * 0.8,
-      calculated_at: new Date().toISOString()
+      calculated_at: new Date().toISOString(),
     }
   }
 }
@@ -183,7 +200,9 @@ class FallbackDataService {
 export const fallbackData = new FallbackDataService()
 
 // Export function to check if we should use fallback
-export async function checkAndUseFallback(supabaseOperation: () => Promise<any>): Promise<{
+export async function checkAndUseFallback(
+  supabaseOperation: () => Promise<any>
+): Promise<{
   useFallback: boolean
   error?: any
 }> {

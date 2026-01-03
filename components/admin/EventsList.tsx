@@ -1,8 +1,8 @@
-import { createClient } from '@/lib/supabase/server'
-import Link from 'next/link'
 import { format } from 'date-fns'
 import { Edit, Users, MapPin, Calendar } from 'lucide-react'
-import { Database } from '@/types/database'
+import Link from 'next/link'
+
+import { createClient } from '@/lib/supabase/server'
 
 async function getEvents() {
   const supabase = await createClient()

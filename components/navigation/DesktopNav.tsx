@@ -1,7 +1,5 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
 import {
   Calendar,
   Heart,
@@ -10,6 +8,9 @@ import {
   User,
   LogOut,
 } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+
 import { useAuth } from '@/app/contexts/AuthContext'
 
 const navigation = [
@@ -71,7 +72,7 @@ export default function DesktopNav() {
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               {navigation.map(item => {
                 const isActive =
-                  pathname === item.href || pathname.startsWith(item.href + '/')
+                  pathname === item.href || pathname.startsWith(`${item.href}/`)
                 const Icon = isActive ? item.activeIcon : item.icon
 
                 return (

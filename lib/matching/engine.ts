@@ -37,7 +37,7 @@ export async function calculateMatches(
       .slice(0, limit)
 
     return { success: true, matches: sortedMatches }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Database connection failed', matches: [] }
   }
 }
@@ -87,7 +87,7 @@ export async function getFilteredMatches(
     )
 
     return { success: true, matches: filteredMatches }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'An error occurred', matches: [] }
   }
 }

@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import { useRSVP } from '@/hooks/useRSVP'
-import { Button } from '@/components/ui/button'
 import { Loader2, UserCheck, UserPlus, Users } from 'lucide-react'
+import { useState } from 'react'
+
+import { Button } from '@/components/ui/button'
+import { useRSVP } from '@/hooks/useRSVP'
 import { EventWithRSVP } from '@/types/events'
 
 interface RSVPButtonWithHookProps {
@@ -91,7 +92,7 @@ export function RSVPButtonWithHook({
       } else {
         await cancelRSVP()
       }
-    } catch (error) {
+    } catch {
       // Error handling and rollback is done in the hook's onError callback
     }
   }

@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
+
 import { requireAuth } from '@/lib/api/auth'
-import { createClient } from '@/lib/supabase/server'
 import { checkRateLimit } from '@/lib/api/rate-limit'
+import { createClient } from '@/lib/supabase/server'
 
 interface UserDataExport {
   profile: any
@@ -206,7 +207,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const currentUser = await requireAuth()
+    await requireAuth()
     const { email } = await request.json()
 
     if (!email) {

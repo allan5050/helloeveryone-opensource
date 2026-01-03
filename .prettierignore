@@ -46,3 +46,8 @@ pnpm-lock.yaml
 
 # Documentation (optional)
 CHANGELOG.md
+
+# Generated/backup files
+current-schema.json
+demo_profiles_backup.json
+mcp/schema.json

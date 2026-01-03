@@ -1,33 +1,33 @@
-const { createClient } = require('@supabase/supabase-js');
-const fs = require('fs');
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+const { createClient } = require('@supabase/supabase-js')
+const fs = require('fs')
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') })
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_API_KEY;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_API_KEY
 
 if (!supabaseUrl || !supabaseServiceKey) {
-  console.error('❌ Missing required environment variables');
-  process.exit(1);
+  console.error('❌ Missing required environment variables')
+  process.exit(1)
 }
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey, {
   auth: {
     persistSession: false,
-    autoRefreshToken: false
-  }
-});
+    autoRefreshToken: false,
+  },
+})
 
-console.log('🚀 Direct Migration Script\n');
-console.log('=' .repeat(50));
+console.log('🚀 Direct Migration Script\n')
+console.log('='.repeat(50))
 
 // Read combined migrations file
 async function executeCombinedMigrations() {
-  const combinedSQLPath = path.join(__dirname, '..', 'combined-migrations.sql');
-  
+  const combinedSQLPath = path.join(__dirname, '..', 'combined-migrations.sql')
+
   if (!fs.existsSync(combinedSQLPath)) {
-    console.log('⚠️  Combined migrations file not found. Creating it...');
-    
+    console.log('⚠️  Combined migrations file not found. Creating it...')
+
     const migrations = [
       '001_initial_schema.sql',
       '002_fix_match_score_function.sql',
@@ -37,34 +37,42 @@ async function executeCombinedMigrations() {
       '20240104000000_create_favorites_table.sql',
       '20250904_handle_rsvp.sql',
       '005_performance_indexes.sql',
-      '006_enhanced_rls_policies.sql'
-    ];
-    
-    let combinedSQL = '';
+      '006_enhanced_rls_policies.sql',
+    ]
+
+    let combinedSQL = ''
     for (const filename of migrations) {
-      const filePath = path.join(__dirname, '..', 'supabase', 'migrations', filename);
+      const filePath = path.join(
+        __dirname,
+        '..',
+        'supabase',
+        'migrations',
+        filename
+      )
       if (fs.existsSync(filePath)) {
-        combinedSQL += `\n-- Migration: ${filename}\n`;
-        combinedSQL += fs.readFileSync(filePath, 'utf8');
-        combinedSQL += '\n\n';
+        combinedSQL += `\n-- Migration: ${filename}\n`
+        combinedSQL += fs.readFileSync(filePath, 'utf8')
+        combinedSQL += '\n\n'
       }
     }
-    
-    fs.writeFileSync(combinedSQLPath, combinedSQL);
+
+    fs.writeFileSync(combinedSQLPath, combinedSQL)
   }
-  
-  console.log('📋 Combined migrations file ready\n');
-  console.log('📌 Next Steps:\n');
-  console.log('1. Go to Supabase Dashboard:');
-  console.log(`   https://supabase.com/dashboard/project/amarmxbvuzxakjzvntzv/sql/new\n`);
-  console.log('2. Copy the contents of:');
-  console.log(`   ${combinedSQLPath}\n`);
-  console.log('3. Paste into the SQL Editor and click "Run"\n');
-  console.log('4. The migrations will be applied to your database\n');
-  
+
+  console.log('📋 Combined migrations file ready\n')
+  console.log('📌 Next Steps:\n')
+  console.log('1. Go to Supabase Dashboard:')
+  console.log(
+    `   https://supabase.com/dashboard/project/amarmxbvuzxakjzvntzv/sql/new\n`
+  )
+  console.log('2. Copy the contents of:')
+  console.log(`   ${combinedSQLPath}\n`)
+  console.log('3. Paste into the SQL Editor and click "Run"\n')
+  console.log('4. The migrations will be applied to your database\n')
+
   // Test current database state
-  console.log('🧪 Current Database State:\n');
-  
+  console.log('🧪 Current Database State:\n')
+
   const tables = [
     'profiles',
     'events',
@@ -73,72 +81,80 @@ async function executeCombinedMigrations() {
     'messages',
     'favorites',
     'meeting_slots',
-    'blocks'
-  ];
-  
+    'blocks',
+  ]
+
   for (const table of tables) {
     try {
       const { count, error } = await supabase
         .from(table)
-        .select('*', { count: 'exact', head: true });
-      
+        .select('*', { count: 'exact', head: true })
+
       if (!error) {
-        console.log(`   ✅ Table '${table}' exists (${count || 0} rows)`);
+        console.log(`   ✅ Table '${table}' exists (${count || 0} rows)`)
       } else if (error.code === '42P01') {
-        console.log(`   ❌ Table '${table}' does not exist`);
+        console.log(`   ❌ Table '${table}' does not exist`)
       } else {
-        console.log(`   ⚠️  Table '${table}': ${error.message}`);
+        console.log(`   ⚠️  Table '${table}': ${error.message}`)
       }
     } catch (e) {
-      console.log(`   ⚠️  Table '${table}': ${e.message}`);
+      console.log(`   ⚠️  Table '${table}': ${e.message}`)
     }
   }
-  
+
   // Check for pgvector
-  console.log('\n🔍 Extension Status:\n');
+  console.log('\n🔍 Extension Status:\n')
   try {
     const { data, error } = await supabase
       .from('profiles')
       .select('bio_embedding')
-      .limit(0);
-    
+      .limit(0)
+
     if (!error) {
-      console.log('   ✅ bio_embedding column exists (pgvector likely installed)');
+      console.log(
+        '   ✅ bio_embedding column exists (pgvector likely installed)'
+      )
     } else {
-      console.log('   ⚠️  bio_embedding column not found (pgvector may need setup)');
+      console.log(
+        '   ⚠️  bio_embedding column not found (pgvector may need setup)'
+      )
     }
   } catch (e) {
-    console.log('   ⚠️  Could not check pgvector status');
+    console.log('   ⚠️  Could not check pgvector status')
   }
-  
+
   // Check for functions
-  console.log('\n📦 Database Functions:\n');
+  console.log('\n📦 Database Functions:\n')
   const functions = [
     'calculate_match_score',
     'handle_new_user',
     'handle_rsvp',
-    'update_updated_at_column'
-  ];
-  
+    'update_updated_at_column',
+  ]
+
   for (const func of functions) {
     try {
       // Try to get function info (this is a workaround)
-      const { error } = await supabase.rpc(func, {}).catch(e => ({ error: e }));
-      
-      if (error && error.message.includes('function') && error.message.includes('does not exist')) {
-        console.log(`   ❌ Function '${func}' does not exist`);
+      const { error } = await supabase.rpc(func, {}).catch(e => ({ error: e }))
+
+      if (
+        error &&
+        error.message.includes('function') &&
+        error.message.includes('does not exist')
+      ) {
+        console.log(`   ❌ Function '${func}' does not exist`)
       } else {
-        console.log(`   ✅ Function '${func}' exists`);
+        console.log(`   ✅ Function '${func}' exists`)
       }
     } catch (e) {
-      console.log(`   ⚠️  Function '${func}' status unknown`);
+      console.log(`   ⚠️  Function '${func}' status unknown`)
     }
   }
 }
 
 async function createMigrationHelper() {
-  console.log('\n📝 Creating migration helper file...\n');
-  
+  console.log('\n📝 Creating migration helper file...\n')
+
   const helperContent = `# Supabase Migration Guide for HelloEveryone
 
 ## Quick Start
@@ -195,26 +211,28 @@ npx supabase link --project-ref amarmxbvuzxakjzvntzv
 # Push migrations
 npx supabase db push
 \`\`\`
-`;
-  
-  fs.writeFileSync(path.join(__dirname, '..', 'MIGRATION_GUIDE.md'), helperContent);
-  console.log('   ✅ Created MIGRATION_GUIDE.md with instructions\n');
+`
+
+  fs.writeFileSync(
+    path.join(__dirname, '..', 'MIGRATION_GUIDE.md'),
+    helperContent
+  )
+  console.log('   ✅ Created MIGRATION_GUIDE.md with instructions\n')
 }
 
 async function main() {
   try {
-    await executeCombinedMigrations();
-    await createMigrationHelper();
-    
-    console.log('\n' + '=' .repeat(50));
-    console.log('✨ Migration preparation complete!\n');
-    console.log('📋 The combined-migrations.sql file is ready');
-    console.log('📖 See MIGRATION_GUIDE.md for detailed instructions\n');
-    
+    await executeCombinedMigrations()
+    await createMigrationHelper()
+
+    console.log('\n' + '='.repeat(50))
+    console.log('✨ Migration preparation complete!\n')
+    console.log('📋 The combined-migrations.sql file is ready')
+    console.log('📖 See MIGRATION_GUIDE.md for detailed instructions\n')
   } catch (error) {
-    console.error('❌ Error:', error.message);
-    process.exit(1);
+    console.error('❌ Error:', error.message)
+    process.exit(1)
   }
 }
 
-main();
+main()

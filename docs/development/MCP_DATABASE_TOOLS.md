@@ -2,7 +2,9 @@
 
 ## Overview
 
-The MCP (Model Context Protocol) folder provides a comprehensive suite of database tools designed for LLMs and developers to autonomously interact with the Supabase database. These tools eliminate the need for manual schema sharing and enable direct database queries.
+The MCP (Model Context Protocol) folder provides a comprehensive suite of database tools designed
+for LLMs and developers to autonomously interact with the Supabase database. These tools eliminate
+the need for manual schema sharing and enable direct database queries.
 
 ## Purpose
 
@@ -41,6 +43,7 @@ node mcp/quick-start.js
 Core utility class providing database connection and methods.
 
 **Key Methods:**
+
 - `getDirectConnection()` - PostgreSQL client connection
 - `executeSQL(query, params)` - Execute raw SQL
 - `getTables()` - List all tables with sizes
@@ -52,18 +55,19 @@ Core utility class providing database connection and methods.
 - `getDatabaseOverview()` - Complete database snapshot
 
 **Usage Example:**
+
 ```javascript
-const SupabaseDBClient = require('./mcp/db-client');
-const client = new SupabaseDBClient();
+const SupabaseDBClient = require('./mcp/db-client')
+const client = new SupabaseDBClient()
 
 // Get all tables
-const tables = await client.getTables();
+const tables = await client.getTables()
 
 // Query specific table
-const users = await client.executeSQL('SELECT * FROM profiles LIMIT 5');
+const users = await client.executeSQL('SELECT * FROM profiles LIMIT 5')
 
 // Get complete overview
-const overview = await client.getDatabaseOverview();
+const overview = await client.getDatabaseOverview()
 ```
 
 ### 2. Schema Inspector (`inspect-db.js`)
@@ -98,6 +102,7 @@ node mcp/get-schema.js sql
 ```
 
 **Output Files:**
+
 - `mcp/schema.json` - Complete schema in JSON
 - `mcp/schema.md` - Readable documentation
 - `mcp/schema.sql` - SQL DDL statements
@@ -107,17 +112,20 @@ node mcp/get-schema.js sql
 Interactive and scriptable database query tool.
 
 **Interactive Mode:**
+
 ```bash
 node mcp/query.js
 # Opens interactive prompt for queries
 ```
 
 **Single Query:**
+
 ```bash
 node mcp/query.js -q "SELECT COUNT(*) FROM profiles"
 ```
 
 **Shortcuts:**
+
 ```bash
 node mcp/query.js :tables              # List all tables
 node mcp/query.js :count profiles      # Get row count
@@ -151,16 +159,19 @@ node mcp/quick-start.js
 ### For LLMs
 
 1. **Initial Context Loading**:
+
 ```bash
 node mcp/quick-start.js
 ```
 
 2. **Schema Understanding**:
+
 ```bash
 node mcp/get-schema.js json
 ```
 
 3. **Data Exploration**:
+
 ```bash
 node mcp/query.js :sample profiles 5
 node mcp/query.js :sample events 3
@@ -169,16 +180,19 @@ node mcp/query.js :sample events 3
 ### For Developers
 
 1. **Check Database State**:
+
 ```bash
 node mcp/inspect-db.js
 ```
 
 2. **Debug Specific Tables**:
+
 ```bash
 node mcp/query.js -q "SELECT * FROM rsvps WHERE status = 'confirmed'"
 ```
 
 3. **Verify Migrations**:
+
 ```bash
 node mcp/query.js :table_sizes
 node mcp/query.js :rls_status
@@ -187,11 +201,13 @@ node mcp/query.js :rls_status
 ### For Documentation
 
 1. **Generate Schema Docs**:
+
 ```bash
 node mcp/get-schema.js markdown
 ```
 
 2. **Export for External Tools**:
+
 ```bash
 node mcp/get-schema.js sql > database-backup.sql
 ```
@@ -260,19 +276,17 @@ node -e "console.log(process.env.DB_PASSWORD ? 'Set' : 'Not set')"
 
 ```javascript
 // 1. Load the client
-const SupabaseDBClient = require('./mcp/db-client');
-const client = new SupabaseDBClient();
+const SupabaseDBClient = require('./mcp/db-client')
+const client = new SupabaseDBClient()
 
 // 2. Get schema overview
-const overview = await client.getDatabaseOverview();
+const overview = await client.getDatabaseOverview()
 
 // 3. Query specific data
-const events = await client.executeSQL(
-  'SELECT * FROM events WHERE start_time > NOW()'
-);
+const events = await client.executeSQL('SELECT * FROM events WHERE start_time > NOW()')
 
 // 4. Check relationships
-const foreignKeys = await client.getForeignKeys('rsvps');
+const foreignKeys = await client.getForeignKeys('rsvps')
 ```
 
 ## Maintenance
@@ -280,6 +294,7 @@ const foreignKeys = await client.getForeignKeys('rsvps');
 ### Updating Schema
 
 After database migrations:
+
 ```bash
 # Regenerate schema files
 node mcp/get-schema.js json
@@ -303,4 +318,5 @@ New methods can be added to `db-client.js` for specific use cases.
 
 ---
 
-**Note**: The MCP tools are designed for development and debugging. Always use proper authentication and authorization in production applications.
+**Note**: The MCP tools are designed for development and debugging. Always use proper authentication
+and authorization in production applications.

@@ -1,8 +1,9 @@
 'use client'
 
+import { Star } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Star } from 'lucide-react'
+
 import type { Event } from '@/types/event'
 
 interface EventCardProps {
@@ -186,6 +187,7 @@ export default function EventCard({ event }: EventCardProps) {
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 {event.host.avatar_url ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
                   <img
                     src={event.host.avatar_url}
                     alt={event.host.full_name}

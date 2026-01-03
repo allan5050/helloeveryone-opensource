@@ -1,17 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
-import { cookies } from 'next/headers'
+
 import { checkRateLimit } from '@/lib/api/rate-limit'
+import { createClient } from '@/lib/supabase/server'
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY
-const ANTHROPIC_MODEL = process.env.ANTHROPIC_LLM_MODEL || 'claude-sonnet-4-20250514'
-
-interface ProfileData {
-  user_id: string
-  display_name: string
-  bio?: string
-  interests: string[]
-}
+const ANTHROPIC_MODEL =
+  process.env.ANTHROPIC_LLM_MODEL || 'claude-sonnet-4-20250514'
 
 export async function POST(request: NextRequest) {
   // Rate limit: 10 requests per minute for expensive AI operations
@@ -19,7 +13,14 @@ export async function POST(request: NextRequest) {
   if (rateLimitResponse) return rateLimitResponse
 
   try {
-    const { matchIds, currentUser, targetUser, sharedInterests, matchQuality, forceRefresh } = await request.json()
+    const {
+      matchIds,
+      currentUser,
+      targetUser,
+      sharedInterests,
+      matchQuality,
+      forceRefresh,
+    } = await request.json()
 
     if (!matchIds || !Array.isArray(matchIds) || matchIds.length === 0) {
       return NextResponse.json(
@@ -30,13 +31,13 @@ export async function POST(request: NextRequest) {
 
     // Get the current user from session
     const supabase = await createClient()
-    const { data: { user }, error: authError } = await supabase.auth.getUser()
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser()
 
     if (authError || !user) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      )
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     const currentUserId = user.id
@@ -46,66 +47,92 @@ export async function POST(request: NextRequest) {
     if (!forceRefresh) {
       const { data: existingInsight } = await supabase
         .from('ai_insights')
-        .select('compatibility_reason, conversation_starters, meeting_suggestions, shared_interests')
+        .select(
+          'compatibility_reason, conversation_starters, meeting_suggestions, shared_interests'
+        )
         .eq('user_id', currentUserId)
         .eq('target_user_id', targetUserId)
         .single()
 
       // If we have existing insights, return them
       if (existingInsight && existingInsight.compatibility_reason) {
-        const explanations = [{
-        user_id: targetUserId,
-        display_name: "Match",
-        compatibilityReason: existingInsight.compatibility_reason,
-        conversationStarters: existingInsight.conversation_starters || [],
-        meetingSuggestions: existingInsight.meeting_suggestions || [],
-        sharedInterests: existingInsight.shared_interests || [],
-        isHighPriority: true,
-        fromCache: true
-      }]
+        const explanations = [
+          {
+            user_id: targetUserId,
+            display_name: 'Match',
+            compatibilityReason: existingInsight.compatibility_reason,
+            conversationStarters: existingInsight.conversation_starters || [],
+            meetingSuggestions: existingInsight.meeting_suggestions || [],
+            sharedInterests: existingInsight.shared_interests || [],
+            isHighPriority: true,
+            fromCache: true,
+          },
+        ]
 
         return NextResponse.json({
           explanations,
-          overallInsight: "AI-powered insights to help you make meaningful connections.",
-          topRecommendations: ["Reach out with a personal message", "Suggest meeting for coffee", "Find shared activities"]
+          overallInsight:
+            'AI-powered insights to help you make meaningful connections.',
+          topRecommendations: [
+            'Reach out with a personal message',
+            'Suggest meeting for coffee',
+            'Find shared activities',
+          ],
         })
       }
     }
 
     // If no AI key, return mock data based on match quality
     if (!ANTHROPIC_API_KEY) {
-      let mockReason = ""
+      let mockReason = ''
       let mockSuggestions = []
 
       if (matchQuality === 'high' || sharedInterests?.length > 2) {
         mockReason = `You both share strong interests in ${sharedInterests?.slice(0, 3).join(', ') || 'multiple areas'}, which creates excellent potential for meaningful conversations and shared activities. Your complementary backgrounds could lead to engaging exchanges.`
-        mockSuggestions = ["Specialty coffee tasting", "Local museum visit", "Cooking class", "Weekend farmers market"]
+        mockSuggestions = [
+          'Specialty coffee tasting',
+          'Local museum visit',
+          'Cooking class',
+          'Weekend farmers market',
+        ]
       } else if (matchQuality === 'medium' || sharedInterests?.length > 0) {
         mockReason = `You share some common interests in ${sharedInterests?.join(', ') || 'a few areas'}, which provides a good starting point for conversation. There's potential to discover more common ground through shared experiences.`
-        mockSuggestions = ["Local coffee shop", "Community event", "Public park walk", "Bookstore café"]
+        mockSuggestions = [
+          'Local coffee shop',
+          'Community event',
+          'Public park walk',
+          'Bookstore café',
+        ]
       } else {
-        mockReason = "While you don't have many obvious shared interests based on your profiles, sometimes the best connections come from unexpected places. Meeting in person could reveal commonalities that aren't apparent on paper."
-        mockSuggestions = ["Casual coffee meetup", "Community volunteer event", "Local trivia night", "Public library café"]
+        mockReason =
+          "While you don't have many obvious shared interests based on your profiles, sometimes the best connections come from unexpected places. Meeting in person could reveal commonalities that aren't apparent on paper."
+        mockSuggestions = [
+          'Casual coffee meetup',
+          'Community volunteer event',
+          'Local trivia night',
+          'Public library café',
+        ]
       }
 
       const mockExplanations = matchIds.map((userId: string) => ({
         user_id: userId,
-        display_name: "Demo User",
+        display_name: 'Demo User',
         compatibilityReason: mockReason,
         sharedInterests: sharedInterests || [],
         conversationStarters: [],
         meetingSuggestions: mockSuggestions,
-        isHighPriority: matchQuality === 'high'
+        isHighPriority: matchQuality === 'high',
       }))
 
       return NextResponse.json({
         explanations: mockExplanations,
-        overallInsight: "These connections show great potential for meaningful relationships based on shared interests and compatible lifestyles.",
+        overallInsight:
+          'These connections show great potential for meaningful relationships based on shared interests and compatible lifestyles.',
         topRecommendations: [
-          "Start with a message about shared interests",
-          "Suggest meeting for coffee",
-          "Ask about travel experiences"
-        ]
+          'Start with a message about shared interests',
+          'Suggest meeting for coffee',
+          'Ask about travel experiences',
+        ],
       })
     }
 
@@ -131,7 +158,8 @@ export async function POST(request: NextRequest) {
         .eq('user_id', targetUserId)
         .single()
       targetUserBio = targetProfile?.bio || targetUser?.bio || ''
-      targetUserInterests = targetProfile?.interests || targetUser?.interests || []
+      targetUserInterests =
+        targetProfile?.interests || targetUser?.interests || []
     }
 
     // Determine the appropriate prompt based on match quality
@@ -144,9 +172,11 @@ Be HONEST about the limited common ground. It's OKAY to say they don't have much
 If there's truly no clear connection, suggest that they could try meeting for coffee or attending a community event to explore if they might discover unexpected common ground.
 DO NOT make up shared interests or compatibility that doesn't exist.`
     } else if (matchQualityLevel === 'medium') {
-      qualityContext = 'This is a MEDIUM compatibility match with some shared interests. Focus on the genuine commonalities that exist.'
+      qualityContext =
+        'This is a MEDIUM compatibility match with some shared interests. Focus on the genuine commonalities that exist.'
     } else {
-      qualityContext = 'This is a HIGH compatibility match with strong shared interests. Highlight the natural connection points.'
+      qualityContext =
+        'This is a HIGH compatibility match with strong shared interests. Highlight the natural connection points.'
     }
 
     // Call Claude API for real insights
@@ -185,15 +215,15 @@ Respond in this JSON format:
         headers: {
           'Content-Type': 'application/json',
           'x-api-key': ANTHROPIC_API_KEY,
-          'anthropic-version': '2023-06-01'
+          'anthropic-version': '2023-06-01',
         },
         body: JSON.stringify({
           model: ANTHROPIC_MODEL,
           max_tokens: 500,
           temperature: 0.7,
           system: systemPrompt,
-          messages: [{ role: 'user', content: userPrompt }]
-        })
+          messages: [{ role: 'user', content: userPrompt }],
+        }),
       })
 
       if (!response.ok) {
@@ -210,28 +240,32 @@ Respond in this JSON format:
         aiInsight = {
           compatibilityReason: parsed.compatibilityReason,
           conversationStarters: [], // No longer using conversation starters
-          meetingSuggestions: parsed.meetingSuggestions || []
+          meetingSuggestions: parsed.meetingSuggestions || [],
         }
       } catch {
         // Fallback if JSON parsing fails
         aiInsight = {
-          compatibilityReason: "Great potential for connection based on shared interests and complementary backgrounds.",
+          compatibilityReason:
+            'Great potential for connection based on shared interests and complementary backgrounds.',
           conversationStarters: [],
-          meetingSuggestions: ["Local coffee shop", "Board game café", "Walking trail", "Art gallery"]
+          meetingSuggestions: [
+            'Local coffee shop',
+            'Board game café',
+            'Walking trail',
+            'Art gallery',
+          ],
         }
       }
 
       // Save the AI insight to database
-      const { error: saveError } = await supabase
-        .from('ai_insights')
-        .upsert({
-          user_id: currentUserId,
-          target_user_id: targetUserId,
-          compatibility_reason: aiInsight.compatibilityReason,
-          conversation_starters: aiInsight.conversationStarters,
-          meeting_suggestions: aiInsight.meetingSuggestions,
-          shared_interests: sharedInterests || []
-        })
+      const { error: saveError } = await supabase.from('ai_insights').upsert({
+        user_id: currentUserId,
+        target_user_id: targetUserId,
+        compatibility_reason: aiInsight.compatibilityReason,
+        conversation_starters: aiInsight.conversationStarters,
+        meeting_suggestions: aiInsight.meetingSuggestions,
+        shared_interests: sharedInterests || [],
+      })
 
       if (saveError) {
         console.error('Error saving AI insight:', saveError)
@@ -239,43 +273,56 @@ Respond in this JSON format:
 
       const explanations = matchIds.map((userId: string) => ({
         user_id: userId,
-        display_name: "Match",
+        display_name: 'Match',
         ...aiInsight,
         sharedInterests: sharedInterests || [],
         isHighPriority: true,
-        fromCache: false
+        fromCache: false,
       }))
 
       return NextResponse.json({
         explanations,
-        overallInsight: "AI-powered insights to help you make meaningful connections.",
-        topRecommendations: ["Reach out with a personal message", "Suggest meeting for coffee", "Find shared activities"]
+        overallInsight:
+          'AI-powered insights to help you make meaningful connections.',
+        topRecommendations: [
+          'Reach out with a personal message',
+          'Suggest meeting for coffee',
+          'Find shared activities',
+        ],
       })
-
     } catch (aiError) {
       console.error('AI API error:', aiError)
       // Return fallback response based on actual compatibility
-      const compatReason = sharedInterests?.length > 0
-        ? `You share interests in ${sharedInterests.slice(0, 3).join(', ')}, which could be a good starting point for connection.`
-        : "While you may not have obvious shared interests, meeting in person could reveal unexpected common ground."
+      const compatReason =
+        sharedInterests?.length > 0
+          ? `You share interests in ${sharedInterests.slice(0, 3).join(', ')}, which could be a good starting point for connection.`
+          : 'While you may not have obvious shared interests, meeting in person could reveal unexpected common ground.'
 
       const fallbackExplanations = matchIds.map((userId: string) => ({
         user_id: userId,
-        display_name: "Match User",
+        display_name: 'Match User',
         compatibilityReason: compatReason,
         sharedInterests: sharedInterests || [],
         conversationStarters: [],
-        meetingSuggestions: ["Coffee shop", "Public park", "Library café", "Community center"],
-        isHighPriority: matchQuality === 'high'
+        meetingSuggestions: [
+          'Coffee shop',
+          'Public park',
+          'Library café',
+          'Community center',
+        ],
+        isHighPriority: matchQuality === 'high',
       }))
 
       return NextResponse.json({
         explanations: fallbackExplanations,
-        overallInsight: "These connections offer great potential for meaningful relationships.",
-        topRecommendations: ["Start with a friendly message", "Suggest meeting for coffee"]
+        overallInsight:
+          'These connections offer great potential for meaningful relationships.',
+        topRecommendations: [
+          'Start with a friendly message',
+          'Suggest meeting for coffee',
+        ],
       })
     }
-
   } catch (error) {
     console.error('Error in simple explain matches API:', error)
     return NextResponse.json(

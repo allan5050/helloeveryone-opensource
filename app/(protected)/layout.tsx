@@ -1,8 +1,9 @@
-import { ReactNode } from 'react'
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
-import MobileNav from '@/components/navigation/MobileNav'
+import { ReactNode } from 'react'
+
 import DesktopNav from '@/components/navigation/DesktopNav'
+import MobileNav from '@/components/navigation/MobileNav'
+import { createClient } from '@/lib/supabase/server'
 
 interface ProtectedLayoutProps {
   children: ReactNode

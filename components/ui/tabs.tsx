@@ -17,35 +17,58 @@ interface TabsContextValue {
 
 const TabsContext = React.createContext<TabsContextValue | undefined>(undefined)
 
-export function Tabs({ defaultValue = '', value: controlledValue, onValueChange, className = '', children }: TabsProps) {
+export function Tabs({
+  defaultValue = '',
+  value: controlledValue,
+  onValueChange,
+  className = '',
+  children,
+}: TabsProps) {
   const [uncontrolledValue, setUncontrolledValue] = React.useState(defaultValue)
   const value = controlledValue ?? uncontrolledValue
 
-  const handleValueChange = React.useCallback((newValue: string) => {
-    if (controlledValue === undefined) {
-      setUncontrolledValue(newValue)
-    }
-    onValueChange?.(newValue)
-  }, [controlledValue, onValueChange])
+  const handleValueChange = React.useCallback(
+    (newValue: string) => {
+      if (controlledValue === undefined) {
+        setUncontrolledValue(newValue)
+      }
+      onValueChange?.(newValue)
+    },
+    [controlledValue, onValueChange]
+  )
 
   return (
     <TabsContext.Provider value={{ value, onValueChange: handleValueChange }}>
-      <div className={className}>
-        {children}
-      </div>
+      <div className={className}>{children}</div>
     </TabsContext.Provider>
   )
 }
 
-export function TabsList({ className = '', children }: { className?: string; children: React.ReactNode }) {
+export function TabsList({
+  className = '',
+  children,
+}: {
+  className?: string
+  children: React.ReactNode
+}) {
   return (
-    <div className={`inline-flex h-10 items-center justify-center rounded-md bg-gray-100 p-1 text-gray-500 ${className}`}>
+    <div
+      className={`inline-flex h-10 items-center justify-center rounded-md bg-gray-100 p-1 text-gray-500 ${className}`}
+    >
       {children}
     </div>
   )
 }
 
-export function TabsTrigger({ value, className = '', children }: { value: string; className?: string; children: React.ReactNode }) {
+export function TabsTrigger({
+  value,
+  className = '',
+  children,
+}: {
+  value: string
+  className?: string
+  children: React.ReactNode
+}) {
   const context = React.useContext(TabsContext)
   if (!context) throw new Error('TabsTrigger must be used within Tabs')
 
@@ -65,15 +88,19 @@ export function TabsTrigger({ value, className = '', children }: { value: string
   )
 }
 
-export function TabsContent({ value, className = '', children }: { value: string; className?: string; children: React.ReactNode }) {
+export function TabsContent({
+  value,
+  className = '',
+  children,
+}: {
+  value: string
+  className?: string
+  children: React.ReactNode
+}) {
   const context = React.useContext(TabsContext)
   if (!context) throw new Error('TabsContent must be used within Tabs')
 
   if (context.value !== value) return null
 
-  return (
-    <div className={`mt-2 ${className}`}>
-      {children}
-    </div>
-  )
+  return <div className={`mt-2 ${className}`}>{children}</div>
 }

@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { createClient } from '@/lib/supabase/client'
-import { formatDistanceToNow, format, isToday, isYesterday } from 'date-fns'
+import { format, isToday, isYesterday } from 'date-fns'
 import { Send } from 'lucide-react'
 import Image from 'next/image'
+import { useState, useEffect, useRef } from 'react'
+
+import { createClient } from '@/lib/supabase/client'
 
 interface Message {
   id: string
@@ -227,7 +228,10 @@ export default function ChatWindow({
                             width={32}
                             height={32}
                             className="rounded-full object-cover"
-                            unoptimized={otherUser.avatar_url.includes('.svg') || otherUser.avatar_url.includes('dicebear.com')}
+                            unoptimized={
+                              otherUser.avatar_url.includes('.svg') ||
+                              otherUser.avatar_url.includes('dicebear.com')
+                            }
                           />
                         ) : (
                           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200">

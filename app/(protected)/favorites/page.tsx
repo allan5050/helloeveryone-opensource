@@ -1,10 +1,11 @@
-import { Suspense } from 'react'
-import { createClient } from '@/lib/supabase/server'
-import { getCurrentUser } from '@/lib/api/auth'
-import Link from 'next/link'
-import Image from 'next/image'
 import { Heart, MapPin } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Suspense } from 'react'
+
 import FavoriteButton from '@/components/profile/FavoriteButton'
+import { getCurrentUser } from '@/lib/api/auth'
+import { createClient } from '@/lib/supabase/server'
 
 interface FavoriteProfile {
   id: string
@@ -52,7 +53,10 @@ async function getFavorites(): Promise<FavoriteProfile[]> {
 
 function FavoriteCard({ profile }: { profile: FavoriteProfile }) {
   // Check if URL is an SVG (like dicebear avatars) - use unoptimized for these
-  const isSvgUrl = profile.photo_url && (profile.photo_url.includes('.svg') || profile.photo_url.includes('dicebear.com'))
+  const isSvgUrl =
+    profile.photo_url &&
+    (profile.photo_url.includes('.svg') ||
+      profile.photo_url.includes('dicebear.com'))
 
   return (
     <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">

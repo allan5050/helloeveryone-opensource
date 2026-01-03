@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { X, Download, Smartphone } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[]

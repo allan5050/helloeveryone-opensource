@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { Star } from 'lucide-react'
+import { useState, useEffect } from 'react'
+
 import { useAuth } from '@/app/contexts/AuthContext'
 
 interface FavoriteButtonProps {

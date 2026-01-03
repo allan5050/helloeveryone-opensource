@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
-import { explainMatches, UserProfile } from '@/lib/llm/match-explainer'
+
 import { checkRateLimit } from '@/lib/api/rate-limit'
+import { explainMatches, UserProfile } from '@/lib/llm/match-explainer'
+import { createClient } from '@/lib/supabase/server'
 
 export async function POST(request: NextRequest) {
   // Rate limit: 10 requests per minute for expensive LLM operations
@@ -21,7 +22,10 @@ export async function POST(request: NextRequest) {
     const supabase = createClient()
 
     // Get current user
-    const { data: { user }, error: userError } = await supabase.auth.getUser()
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser()
     if (userError || !user) {
       return NextResponse.json(
         { error: 'Authentication required' },
@@ -32,7 +36,9 @@ export async function POST(request: NextRequest) {
     // Get current user's profile
     const { data: currentUserProfile, error: currentUserError } = await supabase
       .from('profiles')
-      .select('user_id, display_name, bio, age, interests, location, looking_for, availability')
+      .select(
+        'user_id, display_name, bio, age, interests, location, looking_for, availability'
+      )
       .eq('user_id', user.id)
       .single()
 
@@ -46,7 +52,9 @@ export async function POST(request: NextRequest) {
     // Get match profiles
     const { data: matchProfiles, error: matchError } = await supabase
       .from('profiles')
-      .select('user_id, display_name, bio, age, interests, location, looking_for, availability')
+      .select(
+        'user_id, display_name, bio, age, interests, location, looking_for, availability'
+      )
       .in('user_id', matchIds)
 
     if (matchError) {
@@ -88,7 +96,6 @@ export async function POST(request: NextRequest) {
     // For now, just return them directly
 
     return NextResponse.json(explanations)
-
   } catch (error) {
     console.error('Error in explain matches API:', error)
     return NextResponse.json(
@@ -114,7 +121,10 @@ export async function GET(request: NextRequest) {
     const supabase = createClient()
 
     // Get current user
-    const { data: { user }, error: userError } = await supabase.auth.getUser()
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser()
     if (userError || !user) {
       return NextResponse.json(
         { error: 'Authentication required' },
@@ -128,7 +138,6 @@ export async function GET(request: NextRequest) {
       { message: 'Use POST endpoint to generate explanations' },
       { status: 200 }
     )
-
   } catch (error) {
     console.error('Error in explain matches GET API:', error)
     return NextResponse.json(

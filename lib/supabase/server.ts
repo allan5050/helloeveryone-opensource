@@ -1,5 +1,6 @@
 import { createServerClient as createSupabaseServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+
 import { Database } from '@/types/database'
 
 export async function createClient() {

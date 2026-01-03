@@ -1,7 +1,5 @@
 'use client'
 
-import { useAuth } from '@/app/contexts/AuthContext'
-import Link from 'next/link'
 import {
   UserCircle,
   ShieldCheck,
@@ -10,6 +8,9 @@ import {
   LogOut,
   ChevronRight,
 } from 'lucide-react'
+import Link from 'next/link'
+
+import { useAuth } from '@/app/contexts/AuthContext'
 
 const settingSections = [
   {

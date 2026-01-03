@@ -36,7 +36,7 @@ export function validateIcsContent(icsContent: string): {
   errors: string[]
 } {
   const errors: string[] = []
-  const lines = icsContent.split('\n')
+  const _lines = icsContent.split('\n')
 
   // Check for required components
   const requiredFields = [

@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
+import { useState, useEffect } from 'react'
+
 import { useAuth } from '@/app/contexts/AuthContext'
 import {
   getEventById,
@@ -62,7 +63,7 @@ export default function EventDetailsPage() {
       } else {
         setError(response.message)
       }
-    } catch (err) {
+    } catch {
       setError('Failed to register for event')
     } finally {
       setRsvpLoading(false)
@@ -83,7 +84,7 @@ export default function EventDetailsPage() {
       } else {
         setError(response.message)
       }
-    } catch (err) {
+    } catch {
       setError('Failed to cancel registration')
     } finally {
       setRsvpLoading(false)
@@ -241,6 +242,7 @@ export default function EventDetailsPage() {
                 {event.host && (
                   <div className="mb-6 flex items-center">
                     {event.host.avatar_url ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
                       <img
                         src={event.host.avatar_url}
                         alt={event.host.full_name}
@@ -454,6 +456,7 @@ export default function EventDetailsPage() {
                     {attendees.map(attendee => (
                       <div key={attendee.id} className="flex items-center">
                         {attendee.user?.avatar_url ? (
+                          /* eslint-disable-next-line @next/next/no-img-element */
                           <img
                             src={attendee.user.avatar_url}
                             alt={attendee.user.full_name}

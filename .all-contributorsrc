@@ -3,9 +3,7 @@
   "projectOwner": "allan5050",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 100,
   "commit": true,
   "commitConvention": "angular",
@@ -15,13 +13,7 @@
       "name": "Allan Nevala",
       "avatar_url": "https://github.com/allan5050.png",
       "profile": "https://github.com/allan5050",
-      "contributions": [
-        "code",
-        "doc",
-        "infra",
-        "test",
-        "design"
-      ]
+      "contributions": ["code", "doc", "infra", "test", "design"]
     }
   ],
   "contributorsPerLine": 7,

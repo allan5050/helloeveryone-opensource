@@ -1,10 +1,11 @@
-import { createClient } from './client'
 import type {
   EventWithDetails,
   RSVP,
   EventFilters,
   RSVPResponse,
 } from '@/types/event'
+
+import { createClient } from './client'
 
 export async function getUpcomingEvents(
   filters: EventFilters = {}
@@ -99,7 +100,8 @@ export async function getPastEvents(
 
   return data.map(event => ({
     ...event,
-    rsvp_count: event.rsvps?.filter((r: any) => r.status === 'going').length || 0,
+    rsvp_count:
+      event.rsvps?.filter((r: any) => r.status === 'going').length || 0,
     user_rsvp: event.rsvps?.find((r: any) => r.user_id === userId) || null,
   }))
 }
@@ -109,7 +111,7 @@ export async function getEventById(
   userId?: string
 ): Promise<EventWithDetails | null> {
   const supabase = createClient()
-  let query = supabase
+  const query = supabase
     .from('events')
     .select(
       `
@@ -270,5 +272,12 @@ export async function getEventTypes(): Promise<string[]> {
 export async function getEventLocations(): Promise<string[]> {
   // Return hardcoded locations to avoid RLS issues
   // In production, you might want to cache these or use a different approach
-  return ['San Francisco', 'New York', 'Los Angeles', 'Chicago', 'Seattle', 'Austin']
+  return [
+    'San Francisco',
+    'New York',
+    'Los Angeles',
+    'Chicago',
+    'Seattle',
+    'Austin',
+  ]
 }

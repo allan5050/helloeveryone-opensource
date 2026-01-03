@@ -35,7 +35,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
+
             let testResults = { success: true, numPassedTests: 0, numFailedTests: 0 };
             try {
               testResults = JSON.parse(fs.readFileSync('test-results.json', 'utf8'));
@@ -49,7 +49,7 @@ jobs:
             const passRate = totalTests > 0 ? Math.round((passedTests / totalTests) * 100) : 0;
 
             const emoji = failedTests === 0 ? '✅' : '⚠️';
-            
+
             const body = `## ${emoji} Test Results
 
             **Tests**: ${passedTests}/${totalTests} passing (${passRate}%)

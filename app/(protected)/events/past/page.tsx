@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
+
 import { useAuth } from '@/app/contexts/AuthContext'
 import { getPastEvents } from '@/lib/supabase/events'
 import type { Event } from '@/types/event'
@@ -88,6 +89,7 @@ function PastEventCard({ event }: { event: Event }) {
         {event.host && (
           <div className="flex items-center">
             {event.host.avatar_url ? (
+              /* eslint-disable-next-line @next/next/no-img-element */
               <img
                 src={event.host.avatar_url}
                 alt={event.host.full_name}

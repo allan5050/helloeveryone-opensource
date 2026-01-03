@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { useAuth } from '@/app/contexts/AuthContext'
 import { formatDistanceToNow } from 'date-fns'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
+import { useAuth } from '@/app/contexts/AuthContext'
 
 interface Conversation {
   other_user_id: string
@@ -128,7 +129,12 @@ export default function ChatPage() {
                         width={48}
                         height={48}
                         className="rounded-full object-cover"
-                        unoptimized={conversation.other_user.avatar_url.includes('.svg') || conversation.other_user.avatar_url.includes('dicebear.com')}
+                        unoptimized={
+                          conversation.other_user.avatar_url.includes('.svg') ||
+                          conversation.other_user.avatar_url.includes(
+                            'dicebear.com'
+                          )
+                        }
                       />
                     ) : (
                       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200">

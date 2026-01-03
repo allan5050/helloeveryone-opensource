@@ -74,15 +74,19 @@ User Profile:
 - Looking for: ${currentUser.looking_for?.join(', ') || 'General connections'}
 `
 
-    const matchesText = matchesToProcess.map((match, index) => `
+    const matchesText = matchesToProcess
+      .map(
+        (match, index) => `
 Match ${index + 1}:
 - Name: ${match.display_name}
 - Bio: ${match.bio || 'Not provided'}
 - Age: ${match.age || 'Not specified'}
 - Interests: ${match.interests.join(', ')}
 - Location: ${match.location || 'Not specified'}
-- Match Score: ${matchScores?.[match.user_id] ? Math.round(matchScores[match.user_id] * 100) + '%' : 'Not calculated'}
-`).join('\n')
+- Match Score: ${matchScores?.[match.user_id] ? `${Math.round(matchScores[match.user_id] * 100)}%` : 'Not calculated'}
+`
+      )
+      .join('\n')
 
     const userMessage = `
 ${userProfileText}
@@ -139,26 +143,36 @@ Format your response as JSON with this structure:
 
     // Validate and sanitize the response
     return validateAndSanitizeResponse(parsedResponse, matchesToProcess)
-
   } catch (error) {
     console.error('Error explaining matches:', error)
     return generateFallbackResponse(potentialMatches.slice(0, 10))
   }
 }
 
-function generateFallbackResponse(matches: UserProfile[]): MatchExplanationsResponse {
+function generateFallbackResponse(
+  matches: UserProfile[]
+): MatchExplanationsResponse {
   return {
     explanations: matches.map(match => ({
       user_id: match.user_id,
       display_name: match.display_name,
-      compatibilityReason: "You both have interesting profiles that suggest potential for good conversation and shared activities.",
+      compatibilityReason:
+        'You both have interesting profiles that suggest potential for good conversation and shared activities.',
       sharedInterests: [],
-      conversationStarters: ["Hi! I noticed we might have some common interests.", "Would love to chat about shared hobbies sometime."],
-      meetingSuggestions: ["Coffee meetup", "Local event"],
+      conversationStarters: [
+        'Hi! I noticed we might have some common interests.',
+        'Would love to chat about shared hobbies sometime.',
+      ],
+      meetingSuggestions: ['Coffee meetup', 'Local event'],
       isHighPriority: false,
     })),
-    overallInsight: "These connections show promise for meaningful networking and friendship opportunities.",
-    topRecommendations: ["Reach out with a friendly message", "Suggest meeting for coffee", "Find a shared activity"],
+    overallInsight:
+      'These connections show promise for meaningful networking and friendship opportunities.',
+    topRecommendations: [
+      'Reach out with a friendly message',
+      'Suggest meeting for coffee',
+      'Find a shared activity',
+    ],
   }
 }
 
@@ -168,21 +182,34 @@ function validateAndSanitizeResponse(
 ): MatchExplanationsResponse {
   // Ensure we have explanations for all matches
   const validatedExplanations = originalMatches.map(match => {
-    const explanation = response.explanations.find(e => e.user_id === match.user_id)
-    return explanation || {
-      user_id: match.user_id,
-      display_name: match.display_name,
-      compatibilityReason: "Great potential for connection based on shared interests.",
-      sharedInterests: [],
-      conversationStarters: ["Hi! Nice to meet you.", "Would love to chat sometime."],
-      meetingSuggestions: ["Coffee", "Local event"],
-      isHighPriority: false,
-    }
+    const explanation = response.explanations.find(
+      e => e.user_id === match.user_id
+    )
+    return (
+      explanation || {
+        user_id: match.user_id,
+        display_name: match.display_name,
+        compatibilityReason:
+          'Great potential for connection based on shared interests.',
+        sharedInterests: [],
+        conversationStarters: [
+          'Hi! Nice to meet you.',
+          'Would love to chat sometime.',
+        ],
+        meetingSuggestions: ['Coffee', 'Local event'],
+        isHighPriority: false,
+      }
+    )
   })
 
   return {
     explanations: validatedExplanations,
-    overallInsight: response.overallInsight || "These connections offer great potential for meaningful relationships.",
-    topRecommendations: response.topRecommendations || ["Start with a friendly message", "Suggest meeting for coffee"],
+    overallInsight:
+      response.overallInsight ||
+      'These connections offer great potential for meaningful relationships.',
+    topRecommendations: response.topRecommendations || [
+      'Start with a friendly message',
+      'Suggest meeting for coffee',
+    ],
   }
 }

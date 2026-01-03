@@ -5,8 +5,9 @@
 ## ⚠️ IMPORTANT: Common Mistakes to Avoid
 
 ### ❌ THESE COLUMNS DO NOT EXIST:
+
 - `profiles.avatar_url` - Not in database
-- `profiles.photo_url` - Not in database  
+- `profiles.photo_url` - Not in database
 - `profiles.first_name` - Use `display_name` instead
 - `profiles.last_name` - Use `display_name` instead
 - `events.date` - Use `start_time` instead
@@ -17,6 +18,7 @@
 ### ✅ CORRECT COLUMN NAMES:
 
 #### profiles table
+
 ```sql
 display_name    -- NOT first_name/last_name
 bio
@@ -29,6 +31,7 @@ is_active
 ```
 
 #### events table
+
 ```sql
 title
 description
@@ -41,6 +44,7 @@ is_active
 ```
 
 #### match_scores table
+
 ```sql
 user_id_1
 user_id_2
@@ -55,6 +59,7 @@ common_interests -- TEXT[] array
 ## Example Queries
 
 ### ❌ WRONG:
+
 ```sql
 SELECT first_name, last_name, avatar_url FROM profiles;
 SELECT date, event_type FROM events;
@@ -62,6 +67,7 @@ SELECT total_score FROM match_scores;
 ```
 
 ### ✅ CORRECT:
+
 ```sql
 SELECT display_name, bio, location FROM profiles;
 SELECT start_time, title, max_attendees FROM events;
@@ -71,6 +77,7 @@ SELECT combined_score * 100 as match_percentage FROM match_scores;
 ## TypeScript Interface Fixes
 
 ### ❌ WRONG Interface:
+
 ```typescript
 interface Profile {
   first_name: string
@@ -81,6 +88,7 @@ interface Profile {
 ```
 
 ### ✅ CORRECT Interface:
+
 ```typescript
 interface Profile {
   display_name: string
@@ -94,21 +102,28 @@ interface Profile {
 ## Handling Missing Columns
 
 ### Avatars
+
 Since `avatar_url` doesn't exist:
+
 1. Generate from initials: `display_name.charAt(0)`
 2. Use placeholder API: `/api/placeholder/100/100?text=${initial}`
 3. Store in Supabase Storage separately
 
 ### Names
+
 Since no `first_name`/`last_name`:
+
 1. Use `display_name` for all display purposes
 2. If you need to split names, do it in application logic
 
 ### Event Types
+
 Since `event_type` doesn't exist:
+
 1. Hardcode options in UI: ['Social', 'Professional', 'Sports', etc.]
 2. Could add column later if needed
 
 ## Remember
-**Always check the actual database schema, not TypeScript interfaces!**
-The database is the source of truth, not the TypeScript types.
+
+**Always check the actual database schema, not TypeScript interfaces!** The database is the source
+of truth, not the TypeScript types.

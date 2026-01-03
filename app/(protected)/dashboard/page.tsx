@@ -1,6 +1,3 @@
-import { Suspense } from 'react'
-import Link from 'next/link'
-import { Metadata } from 'next'
 import {
   Calendar,
   Users,
@@ -9,9 +6,13 @@ import {
   MessageCircle,
   TrendingUp,
 } from 'lucide-react'
-import { createClient } from '@/lib/supabase/server'
-import { getCurrentUser } from '@/lib/api/auth'
+import { Metadata } from 'next'
+import Link from 'next/link'
+import { Suspense } from 'react'
+
 import MatchCard from '@/components/matching/MatchCard'
+import { getCurrentUser } from '@/lib/api/auth'
+import { createClient } from '@/lib/supabase/server'
 
 export const metadata: Metadata = {
   title: 'Dashboard - HelloEveryone.fun',
@@ -32,7 +33,7 @@ async function getUpcomingEvents(userId: string) {
     .from('rsvps')
     .select('event_id')
     .eq('user_id', userId)
-  
+
   if (rsvpError || !rsvps || rsvps.length === 0) {
     return []
   }

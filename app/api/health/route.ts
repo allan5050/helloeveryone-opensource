@@ -3,13 +3,13 @@
  * Provides system status and database connectivity check
  */
 
-import { NextRequest } from 'next/server'
-import { createServerClient } from '@/lib/supabase/server'
 import { cookies } from 'next/headers'
-import { success, error } from '@/lib/api/responses'
-import { handleApiError } from '@/lib/api/errors'
 
-export async function GET(request: NextRequest) {
+import { handleApiError } from '@/lib/api/errors'
+import { success, error } from '@/lib/api/responses'
+import { createServerClient } from '@/lib/supabase/server'
+
+export async function GET() {
   try {
     const startTime = Date.now()
 
@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
       const supabase = createServerClient(cookieStore)
 
       // Simple query to test connectivity
-      const { data, error: dbError } = await supabase
+      const { error: dbError } = await supabase
         .from('profiles')
         .select('count')
         .limit(1)

@@ -1,8 +1,8 @@
 'use client'
 
+import { Calendar, Heart, MessageSquare, User, Home } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Calendar, Heart, MessageSquare, User, Home } from 'lucide-react'
 
 const navigation = [
   {
@@ -49,7 +49,7 @@ export default function MobileNav() {
       <div className="flex h-16">
         {navigation.map(item => {
           const isActive =
-            pathname === item.href || pathname.startsWith(item.href + '/')
+            pathname === item.href || pathname.startsWith(`${item.href}/`)
           const Icon = isActive ? item.activeIcon : item.icon
 
           return (

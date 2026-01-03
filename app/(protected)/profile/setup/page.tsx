@@ -1,14 +1,15 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { profileSetupSchema, ProfileSetupData } from '@/lib/validations/profile'
+import { useRouter } from 'next/navigation'
+import { useState, useRef, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+
+import { useAuth } from '@/app/contexts/AuthContext'
 import { InterestSelector } from '@/components/profile/InterestSelector'
 import { PhotoUpload } from '@/components/profile/PhotoUpload'
 import { createClient } from '@/lib/supabase/client'
-import { useAuth } from '@/app/contexts/AuthContext'
+import { profileSetupSchema, ProfileSetupData } from '@/lib/validations/profile'
 
 const STEPS = [
   { title: 'Basic Info', description: 'Tell us about yourself' },
@@ -59,28 +60,32 @@ export default function ProfileSetup() {
       return
     }
     lastNavigationTime.current = now
-    
+
     // Prevent double-clicking
     if (isNavigating) {
       console.log('Navigation already in progress, ignoring')
       return
     }
-    
+
     console.log('nextStep called, currentStep:', currentStep)
     setIsNavigating(true)
-    
+
     try {
       // Validate current step's fields
       const fieldsToValidate = getFieldsForStep(currentStep)
       const isValid = await form.trigger(fieldsToValidate)
-      
+
       console.log('Validation result for step', currentStep, ':', isValid)
-      
+
       if (isValid && currentStep < STEPS.length - 1) {
         console.log('Moving from step', currentStep, 'to step', currentStep + 1)
         setCurrentStep(currentStep + 1)
       } else if (!isValid) {
-        console.log('Validation failed for step', currentStep, ', staying on current step')
+        console.log(
+          'Validation failed for step',
+          currentStep,
+          ', staying on current step'
+        )
         // Show validation errors
         const errors = form.formState.errors
         console.log('Validation errors:', errors)
@@ -110,16 +115,21 @@ export default function ProfileSetup() {
 
   const onSubmit = async (data: ProfileSetupData) => {
     console.log('onSubmit handler called, currentStep:', currentStep)
-    
+
     if (!user) {
       console.error('No user found')
       return
     }
-    
+
     // This should only be called when we're on the last step
     // If we're here from another step, something is wrong
     if (currentStep !== STEPS.length - 1) {
-      console.error('ERROR: Form submitted from wrong step:', currentStep, 'Expected step:', STEPS.length - 1)
+      console.error(
+        'ERROR: Form submitted from wrong step:',
+        currentStep,
+        'Expected step:',
+        STEPS.length - 1
+      )
       return
     }
 
@@ -129,7 +139,7 @@ export default function ProfileSetup() {
       const flattenedInterests = [
         ...(data.interests.music_genres || []),
         ...(data.interests.food_preferences || []),
-        ...(data.interests.activities || [])
+        ...(data.interests.activities || []),
       ]
 
       // Prepare profile data - match the actual database columns
@@ -152,7 +162,7 @@ export default function ProfileSetup() {
           show_location: true,
           show_interests: true,
         },
-        updated_at: new Date().toISOString()
+        updated_at: new Date().toISOString(),
       }
 
       console.log('Saving profile data:', profileData)
@@ -357,26 +367,31 @@ export default function ProfileSetup() {
 
         {/* Form */}
         <div className="rounded-lg bg-white p-6 shadow-sm">
-          <form 
-            onSubmit={(e) => {
+          <form
+            onSubmit={e => {
               console.log('Form onSubmit event triggered')
               console.log('Current step:', currentStep)
               console.log('Event target:', e.target)
               console.log('Event submitter:', (e as any).submitter)
-              
+
               e.preventDefault()
               e.stopPropagation()
-              
+
               // Only allow submission from the last step via the Complete Profile button
               if (currentStep === STEPS.length - 1 && !isNavigating) {
                 console.log('Processing form submission on last step')
                 form.handleSubmit(onSubmit)(e)
               } else {
-                console.log('Blocking form submission - step:', currentStep, 'isNavigating:', isNavigating)
+                console.log(
+                  'Blocking form submission - step:',
+                  currentStep,
+                  'isNavigating:',
+                  isNavigating
+                )
                 return false
               }
             }}
-            onKeyDown={(e) => {
+            onKeyDown={e => {
               // Prevent form submission on Enter key except for the submit button
               if (e.key === 'Enter' && e.target instanceof HTMLInputElement) {
                 e.preventDefault()

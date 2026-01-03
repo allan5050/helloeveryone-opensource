@@ -1,7 +1,8 @@
 'use client'
 
-import { useIsMobile } from '@/hooks/useIsMobile'
 import { useEffect, useState } from 'react'
+
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 export default function ScreenSizeDebugger() {
   const isMobile = useIsMobile()

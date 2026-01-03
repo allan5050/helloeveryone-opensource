@@ -2,8 +2,9 @@
 
 import { useState } from 'react'
 import { UseFormReturn } from 'react-hook-form'
-import { ProfileSetupData } from '@/lib/validations/profile'
+
 import {
+  ProfileSetupData,
   MUSIC_GENRES,
   FOOD_PREFERENCES,
   ACTIVITIES,

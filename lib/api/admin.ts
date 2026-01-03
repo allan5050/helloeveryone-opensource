@@ -1,6 +1,6 @@
-import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
-import { Database } from '@/types/database'
+
+import { createClient } from '@/lib/supabase/server'
 
 export async function requireAdmin() {
   const supabase = await createClient()
