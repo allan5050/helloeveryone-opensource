@@ -1,12 +1,19 @@
 import Anthropic from '@anthropic-ai/sdk'
 
-if (!process.env.ANTHROPIC_API_KEY) {
-  throw new Error('ANTHROPIC_API_KEY is required')
-}
+// Lazy initialization to avoid build-time errors when API key is not set
+let anthropic: Anthropic | null = null
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-})
+function getClient(): Anthropic {
+  if (!anthropic) {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      throw new Error('ANTHROPIC_API_KEY is required')
+    }
+    anthropic = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+    })
+  }
+  return anthropic
+}
 
 export interface ClaudeMessage {
   role: 'user' | 'assistant'
@@ -38,7 +45,7 @@ export async function callClaude(
       systemPrompt,
     } = options
 
-    const response = await anthropic.messages.create({
+    const response = await getClient().messages.create({
       model,
       max_tokens: maxTokens,
       temperature,
