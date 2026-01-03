@@ -9,13 +9,13 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '@/app/contexts/AuthContext'
 import ChatWindow from '@/components/chat/ChatWindow'
 
-interface Message {
+interface ChatMessage {
   id: string
   content: string
   created_at: string
   sender_id: string
-  receiver_id: string
-  read_at: string | null
+  recipient_id: string
+  is_read: boolean
   sender: {
     id: string
     full_name: string | null
@@ -34,7 +34,7 @@ export default function IndividualChatPage() {
   const params = useParams()
   const userId = params.userId as string
 
-  const [messages, setMessages] = useState<Message[]>([])
+  const [messages, setMessages] = useState<ChatMessage[]>([])
   const [otherUser, setOtherUser] = useState<OtherUser | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -66,7 +66,7 @@ export default function IndividualChatPage() {
     }
   }
 
-  const handleNewMessage = (message: Message) => {
+  const handleNewMessage = (message: ChatMessage) => {
     setMessages(prev => [...prev, message])
   }
 

@@ -113,7 +113,7 @@ export async function UsersList({ searchParams }: UsersListProps) {
                     <div className="ml-4">
                       <div className="flex items-center text-sm font-medium text-gray-900">
                         {user.display_name}
-                        {user.is_admin && (
+                        {user.role === 'admin' && (
                           <Shield className="ml-2 h-4 w-4 text-blue-500" />
                         )}
                       </div>
@@ -137,19 +137,19 @@ export async function UsersList({ searchParams }: UsersListProps) {
                 </td>
                 <td className="whitespace-nowrap px-6 py-4">
                   <div className="flex items-center space-x-2">
-                    {user.is_suspended && (
+                    {user.is_active === false && (
                       <span className="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">
                         <Ban className="mr-1 h-3 w-3" />
                         Suspended
                       </span>
                     )}
-                    {user.is_admin && (
+                    {user.role === 'admin' && (
                       <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
                         <Shield className="mr-1 h-3 w-3" />
                         Admin
                       </span>
                     )}
-                    {!user.is_suspended && !user.is_admin && (
+                    {user.is_active !== false && user.role !== 'admin' && (
                       <span className="inline-flex rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
                         Active
                       </span>

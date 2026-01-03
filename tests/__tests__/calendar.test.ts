@@ -17,8 +17,8 @@ const parseIcsContent = (content: string) => ({
 
 const mockCalendarEvent = {
   title: 'Test Event',
-  start: [2024, 3, 15, 10, 30],
-  duration: { hours: 2, minutes: 0 },
+  start: [2024, 3, 15, 10, 30] as [number, number, number, number, number],
+  end: [2024, 3, 15, 12, 30] as [number, number, number, number, number],
   location: 'Test Location',
   description: 'Test Description',
 }

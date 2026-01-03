@@ -12,8 +12,8 @@ export async function POST(request: NextRequest) {
   const startTime = Date.now()
 
   try {
-    const { user } = await requireAuth()
-    const supabase = createClient()
+    const user = await requireAuth()
+    const supabase = await createClient()
 
     const { profileId, targetProfiles } = await request.json()
 
@@ -38,8 +38,8 @@ export async function POST(request: NextRequest) {
           const { data: scoreResult, error: scoreError } = await supabase.rpc(
             'calculate_match_score',
             {
-              profile1_id: targetProfileId,
-              profile2_id: otherProfileId,
+              user1_id: targetProfileId,
+              user2_id: otherProfileId,
             }
           )
 
@@ -55,18 +55,20 @@ export async function POST(request: NextRequest) {
             .from('match_scores')
             .upsert(
               {
-                profile1_id:
+                user_id_1:
                   targetProfileId < otherProfileId
                     ? targetProfileId
                     : otherProfileId,
-                profile2_id:
+                user_id_2:
                   targetProfileId < otherProfileId
                     ? otherProfileId
                     : targetProfileId,
-                score,
+                combined_score: score,
+                semantic_score: 0,
+                interest_score: 0,
               },
               {
-                onConflict: 'profile1_id,profile2_id',
+                onConflict: 'user_id_1,user_id_2',
               }
             )
 
@@ -87,12 +89,12 @@ export async function POST(request: NextRequest) {
       }
     } else {
       // Refresh all matches for the profile using the database function
-      const { data: refreshResult, error: refreshError } = await supabase.rpc(
-        'refresh_match_scores_for_profile',
-        {
-          target_profile_id: targetProfileId,
-        }
-      )
+      // Cast to any since the function may not be in the generated types
+      const { data: refreshResult, error: refreshError } = await (
+        supabase.rpc as any
+      )('refresh_match_scores_for_profile', {
+        target_profile_id: targetProfileId,
+      })
 
       if (refreshError) {
         return NextResponse.json(
@@ -106,7 +108,7 @@ export async function POST(request: NextRequest) {
 
     // Refresh materialized view (if it exists)
     try {
-      await supabase.rpc('refresh_materialized_view', {
+      await (supabase.rpc as any)('refresh_materialized_view', {
         view_name: 'top_matches',
       })
     } catch (error) {
@@ -140,15 +142,15 @@ export async function POST(request: NextRequest) {
 // GET endpoint to check when matches were last updated
 export async function GET(_request: NextRequest) {
   try {
-    const { user } = await requireAuth()
-    const supabase = createClient()
+    const user = await requireAuth()
+    const supabase = await createClient()
 
     // Get the most recent match score update for this user
     const { data: recentMatch, error } = await supabase
       .from('match_scores')
-      .select('updated_at')
-      .or(`profile1_id.eq.${user.id},profile2_id.eq.${user.id}`)
-      .order('updated_at', { ascending: false })
+      .select('calculated_at')
+      .or(`user_id_1.eq.${user.id},user_id_2.eq.${user.id}`)
+      .order('calculated_at', { ascending: false })
       .limit(1)
       .single()
 
@@ -164,12 +166,12 @@ export async function GET(_request: NextRequest) {
     const { count: totalMatches } = await supabase
       .from('match_scores')
       .select('*', { count: 'exact', head: true })
-      .or(`profile1_id.eq.${user.id},profile2_id.eq.${user.id}`)
-      .gte('score', 20)
+      .or(`user_id_1.eq.${user.id},user_id_2.eq.${user.id}`)
+      .gte('combined_score', 20)
 
     return NextResponse.json({
       success: true,
-      lastUpdated: recentMatch?.updated_at || null,
+      lastUpdated: recentMatch?.calculated_at || null,
       totalMatches: totalMatches || 0,
       needsRefresh: !recentMatch, // If no matches exist, needs refresh
     })

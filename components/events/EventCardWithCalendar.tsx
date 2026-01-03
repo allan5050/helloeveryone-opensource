@@ -37,7 +37,7 @@ export default function EventCardWithCalendar({
   const [rsvpStatus, setRsvpStatus] = useState(userRsvpStatus)
   const [isRsvping, setIsRsvping] = useState(false)
 
-  const eventDateTime = new Date(`${event.date}T${event.time}`)
+  const eventDateTime = new Date(event.start_time)
   const isUpcoming = eventDateTime > new Date()
 
   const handleRsvp = async (status: 'going' | 'maybe' | 'not_going') => {
@@ -67,7 +67,7 @@ export default function EventCardWithCalendar({
 
   const getRsvpButtonVariant = (status: 'going' | 'maybe' | 'not_going') => {
     if (rsvpStatus === status) {
-      return status === 'going' ? 'default' : 'secondary'
+      return status === 'going' ? 'primary' : 'secondary'
     }
     return 'outline'
   }
@@ -78,7 +78,7 @@ export default function EventCardWithCalendar({
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <CardTitle className="line-clamp-2 text-lg font-semibold">
-              {event.name}
+              {event.title}
             </CardTitle>
             <div className="mt-2 flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
@@ -167,7 +167,7 @@ export default function EventCardWithCalendar({
           {/* Calendar button - only show if user is going */}
           <CalendarButton
             eventId={event.id}
-            eventName={event.name}
+            eventName={event.title}
             userRsvpStatus={rsvpStatus}
             variant="outline"
             size="sm"

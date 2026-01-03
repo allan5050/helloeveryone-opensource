@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const supabase = createClient()
+    const supabase = await createClient()
 
     // Get current user
     const {
@@ -80,9 +80,11 @@ export async function POST(request: NextRequest) {
 
     const scoreMap: { [userId: string]: number } = {}
     if (matchScores) {
-      matchScores.forEach(score => {
-        scoreMap[score.user_id_2] = score.combined_score
-      })
+      matchScores.forEach(
+        (score: { user_id_2: string; combined_score: number }) => {
+          scoreMap[score.user_id_2] = score.combined_score
+        }
+      )
     }
 
     // Call the LLM to explain matches
@@ -118,7 +120,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const supabase = createClient()
+    const supabase = await createClient()
 
     // Get current user
     const {

@@ -15,11 +15,11 @@ export async function requireAdmin() {
 
   const { data: profile, error } = await supabase
     .from('profiles')
-    .select('is_admin')
-    .eq('id', session.user.id)
+    .select('role')
+    .eq('user_id', session.user.id)
     .single()
 
-  if (error || !profile?.is_admin) {
+  if (error || profile?.role !== 'admin') {
     redirect('/dashboard')
   }
 
@@ -38,7 +38,7 @@ export async function getAdminStats() {
     supabase
       .from('events')
       .select('*', { count: 'exact', head: true })
-      .gte('date', new Date().toISOString()),
+      .gte('start_time', new Date().toISOString()),
     supabase
       .from('profiles')
       .select('display_name, created_at')

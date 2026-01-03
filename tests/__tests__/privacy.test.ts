@@ -132,8 +132,9 @@ describe('Privacy and Mutual Visibility Rules', () => {
       const result = await searchProfiles({ location: 'Oakland' })
 
       expect(result.success).toBe(true)
-      expect(result.data[0].age).toBeNull() // Age is hidden
-      expect(result.data[0].location).toBe('Oakland, CA') // Location is shown
+      expect(result.data).toBeDefined()
+      expect(result.data![0].age).toBeNull() // Age is hidden
+      expect(result.data![0].location).toBe('Oakland, CA') // Location is shown
     })
 
     it('should apply mutual visibility to interests filtering', async () => {
@@ -411,8 +412,9 @@ describe('Privacy and Mutual Visibility Rules', () => {
       const result = await getBlockedUsers()
 
       expect(result.success).toBe(true)
-      expect(result.data).toHaveLength(1)
-      expect(result.data[0].blocked_user.name).toBe('Blocked User')
+      expect(result.data).toBeDefined()
+      expect(result.data!).toHaveLength(1)
+      expect(result.data![0].blocked_user.name).toBe('Blocked User')
     })
   })
 
@@ -482,9 +484,10 @@ describe('Privacy and Mutual Visibility Rules', () => {
       const result = await getMatches()
 
       expect(result.success).toBe(true)
-      expect(result.data[0].match_percentage).toBe(85)
-      expect(result.data[0].interest_score).toBeUndefined()
-      expect(result.data[0].bio_similarity).toBeUndefined()
+      expect(result.data).toBeDefined()
+      expect(result.data![0].match_percentage).toBe(85)
+      expect(result.data![0].interest_score).toBeUndefined()
+      expect(result.data![0].bio_similarity).toBeUndefined()
     })
 
     it('should prevent users from accessing other users data directly', async () => {

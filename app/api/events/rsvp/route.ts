@@ -27,7 +27,7 @@ interface RSVPResponse {
     created_at: string
   } | null
   event?: {
-    capacity: number
+    capacity: number | null
     attendeeCount: number
     isFull: boolean
   }
@@ -54,15 +54,88 @@ export async function POST(
     const { eventId, action } = validationResult.data
     const supabase = await createClient()
 
-    // Call the handle_rsvp function for atomic operation
-    const { data, error } = await supabase.rpc('handle_rsvp', {
-      p_event_id: eventId,
-      p_user_id: user.id,
-      p_action: action,
-    })
+    // Try to use handle_rsvp RPC if available, otherwise handle manually
+    let data: {
+      success: boolean
+      error?: string
+      message?: string
+      attendee_count?: number
+    } | null = null
+    let rpcError: Error | null = null
 
-    if (error) {
-      console.error('RSVP error:', error)
+    try {
+      // Note: handle_rsvp is a custom RPC function that may not be in the generated types
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const rpcResult = (await (supabase.rpc as any)('handle_rsvp', {
+        p_event_id: eventId,
+        p_user_id: user.id,
+        p_action: action,
+      })) as { data: unknown; error: Error | null }
+      if (rpcResult.error) {
+        throw rpcResult.error
+      }
+      data = rpcResult.data as typeof data
+    } catch (err) {
+      // Fallback: Handle RSVP manually if RPC is not available
+      console.warn('handle_rsvp RPC not available, using fallback:', err)
+
+      if (action === 'create') {
+        // Check if already RSVPd
+        const { data: existing } = await supabase
+          .from('rsvps')
+          .select('id')
+          .eq('event_id', eventId)
+          .eq('user_id', user.id)
+          .single()
+
+        if (existing) {
+          data = { success: false, error: 'Already RSVPd to this event' }
+        } else {
+          // Create RSVP
+          const { error: insertError } = await supabase
+            .from('rsvps')
+            .insert({ event_id: eventId, user_id: user.id, status: 'going' })
+
+          if (insertError) {
+            rpcError = insertError
+          } else {
+            // Get count
+            const { count } = await supabase
+              .from('rsvps')
+              .select('*', { count: 'exact', head: true })
+              .eq('event_id', eventId)
+            data = {
+              success: true,
+              message: 'RSVP created successfully',
+              attendee_count: count || 0,
+            }
+          }
+        }
+      } else if (action === 'cancel') {
+        const { error: deleteError } = await supabase
+          .from('rsvps')
+          .delete()
+          .eq('event_id', eventId)
+          .eq('user_id', user.id)
+
+        if (deleteError) {
+          rpcError = deleteError
+        } else {
+          const { count } = await supabase
+            .from('rsvps')
+            .select('*', { count: 'exact', head: true })
+            .eq('event_id', eventId)
+          data = {
+            success: true,
+            message: 'RSVP cancelled successfully',
+            attendee_count: count || 0,
+          }
+        }
+      }
+    }
+
+    if (rpcError) {
+      console.error('RSVP error:', rpcError)
       return NextResponse.json(
         { error: 'Failed to process RSVP' },
         { status: 500 }

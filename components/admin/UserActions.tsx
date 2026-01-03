@@ -20,9 +20,10 @@ export function UserActions({ user }: UserActionsProps) {
   const handleToggleAdmin = async () => {
     setIsLoading(true)
     try {
+      const newRole = user.role === 'admin' ? 'user' : 'admin'
       const { error } = await supabase
         .from('profiles')
-        .update({ is_admin: !user.is_admin })
+        .update({ role: newRole })
         .eq('id', user.id)
 
       if (error) throw error
@@ -39,9 +40,10 @@ export function UserActions({ user }: UserActionsProps) {
   const handleToggleSuspension = async () => {
     setIsLoading(true)
     try {
+      const newIsActive = user.is_active === false ? true : false
       const { error } = await supabase
         .from('profiles')
-        .update({ is_suspended: !user.is_suspended })
+        .update({ is_active: newIsActive })
         .eq('id', user.id)
 
       if (error) throw error
@@ -82,7 +84,7 @@ export function UserActions({ user }: UserActionsProps) {
               disabled={isLoading}
               className="flex w-full items-center px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50"
             >
-              {user.is_admin ? (
+              {user.role === 'admin' ? (
                 <>
                   <Shield className="mr-2 h-4 w-4" />
                   Remove Admin
@@ -99,13 +101,13 @@ export function UserActions({ user }: UserActionsProps) {
               onClick={handleToggleSuspension}
               disabled={isLoading}
               className={`flex w-full items-center px-4 py-2 text-left text-sm disabled:opacity-50 ${
-                user.is_suspended
+                user.is_active === false
                   ? 'text-green-700 hover:bg-green-50'
                   : 'text-red-700 hover:bg-red-50'
               }`}
             >
               <Ban className="mr-2 h-4 w-4" />
-              {user.is_suspended ? 'Unsuspend User' : 'Suspend User'}
+              {user.is_active === false ? 'Unsuspend User' : 'Suspend User'}
             </button>
           </div>
         </div>

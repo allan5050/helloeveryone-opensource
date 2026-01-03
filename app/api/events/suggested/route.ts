@@ -5,8 +5,8 @@ import { createClient } from '@/lib/supabase/server'
 
 export async function GET(request: NextRequest) {
   try {
-    const { user } = await requireAuth()
-    const supabase = createClient()
+    const user = await requireAuth(request)
+    const supabase = await createClient()
     const { searchParams } = new URL(request.url)
 
     const limit = parseInt(searchParams.get('limit') || '20')

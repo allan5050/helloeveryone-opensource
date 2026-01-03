@@ -22,11 +22,10 @@ export async function sendMessage(
     }
 
     // Check if user is blocked
-    const { data: blockCheck } = await supabase
-      .from('blocked_users')
+    const { data: blockCheck } = await (supabase.from('blocks') as any)
       .select('*')
-      .eq('user_id', user.id)
-      .eq('blocked_user_id', recipientId)
+      .eq('blocker_id', user.id)
+      .eq('blocked_id', recipientId)
       .single()
 
     if (blockCheck) {
@@ -96,11 +95,10 @@ export async function blockUser(blockedUserId: string): Promise<ChatResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase
-      .from('blocked_users')
+    const { data, error } = await (supabase.from('blocks') as any)
       .insert({
-        user_id: user.id,
-        blocked_user_id: blockedUserId,
+        blocker_id: user.id,
+        blocked_id: blockedUserId,
       })
       .select()
 
@@ -125,11 +123,10 @@ export async function unblockUser(blockedUserId: string): Promise<ChatResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { error } = await supabase
-      .from('blocked_users')
+    const { error } = await (supabase.from('blocks') as any)
       .delete()
-      .eq('user_id', user.id)
-      .eq('blocked_user_id', blockedUserId)
+      .eq('blocker_id', user.id)
+      .eq('blocked_id', blockedUserId)
 
     if (error) {
       return { success: false, error: error.message }
@@ -209,15 +206,18 @@ export async function getTotalUnreadCount(): Promise<ChatResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase.rpc('get_total_unread_messages', {
-      user_id: user.id,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'get_total_unread_messages',
+      {
+        user_id: user.id,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }
     }
 
-    return { success: true, count: data?.total_unread || 0 }
+    return { success: true, count: (data as any)?.total_unread ?? data ?? 0 }
   } catch {
     return { success: false, error: 'An error occurred' }
   }
@@ -234,7 +234,7 @@ export async function getChatList(): Promise<ChatResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase.rpc('get_chat_list', {
+    const { data, error } = await (supabase.rpc as any)('get_chat_list', {
       user_id: user.id,
     })
 
@@ -243,7 +243,8 @@ export async function getChatList(): Promise<ChatResult> {
     }
 
     // Sort by last message time
-    const sortedData = (data || []).sort(
+    const dataArray = Array.isArray(data) ? data : []
+    const sortedData = dataArray.sort(
       (a: any, b: any) =>
         new Date(b.last_message_time).getTime() -
         new Date(a.last_message_time).getTime()

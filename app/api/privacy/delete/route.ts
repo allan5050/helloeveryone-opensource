@@ -86,7 +86,9 @@ export async function POST(request: NextRequest) {
         .eq('organizer_id', userId)
 
       // 7. Create a deletion record for audit purposes
-      const { error: auditError } = await supabase
+      // Note: account_deletions table may not exist in all environments
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { error: auditError } = await (supabase as any)
         .from('account_deletions')
         .insert({
           user_id: userId,
@@ -119,7 +121,7 @@ export async function POST(request: NextRequest) {
 
       // 9. Delete the user from Supabase Auth
       // This requires admin privileges, so we'll create a server client
-      const cookieStore = cookies()
+      const cookieStore = await cookies()
       const adminSupabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.SUPABASE_SERVICE_ROLE_KEY!, // Service role key with admin privileges

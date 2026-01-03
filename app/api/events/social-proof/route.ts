@@ -12,7 +12,7 @@ const socialProofQuerySchema = z.object({
 // Type definitions
 interface FavoriteAttendee {
   id: string
-  name: string
+  display_name: string
   photo_url: string | null
 }
 
@@ -70,7 +70,7 @@ export async function GET(
         user_id,
         profiles!rsvps_user_id_fkey (
           id,
-          name,
+          display_name,
           photo_url
         )
       `

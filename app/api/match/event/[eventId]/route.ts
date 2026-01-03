@@ -51,10 +51,9 @@ export async function GET(
 
     // Get event matches using the database function
     const { data: matches, error } = await supabase.rpc('get_event_matches', {
-      p_event_id: eventId,
-      p_user_id: user.id,
-      p_limit: limit,
-      p_offset: offset,
+      target_event_id: eventId,
+      target_user_id: user.id,
+      match_limit: limit,
     })
 
     if (error) {

@@ -31,7 +31,11 @@ export async function rsvpToEvent(
       return { success: false, error: 'Event not found' }
     }
 
-    if (status === 'going' && event.current_attendees >= event.capacity) {
+    // Cast event to any since we need to check current_attendees which may come from a computed field
+    const eventData = event as any
+    const currentAttendees = eventData.current_attendees || 0
+    const capacity = event.max_attendees || Infinity
+    if (status === 'going' && currentAttendees >= capacity) {
       return { success: false, error: 'Event is at capacity' }
     }
 
@@ -53,7 +57,7 @@ export async function rsvpToEvent(
       .insert({
         event_id: eventId,
         user_id: user.id,
-        status,
+        status: status as 'going' | 'maybe' | 'not_going',
       })
       .select()
 
@@ -83,7 +87,7 @@ export async function updateRsvpStatus(
 
     const { data, error } = await supabase
       .from('rsvps')
-      .update({ status })
+      .update({ status: status as 'going' | 'maybe' | 'not_going' })
       .eq('user_id', user.id)
       .eq('event_id', eventId)
       .select()
@@ -131,9 +135,12 @@ export async function cancelRsvp(eventId: string): Promise<RsvpResult> {
 export async function checkEventCapacity(eventId: string): Promise<any> {
   try {
     const supabase = await createClient()
-    const { data, error } = await supabase.rpc('check_event_capacity', {
-      event_id: eventId,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'check_event_capacity',
+      {
+        event_id: eventId,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }

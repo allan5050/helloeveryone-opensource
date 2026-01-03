@@ -10,14 +10,14 @@ import { useAuth } from '@/app/contexts/AuthContext'
 import { createClient } from '@/lib/supabase/client'
 
 interface Profile {
-  full_name?: string
-  display_name?: string
-  bio?: string
-  interests?: string[]
-  location?: string
-  age?: number
-  photo_url?: string
-  is_profile_complete?: boolean
+  full_name?: string | null
+  display_name?: string | null
+  bio?: string | null
+  interests?: string[] | null
+  location?: string | null
+  age?: number | null
+  photo_url?: string | null
+  is_profile_complete?: boolean | null
 }
 
 export default function ProfilePage() {

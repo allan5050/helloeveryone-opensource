@@ -23,16 +23,20 @@ export async function calculateMatches(
     }
 
     const supabase = await createClient()
-    const { data, error } = await supabase.rpc('calculate_user_matches', {
-      target_user_id: userId,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'calculate_user_matches',
+      {
+        target_user_id: userId,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message, matches: [] }
     }
 
     // Sort by match score descending and limit results
-    const sortedMatches = (data || [])
+    const matchesArray = Array.isArray(data) ? data : []
+    const sortedMatches = matchesArray
       .sort((a: any, b: any) => b.match_score - a.match_score)
       .slice(0, limit)
 

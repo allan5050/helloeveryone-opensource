@@ -411,10 +411,8 @@ async function MatchDetailContent({ params }: PageProps) {
                   showText={true}
                 />
                 <FavoriteButton
-                  targetUserId={profile.user_id}
-                  initialIsFavorite={isFavorite}
+                  profileId={profile.user_id}
                   className="px-6 py-3"
-                  showText={true}
                 />
               </div>
             </div>

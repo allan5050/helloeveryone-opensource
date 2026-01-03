@@ -21,6 +21,7 @@ const mockSupabase = {
   },
   channel: jest.fn(),
   removeChannel: jest.fn(),
+  rpc: jest.fn(),
 }
 
 ;(createClient as jest.MockedFunction<typeof createClient>).mockReturnValue(

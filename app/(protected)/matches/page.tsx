@@ -19,13 +19,15 @@ interface Match {
   combined_score: number
   calculated_at: string
   profiles: {
+    id?: string
     user_id: string
     display_name: string
-    bio: string
-    age: number
-    interests: string[]
-    location?: string
+    bio: string | null
+    age: number | null
+    interests: string[] | null
+    location?: string | null
     is_favorite?: boolean
+    photo_url?: string | null
   }
   common_interests?: string[]
 }
@@ -80,7 +82,10 @@ export default function MatchesPage() {
         .single()
 
       const userInterests = userProfile?.interests || []
-      setCurrentUserData({ bio: userProfile?.bio, interests: userInterests })
+      setCurrentUserData({
+        bio: userProfile?.bio ?? undefined,
+        interests: userInterests,
+      })
 
       let query = supabase
         .from('profiles')
@@ -236,7 +241,10 @@ export default function MatchesPage() {
           .single()
 
         const userInterests = userProfile?.interests || []
-        setCurrentUserData({ bio: userProfile?.bio, interests: userInterests })
+        setCurrentUserData({
+          bio: userProfile?.bio ?? undefined,
+          interests: userInterests,
+        })
 
         // Get favorites
         const { data: favorites } = await supabase
@@ -570,7 +578,10 @@ export default function MatchesPage() {
                 return (
                   <MatchCard
                     key={match.id}
-                    profile={match.profiles}
+                    profile={{
+                      ...match.profiles,
+                      id: match.profiles.id || match.profiles.user_id,
+                    }}
                     matchScore={matchScore}
                     sharedInterests={match.common_interests || []}
                     className={viewMode === 'list' ? 'w-full' : ''}

@@ -203,8 +203,8 @@ export async function createRSVP(
 
     // Check capacity
     const goingCount = event.rsvp_count || 0
-    const status =
-      goingCount >= (event.max_attendees || event.capacity) ? 'maybe' : 'going'
+    const maxCapacity = event.max_attendees ?? Infinity
+    const status = goingCount >= maxCapacity ? 'maybe' : 'going'
 
     // Create or update RSVP
     const { data, error } = await supabase

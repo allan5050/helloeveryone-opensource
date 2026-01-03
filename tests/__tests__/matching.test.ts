@@ -476,7 +476,7 @@ describe('Matching Algorithm', () => {
       const { calculateCosineSimilarity } =
         await import('@/lib/matching/semantic')
 
-      const emptyVec = []
+      const emptyVec: number[] = []
       const normalVec = [1, 2, 3]
 
       expect(() => calculateCosineSimilarity(emptyVec, normalVec)).toThrow()

@@ -65,6 +65,7 @@ async function getRecentMatches(userId: string) {
       `
       *,
       profiles!match_scores_user_id_2_fkey(
+        id,
         user_id,
         display_name,
         bio,
@@ -258,7 +259,7 @@ async function DashboardContent() {
                   <div>
                     <h3 className="font-medium text-gray-900">{event.title}</h3>
                     <p className="text-sm text-gray-600">
-                      {new Date(event.date).toLocaleDateString('en-US', {
+                      {new Date(event.start_time).toLocaleDateString('en-US', {
                         weekday: 'short',
                         month: 'short',
                         day: 'numeric',

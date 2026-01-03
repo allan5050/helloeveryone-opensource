@@ -12,9 +12,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { EventWithRSVP } from '@/types/events'
+import { EventWithRSVP } from '@/types/event'
 
-import { RSVPButton } from './RSVPButton'
+import RSVPButton from './RSVPButton'
 
 // Demo component showcasing RSVP functionality
 export function RSVPDemo() {
@@ -177,7 +177,7 @@ export function RSVPDemo() {
                 </div>
 
                 <div className="flex flex-wrap gap-1">
-                  {event.tags?.map(tag => (
+                  {event.tags?.map((tag: string) => (
                     <Badge key={tag} variant="outline" className="text-xs">
                       {tag}
                     </Badge>
@@ -185,8 +185,11 @@ export function RSVPDemo() {
                 </div>
 
                 <RSVPButton
-                  event={event}
-                  onRSVPChange={(newCount, status) => {
+                  eventId={event.id}
+                  capacity={event.capacity}
+                  initialAttendeeCount={event.attendee_count}
+                  initialHasRsvp={event.user_rsvp?.status === 'attending'}
+                  onRsvpChange={(hasRsvp: boolean, newCount: number) => {
                     setEvents(prev =>
                       prev.map(e =>
                         e.id === event.id
@@ -195,17 +198,16 @@ export function RSVPDemo() {
                               attendee_count: newCount,
                               spots_remaining: e.capacity - newCount,
                               is_full: newCount >= e.capacity,
-                              user_rsvp:
-                                status === 'attending'
-                                  ? {
-                                      id: 'demo-rsvp',
-                                      event_id: event.id,
-                                      user_id: 'demo-user',
-                                      status: 'attending',
-                                      created_at: new Date().toISOString(),
-                                      updated_at: new Date().toISOString(),
-                                    }
-                                  : undefined,
+                              user_rsvp: hasRsvp
+                                ? {
+                                    id: 'demo-rsvp',
+                                    event_id: event.id,
+                                    user_id: 'demo-user',
+                                    status: 'attending' as const,
+                                    created_at: new Date().toISOString(),
+                                    updated_at: new Date().toISOString(),
+                                  }
+                                : undefined,
                             }
                           : e
                       )

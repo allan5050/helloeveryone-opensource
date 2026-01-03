@@ -16,17 +16,32 @@ function checkDevelopmentOnly() {
 interface User {
   user_id: string
   display_name: string
-  age: number
-  location: string
-  interests: string[]
-  bio: string
-  bio_embedding?: number[]
+  age: number | null
+  location: string | null
+  interests: string[] | null
+  bio: string | null
+  bio_embedding?: string | null // Stored as string in database, parsed when needed
 }
 
 interface EnhancedMatchRequest {
   enableDiversity?: boolean
   diversityFactor?: number // 0-0.2 range
   interestWeights?: Record<string, number> // Interest -> weight (1-5)
+}
+
+// Parse embedding from string (database stores vectors as strings)
+function parseEmbedding(embedding: string | null | undefined): number[] | null {
+  if (!embedding) return null
+  try {
+    // Handle PostgreSQL vector format: [1,2,3] or (1,2,3)
+    const cleaned = embedding.replace(/[[\]()]/g, '')
+    return cleaned
+      .split(',')
+      .map(Number)
+      .filter(n => !isNaN(n))
+  } catch {
+    return null
+  }
 }
 
 // Calculate cosine similarity for embeddings
@@ -180,11 +195,11 @@ function semanticInterestMatch(
 
 // Age compatibility with configurable tolerance
 function calculateAgeCompatibility(
-  age1: number,
-  age2: number,
+  age1: number | null,
+  age2: number | null,
   tolerance: number = 5
 ): number {
-  if (!age1 || !age2) return 0.5
+  if (age1 == null || age2 == null) return 0.5
 
   const diff = Math.abs(age1 - age2)
 
@@ -231,10 +246,10 @@ function calculateEnhancedMatchScore(
   const interestScore = exactInterestScore * 0.6 + semanticInterestScore * 0.4
 
   // 2. Bio semantic similarity
+  const embedding1 = parseEmbedding(user1.bio_embedding)
+  const embedding2 = parseEmbedding(user2.bio_embedding)
   const semanticScore =
-    user1.bio_embedding && user2.bio_embedding
-      ? cosineSimilarity(user1.bio_embedding, user2.bio_embedding)
-      : 0.5
+    embedding1 && embedding2 ? cosineSimilarity(embedding1, embedding2) : 0.5
 
   // 3. Age compatibility
   const ageScore = calculateAgeCompatibility(user1.age, user2.age)
@@ -377,7 +392,10 @@ function calculateJaccardSimilarity(set1: string[], set2: string[]): number {
   return union === 0 ? 0 : intersection / union
 }
 
-function calculateLocationMatch(loc1: string, loc2: string): number {
+function calculateLocationMatch(
+  loc1: string | null,
+  loc2: string | null
+): number {
   if (!loc1 || !loc2) return 0.5
   if (loc1 === loc2) return 1.0
   const zip1 = parseInt(loc1)

@@ -20,7 +20,7 @@ export async function getProfileWithPrivacy(
     }
 
     // Check connection level to determine what information to show
-    const { data: profile, error } = await supabase.rpc(
+    const { data: profile, error } = await (supabase.rpc as any)(
       'get_profile_with_privacy',
       {
         profile_user_id: userId,
@@ -45,7 +45,7 @@ export async function getPublicProfile(userId: string): Promise<ProfileResult> {
   try {
     const supabase = await createClient()
 
-    const { data, error } = await supabase.rpc('get_public_profile', {
+    const { data, error } = await (supabase.rpc as any)('get_public_profile', {
       user_id: userId,
     })
 

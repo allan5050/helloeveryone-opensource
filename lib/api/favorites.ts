@@ -36,8 +36,7 @@ export async function addToFavorites(
       return { success: false, error: 'User not found' }
     }
 
-    const { data, error } = await supabase
-      .from('favorites')
+    const { data, error } = await (supabase.from('favorites') as any)
       .insert({
         user_id: user.id,
         target_user_id: targetUserId,
@@ -131,9 +130,12 @@ export async function getMutualFavorites(): Promise<FavoriteResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase.rpc('get_mutual_favorites', {
-      user_id: user.id,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'get_mutual_favorites',
+      {
+        user_id: user.id,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }
@@ -158,16 +160,19 @@ export async function checkMutualFavorite(
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase.rpc('check_mutual_favorite', {
-      user1_id: user.id,
-      user2_id: targetUserId,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'check_mutual_favorite',
+      {
+        user1_id: user.id,
+        user2_id: targetUserId,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }
     }
 
-    return { success: true, is_mutual: data?.is_mutual || false }
+    return { success: true, is_mutual: (data as any)?.is_mutual || false }
   } catch {
     return { success: false, error: 'An error occurred' }
   }
@@ -184,7 +189,7 @@ export async function getFavoriteNotifications(): Promise<FavoriteResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await (supabase as any)
       .from('notifications')
       .select('*, from_user:profiles!from_user_id(*)')
       .eq('user_id', user.id)
@@ -207,9 +212,12 @@ export async function getPublicFavorites(
   try {
     const supabase = await createClient()
 
-    const { data, error } = await supabase.rpc('get_public_favorites', {
-      target_user_id: targetUserId,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'get_public_favorites',
+      {
+        target_user_id: targetUserId,
+      }
+    )
 
     if (error) {
       if (error.code === 'BLOCKED_USER') {
@@ -261,15 +269,18 @@ export async function getMutualFavoritesCount(): Promise<FavoriteResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase.rpc('get_mutual_favorites_count', {
-      user_id: user.id,
-    })
+    const { data, error } = await (supabase.rpc as any)(
+      'get_mutual_favorites_count',
+      {
+        user_id: user.id,
+      }
+    )
 
     if (error) {
       return { success: false, error: error.message }
     }
 
-    return { success: true, count: data?.count || 0 }
+    return { success: true, count: (data as any)?.count || 0 }
   } catch {
     return { success: false, error: 'An error occurred' }
   }

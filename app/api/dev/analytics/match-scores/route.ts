@@ -16,10 +16,10 @@ function checkDevelopmentOnly() {
 interface User {
   user_id: string
   display_name: string
-  age: number
-  location: string
-  interests: string[]
-  bio: string
+  age: number | null
+  location: string | null
+  interests: string[] | null
+  bio: string | null
 }
 
 // Calculate Jaccard similarity for interests
@@ -33,8 +33,11 @@ function calculateJaccardSimilarity(set1: string[], set2: string[]): number {
 }
 
 // Calculate age compatibility (peaks when ages are within 5 years)
-function calculateAgeCompatibility(age1: number, age2: number): number {
-  if (!age1 || !age2) return 0.5
+function calculateAgeCompatibility(
+  age1: number | null,
+  age2: number | null
+): number {
+  if (age1 == null || age2 == null) return 0.5
 
   const diff = Math.abs(age1 - age2)
   if (diff <= 5) return 1.0
@@ -44,7 +47,10 @@ function calculateAgeCompatibility(age1: number, age2: number): number {
 }
 
 // Calculate location match (simple - same zip = 1, different = 0.3)
-function calculateLocationMatch(loc1: string, loc2: string): number {
+function calculateLocationMatch(
+  loc1: string | null,
+  loc2: string | null
+): number {
   if (!loc1 || !loc2) return 0.5
   // Simple matching - same zip gets full score, different gets partial
   return loc1 === loc2 ? 1.0 : 0.3

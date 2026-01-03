@@ -3,7 +3,23 @@ import { Database } from './database'
 // Base types from database
 export type Event = Database['public']['Tables']['events']['Row']
 export type RSVP = Database['public']['Tables']['rsvps']['Row']
-export type Profile = Database['public']['Tables']['profiles']['Row']
+
+// Profile is imported from profile.ts to avoid conflicts
+type ProfileRow = Database['public']['Tables']['profiles']['Row']
+
+// Partial RSVP type for query results that only select specific fields
+export interface PartialRSVP {
+  id: string
+  status: 'going' | 'maybe' | 'not_going'
+  user_id: string
+  event_id?: string
+  created_at?: string
+  updated_at?: string
+  user?: {
+    user_id: string
+    display_name: string
+  }
+}
 
 // Extended event type with joined data
 export interface EventWithDetails extends Event {
@@ -12,15 +28,10 @@ export interface EventWithDetails extends Event {
     display_name: string
   }
   rsvp_count?: number
-  user_rsvp?: RSVP | null
-  rsvps?: Array<
-    RSVP & {
-      user?: {
-        user_id: string
-        display_name: string
-      }
-    }
-  >
+  user_rsvp?: PartialRSVP | null
+  rsvps?: Array<PartialRSVP>
+  // Legacy field alias for backward compatibility
+  capacity?: number | null
 }
 
 // Event creation/update types
@@ -75,4 +86,32 @@ export interface FullEventDetails extends Event {
   maybe_count: number
   spots_remaining: number
   user_rsvp?: RSVP | null
+}
+
+// RSVP user info for EventWithRSVP
+export interface RSVPUserInfo {
+  id: string
+  event_id: string
+  user_id: string
+  status: 'attending' | 'going' | 'maybe' | 'not_going'
+  created_at: string
+  updated_at: string
+}
+
+// Event with RSVP data for UI components
+export interface EventWithRSVP {
+  id: string
+  title: string
+  description?: string | null
+  location: string
+  date_time: string
+  capacity: number
+  attendee_count: number
+  created_by: string
+  created_at: string
+  updated_at: string
+  spots_remaining: number
+  is_full: boolean
+  tags?: string[]
+  user_rsvp?: RSVPUserInfo
 }

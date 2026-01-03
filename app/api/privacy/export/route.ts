@@ -176,10 +176,8 @@ export async function GET(request: NextRequest) {
     }
 
     // Get user preferences (if we have a separate preferences table)
-    // For now, preferences are stored in the profile visibility_settings
+    // For now, preferences are stored in the profile privacy_settings
     userDataExport.preferences = {
-      visibility_settings: profile.visibility_settings,
-      notification_settings: profile.notification_settings || {},
       privacy_settings: profile.privacy_settings || {},
     }
 

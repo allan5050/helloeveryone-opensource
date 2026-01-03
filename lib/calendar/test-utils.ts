@@ -16,15 +16,8 @@ export const mockCalendarEvent: EventAttributes = {
     email: 'organizer@test.com',
   },
   attendees: [
-    { name: 'John Doe', email: 'john@test.com', rsvp: true },
-    { name: 'Jane Smith', email: 'jane@test.com', rsvp: true },
-  ],
-  alarms: [
-    {
-      action: 'display',
-      description: 'Reminder: Test Event starts in 1 hour',
-      trigger: { hours: 1, minutes: 0, before: true },
-    },
+    { name: 'John Doe', email: 'john@test.com' },
+    { name: 'Jane Smith', email: 'jane@test.com' },
   ],
 }
 

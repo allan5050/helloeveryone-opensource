@@ -384,9 +384,9 @@ describe('API Route Security Patterns', () => {
         // GET requests should not modify data
         if (content.includes('export async function GET')) {
           const modifiesData =
-            content.match(/GET[^}]*\.insert\(/s) ||
-            content.match(/GET[^}]*\.update\(/s) ||
-            content.match(/GET[^}]*\.delete\(/s)
+            content.match(/GET[\s\S]*?\.insert\(/) ||
+            content.match(/GET[\s\S]*?\.update\(/) ||
+            content.match(/GET[\s\S]*?\.delete\(/)
 
           // Exception: marking messages as read is acceptable side effect
           if (modifiesData && !content.includes('is_read')) {

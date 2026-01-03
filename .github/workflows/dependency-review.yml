@@ -22,8 +22,7 @@ jobs:
         with:
           # Fail on critical vulnerabilities
           fail-on-severity: critical
-          # Allow minor/patch updates
-          allow-licenses: MIT, Apache-2.0, BSD-3-Clause, ISC
+          # Block copyleft licenses (can't use both allow and deny)
           deny-licenses: GPL-3.0, AGPL-3.0
           # Comment results on PR
           comment-summary-in-pr: always

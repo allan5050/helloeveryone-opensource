@@ -33,7 +33,10 @@ export async function searchProfiles(
       .eq('user_id', user.id)
       .single()
 
-    const userPrivacy = userProfile?.privacy_settings || {}
+    const userPrivacy = (userProfile?.privacy_settings || {}) as Record<
+      string,
+      boolean
+    >
 
     // Check mutual visibility rules
     if (filters.age_min !== undefined || filters.age_max !== undefined) {
@@ -56,7 +59,7 @@ export async function searchProfiles(
     }
 
     // Perform search with mutual visibility
-    const { data, error } = await supabase.rpc(
+    const { data, error } = await (supabase.rpc as any)(
       'search_profiles_with_mutual_visibility',
       {
         ...filters,
@@ -68,7 +71,7 @@ export async function searchProfiles(
       return { success: false, error: error.message }
     }
 
-    return { success: true, data: data || [] }
+    return { success: true, data: (data as any[]) || [] }
   } catch {
     return { success: false, error: 'An error occurred' }
   }
