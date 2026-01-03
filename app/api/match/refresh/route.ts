@@ -77,10 +77,7 @@ export async function POST(request: NextRequest) {
 
           updatedCount++
         } catch (error) {
-          console.error(
-            `Error processing match for profile ${otherProfileId}:`,
-            error
-          )
+          console.error('Error processing match for profile:', otherProfileId, error)
           continue
         }
       }

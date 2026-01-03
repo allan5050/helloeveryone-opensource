@@ -222,7 +222,7 @@ export async function POST(request: NextRequest) {
           }
         }
       } catch (error) {
-        console.error(`Error processing match for profile ${targetId}:`, error)
+        console.error('Error processing match for profile:', targetId, error)
         continue
       }
     }
