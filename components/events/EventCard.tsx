@@ -41,9 +41,9 @@ export default function EventCard({ event }: EventCardProps) {
 
     fetchFavoriteAttendees()
   }, [event.id])
-  const eventDate = new Date(event.event_date)
-  const currentRsvps = event.rsvp_count || 0
-  const capacity = event.capacity
+  const eventDate = new Date(event.start_time)
+  const currentRsvps = (event as { rsvp_count?: number }).rsvp_count || 0
+  const capacity = event.max_attendees || 0
   const isNearlyFull = currentRsvps >= capacity * 0.8
   const isFull = currentRsvps >= capacity
   const favoriteCount = favoriteAttendees.length
@@ -79,11 +79,6 @@ export default function EventCard({ event }: EventCardProps) {
                   <Star className="mr-1 h-3 w-3 fill-current" />
                   {favoriteCount} favorite{favoriteCount === 1 ? '' : 's'}{' '}
                   attending
-                </span>
-              )}
-              {event.event_type && (
-                <span className="inline-flex flex-shrink-0 items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
-                  {event.event_type}
                 </span>
               )}
             </div>
@@ -181,31 +176,6 @@ export default function EventCard({ event }: EventCardProps) {
               )}
             </div>
           </div>
-
-          {/* Host Info */}
-          {event.host && (
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                {event.host.avatar_url ? (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
-                    src={event.host.avatar_url}
-                    alt={event.host.full_name}
-                    className="mr-2 h-6 w-6 rounded-full"
-                  />
-                ) : (
-                  <div className="mr-2 flex h-6 w-6 items-center justify-center rounded-full bg-gray-300">
-                    <span className="text-xs font-medium text-gray-600">
-                      {event.host.full_name.charAt(0).toUpperCase()}
-                    </span>
-                  </div>
-                )}
-                <span className="text-sm text-gray-600">
-                  Hosted by {event.host.full_name}
-                </span>
-              </div>
-            </div>
-          )}
 
           {/* Capacity Progress Bar */}
           <div className="mt-4">

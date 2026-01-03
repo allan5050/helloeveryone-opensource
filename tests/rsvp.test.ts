@@ -1,8 +1,8 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest'
+// Jest provides describe, it, expect, beforeEach globals automatically
 
 describe('RSVP Functionality Tests', () => {
   beforeEach(() => {
-    vi.clearAllMocks()
+    jest.clearAllMocks()
   })
 
   describe('RSVPButton Component', () => {

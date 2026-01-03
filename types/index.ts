@@ -52,6 +52,29 @@ export interface Conversation {
   unread_count: number
 }
 
-// Re-export from other files
-export * from './profile'
-export * from './event'
+// Re-export from profile (selective to avoid conflicts)
+export type {
+  Profile,
+  ProfileBase,
+  MatchScore,
+  InterestCategory,
+  StructuredInterests,
+  PrivacySettings,
+} from './profile'
+
+// Re-export from event (selective to avoid conflicts with profile)
+export type {
+  Event,
+  RSVP,
+  EventWithDetails,
+  CreateEventData,
+  UpdateEventData,
+  EventFilters,
+  RSVPResponse,
+  RSVPStatus,
+  RSVPWithUser,
+  FullEventDetails,
+} from './event'
+
+// Re-export database types
+export type { Database, Json, Tables, TablesInsert, TablesUpdate } from './database'

@@ -649,29 +649,23 @@ export default function EnhancedNetworkGraph({
     // Add labels
     node
       .append('text')
-      .text(d =>
-        d.isAllan ? d.name : d.isCurrentUser ? `⭐ ${d.name} (YOU)` : d.name
-      )
+      .text(d => (d.isCurrentUser ? `⭐ ${d.name} (YOU)` : d.name))
       .attr('x', 0)
       .attr('y', d => {
         const offset = isFullscreen ? 45 : 35
-        return d.isCurrentUser || d.isAllan ? -offset : -(offset - 10)
+        return d.isCurrentUser ? -offset : -(offset - 10)
       })
       .attr('text-anchor', 'middle')
       .attr('font-size', d => {
         if (isFullscreen) {
-          return d.isCurrentUser || d.isAllan ? '20px' : '16px'
+          return d.isCurrentUser ? '20px' : '16px'
         }
-        return d.isCurrentUser || d.isAllan ? '16px' : '13px'
+        return d.isCurrentUser ? '16px' : '13px'
       })
       .attr('font-weight', d =>
-        d.isCurrentUser || d.isAllan || d.id === selectedUser
-          ? 'bold'
-          : 'normal'
+        d.isCurrentUser || d.id === selectedUser ? 'bold' : 'normal'
       )
-      .attr('fill', d =>
-        d.isAllan ? '#d97706' : d.isCurrentUser ? '#dc2626' : '#000'
-      )
+      .attr('fill', d => (d.isCurrentUser ? '#dc2626' : '#000'))
 
     // Add community labels for community view (rendered after simulation stabilizes)
     if (layoutMode === 'community') {

@@ -86,7 +86,7 @@ test.describe('Complete User Journey', () => {
       ).toBeVisible()
 
       // Click on first event
-      await page.click('[data-testid="event-card"]').first()
+      await page.locator('[data-testid="event-card"]').first().click()
 
       // View event details
       await expect(page.locator('[data-testid="event-title"]')).toBeVisible()
@@ -178,7 +178,7 @@ test.describe('Complete User Journey', () => {
     await test.step('Export event to calendar', async () => {
       // Navigate back to event details
       await page.goto('/events')
-      await page.click('[data-testid="event-card"]').first()
+      await page.locator('[data-testid="event-card"]').first().click()
 
       // Click export to calendar button
       const downloadPromise = page.waitForEvent('download')
@@ -299,7 +299,7 @@ test.describe('Complete User Journey', () => {
       await page.context().setOffline(true)
 
       // Try to RSVP while offline
-      await page.click('[data-testid="event-card"]').first()
+      await page.locator('[data-testid="event-card"]').first().click()
       await page.click('[data-testid="rsvp-going"]')
 
       // Should show offline message or queue action
@@ -368,11 +368,13 @@ test.describe('Complete User Journey', () => {
       await page.goto('/events')
 
       // Check for proper ARIA labels
-      await expect(page.locator('[aria-label]')).toHaveCount({ min: 1 })
+      const ariaElements = page.locator('[aria-label]')
+      expect(await ariaElements.count()).toBeGreaterThanOrEqual(1)
 
       // Check for proper heading structure
       await expect(page.locator('h1')).toBeVisible()
-      await expect(page.locator('h2, h3')).toHaveCount({ min: 1 })
+      const headings = page.locator('h2, h3')
+      expect(await headings.count()).toBeGreaterThanOrEqual(1)
     })
 
     await test.step('Test color contrast and visual accessibility', async () => {

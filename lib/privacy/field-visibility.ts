@@ -3,6 +3,16 @@ import { Database } from '@/types/supabase'
 
 type Profile = Database['public']['Tables']['profiles']['Row']
 
+// Extended profile type that includes fields that may exist in the database
+// but are not in the generated TypeScript types
+interface ExtendedProfile extends Profile {
+  display_name?: string
+  profile_image_url?: string
+  visibility_settings?: PrivacySettings['visibility_settings']
+  notification_settings?: PrivacySettings['notification_settings']
+  privacy_settings?: PrivacySettings['privacy_settings']
+}
+
 export interface FieldVisibilityCheck {
   field: string
   canView: boolean
@@ -69,8 +79,8 @@ export async function checkFieldVisibility(
   }
 
   // Get both users' privacy settings
-  const { data: profiles, error } = await supabase
-    .from('profiles')
+  // Note: visibility_settings column may not be in generated types, cast to any
+  const { data: profiles, error } = await (supabase.from('profiles') as any)
     .select('id, visibility_settings')
     .in('id', [requestingUserId, targetUserId])
 
@@ -83,8 +93,9 @@ export async function checkFieldVisibility(
     }))
   }
 
-  const requestingProfile = profiles.find(p => p.id === requestingUserId)
-  const targetProfile = profiles.find(p => p.id === targetUserId)
+  const typedProfiles = profiles as ExtendedProfile[]
+  const requestingProfile = typedProfiles.find(p => p.id === requestingUserId)
+  const targetProfile = typedProfiles.find(p => p.id === targetUserId)
 
   if (!requestingProfile || !targetProfile) {
     return fields.map(field => ({
@@ -136,8 +147,8 @@ export async function filterQueryParams(
   userId: string,
   queryParams: Record<string, any>
 ): Promise<Record<string, any>> {
-  const { data: profile, error } = await supabase
-    .from('profiles')
+  // Note: visibility_settings column may not be in generated types, cast to any
+  const { data: profile, error } = await (supabase.from('profiles') as any)
     .select('visibility_settings')
     .eq('id', userId)
     .single()
@@ -147,8 +158,9 @@ export async function filterQueryParams(
     return {}
   }
 
+  const typedProfile = profile as ExtendedProfile
   const visibilitySettings =
-    profile.visibility_settings as PrivacySettings['visibility_settings']
+    typedProfile.visibility_settings as PrivacySettings['visibility_settings']
   const filteredParams: Record<string, any> = {}
 
   // Mapping of query parameters to visibility fields
@@ -189,8 +201,8 @@ export async function filterQueryParams(
  * Get user's privacy dashboard data
  */
 export async function getPrivacyDashboard(userId: string) {
-  const { data: profile, error } = await supabase
-    .from('profiles')
+  // Note: visibility_settings, notification_settings, privacy_settings columns may not be in generated types
+  const { data: profile, error } = await (supabase.from('profiles') as any)
     .select(
       'visibility_settings, notification_settings, privacy_settings, created_at'
     )
@@ -201,40 +213,41 @@ export async function getPrivacyDashboard(userId: string) {
     throw new Error('Failed to fetch privacy settings')
   }
 
+  const typedProfile = profile as ExtendedProfile
+
   // Get blocked users count
-  const { count: blockedCount } = await supabase
-    .from('blocks')
+  // Note: blocks table may not be in generated types
+  const { count: blockedCount } = await (supabase.from as any)('blocks')
     .select('*', { count: 'exact', head: true })
     .eq('blocker_id', userId)
 
   // Get data usage statistics
+  // Note: some columns may not be in generated types
   const [{ count: messageCount }, { count: matchCount }, { count: rsvpCount }] =
     await Promise.all([
-      supabase
-        .from('messages')
+      (supabase.from('messages') as any)
         .select('*', { count: 'exact', head: true })
         .eq('sender_id', userId)
         .eq('is_deleted', false),
 
-      supabase
-        .from('match_scores')
+      (supabase.from('match_scores') as any)
         .select('*', { count: 'exact', head: true })
         .or(`user1_id.eq.${userId},user2_id.eq.${userId}`),
 
       supabase
         .from('rsvps')
         .select('*', { count: 'exact', head: true })
-        .eq('user_id', userId),
+        .eq('profile_id', userId),
     ])
 
   return {
     settings: {
-      visibility: profile.visibility_settings || {},
-      notifications: profile.notification_settings || {},
-      privacy: profile.privacy_settings || {},
+      visibility: typedProfile.visibility_settings || {},
+      notifications: typedProfile.notification_settings || {},
+      privacy: typedProfile.privacy_settings || {},
     },
     statistics: {
-      accountCreated: profile.created_at,
+      accountCreated: typedProfile.created_at,
       blockedUsers: blockedCount || 0,
       messagesSent: messageCount || 0,
       matches: matchCount || 0,
@@ -307,19 +320,19 @@ async function areUsersBlocked(
  * Sanitize user data for public API responses
  */
 export function sanitizeUserData(
-  profile: Partial<Profile>,
+  profile: Partial<ExtendedProfile>,
   requestingUserId: string,
   fieldVisibility: FieldVisibilityCheck[]
-): Partial<Profile> {
-  const sanitized: Partial<Profile> = {
+): Partial<ExtendedProfile> {
+  const sanitized: Partial<ExtendedProfile> = {
     id: profile.id,
     display_name: profile.display_name,
     profile_image_url: profile.profile_image_url,
   }
 
   fieldVisibility.forEach(({ field, canView }) => {
-    if (canView && profile[field as keyof Profile] !== undefined) {
-      ;(sanitized as any)[field] = profile[field as keyof Profile]
+    if (canView && profile[field as keyof ExtendedProfile] !== undefined) {
+      ;(sanitized as any)[field] = profile[field as keyof ExtendedProfile]
     }
   })
 
@@ -340,7 +353,8 @@ export async function createPrivacyAuditLog(
   details: Record<string, any>
 ) {
   try {
-    await supabase.from('privacy_audit_log').insert({
+    // Note: privacy_audit_log table may not be in generated types
+    await (supabase.from as any)('privacy_audit_log').insert({
       user_id: userId,
       action,
       details,

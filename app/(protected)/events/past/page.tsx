@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react'
 
 import { useAuth } from '@/app/contexts/AuthContext'
 import { getPastEvents } from '@/lib/supabase/events'
-import type { Event } from '@/types/event'
+import type { EventWithDetails } from '@/types/event'
 
-function PastEventCard({ event }: { event: Event }) {
-  const eventDate = new Date(event.event_date)
+function PastEventCard({ event }: { event: EventWithDetails }) {
+  const eventDate = new Date(event.start_time)
 
   const formatDate = (date: Date) => {
     return date.toLocaleDateString('en-US', {
@@ -19,8 +19,8 @@ function PastEventCard({ event }: { event: Event }) {
     })
   }
 
-  const formatTime = (time: string) => {
-    return new Date(`2000-01-01T${time}`).toLocaleTimeString('en-US', {
+  const formatTime = (dateTimeString: string) => {
+    return new Date(dateTimeString).toLocaleTimeString('en-US', {
       hour: 'numeric',
       minute: '2-digit',
       hour12: true,
@@ -36,11 +36,6 @@ function PastEventCard({ event }: { event: Event }) {
             {event.title}
           </h3>
           <div className="flex flex-col items-end gap-1">
-            {event.event_type && (
-              <span className="inline-flex items-center rounded-full bg-gray-200 px-2.5 py-0.5 text-xs font-medium text-gray-700">
-                {event.event_type}
-              </span>
-            )}
             <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
               Attended
             </span>
@@ -80,30 +75,21 @@ function PastEventCard({ event }: { event: Event }) {
           <div className="flex items-center text-sm text-gray-600">
             <span className="font-medium">Final attendance:</span>
             <span className="ml-2">
-              {event.rsvp_count || 0}/{event.capacity} people
+              {event.rsvp_count || 0}/{event.max_attendees || 'N/A'} people
             </span>
           </div>
         </div>
 
         {/* Host Info */}
-        {event.host && (
+        {event.creator && (
           <div className="flex items-center">
-            {event.host.avatar_url ? (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                src={event.host.avatar_url}
-                alt={event.host.full_name}
-                className="mr-2 h-6 w-6 rounded-full opacity-75"
-              />
-            ) : (
-              <div className="mr-2 flex h-6 w-6 items-center justify-center rounded-full bg-gray-300 opacity-75">
-                <span className="text-xs font-medium text-gray-600">
-                  {event.host.full_name.charAt(0).toUpperCase()}
-                </span>
-              </div>
-            )}
+            <div className="mr-2 flex h-6 w-6 items-center justify-center rounded-full bg-gray-300 opacity-75">
+              <span className="text-xs font-medium text-gray-600">
+                {event.creator.display_name.charAt(0).toUpperCase()}
+              </span>
+            </div>
             <span className="text-sm text-gray-600">
-              Hosted by {event.host.full_name}
+              Hosted by {event.creator.display_name}
             </span>
           </div>
         )}
@@ -114,7 +100,7 @@ function PastEventCard({ event }: { event: Event }) {
 
 export default function PastEventsPage() {
   const { user } = useAuth()
-  const [events, setEvents] = useState<Event[]>([])
+  const [events, setEvents] = useState<EventWithDetails[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 

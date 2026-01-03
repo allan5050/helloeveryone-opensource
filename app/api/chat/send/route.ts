@@ -6,7 +6,7 @@ import { checkRateLimit } from '@/lib/api/rate-limit'
 import { createClient } from '@/lib/supabase/server'
 
 const sendMessageSchema = z.object({
-  receiver_id: z.string().uuid('Invalid receiver ID'),
+  recipient_id: z.string().uuid('Invalid recipient ID'),
   content: z
     .string()
     .min(1, 'Message content is required')
@@ -24,10 +24,10 @@ export async function POST(request: NextRequest) {
 
     // Parse and validate request body
     const body = await request.json()
-    const { receiver_id, content } = sendMessageSchema.parse(body)
+    const { recipient_id, content } = sendMessageSchema.parse(body)
 
     // Check if user is trying to message themselves
-    if (user.id === receiver_id) {
+    if (user.id === recipient_id) {
       return NextResponse.json(
         { error: 'Cannot send message to yourself' },
         { status: 400 }
@@ -37,15 +37,15 @@ export async function POST(request: NextRequest) {
     // Create Supabase client
     const supabase = await createClient()
 
-    // Check if receiver exists and if users have blocked each other
-    const { data: receiverProfile, error: receiverError } = await supabase
+    // Check if recipient exists and if users have blocked each other
+    const { data: recipientProfile, error: recipientError } = await supabase
       .from('profiles')
       .select('id')
-      .eq('id', receiver_id)
+      .eq('id', recipient_id)
       .single()
 
-    if (receiverError || !receiverProfile) {
-      return NextResponse.json({ error: 'Receiver not found' }, { status: 404 })
+    if (recipientError || !recipientProfile) {
+      return NextResponse.json({ error: 'Recipient not found' }, { status: 404 })
     }
 
     // Check if either user has blocked the other
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
       .from('blocks')
       .select('id')
       .or(
-        `and(blocker_id.eq.${user.id},blocked_id.eq.${receiver_id}),and(blocker_id.eq.${receiver_id},blocked_id.eq.${user.id})`
+        `and(blocker_id.eq.${user.id},blocked_id.eq.${recipient_id}),and(blocker_id.eq.${recipient_id},blocked_id.eq.${user.id})`
       )
       .limit(1)
       .maybeSingle()
@@ -70,10 +70,10 @@ export async function POST(request: NextRequest) {
       .from('messages')
       .insert({
         sender_id: user.id,
-        receiver_id,
+        recipient_id,
         content: content.trim(),
       })
-      .select('*, sender:profiles!sender_id(id, full_name, avatar_url)')
+      .select('*, sender:profiles!sender_id(id, full_name, photo_url)')
       .single()
 
     if (messageError) {

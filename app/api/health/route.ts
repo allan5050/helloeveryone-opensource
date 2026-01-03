@@ -3,8 +3,6 @@
  * Provides system status and database connectivity check
  */
 
-import { cookies } from 'next/headers'
-
 import { handleApiError } from '@/lib/api/errors'
 import { success, error } from '@/lib/api/responses'
 import { createServerClient } from '@/lib/supabase/server'
@@ -28,8 +26,7 @@ export async function GET() {
 
     try {
       const dbStartTime = Date.now()
-      const cookieStore = cookies()
-      const supabase = createServerClient(cookieStore)
+      const supabase = await createServerClient()
 
       // Simple query to test connectivity
       const { error: dbError } = await supabase

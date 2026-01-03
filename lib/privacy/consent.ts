@@ -38,8 +38,8 @@ export async function recordConsent(
 ): Promise<boolean> {
   try {
     // Check if consent already exists for this type and version
-    const { data: existing } = await supabase
-      .from('user_consents')
+    // Note: user_consents table is not in the generated types, using any cast
+    const { data: existing } = await (supabase.from as any)('user_consents')
       .select('id')
       .eq('user_id', userId)
       .eq('consent_type', consentRequest.consent_type)
@@ -48,8 +48,7 @@ export async function recordConsent(
 
     if (existing) {
       // Update existing consent
-      const { error } = await supabase
-        .from('user_consents')
+      const { error } = await (supabase.from as any)('user_consents')
         .update({
           consent_given: consentRequest.consent_given,
           ip_address: consentRequest.ip_address,
@@ -61,7 +60,7 @@ export async function recordConsent(
       return !error
     } else {
       // Create new consent record
-      const { error } = await supabase.from('user_consents').insert({
+      const { error } = await (supabase.from as any)('user_consents').insert({
         user_id: userId,
         consent_type: consentRequest.consent_type,
         consent_given: consentRequest.consent_given,
@@ -85,8 +84,8 @@ export async function getUserConsent(
   userId: string,
   consentType?: ConsentType
 ): Promise<ConsentRecord[]> {
-  let query = supabase
-    .from('user_consents')
+  // Note: user_consents table is not in the generated types, using any cast
+  let query = (supabase.from as any)('user_consents')
     .select('*')
     .eq('user_id', userId)
     .order('created_at', { ascending: false })
@@ -102,7 +101,7 @@ export async function getUserConsent(
     return []
   }
 
-  return data || []
+  return (data as ConsentRecord[]) || []
 }
 
 /**
@@ -114,8 +113,8 @@ export async function hasValidConsent(
   requiredVersion?: string
 ): Promise<boolean> {
   try {
-    let query = supabase
-      .from('user_consents')
+    // Note: user_consents table is not in the generated types, using any cast
+    let query = (supabase.from as any)('user_consents')
       .select('consent_given, consent_version')
       .eq('user_id', userId)
       .eq('consent_type', consentType)
@@ -133,7 +132,7 @@ export async function hasValidConsent(
       return false
     }
 
-    return data.consent_given === true
+    return (data as { consent_given: boolean }).consent_given === true
   } catch (error) {
     console.error('Error checking consent:', error)
     return false
@@ -150,7 +149,8 @@ export async function withdrawConsent(
   metadata?: { ip_address?: string; user_agent?: string }
 ): Promise<boolean> {
   try {
-    const { error } = await supabase.from('user_consents').insert({
+    // Note: user_consents table is not in the generated types, using any cast
+    const { error } = await (supabase.from as any)('user_consents').insert({
       user_id: userId,
       consent_type: consentType,
       consent_given: false,
@@ -281,9 +281,10 @@ export async function recordMultipleConsents(
       user_agent: consent.user_agent,
     }))
 
-    const { error } = await supabase
-      .from('user_consents')
-      .insert(consentRecords)
+    // Note: user_consents table is not in the generated types, using any cast
+    const { error } = await (supabase.from as any)('user_consents').insert(
+      consentRecords
+    )
 
     return !error
   } catch (error) {
@@ -299,8 +300,8 @@ export async function getConsentHistory(
   userId: string,
   consentType?: ConsentType
 ): Promise<ConsentRecord[]> {
-  let query = supabase
-    .from('user_consents')
+  // Note: user_consents table is not in the generated types, using any cast
+  let query = (supabase.from as any)('user_consents')
     .select('*')
     .eq('user_id', userId)
     .order('created_at', { ascending: false })
@@ -316,5 +317,5 @@ export async function getConsentHistory(
     return []
   }
 
-  return data || []
+  return (data as ConsentRecord[]) || []
 }

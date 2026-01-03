@@ -5,8 +5,8 @@ import { createClient } from '@/lib/supabase/server'
 
 export async function POST(request: NextRequest) {
   try {
-    const { user } = await requireAuth()
-    const supabase = createClient()
+    const user = await requireAuth()
+    const supabase = await createClient()
     const body = await request.json()
 
     const { eventId, targetUserIds, includeExplanations = true } = body
@@ -33,9 +33,9 @@ export async function POST(request: NextRequest) {
       // Get all attendees of the event
       const { data: attendees, error: attendeesError } = await supabase
         .from('rsvps')
-        .select('profile_id')
+        .select('user_id')
         .eq('event_id', eventId)
-        .neq('profile_id', user.id)
+        .neq('user_id', user.id)
 
       if (attendeesError) {
         throw new Error('Failed to fetch event attendees')
@@ -45,16 +45,16 @@ export async function POST(request: NextRequest) {
       for (const attendee of attendees || []) {
         const { data: score } = await supabase
           .from('match_scores')
-          .select('score')
+          .select('combined_score')
           .or(
-            `and(profile1_id.eq.${user.id},profile2_id.eq.${attendee.profile_id}),and(profile1_id.eq.${attendee.profile_id},profile2_id.eq.${user.id})`
+            `and(user_id_1.eq.${user.id},user_id_2.eq.${attendee.user_id}),and(user_id_1.eq.${attendee.user_id},user_id_2.eq.${user.id})`
           )
           .single()
 
         matches.push({
           userId: user.id,
-          targetUserId: attendee.profile_id,
-          score: score?.score || 50,
+          targetUserId: attendee.user_id,
+          score: score?.combined_score || 50,
           explanation: includeExplanations
             ? {
                 interestOverlap: [],
@@ -71,16 +71,16 @@ export async function POST(request: NextRequest) {
       for (const targetId of targetUserIds) {
         const { data: score } = await supabase
           .from('match_scores')
-          .select('score')
+          .select('combined_score')
           .or(
-            `and(profile1_id.eq.${user.id},profile2_id.eq.${targetId}),and(profile1_id.eq.${targetId},profile2_id.eq.${user.id})`
+            `and(user_id_1.eq.${user.id},user_id_2.eq.${targetId}),and(user_id_1.eq.${targetId},user_id_2.eq.${user.id})`
           )
           .single()
 
         matches.push({
           userId: user.id,
           targetUserId: targetId,
-          score: score?.score || 50,
+          score: score?.combined_score || 50,
           explanation: includeExplanations
             ? {
                 interestOverlap: [],

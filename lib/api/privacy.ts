@@ -46,7 +46,7 @@ export async function exportUserData(): Promise<PrivacyResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase.rpc('export_user_data', {
+    const { data, error } = await (supabase.rpc as any)('export_user_data', {
       user_id: user.id,
     })
 
@@ -71,7 +71,7 @@ export async function deleteUserAccount(): Promise<PrivacyResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase.rpc('delete_user_account', {
+    const { data, error } = await (supabase.rpc as any)('delete_user_account', {
       user_id: user.id,
     })
 
@@ -96,7 +96,7 @@ export async function requestDataPortability(): Promise<PrivacyResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase.rpc('request_data_portability', {
+    const { data, error } = await (supabase.rpc as any)('request_data_portability', {
       user_id: user.id,
     })
 
@@ -116,7 +116,7 @@ export async function anonymizeUserData(
   try {
     const supabase = await createClient()
 
-    const { data, error } = await supabase.rpc('anonymize_user_data', {
+    const { data, error } = await (supabase.rpc as any)('anonymize_user_data', {
       user_id: userId,
     })
 

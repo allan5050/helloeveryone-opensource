@@ -62,8 +62,8 @@ export async function POST(request: NextRequest) {
   if (rateLimitResponse) return rateLimitResponse
 
   try {
-    const { user } = await requireAuth()
-    const supabase = createClient()
+    const user = await requireAuth()
+    const supabase = await createClient()
 
     // Get request body
     const { profileId, forceRegenerate = false } = await request.json()
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
     // Get the profile data
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
-      .select('id, bio, interests, bio_embedding, interests_embedding')
+      .select('id, bio, interests, bio_embedding, embedding')
       .eq('id', targetProfileId)
       .single()
 
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Profile not found' }, { status: 404 })
     }
 
-    const updates: { bio_embedding?: string; interests_embedding?: string } = {}
+    const updates: { bio_embedding?: string; embedding?: string } = {}
     let embeddingsGenerated = 0
 
     // Generate bio embedding if bio exists and embedding doesn't exist or force regenerate
@@ -113,13 +113,13 @@ export async function POST(request: NextRequest) {
       profile.interests &&
       Array.isArray(profile.interests) &&
       profile.interests.length > 0 &&
-      (!profile.interests_embedding || forceRegenerate)
+      (!profile.embedding || forceRegenerate)
     ) {
       try {
         // Convert interests array to a readable string
         const interestsText = profile.interests.join(', ')
         const interestsEmbedding = await generateEmbedding(interestsText)
-        updates.interests_embedding = JSON.stringify(interestsEmbedding)
+        updates.embedding = JSON.stringify(interestsEmbedding)
         embeddingsGenerated++
       } catch (error) {
         console.error('Error generating interests embedding:', error)
@@ -168,13 +168,13 @@ export async function POST(request: NextRequest) {
 // GET endpoint to check embedding status
 export async function GET(_request: NextRequest) {
   try {
-    const { user } = await requireAuth()
-    const supabase = createClient()
+    const user = await requireAuth()
+    const supabase = await createClient()
 
     // Get the profile data
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
-      .select('id, bio, interests, bio_embedding, interests_embedding')
+      .select('id, bio, interests, bio_embedding, embedding')
       .eq('id', user.id)
       .single()
 
@@ -190,7 +190,7 @@ export async function GET(_request: NextRequest) {
         Array.isArray(profile.interests) &&
         profile.interests.length > 0
       ),
-      hasInterestsEmbedding: !!profile.interests_embedding,
+      hasInterestsEmbedding: !!profile.embedding,
     }
 
     return NextResponse.json({

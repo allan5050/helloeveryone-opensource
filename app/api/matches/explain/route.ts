@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const supabase = createClient()
+    const supabase = await createClient()
 
     // Get current user
     const {
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
 
     const scoreMap: { [userId: string]: number } = {}
     if (matchScores) {
-      matchScores.forEach(score => {
+      matchScores.forEach((score: { user_id_2: string; combined_score: number }) => {
         scoreMap[score.user_id_2] = score.combined_score
       })
     }
@@ -118,7 +118,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const supabase = createClient()
+    const supabase = await createClient()
 
     // Get current user
     const {

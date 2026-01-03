@@ -79,7 +79,7 @@ export async function EventsList() {
               const rsvpCount = Array.isArray(event.rsvps)
                 ? event.rsvps.length
                 : 0
-              const isUpcoming = new Date(event.date) > new Date()
+              const isUpcoming = new Date(event.start_time) > new Date()
 
               return (
                 <tr key={event.id} className="hover:bg-gray-50">
@@ -97,8 +97,8 @@ export async function EventsList() {
                     <div className="flex items-center">
                       <Calendar className="mr-2 h-4 w-4 text-gray-400" />
                       <div>
-                        <p>{format(new Date(event.date), 'MMM dd, yyyy')}</p>
-                        <p className="text-gray-500">{event.time}</p>
+                        <p>{format(new Date(event.start_time), 'MMM dd, yyyy')}</p>
+                        <p className="text-gray-500">{format(new Date(event.start_time), 'h:mm a')}</p>
                       </div>
                     </div>
                   </td>
@@ -111,7 +111,7 @@ export async function EventsList() {
                   <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                     <div className="flex items-center">
                       <Users className="mr-2 h-4 w-4 text-gray-400" />
-                      {rsvpCount} / {event.capacity || '∞'}
+                      {rsvpCount} / {event.max_attendees || '∞'}
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-6 py-4">

@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
-import { Database } from '@/types/supabase'
+import { Database } from '@/types/database'
 
 type Profile = Database['public']['Tables']['profiles']['Row']
 
@@ -24,10 +24,8 @@ export function checkMutualVisibility(
   targetProfile: Partial<Profile>,
   fields: (keyof VisibilityRules)[]
 ): boolean {
-  const userVisibility =
-    (userProfile.visibility_settings as VisibilityRules) || {}
-  const targetVisibility =
-    (targetProfile.visibility_settings as VisibilityRules) || {}
+  const userVisibility = (userProfile.privacy_settings as Partial<VisibilityRules>) ?? {}
+  const targetVisibility = (targetProfile.privacy_settings as Partial<VisibilityRules>) ?? {}
 
   return fields.every(
     field => userVisibility[field] === true && targetVisibility[field] === true
@@ -42,14 +40,14 @@ export function filterProfileByVisibility(
   targetProfile: Partial<Profile>
 ): Partial<Profile> {
   const requestingVisibility =
-    (requestingUserProfile.visibility_settings as VisibilityRules) || {}
+    (requestingUserProfile.privacy_settings as Partial<VisibilityRules>) ?? {}
   const targetVisibility =
-    (targetProfile.visibility_settings as VisibilityRules) || {}
+    (targetProfile.privacy_settings as Partial<VisibilityRules>) ?? {}
 
   const filteredProfile: Partial<Profile> = {
     id: targetProfile.id,
     display_name: targetProfile.display_name,
-    profile_image_url: targetProfile.profile_image_url,
+    photo_url: targetProfile.photo_url,
     created_at: targetProfile.created_at,
     updated_at: targetProfile.updated_at,
   }
@@ -57,28 +55,14 @@ export function filterProfileByVisibility(
   // Only include fields where both users allow visibility
   if (requestingVisibility.age && targetVisibility.age) {
     filteredProfile.age = targetProfile.age
-    filteredProfile.birth_date = targetProfile.birth_date
   }
 
   if (requestingVisibility.location && targetVisibility.location) {
-    filteredProfile.city = targetProfile.city
-    filteredProfile.state = targetProfile.state
-    filteredProfile.location_coordinates = targetProfile.location_coordinates
-  }
-
-  if (requestingVisibility.occupation && targetVisibility.occupation) {
-    filteredProfile.occupation = targetProfile.occupation
-    filteredProfile.company = targetProfile.company
-  }
-
-  if (requestingVisibility.education && targetVisibility.education) {
-    filteredProfile.education = targetProfile.education
-    filteredProfile.school = targetProfile.school
+    filteredProfile.location = targetProfile.location
   }
 
   if (requestingVisibility.interests && targetVisibility.interests) {
     filteredProfile.interests = targetProfile.interests
-    filteredProfile.hobbies = targetProfile.hobbies
   }
 
   if (requestingVisibility.bio && targetVisibility.bio) {
@@ -90,21 +74,7 @@ export function filterProfileByVisibility(
     requestingVisibility.relationship_goals &&
     targetVisibility.relationship_goals
   ) {
-    filteredProfile.relationship_goals = targetProfile.relationship_goals
     filteredProfile.looking_for = targetProfile.looking_for
-  }
-
-  if (requestingVisibility.lifestyle && targetVisibility.lifestyle) {
-    filteredProfile.lifestyle_preferences = targetProfile.lifestyle_preferences
-    filteredProfile.values = targetProfile.values
-  }
-
-  if (requestingVisibility.social_media && targetVisibility.social_media) {
-    filteredProfile.social_media_links = targetProfile.social_media_links
-  }
-
-  if (requestingVisibility.contact_info && targetVisibility.contact_info) {
-    filteredProfile.phone_number = targetProfile.phone_number
   }
 
   return filteredProfile
@@ -137,7 +107,8 @@ export function canFilterByField(
   userProfile: Partial<Profile>,
   field: keyof VisibilityRules
 ): boolean {
-  const visibility = (userProfile.visibility_settings as VisibilityRules) || {}
+  const visibility =
+    (userProfile.privacy_settings as Partial<VisibilityRules>) ?? {}
   return visibility[field] === true
 }
 
@@ -147,7 +118,8 @@ export function canFilterByField(
 export function getAvailableFilters(
   userProfile: Partial<Profile>
 ): (keyof VisibilityRules)[] {
-  const visibility = (userProfile.visibility_settings as VisibilityRules) || {}
+  const visibility =
+    (userProfile.privacy_settings as Partial<VisibilityRules>) ?? {}
   const availableFilters: (keyof VisibilityRules)[] = []
 
   Object.entries(visibility).forEach(([field, isVisible]) => {
@@ -205,8 +177,7 @@ export function sanitizeProfileForAPI(
 
   // Remove internal/sensitive fields
   delete sanitized.bio_embedding
-  delete sanitized.auth_user_id
-  delete sanitized.email // Only show email if explicitly allowed
+  delete sanitized.embedding
 
   return sanitized
 }

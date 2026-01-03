@@ -7,7 +7,7 @@ import { useAuth } from '@/app/contexts/AuthContext'
 import { createClient } from '@/lib/supabase/client'
 
 interface PhotoUploadProps {
-  currentPhotoUrl?: string
+  currentPhotoUrl?: string | null
   onPhotoChange: (url: string | null) => void
   className?: string
 }

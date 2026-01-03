@@ -171,7 +171,7 @@ export async function GET(
       .from('favorites')
       .select('id')
       .eq('user_id', user.id)
-      .eq('favorited_user_id', profileId)
+      .eq('favorited_user_id', profileId!)
       .single()
 
     if (error && error.code !== 'PGRST116') {

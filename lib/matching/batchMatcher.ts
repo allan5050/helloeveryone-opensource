@@ -74,9 +74,9 @@ export class BatchMatcher {
 
     const { data: attendees, error } = await supabase
       .from('rsvps')
-      .select('profile_id')
-      .eq('event_id', request.eventId)
-      .neq('profile_id', request.userId)
+      .select('user_id')
+      .eq('event_id', request.eventId ?? '')
+      .neq('user_id', request.userId)
 
     if (error) {
       throw new Error(`Failed to get event matches: ${error.message}`)
@@ -88,16 +88,16 @@ export class BatchMatcher {
       // Get cached match score if available
       const { data: score } = await supabase
         .from('match_scores')
-        .select('score')
+        .select('combined_score')
         .or(
-          `and(profile1_id.eq.${request.userId},profile2_id.eq.${attendee.profile_id}),and(profile1_id.eq.${attendee.profile_id},profile2_id.eq.${request.userId})`
+          `and(user_id_1.eq.${request.userId},user_id_2.eq.${attendee.user_id}),and(user_id_1.eq.${attendee.user_id},user_id_2.eq.${request.userId})`
         )
         .single()
 
       matches.push({
         userId: request.userId,
-        targetUserId: attendee.profile_id,
-        score: score?.score || 50,
+        targetUserId: attendee.user_id,
+        score: score?.combined_score || 50,
         explanation: request.includeExplanations
           ? {
               interestOverlap: [],
@@ -131,16 +131,16 @@ export class BatchMatcher {
       for (const targetId of batch) {
         const { data: score } = await supabase
           .from('match_scores')
-          .select('score')
+          .select('combined_score')
           .or(
-            `and(profile1_id.eq.${request.userId},profile2_id.eq.${targetId}),and(profile1_id.eq.${targetId},profile2_id.eq.${request.userId})`
+            `and(user_id_1.eq.${request.userId},user_id_2.eq.${targetId}),and(user_id_1.eq.${targetId},user_id_2.eq.${request.userId})`
           )
           .single()
 
         allMatches.push({
           userId: request.userId,
           targetUserId: targetId,
-          score: score?.score || 50,
+          score: score?.combined_score || 50,
           explanation: request.includeExplanations
             ? {
                 interestOverlap: [],

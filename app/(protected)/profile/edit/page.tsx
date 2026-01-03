@@ -79,17 +79,31 @@ export default function ProfileEdit() {
             })
           }
 
+          // Cast interests to the expected type since we know they're valid values from the database
+          const typedInterests = categorizedInterests as {
+            music_genres: typeof import('@/lib/validations/profile').MUSIC_GENRES[number][]
+            food_preferences: typeof import('@/lib/validations/profile').FOOD_PREFERENCES[number][]
+            activities: typeof import('@/lib/validations/profile').ACTIVITIES[number][]
+          }
+
+          // Cast privacy_settings to the expected type
+          const typedPrivacySettings = (profile.privacy_settings as {
+            show_age?: boolean
+            show_location?: boolean
+            show_interests?: boolean
+          } | null) || {
+            show_age: true,
+            show_location: true,
+            show_interests: true,
+          }
+
           form.reset({
             display_name: profile.display_name || '',
             age: profile.age || 25,
             location: profile.location || '',
-            interests: categorizedInterests,
+            interests: typedInterests,
             bio: profile.bio || '',
-            privacy_settings: profile.privacy_settings || {
-              show_age: true,
-              show_location: true,
-              show_interests: true,
-            },
+            privacy_settings: typedPrivacySettings,
           })
           setPhotoUrl(profile.photo_url)
         }

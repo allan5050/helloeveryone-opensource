@@ -12,8 +12,8 @@ interface Message {
   content: string
   created_at: string
   sender_id: string
-  receiver_id: string
-  read_at: string | null
+  recipient_id: string
+  is_read: boolean
   sender: {
     id: string
     full_name: string | null
@@ -71,7 +71,7 @@ export default function ChatWindow({
           event: 'INSERT',
           schema: 'public',
           table: 'messages',
-          filter: `or(and(sender_id.eq.${currentUser.id},receiver_id.eq.${otherUser.id}),and(sender_id.eq.${otherUser.id},receiver_id.eq.${currentUser.id}))`,
+          filter: `or(and(sender_id.eq.${currentUser.id},recipient_id.eq.${otherUser.id}),and(sender_id.eq.${otherUser.id},recipient_id.eq.${currentUser.id}))`,
         },
         async payload => {
           // Fetch the complete message with sender info
@@ -83,22 +83,23 @@ export default function ChatWindow({
               content,
               created_at,
               sender_id,
-              receiver_id,
-              read_at,
+              recipient_id,
+              is_read,
               sender:profiles!sender_id(id, full_name, avatar_url)
             `
             )
-            .eq('id', payload.new.id)
+            .eq('id', (payload.new as any).id)
             .single()
 
           if (messageWithSender) {
+            const typedMessage = messageWithSender as unknown as Message
             setMessages(prev => {
               // Check if message already exists to avoid duplicates
-              if (prev.some(msg => msg.id === messageWithSender.id)) {
+              if (prev.some(msg => msg.id === typedMessage.id)) {
                 return prev
               }
-              const newMessages = [...prev, messageWithSender]
-              onNewMessage(messageWithSender)
+              const newMessages = [...prev, typedMessage]
+              onNewMessage(typedMessage)
               return newMessages
             })
           }

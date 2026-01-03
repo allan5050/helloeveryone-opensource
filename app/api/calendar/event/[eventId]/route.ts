@@ -17,18 +17,18 @@ export async function GET(
     // Fetch event details with location and organizer
     const { data: event, error: eventError } = await supabase
       .from('events')
-      .select(
-        `
-        *,
-        profiles!events_organizer_id_fkey (
-          first_name,
-          last_name,
-          email
-        )
-      `
-      )
+      .select('*')
       .eq('id', eventId)
       .single()
+
+    // Fetch organizer profile separately using created_by
+    const { data: organizer } = event
+      ? await supabase
+          .from('profiles')
+          .select('first_name, last_name')
+          .eq('user_id', event.created_by)
+          .single()
+      : { data: null }
 
     if (eventError || !event) {
       return NextResponse.json({ error: 'Event not found' }, { status: 404 })
@@ -39,7 +39,7 @@ export async function GET(
       .from('rsvps')
       .select('status')
       .eq('event_id', eventId)
-      .eq('profile_id', user.id)
+      .eq('user_id', user.id)
       .single()
 
     if (!rsvp || rsvp.status !== 'going') {
@@ -52,69 +52,62 @@ export async function GET(
     // Fetch attendees who are going
     const { data: attendees } = await supabase
       .from('rsvps')
-      .select(
-        `
-        profiles (
-          first_name,
-          last_name
-        )
-      `
-      )
+      .select('user_id')
       .eq('event_id', eventId)
       .eq('status', 'going')
+
+    // Get attendee user IDs for match lookup
+    const attendeeUserIds = attendees?.map(a => a.user_id).filter(Boolean) || []
+
+    // Fetch profiles for attendees
+    const { data: attendeeProfiles } = await supabase
+      .from('profiles')
+      .select('user_id, first_name, last_name')
+      .in('user_id', attendeeUserIds)
 
     // Fetch user's matches who are also attending
     const { data: matches } = await supabase
       .from('match_scores')
-      .select(
-        `
-        profile2_id,
-        score,
-        profiles!match_scores_profile2_id_fkey (
-          first_name,
-          last_name
-        )
-      `
-      )
-      .eq('profile1_id', user.id)
-      .gte('score', 0.7) // Only include good matches
-      .in(
-        'profile2_id',
-        attendees?.map(a => a.profiles?.id).filter(Boolean) || []
-      )
+      .select('user_id_2, combined_score')
+      .eq('user_id_1', user.id)
+      .gte('combined_score', 0.7) // Only include good matches
+      .in('user_id_2', attendeeUserIds)
 
-    // Parse date and time
-    const startDate = new Date(`${event.date}T${event.time}`)
-    const endDate = new Date(
-      startDate.getTime() + (event.duration || 120) * 60000
-    ) // Default 2 hours
+    // Get match profiles
+    const matchUserIds = matches?.map(m => m.user_id_2).filter(Boolean) || []
+    const { data: matchProfiles } = await supabase
+      .from('profiles')
+      .select('user_id, first_name, last_name')
+      .in('user_id', matchUserIds)
+
+    // Parse start and end times from event
+    const startDate = new Date(event.start_time)
+    const endDate = new Date(event.end_time)
 
     // Build description with matches and attendees
     let description = event.description || ''
 
-    if (matches && matches.length > 0) {
-      description += '\n\n🎯 YOUR MATCHES ATTENDING:\n'
+    if (matches && matches.length > 0 && matchProfiles) {
+      description += '\n\nYOUR MATCHES ATTENDING:\n'
       matches.forEach(match => {
-        const profile = match.profiles
+        const profile = matchProfiles.find(p => p.user_id === match.user_id_2)
         if (profile) {
-          description += `• ${profile.first_name} ${profile.last_name} (${Math.round(match.score * 100)}% match)\n`
+          description += `- ${profile.first_name} ${profile.last_name} (${Math.round(match.combined_score * 100)}% match)\n`
         }
       })
     }
 
-    if (attendees && attendees.length > 0) {
-      description += `\n\n👥 OTHER ATTENDEES (${attendees.length} total):\n`
-      attendees
+    if (attendeeProfiles && attendeeProfiles.length > 0) {
+      description += `\n\nOTHER ATTENDEES (${attendeeProfiles.length} total):\n`
+      attendeeProfiles
+        .filter(p => !matchUserIds.includes(p.user_id))
         .slice(0, 10) // Limit to first 10 to avoid overly long descriptions
-        .forEach(attendee => {
-          const profile = attendee.profiles
-          if (profile && !matches?.find(m => m.profiles?.id === profile.id)) {
-            description += `• ${profile.first_name} ${profile.last_name}\n`
-          }
+        .forEach(profile => {
+          description += `- ${profile.first_name} ${profile.last_name}\n`
         })
 
-      if (attendees.length > 10) {
-        description += `... and ${attendees.length - 10} more attendees\n`
+      if (attendeeProfiles.length > 10) {
+        description += `... and ${attendeeProfiles.length - 10} more attendees\n`
       }
     }
 
@@ -136,36 +129,22 @@ export async function GET(
         endDate.getHours(),
         endDate.getMinutes(),
       ],
-      title: event.name,
+      title: event.title,
       description,
       location: event.location,
       url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://helloeveryone.fun'}/events/${eventId}`,
       organizer: {
-        name: event.profiles
-          ? `${event.profiles.first_name} ${event.profiles.last_name}`
+        name: organizer
+          ? `${organizer.first_name} ${organizer.last_name}`
           : 'HelloEveryone.fun',
-        email: event.profiles?.email || 'hello@helloeveryone.fun',
+        email: 'hello@helloeveryone.fun', // Use placeholder for privacy
       },
       attendees:
-        attendees?.map(attendee => ({
-          name: attendee.profiles
-            ? `${attendee.profiles.first_name} ${attendee.profiles.last_name}`
-            : 'Attendee',
+        attendeeProfiles?.map(profile => ({
+          name: `${profile.first_name} ${profile.last_name}`,
           email: 'attendee@helloeveryone.fun', // Placeholder for privacy
           rsvp: true,
         })) || [],
-      alarms: [
-        {
-          action: 'display',
-          description: `Reminder: ${event.name} starts in 1 hour`,
-          trigger: { hours: 1, minutes: 0, before: true },
-        },
-        {
-          action: 'display',
-          description: `Reminder: ${event.name} starts in 30 minutes`,
-          trigger: { hours: 0, minutes: 30, before: true },
-        },
-      ],
     }
 
     // Generate ICS content
@@ -183,7 +162,7 @@ export async function GET(
     return new NextResponse(icsContent, {
       headers: {
         'Content-Type': 'text/calendar; charset=utf-8',
-        'Content-Disposition': `attachment; filename="${event.name.replace(/[^a-zA-Z0-9]/g, '_')}.ics"`,
+        'Content-Disposition': `attachment; filename="${event.title.replace(/[^a-zA-Z0-9]/g, '_')}.ics"`,
         'Cache-Control': 'no-cache',
       },
     })

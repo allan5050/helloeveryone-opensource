@@ -11,7 +11,7 @@ interface CalendarButtonProps {
   eventName: string
   userRsvpStatus?: 'going' | 'maybe' | 'not_going' | null
   className?: string
-  variant?: 'default' | 'outline' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
 }
 

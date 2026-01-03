@@ -42,7 +42,7 @@ export function EventCategoriesChart({ data }: EventCategoriesChartProps) {
             fill="#8884d8"
             dataKey="count"
             label={({ category, percent }) =>
-              `${category} ${(percent * 100).toFixed(0)}%`
+              `${category} ${((percent ?? 0) * 100).toFixed(0)}%`
             }
           >
             {data.map((entry, index) => (

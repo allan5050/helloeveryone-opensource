@@ -53,10 +53,11 @@ async function getFavorites(): Promise<FavoriteProfile[]> {
 
 function FavoriteCard({ profile }: { profile: FavoriteProfile }) {
   // Check if URL is an SVG (like dicebear avatars) - use unoptimized for these
-  const isSvgUrl =
+  const isSvgUrl = Boolean(
     profile.photo_url &&
     (profile.photo_url.includes('.svg') ||
       profile.photo_url.includes('dicebear.com'))
+  )
 
   return (
     <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">

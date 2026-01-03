@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest'
+// Jest provides these globals automatically
 
 describe('RSVP Integration Tests', () => {
   let testEventId: string

@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { useRSVP } from '@/hooks/useRSVP'
-import { EventWithRSVP } from '@/types/events'
+import { EventWithRSVP } from '@/types/event'
 
 interface RSVPButtonWithHookProps {
   event: EventWithRSVP
@@ -121,7 +121,7 @@ export function RSVPButtonWithHook({
       <Button
         onClick={handleRSVP}
         disabled={isLoading || disabled}
-        variant={isAttending ? 'outline' : 'default'}
+        variant={isAttending ? 'outline' : 'primary'}
         className="w-full"
       >
         {isLoading ? (

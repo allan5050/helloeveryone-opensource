@@ -18,7 +18,7 @@ export async function getMatches(): Promise<MatchingResult> {
       return { success: false, error: 'Authentication required' }
     }
 
-    const { data, error } = await supabase.rpc('get_user_matches', {
+    const { data, error } = await (supabase.rpc as any)('get_user_matches', {
       user_id: user.id,
     })
 

@@ -58,9 +58,9 @@ async function testDatabaseFunctions() {
     // Test 3: Test database functions
     console.log('\n3️⃣ Testing database functions...')
 
-    // Test handle_rsvp function
+    // Test handle_rsvp function (not in typed schema, use type assertion)
     try {
-      const { data: rsvpResult, error: rsvpError } = await supabase.rpc(
+      const { data: rsvpResult, error: rsvpError } = await (supabase.rpc as any)(
         'handle_rsvp',
         {
           p_event_id: 'test-event-id',
@@ -88,9 +88,9 @@ async function testDatabaseFunctions() {
       const { data: matchResult, error: matchError } = await supabase.rpc(
         'calculate_match_score',
         {
-          user_id_1: 'test-user-1',
-          user_id_2: 'test-user-2',
-          event_id: 'test-event-id',
+          user1_id: 'test-user-1',
+          user2_id: 'test-user-2',
+          target_event_id: 'test-event-id',
         }
       )
 
@@ -112,8 +112,8 @@ async function testDatabaseFunctions() {
     try {
       const { data: eventMatches, error: eventMatchesError } =
         await supabase.rpc('get_event_matches', {
-          event_id: 'test-event-id',
-          user_id: 'test-user-id',
+          target_event_id: 'test-event-id',
+          target_user_id: 'test-user-id',
         })
 
       if (eventMatchesError) {
@@ -133,11 +133,11 @@ async function testDatabaseFunctions() {
     // Test 4: Check indexes exist
     console.log('\n4️⃣ Checking performance indexes...')
 
-    const { data: indexes, error: indexError } = await supabase.rpc('sql', {
+    const { data: indexes, error: indexError } = await (supabase.rpc as any)('sql', {
       query: `
-          SELECT schemaname, tablename, indexname 
-          FROM pg_indexes 
-          WHERE schemaname = 'public' 
+          SELECT schemaname, tablename, indexname
+          FROM pg_indexes
+          WHERE schemaname = 'public'
           AND indexname LIKE 'idx_%'
           ORDER BY tablename, indexname
         `,

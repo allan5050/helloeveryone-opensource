@@ -40,8 +40,8 @@ export async function POST(request: NextRequest) {
   const startTime = Date.now()
 
   try {
-    const { user } = await requireAuth()
-    const supabase = createClient()
+    const user = await requireAuth()
+    const supabase = await createClient()
 
     const {
       targetProfileId,
@@ -142,9 +142,9 @@ export async function POST(request: NextRequest) {
                   id: profile.user_id,
                   firstName: profile.display_name,
                   lastName: '',
-                  age: profile.age,
-                  location: profile.location,
-                  bio: profile.bio,
+                  age: profile.age ?? undefined,
+                  location: profile.location ?? undefined,
+                  bio: profile.bio ?? undefined,
                   interests: (profile.interests as string[]) || [],
                 },
               })
@@ -201,9 +201,9 @@ export async function POST(request: NextRequest) {
                 id: profile.user_id,
                 firstName: profile.display_name,
                 lastName: '',
-                age: profile.age,
-                location: profile.location,
-                bio: profile.bio,
+                age: profile.age ?? undefined,
+                location: profile.location ?? undefined,
+                bio: profile.bio ?? undefined,
                 interests: (profile.interests as string[]) || [],
               },
             })
@@ -214,6 +214,8 @@ export async function POST(request: NextRequest) {
                 user_id_1: user.id < targetId ? user.id : targetId,
                 user_id_2: user.id < targetId ? targetId : user.id,
                 combined_score: score,
+                semantic_score: 0,
+                interest_score: 0,
               },
               {
                 onConflict: 'user_id_1,user_id_2',
@@ -260,14 +262,14 @@ export async function GET(request: NextRequest) {
   const startTime = Date.now()
 
   try {
-    const { user } = await requireAuth()
+    const user = await requireAuth()
     const { searchParams } = new URL(request.url)
 
     const limit = Math.min(parseInt(searchParams.get('limit') || '10'), 50)
     const minScore = parseInt(searchParams.get('minScore') || '20')
     const eventId = searchParams.get('eventId')
 
-    const supabase = createClient()
+    const supabase = await createClient()
 
     // Build the query
     const query = supabase
@@ -327,9 +329,9 @@ export async function GET(request: NextRequest) {
             id: profile.user_id,
             firstName: profile.display_name,
             lastName: '',
-            age: profile.age,
-            location: profile.location,
-            bio: profile.bio,
+            age: profile.age ?? undefined,
+            location: profile.location ?? undefined,
+            bio: profile.bio ?? undefined,
             interests: (profile.interests as string[]) || [],
           },
         })

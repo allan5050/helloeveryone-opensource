@@ -7,19 +7,19 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import { Input } from '@/components/ui/Input'
+import { Textarea } from '@/components/ui/Textarea'
 import { createClient } from '@/lib/supabase/client'
 
 const eventSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   description: z.string().min(1, 'Description is required'),
-  date: z.string().min(1, 'Date is required'),
-  time: z.string().min(1, 'Time is required'),
+  start_date: z.string().min(1, 'Date is required'),
+  start_time: z.string().min(1, 'Start time is required'),
+  end_time: z.string().min(1, 'End time is required'),
   location: z.string().min(1, 'Location is required'),
-  capacity: z.number().min(1, 'Capacity must be at least 1').optional(),
-  category: z.string().min(1, 'Category is required'),
-  is_published: z.boolean().default(false),
+  max_attendees: z.number().min(1, 'Capacity must be at least 1').optional(),
+  is_active: z.boolean().default(true),
 })
 
 type EventFormData = z.infer<typeof eventSchema>
@@ -46,33 +46,31 @@ export function EventForm({ event, isEdit = false }: EventFormProps) {
       ? {
           title: event.title,
           description: event.description,
-          date: event.date,
-          time: event.time,
+          start_date: event.start_time ? event.start_time.split('T')[0] : '',
+          start_time: event.start_time ? event.start_time.split('T')[1]?.substring(0, 5) : '',
+          end_time: event.end_time ? event.end_time.split('T')[1]?.substring(0, 5) : '',
           location: event.location,
-          capacity: event.capacity,
-          category: event.category,
-          is_published: event.is_published,
+          max_attendees: event.max_attendees,
+          is_active: event.is_active ?? true,
         }
       : {},
   })
 
-  const categories = [
-    'networking',
-    'social',
-    'professional',
-    'hobby',
-    'sports',
-    'culture',
-    'education',
-    'other',
-  ]
-
   const onSubmit = async (data: EventFormData) => {
     setIsLoading(true)
     try {
+      // Combine date and time into ISO timestamp
+      const startDateTime = `${data.start_date}T${data.start_time}:00`
+      const endDateTime = `${data.start_date}T${data.end_time}:00`
+
       const eventData = {
-        ...data,
-        capacity: data.capacity || null,
+        title: data.title,
+        description: data.description,
+        location: data.location,
+        start_time: startDateTime,
+        end_time: endDateTime,
+        max_attendees: data.max_attendees || null,
+        is_active: data.is_active,
       }
 
       if (isEdit && event) {
@@ -83,7 +81,14 @@ export function EventForm({ event, isEdit = false }: EventFormProps) {
 
         if (error) throw error
       } else {
-        const { error } = await supabase.from('events').insert([eventData])
+        // Get current user for created_by field
+        const { data: { user } } = await supabase.auth.getUser()
+        if (!user) throw new Error('User not authenticated')
+
+        const { error } = await supabase.from('events').insert([{
+          ...eventData,
+          created_by: user.id,
+        }])
 
         if (error) throw error
       }
@@ -102,39 +107,15 @@ export function EventForm({ event, isEdit = false }: EventFormProps) {
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-6 rounded-lg bg-white p-6 shadow"
     >
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
-            Event Title *
-          </label>
-          <Input
-            {...register('title')}
-            placeholder="Enter event title"
-            error={errors.title?.message}
-          />
-        </div>
-
-        <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
-            Category *
-          </label>
-          <select
-            {...register('category')}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
-          >
-            <option value="">Select a category</option>
-            {categories.map(category => (
-              <option key={category} value={category}>
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </option>
-            ))}
-          </select>
-          {errors.category && (
-            <p className="mt-1 text-sm text-red-600">
-              {errors.category.message}
-            </p>
-          )}
-        </div>
+      <div>
+        <label className="mb-2 block text-sm font-medium text-gray-700">
+          Event Title *
+        </label>
+        <Input
+          {...register('title')}
+          placeholder="Enter event title"
+          error={errors.title?.message}
+        />
       </div>
 
       <div>
@@ -149,26 +130,37 @@ export function EventForm({ event, isEdit = false }: EventFormProps) {
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
         <div>
           <label className="mb-2 block text-sm font-medium text-gray-700">
             Date *
           </label>
           <Input
-            {...register('date')}
+            {...register('start_date')}
             type="date"
-            error={errors.date?.message}
+            error={errors.start_date?.message}
           />
         </div>
 
         <div>
           <label className="mb-2 block text-sm font-medium text-gray-700">
-            Time *
+            Start Time *
           </label>
           <Input
-            {...register('time')}
+            {...register('start_time')}
             type="time"
-            error={errors.time?.message}
+            error={errors.start_time?.message}
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-medium text-gray-700">
+            End Time *
+          </label>
+          <Input
+            {...register('end_time')}
+            type="time"
+            error={errors.end_time?.message}
           />
         </div>
 
@@ -177,11 +169,11 @@ export function EventForm({ event, isEdit = false }: EventFormProps) {
             Capacity (optional)
           </label>
           <Input
-            {...register('capacity', { valueAsNumber: true })}
+            {...register('max_attendees', { valueAsNumber: true })}
             type="number"
             min="1"
             placeholder="Leave empty for unlimited"
-            error={errors.capacity?.message}
+            error={errors.max_attendees?.message}
           />
         </div>
       </div>
@@ -199,12 +191,12 @@ export function EventForm({ event, isEdit = false }: EventFormProps) {
 
       <div className="flex items-center">
         <input
-          {...register('is_published')}
+          {...register('is_active')}
           type="checkbox"
           className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
         />
         <label className="ml-2 block text-sm text-gray-700">
-          Publish event immediately
+          Event is active
         </label>
       </div>
 

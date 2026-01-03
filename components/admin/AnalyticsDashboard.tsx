@@ -25,8 +25,8 @@ async function getAnalyticsData() {
 
   const { data: matches } = await supabase
     .from('match_scores')
-    .select('created_at, score')
-    .gte('created_at', thirtyDaysAgo.toISOString())
+    .select('calculated_at, combined_score')
+    .gte('calculated_at', thirtyDaysAgo.toISOString())
 
   return {
     userGrowth: userGrowth || [],
@@ -87,7 +87,7 @@ export async function AnalyticsDashboard() {
     avgMatchScore:
       data.matches.length > 0
         ? Math.round(
-            (data.matches.reduce((sum, match) => sum + match.score, 0) /
+            (data.matches.reduce((sum, match) => sum + match.combined_score, 0) /
               data.matches.length) *
               100
           ) / 100

@@ -16,11 +16,23 @@ function checkDevelopmentOnly() {
 interface User {
   user_id: string
   display_name: string
-  age: number
-  location: string
-  interests: string[]
-  bio: string
-  bio_embedding?: number[]
+  age: number | null
+  location: string | null
+  interests: string[] | null
+  bio: string | null
+  bio_embedding?: string | null // Stored as string in database
+}
+
+// Parse embedding from string (database stores vectors as strings)
+function parseEmbedding(embedding: string | null | undefined): number[] | null {
+  if (!embedding) return null
+  try {
+    // Handle PostgreSQL vector format: [1,2,3] or (1,2,3)
+    const cleaned = embedding.replace(/[[\]()]/g, '')
+    return cleaned.split(',').map(Number).filter(n => !isNaN(n))
+  } catch {
+    return null
+  }
 }
 
 // Calculate cosine similarity for embeddings
@@ -96,8 +108,8 @@ function fuzzyInterestMatch(
 }
 
 // Calculate age compatibility
-function calculateAgeCompatibility(age1: number, age2: number): number {
-  if (!age1 || !age2) return 0.5
+function calculateAgeCompatibility(age1: number | null, age2: number | null): number {
+  if (age1 == null || age2 == null) return 0.5
 
   const diff = Math.abs(age1 - age2)
   // Gaussian-like decay
@@ -105,7 +117,7 @@ function calculateAgeCompatibility(age1: number, age2: number): number {
 }
 
 // Calculate location match
-function calculateLocationMatch(loc1: string, loc2: string): number {
+function calculateLocationMatch(loc1: string | null, loc2: string | null): number {
   if (!loc1 || !loc2) return 0.5
 
   // Same zip code
@@ -137,9 +149,11 @@ function calculateAdvancedMatchScore(user1: User, user2: User) {
   const interestScore = exactInterestScore * 0.7 + fuzzyInterestScore * 0.3
 
   // 2. Bio semantic similarity (if embeddings available)
+  const embedding1 = parseEmbedding(user1.bio_embedding)
+  const embedding2 = parseEmbedding(user2.bio_embedding)
   const semanticScore =
-    user1.bio_embedding && user2.bio_embedding
-      ? cosineSimilarity(user1.bio_embedding, user2.bio_embedding)
+    embedding1 && embedding2
+      ? cosineSimilarity(embedding1, embedding2)
       : 0.5
 
   // 3. Age compatibility
