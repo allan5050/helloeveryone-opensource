@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 
 import { useAuth } from '@/app/contexts/AuthContext'
 import { createClient } from '@/lib/supabase/client'
+import { shouldSkipImageOptimization } from '@/lib/utils/url-validation'
 
 interface Profile {
   full_name?: string | null
@@ -113,10 +114,7 @@ export default function ProfilePage() {
                     fill
                     sizes="80px"
                     className="rounded-full object-cover"
-                    unoptimized={
-                      profile.photo_url.includes('.svg') ||
-                      profile.photo_url.includes('dicebear.com')
-                    }
+                    unoptimized={shouldSkipImageOptimization(profile.photo_url)}
                   />
                 </div>
               ) : (
