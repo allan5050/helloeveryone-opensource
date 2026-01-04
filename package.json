@@ -35,7 +35,9 @@
     "test:security": "jest --testPathPattern=tests/security --passWithNoTests",
     "test:security:edge": "jest --testPathPattern=tests/security/edge-cases --passWithNoTests",
     "test:security:business": "jest --testPathPattern=tests/security/business-logic --passWithNoTests",
-    "test:security:all": "npm run test:security && npm run security:scan"
+    "test:security:all": "npm run test:security && npm run security:scan",
+    "precheck": "npm run type-check && npm run lint && npm run format:check && npm run test && npm run build",
+    "precheck:quick": "npm run type-check && npm run lint && npm run format:check"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",

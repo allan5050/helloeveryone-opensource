@@ -30,8 +30,12 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# 5. Type check (commented out by default - enable when TS errors are fixed)
-# echo "Running TypeScript type check..."
-# npm run type-check
+# 5. Type check (catches type errors that cause CI failures)
+echo "🔍 Running TypeScript type check..."
+npm run type-check
+if [ $? -ne 0 ]; then
+  echo "❌ TypeScript check failed! Fix type errors before committing."
+  exit 1
+fi
 
 echo "✅ All pre-commit checks passed!"
