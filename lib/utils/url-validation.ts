@@ -15,7 +15,9 @@ const ALLOWED_SVG_HOSTS = ['api.dicebear.com', 'avatars.dicebear.com']
  * @param url - The URL to check
  * @returns true if the image should be unoptimized (SVG or trusted avatar host)
  */
-export function shouldSkipImageOptimization(url: string | null | undefined): boolean {
+export function shouldSkipImageOptimization(
+  url: string | null | undefined
+): boolean {
   if (!url) return false
 
   // Check for SVG file extension
