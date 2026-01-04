@@ -41,8 +41,8 @@ export function EventCategoriesChart({ data }: EventCategoriesChartProps) {
             outerRadius={80}
             fill="#8884d8"
             dataKey="count"
-            label={({ category, percent }) =>
-              `${category} ${((percent ?? 0) * 100).toFixed(0)}%`
+            label={({ payload, percent }) =>
+              `${payload?.category ?? ''} ${((percent ?? 0) * 100).toFixed(0)}%`
             }
           >
             {data.map((entry, index) => (
