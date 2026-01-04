@@ -6,6 +6,7 @@ import { Suspense } from 'react'
 import FavoriteButton from '@/components/profile/FavoriteButton'
 import { getCurrentUser } from '@/lib/api/auth'
 import { createClient } from '@/lib/supabase/server'
+import { shouldSkipImageOptimization } from '@/lib/utils/url-validation'
 
 interface FavoriteProfile {
   id: string
@@ -53,11 +54,7 @@ async function getFavorites(): Promise<FavoriteProfile[]> {
 
 function FavoriteCard({ profile }: { profile: FavoriteProfile }) {
   // Check if URL is an SVG (like dicebear avatars) - use unoptimized for these
-  const isSvgUrl = Boolean(
-    profile.photo_url &&
-    (profile.photo_url.includes('.svg') ||
-      profile.photo_url.includes('dicebear.com'))
-  )
+  const isSvgUrl = shouldSkipImageOptimization(profile.photo_url)
 
   return (
     <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">

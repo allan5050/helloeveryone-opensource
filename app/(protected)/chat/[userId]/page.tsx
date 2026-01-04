@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 
 import { useAuth } from '@/app/contexts/AuthContext'
 import ChatWindow from '@/components/chat/ChatWindow'
+import { shouldSkipImageOptimization } from '@/lib/utils/url-validation'
 
 interface ChatMessage {
   id: string
@@ -122,10 +123,7 @@ export default function IndividualChatPage() {
                 width={40}
                 height={40}
                 className="mr-3 rounded-full object-cover"
-                unoptimized={
-                  otherUser.avatar_url.includes('.svg') ||
-                  otherUser.avatar_url.includes('dicebear.com')
-                }
+                unoptimized={shouldSkipImageOptimization(otherUser.avatar_url)}
               />
             ) : (
               <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200">

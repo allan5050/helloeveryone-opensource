@@ -3,6 +3,8 @@
 import Image from 'next/image'
 import { useState } from 'react'
 
+import { shouldSkipImageOptimization } from '@/lib/utils/url-validation'
+
 interface AvatarProps {
   src?: string | null
   alt: string
@@ -40,9 +42,7 @@ export default function Avatar({
   }
 
   // Check if URL is an SVG (like dicebear avatars) - use unoptimized for these
-  const isSvgUrl = Boolean(
-    src && (src.includes('.svg') || src.includes('dicebear.com'))
-  )
+  const isSvgUrl = shouldSkipImageOptimization(src)
 
   return (
     <div
