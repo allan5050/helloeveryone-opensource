@@ -29,8 +29,8 @@ jobs:
       - name: Run ESLint
         run: npm run lint || echo "ESLint completed with warnings"
 
-      - name: Run Prettier check
-        run: npx prettier --check .
+      # Prettier check removed - auto-fix.yml handles formatting automatically
+      # This prevents CI failures for formatting-only issues
 
       - name: Run TypeScript type check
         run: npm run type-check

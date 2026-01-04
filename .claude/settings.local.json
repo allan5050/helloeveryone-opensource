@@ -59,7 +59,8 @@
       "Bash(gh pr view:*)",
       "Bash(start chrome:*)",
       "Bash(gh api:*)",
-      "Bash(gh repo view:*)"
+      "Bash(gh repo view:*)",
+      "Bash(npm run precheck:quick:*)"
     ],
     "deny": [],
     "ask": []
